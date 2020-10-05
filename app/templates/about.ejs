@@ -1,16 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8" />
-  <title><%- blogTitle %></title>
+  <title>Inkyu-Kim</title>
 
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#F5F5F5">
+  <link rel="canonical" href="https://inkkim.github.io/about.html" />
+
+  <meta property="og:title" content="Inkyu-Kim">
+  <meta property="og:image" content="https://user-images.githubusercontent.com/60086878/95056968-6fc5f100-0730-11eb-8359-b6f389b8c468.jpeg">
+  <meta property="og:description" content="김인규 (Inkyu-Kim)">
+
+  <meta name="twitter:title" content="Inkyu-Kim"> 
+  <meta name="twitter:description" content="김인규 (Inkyu-Kim)">
+  <meta name="twitter:image" content="https://user-images.githubusercontent.com/60086878/95056968-6fc5f100-0730-11eb-8359-b6f389b8c468.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="../src/scss/init.scss" as="style">
+  <link rel="preload" href="../src/scss/about.scss" as="style">
 
   <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../src/scss/init.scss">
   <link rel="stylesheet" href="../src/scss/about.scss">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179600475-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-179600475-1');
+  </script>
 </head>
 
 <body>
@@ -18,7 +42,41 @@
   </header>
 
   <main id="main-container">
-    <p>This is my first blog for study!</p>
+    <section id="about-container">
+      <section>
+        <ul>
+          <li>
+            <a href="mailto:sda1547@gmail.com">sda1547@gmail.com</a>
+            <%#<a href="https://inkkim.github.io">resume</a>%>
+            <a href="https://github.com/inkkim">github</a>
+          </li>
+          <%#<li>
+            <a href="https://facebook.com/emobully">facebook</a>
+            <a href="https://linkedin.com/in/parksb">linkedin</a>
+          </li>%>
+        </ul>
+      </section>
+
+      <section>
+        <p>
+          데이터 사이언티스트를 지향하는 데이터 엔지니어가 되고싶은 사람
+        </p>
+      </section>
+
+      <section>
+        <details>
+          <summary><h2>교육</h2></summary>
+          <ul>
+            <li>
+              2020. 01. 20 ~ 2020. 02. 14 <strong><a href="https://42seoul.kr/about">42 Seoul La Piscine</a></strong>
+            </li>
+            <li>
+              2020. 06. 15 ~ 2020. 12. 04 <strong><a href="">엔코아 데이터 과학자 양성과정</a></strong>
+            </li>
+          </ul>
+        </details>
+      </section>
+    </section>
   </main>
 
   <script defer src="../src/ts/init.ts"></script>
