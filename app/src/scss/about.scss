@@ -1,15 +1,31 @@
+
+#main-container {
+  max-width: 600px;
+}
+
 #about-container {
   ul,
   p {
-    margin-bottom: 30px;
-    font-size: 16px;
+    margin-bottom: 25px;
+    font-size: 15px;
   }
 
-  ul {
-    list-style: none;
-    list-style-position: inside;
-    li {
+  section {
+    h2 {
+      font-size: 15px;
+    }
+
+    & > h2 {
       margin-bottom: 5px;
+    }
+
+    & > ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 5px;
+        line-height: 170%;
+      }
     }
   }
 
@@ -21,6 +37,35 @@
       text-decoration: none;
       background-color: black;
       color: white;
+    }
+  }
+
+  details {
+    display: inline;
+    margin-bottom: 25px;
+
+    &[open=""] > summary {
+      background-color: black;
+      color: white;
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 15px;
+
+      & > h2 {
+        display: inline;
+      }
+    }
+
+    ul {
+      padding-left: 33px;
+      margin-top: 5px;
+      line-height: 180%;
+
+      li {
+        margin-top: 10px;
+      }
     }
   }
 }
