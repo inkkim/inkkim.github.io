@@ -52,7 +52,7 @@ tags: "빅데이터, 분산처리, 인프라"
 - 구축 환경
     - MacOS(Catalina 10.15.5)
     - AWS EC2
-        - t2.small (3EA)
+        - t2.small(3EA)
     - Red Hat Enterprise Linux 8
     - SSD 30GB
 
