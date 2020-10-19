@@ -9,10 +9,34 @@
 
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
- 
+
+  <!-- Facebook OpenGraph -->
+  <meta property="og:title" content="<%- title %>">
+  <meta property="og:image" content="<%- thumbnail %>">
+  <meta property="og:description" content="<%- subtitle %>">
+
+  <!-- Twitter -->
+  <meta name="twitter:title" content="<%- title %>">
+  <meta name="twitter:image" content="<%- thumbnail %>">
+  <meta name="twitter:description" content="<%- subtitle %>">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="../../src/scss/init.scss" as="style">
+  <link rel="preload" href="../../src/scss/work.scss" as="style">
+  <link rel="canonical" href="https://inkkim.github.io/work/<%- id %>.html" />
   <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../../src/scss/init.scss">
   <link rel="stylesheet" href="../../src/scss/work.scss">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179600475-1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-179600475-1');
+  </script>
 </head>
 
 <body>
