@@ -62,6 +62,22 @@
         <% } %>
       </section>
 
+      <section id ="article-social-container">
+        <div id="fb-like" class="fb-like" data-href="https://inkkim.github.io/article/<%- article.id %>.html"
+          data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="true"></a>
+      </section>
+
+      <section id="article-comments">
+	<script src="https://utteranc.es/client.js"
+        repo="inkkim / inkkim.github.io-comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+	</script>
+      </section>
+
       <section id="article-list-button-container">
         <a href="/articles.html">
           <div id="article-list-button">📚</div>
