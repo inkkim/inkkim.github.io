@@ -19,6 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "ejs": "^2.6.1",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-seo-friendly-sitemap": "0.0.25",
     "highlight.js": "^9.15.6",
     "katex": "^0.10.2",
     "markdown-it": "^8.4.2",
