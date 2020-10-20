@@ -82,6 +82,25 @@ class WorkPublisher {
     return metaInfo;
   }
 
+  public static getWorkByFilename(id: number, filename: string) {
+    const mdContent: Buffer = fs.readFileSync(`${this.WORK_ORIGIN_PATH}/${filename}`);
+    const htmlContent: string = this.md.render(this.extractContent(String(mdContent)));
+    const metaInfo: WorkMetaInfo = this.extractMetaInfo(String(mdContent));
+
+    return new Work({
+      id,
+      title: metaInfo.getTitle(),
+      subtitle: metaInfo.getSubtitle(),
+      thumbnail: metaInfo.getThumbnail(),
+      content: htmlContent,
+    });
+  }
+
+  public static getWorkMarkdownFiles() {
+    return fs.readdirSync(this.WORK_ORIGIN_PATH);
+  }
+
+
   /**
    * Converts markdown works files to HTML files.
    */

@@ -88,7 +88,7 @@ class ArticlePublisher {
    *
    * @param filename - An article filename.
    */
-  private static getArticleByFilename(filename: string) {
+  /*private static getArticleByFilename(filename: string) {
     let mdContent = String(fs.readFileSync(`${this.ARTICLE_ORIGIN_PATH}/${filename}`));
 
     // Adds table of contents to article.
@@ -108,7 +108,25 @@ class ArticlePublisher {
       tags: metaInfo.getTags(),
       content: htmlContent,
     });
+  }*/
+
+  public static getArticleByFilename(filename: string) {
+    const mdContent: Buffer = fs.readFileSync(`${this.ARTICLE_ORIGIN_PATH}/${filename}`);
+    const mdContentWithToc = `::: toggle(Table of Contents)\n[[toc]]\n:::\n${mdContent}`;
+    const htmlContent: string = this.md.render(this.extractContent(mdContentWithToc));
+    const metaInfo: ArticleMetaInfo = this.extractMetaInfo(String(mdContent));
+
+    return new Article({
+      id: metaInfo.getId(),
+      title: metaInfo.getTitle(),
+      subtitle: metaInfo.getSubtitle(),
+      date: metaInfo.getDate(),
+      tags: metaInfo.getTags(),
+      content: htmlContent,
+      /*filename,*/
+    });
   }
+
 
   /**
    * Extracts an article meta information in front matter block from text.
@@ -144,6 +162,11 @@ class ArticlePublisher {
     });
 
     return metaInfo;
+  }
+
+  public static getArticleMarkdownFiles() {
+    return fs.readdirSync(this.ARTICLE_ORIGIN_PATH)
+      .filter((file) => !this.IGNORED_FILES.includes(file));
   }
 
   /**
