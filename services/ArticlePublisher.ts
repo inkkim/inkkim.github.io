@@ -123,7 +123,7 @@ class ArticlePublisher {
       date: metaInfo.getDate(),
       tags: metaInfo.getTags(),
       content: htmlContent,
-      /*filename,*/
+      filename : metaInfo.getFilename(),
     });
   }
 
