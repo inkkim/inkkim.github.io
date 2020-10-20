@@ -6,7 +6,7 @@
 .sass-cache
 
 node_modules
-
+dist
 server
 css
 public
