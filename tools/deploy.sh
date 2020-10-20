@@ -27,10 +27,10 @@ then
 
   echo -e "\n${GREEN}Use subtree push to master branch...${WHITE}"
 
-#  echo -e "${WHITE}>git push origin \`git subtree split --prefix ${DIST} development\`:master --force"
-#  git push origin `git subtree split --prefix $DIST development`:master --force
-  echo -e "${WHITE}>git push origin \`git subtree split --prefix ${DIST} master\`:gh-pages --force"
-  git push origin `git subtree split --prefix $DIST master`:gh-pages --force
+  echo -e "${WHITE}>git push origin \`git subtree split --prefix ${DIST} development\`:master --force"
+  git push origin `git subtree split --prefix $DIST development`:master --force
+#  echo -e "${WHITE}>git push origin \`git subtree split --prefix ${DIST} master\`:gh-pages --force"
+#  git push origin `git subtree split --prefix $DIST master`:gh-pages --force
 
 
   echo -e "\n${GREEN}Reset the temporary changes...${WHITE}"
