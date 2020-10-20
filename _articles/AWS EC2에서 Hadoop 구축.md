@@ -177,6 +177,8 @@ ssh localhost
 
 ## Hadoop 설치
 1. Java 설치
+
+
  Hadoop은 Java로 쓰여진 오픈 소스이므로 사전에 Java 설치 필수이다. 따라서 Java 버전에 영향을 많이 받으므로, Hadoop 3.2.1 버전과 호환되는 java-1.8.0-openjdk 버전 설치한다.
 
 - Java 설치
