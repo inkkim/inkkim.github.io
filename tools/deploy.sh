@@ -13,7 +13,7 @@ echo -e "${GREEN}Run build script...${WHITE}"
 echo -e "${WHITE}> ./tools/build.sh"
 ./tools/build.sh
 
-if [[ $(git status -s) == "" ]]
+if [[ $(git status -s) == "M app/static/sitemap.xml" ]]
 then
   echo -e "${GREEN}Modify gitignore list temporarily...${WHITE}"
   echo "> sed -i "" "/${DIST}/d" ./.gitignore"
@@ -38,4 +38,4 @@ else
   echo "Need clean working directory to deploy."
 fi
 
-echo -e "\n${CYAN}Done!"
+echo -e "\n${CYAN}Done!"  
