@@ -13,7 +13,7 @@ echo -e "${GREEN}Run build script...${WHITE}"
 echo -e "${WHITE}> ./tools/build.sh"
 ./tools/build.sh
 
-if [[ $(git status -s) == "M app/static/sitemap.xml" ]]
+if [[ $(git status -s) == "" ]]
 then
   echo -e "${GREEN}Modify gitignore list temporarily...${WHITE}"
   echo "> sed -i "" "/${DIST}/d" ./.gitignore"
@@ -26,8 +26,12 @@ then
   git commit -m "dist: $DATE"
 
   echo -e "\n${GREEN}Use subtree push to master branch...${WHITE}"
-  echo -e "${WHITE}> cd git push origin \`git subtree split --prefix ${DIST} development\`:master --force"
-  git push origin `git subtree split --prefix $DIST development`:master --force
+
+#  echo -e "${WHITE}>git push origin \`git subtree split --prefix ${DIST} development\`:master --force"
+#  git push origin `git subtree split --prefix $DIST development`:master --force
+  echo -e "${WHITE}>git push origin \`git subtree split --prefix ${DIST} master\`:gh-pages --force"
+  git push origin `git subtree split --prefix $DIST master`:gh-pages --force
+
 
   echo -e "\n${GREEN}Reset the temporary changes...${WHITE}"
   echo -e "${WHITE}> git reset HEAD~"
