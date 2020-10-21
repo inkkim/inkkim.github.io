@@ -23,6 +23,7 @@ class ArticleMetaInfo implements ArticleMetaInfoModel {
       case 'subtitle':
       case 'date':
       case 'tags':
+      case 'filename':
         this[name] = value;
         break;
 
@@ -54,6 +55,7 @@ class ArticleMetaInfo implements ArticleMetaInfoModel {
 
     return this.tags;
   }
+
   getFilename(): string {
     return this.filename;
   }
