@@ -1,6 +1,6 @@
 ---
-title: "Test Title"
-subtitle: "Test Title"
+title: "업데이트 예정"
+subtitle: "공부하자"
 thumbnail: "https://user-images.githubusercontent.com/60086878/96806445-10b1ed00-144f-11eb-846f-024d294e7391.jpg"
 ---
 
