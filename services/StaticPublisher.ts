@@ -18,6 +18,8 @@ class StaticPublisher {
     ));
 
     const SITEMAP_PATH: string = path.join(__dirname, '../app/static/sitemap.xml');
+    const SITEMAP_PATH_SUB: string = path.join(__dirname, '../sitemap.xml');
+
 
     const articleUrls = articles.map((article) => `<url><loc>https://inkkim.github.io/article/${article.id}.html</loc><changefreq>daily</changefreq><priority>1.00</priority></url>`);
     const workUrls = works.map((work) => `<url><loc>https://inkkim.github.io/work/${work.id}.html</loc><changefreq>daily</changefreq><priority>1.00</priority></url>`);
@@ -29,8 +31,11 @@ ${workUrls.join('\n')}
 ${articleUrls.join('\n')}
 </urlset>
 `;
-
+    console.log(SITEMAP_PATH);
     fs.writeFileSync(SITEMAP_PATH, content);
+    console.log(SITEMAP_PATH_SUB)
+    fs.writeFileSync(SITEMAP_PATH_SUB, content);
+    
   }
 }
 
