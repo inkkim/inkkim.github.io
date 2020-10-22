@@ -84,6 +84,7 @@ class WorkPublisher {
 
   public static getWorkByFilename(id: number, filename: string) {
     const mdContent: Buffer = fs.readFileSync(`${this.WORK_ORIGIN_PATH}/${filename}`);
+    console.log(`***extract content from ${this.WORK_ORIGIN_PATH}/${filename}***`)
     const htmlContent: string = this.md.render(this.extractContent(String(mdContent)));
     const metaInfo: WorkMetaInfo = this.extractMetaInfo(String(mdContent));
 
@@ -103,7 +104,7 @@ class WorkPublisher {
 
   /**
    * Converts markdown works files to HTML files.
-   */
+   
   public static publishAllWorks() {
     const workFiles: string[] = fs.readdirSync(this.WORK_ORIGIN_PATH);
 
@@ -127,8 +128,23 @@ class WorkPublisher {
 
       console.log(`* ${idx}: ${metaInfo.getTitle()}`);
       return work.getWork();
-    });
+    });*/
 
+    public static publishAllWorks() {
+      const workFiles: string[] = WorkPublisher.getWorkMarkdownFiles();
+  
+      const distWorks: WorkModel[] = workFiles.map((workFile: string, idx: number) => {
+        const work = WorkPublisher.getWorkByFilename(idx, workFile).getWork();
+  
+        fs.writeFileSync(
+          `${this.WORK_DIST_PATH}/${idx}.html`,
+          ejs.render(String(this.WORK_TEMPLATE), work),
+        );
+  
+        console.log(`* ${idx}: ${work.title}`);
+        return work;
+      });
+  
     PagePublisher.publishWorks(distWorks);
   }
 }

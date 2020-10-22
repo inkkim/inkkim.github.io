@@ -65,9 +65,8 @@ class ArticlePublisher {
       },
     });
 
-  static config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json')).toString());
 
-  /**
+    /**
    * Extracts content excluding front matter block.
    *
    * # Example
@@ -109,8 +108,8 @@ class ArticlePublisher {
       content: htmlContent,
     });
   }*/
-
   public static getArticleByFilename(filename: string) {
+    console.log(`***extract content from ${this.ARTICLE_ORIGIN_PATH}/${filename}***`)
     const mdContent: Buffer = fs.readFileSync(`${this.ARTICLE_ORIGIN_PATH}/${filename}`);
     const mdContentWithToc = `::: toggle(Table of Contents)\n[[toc]]\n:::\n${mdContent}`;
     const htmlContent: string = this.md.render(this.extractContent(mdContentWithToc));
@@ -123,12 +122,11 @@ class ArticlePublisher {
       date: metaInfo.getDate(),
       tags: metaInfo.getTags(),
       content: htmlContent,
-      filename : metaInfo.getFilename(),
+      filename,
     });
   }
 
-
-  /**
+   /**
    * Extracts an article meta information in front matter block from text.
    *
    * ```js
@@ -174,14 +172,14 @@ class ArticlePublisher {
    *
    * @param id - A specific article ID. If not given, publishes all articles.
    */
+
   public static publishArticles(id?: number) {
-    const articleFiles: string[] = fs.readdirSync(this.ARTICLE_ORIGIN_PATH)
-      .filter((file) => !this.IGNORED_FILES.includes(file));
+    const articleFiles: string[] = ArticlePublisher.getArticleMarkdownFiles();
 
     const distArticles: ArticleModel[] = articleFiles.map((articleFile: string, index: number) => {
       const article = ArticlePublisher.getArticleByFilename(articleFile).getArticle();
       const nextArticle = articleFiles[index + 1]
-          && ArticlePublisher.getArticleByFilename(articleFiles[index + 1]).getArticle();
+        && ArticlePublisher.getArticleByFilename(articleFiles[index + 1]).getArticle();
       const prevArticle = articleFiles[index - 1]
           && ArticlePublisher.getArticleByFilename(articleFiles[index - 1]).getArticle();
 
