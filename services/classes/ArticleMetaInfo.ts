@@ -54,9 +54,6 @@ class ArticleMetaInfo implements ArticleMetaInfoModel {
     return this.tags;
   }
 
-  getFilename(): string {
-    return this.filename;
-  }
 }
 
 export default ArticleMetaInfo;
