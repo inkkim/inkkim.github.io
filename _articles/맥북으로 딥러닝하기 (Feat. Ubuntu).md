@@ -14,7 +14,7 @@ tags: "우분투, 서버, 도커"
 
 
 # 노트북이 힘들어해 🤬
-지난 7월 엔코아 플레이데이터에서 '데이터 과학자 양성과정'을 수강중 일이다. 일전에 Python, R을 비롯한 프로그래밍 언어 기초를 막 떼고나서 Sckit-learn과 Tensorflow 실습 중 강사님은 AWS서버를 대여해서 강의를 진행하셨는데, 어떤 무거운 모델링에도 압도적인 퍼포먼스에 나를 비롯한 모든 수강생들은 하드웨어의 중요성을 몸으로 체감한다. 
+지난 7월 엔코아 플레이데이터에서 '데이터 과학자 양성과정'을 수강하던 중의 일이다. 일전에 Python, R을 비롯한 프로그래밍 언어 기초를 막 떼고나서 Sckit-learn과 Tensorflow 실습 중 강사님은 AWS서버를 대여해서 강의를 진행하셨는데, 어떤 무거운 모델링에도 압도적인 퍼포먼스에 나를 비롯한 모든 수강생들은 하드웨어의 중요성을 몸으로 체감한다. 
 
 
 그나마 CUDA 가속을 지원하는 Nvidia GPU를 품은 노트북들은(당시 본인 노트북 2018 Samsung Always 9, Geforce mx150) 용케 설치해서 흉내라도 내봤는데 어림도 없었다. 아쉬운대로 딱 학습용으로 제격인 [Colab](https://colab.research.google.com/)을 통해 진행해보지만, 수시로 끊기는 세션 때문에 여간 스트레스가 아니다.
@@ -148,7 +148,53 @@ nvidia-smi
 ++ 필자의 경우 로그인 화면에서 그래픽이 깨지는 현상이 있는데, 로그인하여 데스크톱 화면으로 들어가면 정상작동한다.
 
 # Docker 설치
+1. apt-get 업그레이드 및 업데이트를 한다.
+```
+sudo apt update
+sudo apt upgrade
+```
 
+2. 도커 설치에 필요한 필수 패키지 다운로드를 한다.
+```
+sudo apt-get install curl apt-transport-https ca-certificates software-properties-common
+```
+
+3. 도커 Repository를 추가한다.
+- GPG Key 추가
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+- Repository 추가
+```
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+- Repository 정보 업데이트
+```
+sudo apt update
+```
+- Docker Community Edition으로 지정
+```
+apt-cache policy docker-ce
+```
+
+4. 최종적으로 도커를 설치한다.
+```
+sudo apt install docker-ce
+```
+
+5. 도커의 실행상태를 확인한다.
+```
+sudo systemctl status docker
+```
+- 시스템 시작 시 항상 켜져있도록 유지하려면 아래 명령어 실행
+```
+sudo systemctl enable docker
+```
+
+6. 도커 명령어 실행할 때마다 sudo 권한을 묻지 않도록 도커 권한을 부여한다.
+```
+sudo usermod -aG docker $USER
+```
 
 # Nvidia-Docker 2.0 설치
 1. 혹시 이전에 설치되어있는 nvidia-docker 1.0이 있다면 삭제한다.
@@ -199,4 +245,5 @@ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 - [Ubuntu Release Cycle](https://ubuntu.com/about/release-cycle)
 - [Install Ubuntu desktop](https://ubuntu.com/tutorials/install-ubuntu-desktop#7-begin-installation)
 - [How to install NVIDIA driver on Ubuntu 18.04](https://medium.com/@antonioszeto/how-to-install-nvidia-driver-on-ubuntu-18-04-7b464bab43e6)
+- [How To Install Docker On Ubuntu 18.04](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04)
 - [Docker Tutorial 5: Nvidia-Docker 2.0 Installation in Ubuntu 18.04](https://sh-tsang.medium.com/docker-tutorial-5-nvidia-docker-2-0-installation-in-ubuntu-18-04-cb80f17cac65)
