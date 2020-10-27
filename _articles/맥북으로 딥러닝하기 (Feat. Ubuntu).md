@@ -236,7 +236,7 @@ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 여기까지가 우분투를 설치하고 도커 내에 nvidia-docker를 설치하여 GPU 자원을 사용할 수 있도록 하는 과정이다. 글이 너무 길어지는 관계로 이만 줄이고, 💻맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 2에서 글을 이어가겠다.
 
 
-다음 글에서는 Docker 내에서 Tensorflow-gpu를 설치하고, ssh를 통한 우분투 서버 접속에 대해 다뤄보겠습니다.
+다음 글에서는 Docker 내에서 Tensorflow-gpu를 설치하고, ssh를 통한 우분투 서버 접속에 대해 다뤄보겠다.
 
 # 출처
 - [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/wiki)
