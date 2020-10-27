@@ -9,7 +9,6 @@ interface ArticleMetaInfoModel {
 
   tags: string | string[];
 
-  filename: string;
 }
 
 export default ArticleMetaInfoModel;

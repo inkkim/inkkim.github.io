@@ -11,8 +11,6 @@ class ArticleMetaInfo implements ArticleMetaInfoModel {
 
   tags: string | string[];
 
-  filename: string;
-
   setProp(name: string, value: any) {
     switch (name) {
       case 'id':
