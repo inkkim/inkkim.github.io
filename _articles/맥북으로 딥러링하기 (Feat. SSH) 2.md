@@ -78,6 +78,12 @@ device_lib.list_local_devices()
 ![Tensorflow ready](https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png)
 ![Tensorflow action](https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png)
 
+# iptime DDNS 설정 및 포트 포워딩
+iptime에서는 DDNS(Dynamic Domain Name System)
+을 무료로 제공한다. 이 서비스를 이용하면 수시로 변할 수 있는 유동 IP를 매번 확인해서 접속하지 않아도 되고, 돈내고 고정 IP를 사용하지 않고도 나만의 도메인을 가질 수 있다.
+
+1. 데스크탑에서 주소창에 192.168.0.1을 이용해 iptime 설정 페이지를 
+
 # 우분투 방화벽 설정
 외부에서 우분투로 접속하게 하려면 방화벽을 설정하고 22번 포트만 열어줘야 한다. 그러기 위해 먼저 이름값 제대로 하는 ufw(Uncomplicated FireWall)을 설치해줘야 한다.
 
@@ -120,10 +126,18 @@ ls -al
 
 4. Public Key (id_rsa.pub) 를 우분투로 복사한다.
 ```
-ssh-copy <User ID>@<유동 IP>
+ssh-copy <User ID>@<DDNS 도메인>
 ```
 
+5. 우분투에서 public key가 정상적으로 복사되었는지 확인한다.
+```
+cat ~/.ssh/authorized_keys
+```
 
+6. 정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!
+```
+ssh <User ID>@<DDNS 도메인>
+```
 
 
 # 참고
