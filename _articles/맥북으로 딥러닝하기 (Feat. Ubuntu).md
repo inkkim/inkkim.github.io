@@ -238,7 +238,7 @@ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 
 다음 글에서는 Docker 내에서 Tensorflow-gpu를 설치하고, ssh를 통한 우분투 서버 접속에 대해 다뤄보겠다.
 
-# 출처
+# 참고
 - [nvidia-docker](https://github.com/NVIDIA/nvidia-docker/wiki)
 - [CUDA on WSL](https://docs.nvidia.com/cuda/wsl-user-guide/index.html)
 - [Windows Insider Program](https://insider.windows.com/en-us/getting-started#register)

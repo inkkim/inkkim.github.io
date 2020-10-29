@@ -454,7 +454,7 @@ secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실
 - secondnode Public IP:8088
 ![Manage Page](https://user-images.githubusercontent.com/60086878/96372012-d53dc700-119f-11eb-8dff-a1dd1c25c075.png)
 
-# 출처
+# 참고
 - 엔터프라이즈 데이터 플랫폼 구축 (책만)
 - [데이터실무 기술 가이드 > 데이터 처리](http://www.dbguide.net/db.db?cmd=view&boardUid=187336&boardConfigUid=9&categoryUid=1459&boardIdx=158&boardStep=1) (DBGuide)
 - [How To Install and Configure Hadoop on CentOS/RHEL 8](https://tecadmin.net/install-hadoop-centos-8/)
