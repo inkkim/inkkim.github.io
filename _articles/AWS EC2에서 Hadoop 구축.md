@@ -11,7 +11,7 @@ tags: "빅데이터, 분산처리, 인프라"
 
 ![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg)
 
- 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다. (개발자의 네이밍 세계는 생각보다 단순하다.)
+ 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.f(개발자의 네이밍 세계는 생각보다 단순하다.)
 
 # 핵심 컴포넌트
 
@@ -94,7 +94,7 @@ tags: "빅데이터, 분산처리, 인프라"
 - 해당 인스턴스의 Public IP를 복사하고, 터미널에서 ssh 명령어를 통해 접속한다.
 
 ```
-ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
+$ ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
 ```
 
 ![SSH Access](https://user-images.githubusercontent.com/60086878/96367234-7d936180-1187-11eb-8583-473b718bcc44.png)
@@ -107,7 +107,7 @@ ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
 원활한 설치를 위해 Red Hat 보안 요소인 SELINUX를 끄고 진행
 - etc 파일 수정을 위해 sudo 명령어로 config 파일 열기
 ```
-sudo vi /etc/selinux/config
+$ sudo vi /etc/selinux/config
 ```
 
 - SELINUX disabled
@@ -118,26 +118,26 @@ SELINUX=disabled
 
 - 변경사항 적용을 위해 재부팅
 ```
-sudo reboot
+$ sudo reboot
 ```
 
 2. 보안상 새로운 계정을 생성
 
 - hadoop 이름으로 새로운 계정 생성
 ```
-useradd hadoop
+$ useradd hadoop
 ```
 
 - 비밀번호 설정
 ```
-passwd hadoop
+$ passwd hadoop
 ```
 
 3. hadoop 계정에 sudo 권한 부여
 
 - etc 파일 수정을 위해 sudo 명령어와 쓰기 권한없이 바로 편집할 수 있는 visud 명령어를 통해 sudoers파일 열기
 ```
-sudo visudo /etc/sudoers
+$ sudo visudo /etc/sudoers
 ```
 
 - 계정권한 부여 명령 추가
@@ -152,27 +152,27 @@ hadoop  ALL=(ALL)   ALL
  공개키를 등록하여 각 인스턴스끼리 비밀번호 없이 지속적인 통신을 가능하게 함
 - hadoop 계정 로그인
 ```
-su hadoop
+$ su hadoop
 ```
 
 - SSH Key 생성 (명령어 실행 후 엔터)
 ```
-ssh-keygen -t rsa
+$ ssh-keygen -t rsa
 ```
 
 - authorized_keys파일에 공개키 추가
 ```
-cat ~/.ssh/id_rsa.pub >> ~/.ssh authorized_keys
+$ cat ~/.ssh/id_rsa.pub >> ~/.ssh authorized_keys
 ```
 
 - authorized_keys 권한 부여
 ```
-chmod 640 ~/.ssh/authorized_keys
+$ chmod 640 ~/.ssh/authorized_keys
 ```
 
 - ssh 접속 확인
 ```
-ssh localhost
+$ ssh localhost
 ```
 
 ## Hadoop 설치
@@ -183,12 +183,12 @@ ssh localhost
 
 - Java 설치
 ```
-sudo dnf install java-1.8.0-openjdk ant -y
+$ sudo dnf install java-1.8.0-openjdk ant -y
 ```
 
 - Java 명령어로 설치여부 확인
 ```
-java -version
+$ java -version
 ```
 
 2. Hadoop 설치
@@ -197,25 +197,25 @@ java -version
  [Hadoop 3.2.1](https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz) 해당 링크를 복사하여 설치
 - 웹 파일 다운로드 패키지 다운로드
 ```
-sudo yum install wget
+$ sudo yum install wget
 ```
 
 - Hadoop 설치
 
 ```
-cd ~
-sudo wget https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
-tar -xvzf hadoop-3.2.1.tar.gz
+$ cd ~
+$ sudo wget https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
+$ tar -xvzf hadoop-3.2.1.tar.gz
 ```
 
 - 폴더명 변경
 ```
-mv hadoop-3.2.1 hadoop
+$ mv hadoop-3.2.1 hadoop
 ```
 
 - 환경변수 설정
 ```
-vi ~/.bashrc
+$ vi ~/.bashrc
 ```
 
 - 환경변수 내용 추가
@@ -239,7 +239,7 @@ JAVA_HOME은 /usr/lib/jvm/ 밑에 폴더명으로 설정(다운로드 시기에 
 
 - 하둡 환경파일 수정
 ```
-cd ~/hadoop/etc/hadoop
+$ cd ~/hadoop/etc/hadoop
 ```
 
 - workers ()
@@ -352,13 +352,13 @@ datanode2
 
 - hdfs 저장을 위한 디렉토리 생성
 ```
-cd hadoop
-mkdir data
+$ cd hadoop
+$ mkdir data
 ```
 
 - 종료
 ```
-sudo shutdown -h now
+$ sudo shutdown -h now
 ```
 
 ## 이미지 생성 및 복사
@@ -377,15 +377,15 @@ sudo shutdown -h now
 3. hostname 설정
 - 각각의 인스턴스에서 진행
 ```
-sudo hostnamectl set-hostname client
-sudo hostnamectl set-hostname namenode
-sudo hostnamectl set-hostname secondnode
+$ sudo hostnamectl set-hostname client
+$ sudo hostnamectl set-hostname namenode
+$ sudo hostnamectl set-hostname secondnode
 ```
 
 4. 각각의 인스턴스 연결
 - hosts 파일 열기
 ```
-sudo vi /etc/hosts
+$ sudo vi /etc/hosts
 ```
 
 - 각각의 Private IP 연동 (172.x.x.x)
@@ -402,9 +402,9 @@ sudo vi /etc/hosts
 
 - SSH 접근 확인 (hadoop 계정에서 실행)
 ```
-ssh client
-ssh secondnode
-ssh namenode
+$ ssh client
+$ ssh secondnode
+$ ssh namenode
 ```
 모두 이상없이 연결된다면 각각의 인스턴스가 서로 인증없이 통신할 수 있는 상태를 의미
 
@@ -412,15 +412,15 @@ ssh namenode
 1. Hadoop 구동
 - hdfs 파일 포맷
 ```
-hadoop namenode -format 
+$ hadoop namenode -format 
 ```
 
 - dfs(namenode) 시작
 ```
-start-dfs.sh
-jps
-ssh secondnode
-jps
+$ start-dfs.sh
+$ jps
+$ ssh secondnode
+$ jps
 ```
 namenode에서는 jps 명령어 시 DataNode, NameNode가 실행
 
@@ -429,8 +429,8 @@ secondnode에서는 jps 명령어 시 DataNode, SecondaryNameNode가 실행
 
 - yarn(secondnode) 시작
 ```
-start-yarn.sh
-jps
+$ start-yarn.sh
+$ jps
 ```
 secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실행
 

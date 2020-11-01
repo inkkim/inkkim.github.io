@@ -117,32 +117,32 @@ Microsoft Windows Insider Program Build를 받으라네?
 
 2. 혹시 이전에 설치했던 Nvidia driver 파일을 삭제하고, Nvida driver 설치에 필요한 Development Package gcc, make를 설치한다.
 ```
-sudo apt --purge autoremove nvidia*
-sudo apt-get update
-sudo apt-get install gcc
-sudo apt-get install make
+$ sudo apt --purge autoremove nvidia*
+$ sudo apt-get update
+$ sudo apt-get install gcc
+$ sudo apt-get install make
 ```
 
 3. Nvidia driver 설치 과정에서 충돌을 피하기 위해 nouveau를 blacklist 추가한다.
 ```
-sudo nano etc/modprobe.d/blacklist.conf
+$ sudo nano /etc/modprobe.d/blacklist.conf
 ```
 ![blacklist](https://user-images.githubusercontent.com/60086878/97263549-90342780-1866-11eb-9ead-4c832d3160c3.png)
 - blacklist를 추가 하고서도 설치과정에서 nouveau 관련 오류를 마주하는 경우가 있는데, 이 때는 Nvidia driver installer가 동의 시 자동으로 생성해주는 방법으로 하면 된다.
 
 4. Ctrl + Alt + F3를 눌러 가상콘솔로 이동하여 Nvidia driver가 설치된 경로로 이동하여 installer를 실행한다.
 ```
-sudo bash YOUR_DIR/NVIDIA-Linux-x86_64-450.80.02.run
+$ sudo bash YOUR_DIR/NVIDIA-Linux-x86_64-450.80.02.run
 ```
 
 5. 설치가 완료되면 재부팅한다.
 ```
-sudo reboot
+$ sudo reboot
 ```
 
 6. 아래 명령어를 통해 Nvidia driver가 GPU 자원을 제대로 인식하는지 확인한다.
 ```
-nvidia-smi
+$ nvidia-smi
 ```
 
 ++ 필자의 경우 로그인 화면에서 그래픽이 깨지는 현상이 있는데, 로그인하여 데스크톱 화면으로 들어가면 정상작동한다.
@@ -150,90 +150,91 @@ nvidia-smi
 # Docker 설치
 1. apt-get 업그레이드 및 업데이트를 한다.
 ```
-sudo apt update
-sudo apt upgrade
+$ sudo apt update
+$ sudo apt upgrade
 ```
 
 2. 도커 설치에 필요한 필수 패키지 다운로드를 한다.
 ```
-sudo apt-get install curl apt-transport-https ca-certificates software-properties-common
+$ sudo apt-get install curl apt-transport-https ca-certificates software-properties-common
 ```
 
 3. 도커 Repository를 추가한다.
 - GPG Key 추가
 ```
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-get install curl
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 - Repository 추가
 ```
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 ```
 - Repository 정보 업데이트
 ```
-sudo apt update
+$ sudo apt update
 ```
 - Docker Community Edition으로 지정
 ```
-apt-cache policy docker-ce
+$ apt-cache policy docker-ce
 ```
 
 4. 최종적으로 도커를 설치한다.
 ```
-sudo apt install docker-ce
+$ sudo apt install docker-ce
 ```
 
 5. 도커의 실행상태를 확인한다.
 ```
-sudo systemctl status docker
+$ sudo systemctl status docker
 ```
 - 시스템 시작 시 항상 켜져있도록 유지하려면 아래 명령어 실행
 ```
-sudo systemctl enable docker
+$ sudo systemctl enable docker
 ```
 
 6. 도커 명령어 실행할 때마다 sudo 권한을 묻지 않도록 도커 권한을 부여한다.
 ```
-sudo usermod -aG docker $USER
+$ sudo usermod -aG docker $USER
 ```
 
 # Nvidia-Docker 2.0 설치
 1. 혹시 이전에 설치되어있는 nvidia-docker 1.0이 있다면 삭제한다.
 ```
-docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 
-docker ps -q -a -f volume={} | xargs -r docker rm -f
-sudo apt-get purge nvidia-docker
+$ docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 
+$ docker ps -q -a -f volume={} | xargs -r docker rm -f
+$ sudo apt-get purge nvidia-docker
 ```
 
 2. Repository 설정 및 업데이트를 해준다.
 ```
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
   sudo apt-key add -
 
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+$ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 
-curl -s -L https://nvidia.github.io/nvidia-docker/
+$ curl -s -L https://nvidia.github.io/nvidia-docker/
 
-$distribution/nvidia-docker.list | \
+$ distribution/nvidia-docker.list | \
   sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 
-sudo apt-get update
+$ sudo apt-get update
 ```
 
 3. nvidia-docker 2.0를 설치한다.
 
 ```
-sudo apt-get install nvidia-docker2
-sudo pkill -SIGHUP dockerd
+$ sudo apt-get install nvidia-docker2
+$ sudo pkill -SIGHUP dockerd
 ```
 
 4. 도커 내부에서 nvidia-smi 명령어가 제대로 작동하는지 확인한다. 이 명령어를 입력하고 아래와 같은 화면이 나오면 성공이다.
 ```
-docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+$ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
 ![nvidia-smi in Docker](https://user-images.githubusercontent.com/60086878/97267697-e8225c80-186d-11eb-95b0-5df5d1c899d6.png)
 
 
-여기까지가 우분투를 설치하고 도커 내에 nvidia-docker를 설치하여 GPU 자원을 사용할 수 있도록 하는 과정이다. 글이 너무 길어지는 관계로 이만 줄이고, 💻맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 2에서 글을 이어가겠다.
+여기까지가 우분투를 설치하고 도커 내에 nvidia-docker를 설치하여 GPU 자원을 사용할 수 있도록 하는 과정이다. 글이 너무 길어지는 관계로 이만 줄이고, [💻맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 2](https://inkkim.github.io/article/2.html)에서 글을 이어가겠다.
 
 
 다음 글에서는 Docker 내에서 Tensorflow-gpu를 설치하고, ssh를 통한 우분투 서버 접속에 대해 다뤄보겠다.

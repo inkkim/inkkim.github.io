@@ -2,7 +2,7 @@
 id: 2
 title: "💻맥북으로 딥러닝하기 (Feat. SSH) 2"
 subtitle: "리눅스와 친해지기 2 | 너에게 닿기를"
-date: "2020.10.27"
+date: "2020.10.29"
 tags: "SSH, iptime, Tensorflow-gpu"
 ---
 
@@ -66,7 +66,7 @@ $ docker exec <Container ID> jupyter notebook list
 - 성공❗
 ![main](https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png)
 
-5. 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.
+5. .notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.
 ```
 from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
@@ -108,15 +108,15 @@ iptime에서는 DDNS(Dynamic Domain Name System)
 
 1. 아래 명령어로 ufw를 설치하고 실행한다.
 ```
-sudo apt-get install ufw
-sudo service ufw start
-sudo service ufw enable
+$ sudo apt-get install ufw
+$ sudo service ufw start
+$ sudo service ufw enable
 ```
 
 2. 아래 명령어로 22번 포트를 허용하고 확인한다.
 ```
-sudo ufw allow 22
-sudo ufw status
+$ sudo ufw allow 22
+$ sudo ufw status
 ```
 
 ![ufw status](https://user-images.githubusercontent.com/60086878/97461289-fb721c80-1980-11eb-8089-8de63c0c5376.png)
@@ -126,39 +126,39 @@ sudo ufw status
 
 1. 아래 명령어로 우분투에서 ssh를 설치한다.
 ```
-sudo apt-get install ssh
+$ sudo apt-get install ssh
 ```
 
 2. 맥 (혹은 다른 기기) 에서 ssh-keygen을 한 후 Enter를 연타한다.
 ```
-ssh-keygen
+$ ssh-keygen
 ```
 - 필자는 이미 있어서 있다고 나온다..
 ![ssh-keygen](https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png)
 
 3. ssh key가 정상적으로 생성되었는지 확인한다.
 ```
-cd ~/.ssh
-ls -al
+$ cd ~/.ssh
+$ ls -al
 ```
 - ![check ssh key](https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png)
 
 4. Public Key (id_rsa.pub) 를 우분투로 복사한다.
 ```
-ssh-copy-id <Ubuntu 계정>@<DDNS 도메인>
-ssh-copy-id ubuntu@example.ipitme.org
+$ ssh-copy-id <Ubuntu 계정>@<DDNS 도메인>
+$ ssh-copy-id ubuntu@example.ipitme.org
 ```
 
 5. 우분투에서 public key가 정상적으로 복사되었는지 확인한다.
 ```
-cat ~/.ssh/authorized_keys
+$ cat ~/.ssh/authorized_keys
 ```
 - ![Public Key](https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png)
 
 6. 정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!
 ```
-ssh <Ubuntu 계정>@<DDNS 도메인>
-ssh ubuntu@example.iptime.org
+$ ssh <Ubuntu 계정>@<DDNS 도메인>
+$ ssh ubuntu@example.iptime.org
 ```
 ![SSH in Mac](https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png)
 
