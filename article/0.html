@@ -6,7 +6,7 @@
 <li>대규모 검색 색인을 구축하기 위해 Java로 개발된 오픈 소스 분산 컴퓨팅 플랫폼</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg" alt="Hadoop Logo"></p>
-<p>하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다. (개발자의 네이밍 세계는 생각보다 단순하다.)</p>
+<p>하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.f(개발자의 네이밍 세계는 생각보다 단순하다.)</p>
 <h1 id="%ED%95%B5%EC%8B%AC-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">핵심 컴포넌트</h1>
 <h2 id="%ED%95%98%EB%91%A1-%EB%B6%84%EC%82%B0-%ED%8C%8C%EC%9D%BC-%EC%8B%9C%EC%8A%A4%ED%85%9C(hdfs%2C-hadoop-distributed-file-system)">하둡 분산 파일 시스템(HDFS, Hadoop Distributed File System)</h2>
 <p>앞서 언급했듯이 하둡은 확장성과 장애 허용성을 가진 분산 파일 시스템이다. 대규모 데이터셋 분석이라는 하둡의 원래 용도에 맞게, HDFS는 일반적으로 상당히 긴 순차 접근(Sequential Access)방식을 통해 디스크에 불변 데이터를 저장하는데 최적화돼 있다. 그러므로 HDFS는 하둡 스택 내 다른 컴포넌트를 지원하는 핵심 기술이다.</p>
@@ -120,7 +120,7 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>해당 인스턴스의 Public IP를 복사하고, 터미널에서 ssh 명령어를 통해 접속한다.</li>
 </ul>
-<pre class="hljs"><code>ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
+<pre class="hljs"><code>$ ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
 </code></pre>
 <p><img src="https://user-images.githubusercontent.com/60086878/96367234-7d936180-1187-11eb-8583-473b718bcc44.png" alt="SSH Access"></p>
 <h2 id="%EB%A6%AC%EB%88%85%EC%8A%A4-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">리눅스 환경설정</h2>
@@ -131,7 +131,7 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>etc 파일 수정을 위해 sudo 명령어로 config 파일 열기</li>
 </ul>
-<pre class="hljs"><code>sudo vi /etc/selinux/config
+<pre class="hljs"><code>$ sudo vi /etc/selinux/config
 </code></pre>
 <ul>
 <li>SELINUX disabled</li>
@@ -141,7 +141,7 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>변경사항 적용을 위해 재부팅</li>
 </ul>
-<pre class="hljs"><code>sudo reboot
+<pre class="hljs"><code>$ sudo reboot
 </code></pre>
 <ol start="2">
 <li>보안상 새로운 계정을 생성</li>
@@ -149,12 +149,12 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>hadoop 이름으로 새로운 계정 생성</li>
 </ul>
-<pre class="hljs"><code>useradd hadoop
+<pre class="hljs"><code>$ useradd hadoop
 </code></pre>
 <ul>
 <li>비밀번호 설정</li>
 </ul>
-<pre class="hljs"><code>passwd hadoop
+<pre class="hljs"><code>$ passwd hadoop
 </code></pre>
 <ol start="3">
 <li>hadoop 계정에 sudo 권한 부여</li>
@@ -162,7 +162,7 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>etc 파일 수정을 위해 sudo 명령어와 쓰기 권한없이 바로 편집할 수 있는 visud 명령어를 통해 sudoers파일 열기</li>
 </ul>
-<pre class="hljs"><code>sudo visudo /etc/sudoers
+<pre class="hljs"><code>$ sudo visudo /etc/sudoers
 </code></pre>
 <ul>
 <li>계정권한 부여 명령 추가</li>
@@ -177,27 +177,27 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>hadoop 계정 로그인</li>
 </ul>
-<pre class="hljs"><code>su hadoop
+<pre class="hljs"><code>$ su hadoop
 </code></pre>
 <ul>
 <li>SSH Key 생성 (명령어 실행 후 엔터)</li>
 </ul>
-<pre class="hljs"><code>ssh-keygen -t rsa
+<pre class="hljs"><code>$ ssh-keygen -t rsa
 </code></pre>
 <ul>
 <li>authorized_keys파일에 공개키 추가</li>
 </ul>
-<pre class="hljs"><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh authorized_keys
+<pre class="hljs"><code>$ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh authorized_keys
 </code></pre>
 <ul>
 <li>authorized_keys 권한 부여</li>
 </ul>
-<pre class="hljs"><code>chmod 640 ~/.ssh/authorized_keys
+<pre class="hljs"><code>$ chmod 640 ~/.ssh/authorized_keys
 </code></pre>
 <ul>
 <li>ssh 접속 확인</li>
 </ul>
-<pre class="hljs"><code>ssh localhost
+<pre class="hljs"><code>$ ssh localhost
 </code></pre>
 <h2 id="hadoop-%EC%84%A4%EC%B9%98">Hadoop 설치</h2>
 <ol>
@@ -207,12 +207,12 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>Java 설치</li>
 </ul>
-<pre class="hljs"><code>sudo dnf install java-1.8.0-openjdk ant -y
+<pre class="hljs"><code>$ sudo dnf install java-1.8.0-openjdk ant -y
 </code></pre>
 <ul>
 <li>Java 명령어로 설치여부 확인</li>
 </ul>
-<pre class="hljs"><code>java -version
+<pre class="hljs"><code>$ java -version
 </code></pre>
 <ol start="2">
 <li>Hadoop 설치</li>
@@ -221,24 +221,24 @@ Red Hat Enterprise Linux 8</p>
 <ul>
 <li>웹 파일 다운로드 패키지 다운로드</li>
 </ul>
-<pre class="hljs"><code>sudo yum install wget
+<pre class="hljs"><code>$ sudo yum install wget
 </code></pre>
 <ul>
 <li>Hadoop 설치</li>
 </ul>
-<pre class="hljs"><code>cd ~
-sudo wget https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
-tar -xvzf hadoop-3.2.1.tar.gz
+<pre class="hljs"><code>$ cd ~
+$ sudo wget https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
+$ tar -xvzf hadoop-3.2.1.tar.gz
 </code></pre>
 <ul>
 <li>폴더명 변경</li>
 </ul>
-<pre class="hljs"><code>mv hadoop-3.2.1 hadoop
+<pre class="hljs"><code>$ mv hadoop-3.2.1 hadoop
 </code></pre>
 <ul>
 <li>환경변수 설정</li>
 </ul>
-<pre class="hljs"><code>vi ~/.bashrc
+<pre class="hljs"><code>$ vi ~/.bashrc
 </code></pre>
 <ul>
 <li>환경변수 내용 추가</li>
@@ -259,7 +259,7 @@ export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_HOME/lib/native&quot;
 <ul>
 <li>하둡 환경파일 수정</li>
 </ul>
-<pre class="hljs"><code>cd ~/hadoop/etc/hadoop
+<pre class="hljs"><code>$ cd ~/hadoop/etc/hadoop
 </code></pre>
 <ul>
 <li>workers ()</li>
@@ -372,13 +372,13 @@ datanode2
 <ul>
 <li>hdfs 저장을 위한 디렉토리 생성</li>
 </ul>
-<pre class="hljs"><code>cd hadoop
-mkdir data
+<pre class="hljs"><code>$ cd hadoop
+$ mkdir data
 </code></pre>
 <ul>
 <li>종료</li>
 </ul>
-<pre class="hljs"><code>sudo shutdown -h now
+<pre class="hljs"><code>$ sudo shutdown -h now
 </code></pre>
 <h2 id="%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EB%B3%B5%EC%82%AC">이미지 생성 및 복사</h2>
 <ol>
@@ -409,9 +409,9 @@ mkdir data
 <ul>
 <li>각각의 인스턴스에서 진행</li>
 </ul>
-<pre class="hljs"><code>sudo hostnamectl set-hostname client
-sudo hostnamectl set-hostname namenode
-sudo hostnamectl set-hostname secondnode
+<pre class="hljs"><code>$ sudo hostnamectl set-hostname client
+$ sudo hostnamectl set-hostname namenode
+$ sudo hostnamectl set-hostname secondnode
 </code></pre>
 <ol start="4">
 <li>각각의 인스턴스 연결</li>
@@ -419,7 +419,7 @@ sudo hostnamectl set-hostname secondnode
 <ul>
 <li>hosts 파일 열기</li>
 </ul>
-<pre class="hljs"><code>sudo vi /etc/hosts
+<pre class="hljs"><code>$ sudo vi /etc/hosts
 </code></pre>
 <ul>
 <li>각각의 Private IP 연동 (172.x.x.x)</li>
@@ -436,9 +436,9 @@ sudo hostnamectl set-hostname secondnode
 <ul>
 <li>SSH 접근 확인 (hadoop 계정에서 실행)</li>
 </ul>
-<pre class="hljs"><code>ssh client
-ssh secondnode
-ssh namenode
+<pre class="hljs"><code>$ ssh client
+$ ssh secondnode
+$ ssh namenode
 </code></pre>
 <p>모두 이상없이 연결된다면 각각의 인스턴스가 서로 인증없이 통신할 수 있는 상태를 의미</p>
 <h2 id="hadoop-%EC%8B%A4%ED%96%89">Hadoop 실행</h2>
@@ -448,23 +448,23 @@ ssh namenode
 <ul>
 <li>hdfs 파일 포맷</li>
 </ul>
-<pre class="hljs"><code>hadoop namenode -format 
+<pre class="hljs"><code>$ hadoop namenode -format 
 </code></pre>
 <ul>
 <li>dfs(namenode) 시작</li>
 </ul>
-<pre class="hljs"><code>start-dfs.sh
-jps
-ssh secondnode
-jps
+<pre class="hljs"><code>$ start-dfs.sh
+$ jps
+$ ssh secondnode
+$ jps
 </code></pre>
 <p>namenode에서는 jps 명령어 시 DataNode, NameNode가 실행</p>
 <p>secondnode에서는 jps 명령어 시 DataNode, SecondaryNameNode가 실행</p>
 <ul>
 <li>yarn(secondnode) 시작</li>
 </ul>
-<pre class="hljs"><code>start-yarn.sh
-jps
+<pre class="hljs"><code>$ start-yarn.sh
+$ jps
 </code></pre>
 <p>secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실행</p>
 <ol start="2">
