@@ -1,10 +1,8 @@
 .DS_Store
 .vscode
 .idea
-
 .cache
 .sass-cache
-
 node_modules
 dist
 server

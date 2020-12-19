@@ -7,4 +7,10 @@ git commit -m "$1"
 git push origin development
 
 npm run publish article
+npm run deploy
 
+git add .
+git commit -m "$1 sitemap"
+git push origin development
+
+npm run deploy
