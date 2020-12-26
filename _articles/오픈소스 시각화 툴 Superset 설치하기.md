@@ -9,7 +9,7 @@ tags: "시각화, Apache Superset, 오픈소스"
 # Apache Superset 이란 ? 
 ![Apache Superset](https://user-images.githubusercontent.com/60086878/102607092-0d935e80-416b-11eb-8529-6f266ab80d04.png)
 - Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트
-- 2020.12.19일 기준 31,5700 GitHub Star, Releases V0.38.0
+- 2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0
 - 직관적인 시각화 및 반응형 대쉬보드 제공
 - 다수 상용 RDBMS와 호환
     - Amazon Redshift, Google BigQuery, Snowflake, Presto
