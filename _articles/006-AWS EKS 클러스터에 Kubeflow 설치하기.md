@@ -114,18 +114,18 @@ $ chmod +x ./aws-iam-authenticator
 3. aws-iam-authenticator binary 파일을 $HOME/bin에 위치시킨다.
 
 ```
-mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
+$ mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
 ```
 
 4. .bash_profile에 환경변수를 추가한다.
 
 ```
-echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+$ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
 
 5. aws-iam-authenticator가 실행되는지 확인한다.
 ```
-aws-iam-authenticator help
+$ aws-iam-authenticator help
 ```
 ![](https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png)
 
