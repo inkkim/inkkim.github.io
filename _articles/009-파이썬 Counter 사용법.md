@@ -1,6 +1,6 @@
 ---
 id: 9
-title: "파이썬 Counter 사용법"
+title: "🐍파이썬 Counter 사용법"
 subtitle: "Counter function in collections module"
 date: "2020.12.30"
 tags: "파이썬, Counter, collections"
@@ -127,5 +127,5 @@ Counter({'a': 3, 'b': 0, 'c': -3, 'd': -6})
 ```
 
 
-# 출처
+# 참고
 - [collections Container datatypes](https://docs.python.org/3/library/collections.html#collections.Counter)
