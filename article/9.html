@@ -1,0 +1,96 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title> 🐍파이썬 Counter 사용법 </title><meta name="viewport" content="width=device-width, user-scalable=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:title" content="🐍파이썬 Counter 사용법"><meta property="og:image" content="https://user-images.githubusercontent.com/60086878/95056968-6fc5f100-0730-11eb-8359-b6f389b8c468.jpeg"><meta property="og:description" content="Counter function in collections module"><meta name="twitter:title" content="🐍파이썬 Counter 사용법"><meta name="twitter:image" content="https://user-images.githubusercontent.com/60086878/95056968-6fc5f100-0730-11eb-8359-b6f389b8c468.jpeg"><meta name="twitter:description" content="Counter function in collections module"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="index,follow"><link rel="preload" href="/init.366dd74d.css" as="style"><link rel="preload" href="/article.e1e8064f.css" as="style"><link rel="canonical" href="https://inkkim.github.io/article/9.html"><link rel="shortcut icon" href="/favicon.a35c33cf.ico" type="image/x-icon"><link rel="stylesheet" href="/init.366dd74d.css"><link rel="stylesheet" href="/article.e1e8064f.css"><script async src="https://www.googletagmanager.com/gtag/js?id=UA-179600475-1"></script><script>function a(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],a("js",new Date),a("config","UA-179600475-1");</script></head><body> <header id="top-container" role="navigation"> </header> <main id="main-container"> <article id="article-container"> <h1 id="article-title"> 🐍파이썬 Counter 사용법 </h1> <h2 id="article-subtitle"> Counter function in collections module </h2> <time id="article-date"> 2020.12.30 </time> <section id="article-content-container"> <details><summary>Table of Contents</summary>
+<p><div class="table-of-contents"><ul><li><a href="#%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98">완주하지 못한 선수</a><ul><li><a href="#list.remove()">list.remove()</a></li><li><a href="#list.sort()">list.sort()</a></li><li><a href="#collections.counter()">collections.Counter()</a></li></ul></li><li><a href="#counter()-%EA%B0%9D%EC%B2%B4">Counter() 객체</a><ul><li><a href="#%EC%83%9D%EC%84%B1">생성</a></li><li><a href="#%EB%A9%94%EC%86%8C%EB%93%9C">메소드</a><ul><li><a href="#counter.elements()">Counter.elements()</a></li><li><a href="#counter.most_common(%5Bn%5D)">Counter.most_common([n])</a></li><li><a href="#counter.update()">Counter.update()</a></li><li><a href="#counter.substract()">Counter.substract()</a></li><li><a href="#%EA%B8%B0%ED%83%80">기타</a></li></ul></li></ul></li><li><a href="#%EC%B0%B8%EA%B3%A0">참고</a></li></ul></div></p>
+</details>
+<h1 id="%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98">완주하지 못한 선수</h1>
+<p><img src="https://user-images.githubusercontent.com/60086878/103338570-22081d00-4ac2-11eb-9c1e-bc934b7dd499.png" alt=""></p>
+<p>프로그래머스 코딩테스트 연습에 완주하지 못한 선수(Lv.1)라는 문제가 있다. 여느 때와 같이 파이썬으로 문제를 풀이하는데 정확성 테스트는 모두 통과했지만 효율성 검사에서 모두 시간 초과로 실패했다. 내가 처음에 풀이했던 방식은 다음과 같다.</p>
+<h2 id="list.remove()">list.remove()</h2>
+<p><img src="https://user-images.githubusercontent.com/60086878/103338653-6d223000-4ac2-11eb-9473-82d1ed6d6e2c.png" alt=""></p>
+<p>리스트 요소를 제거하되 중복이 있을 시 최초 발견된 요소만 삭제하는 <code>list.remove()</code> 메소드의 특징을 이용해 풀이하려 했다. 정확성 테스트는 모두 통과했지만 역시 효율성에서 모두 시간초과로 실패한다.</p>
+<p>왜 그런가 생각해보면 <code>list.remove()</code>는 시간복잡도가 O(N)이고, 반복문이 한 번 들어가게 되니 O(N²)이 된다. 아마도 효율성 검사에서 O(N²)이면 실패하게 만드는 케이스가 있는 것으로 추정된다.</p>
+<h2 id="list.sort()">list.sort()</h2>
+<p><img src="https://user-images.githubusercontent.com/60086878/103339676-592bfd80-4ac5-11eb-84da-625403ecc65d.png" alt=""></p>
+<p><code>list.sort()</code> 메소드를 이용해 정렬하고, 같은 인덱스를 기준으로 비교하면서 다른 요소가 나올 때까지 비교해 구하는 방식으로 풀었더니 정확성과 효율성 모두 통과할 수 있었다.</p>
+<h2 id="collections.counter()">collections.Counter()</h2>
+<p><img src="https://user-images.githubusercontent.com/60086878/103340597-c5a7fc00-4ac7-11eb-98dd-022872c51bde.png" alt="image"></p>
+<p><code>collections.Counter()</code> 메소드는 iterable 객체 즉, list, dict, set, str, bytes, tuple, range와 같은 반복 가능한 객체의 요소를 카운트하여 각각의 빈도 값을 {요소:빈도} 형태인 해쉬 테이블형태(카운터 객체)로 반환한다.</p>
+<p>이 문제를 풀면서 나름 꽤를 생각해내다가 리스트나 딕셔너리 객체도 뺄셈 연산이 되면 좋겠다 생각했다. 안타깝게도 리스트나 딕셔너리를 뺄셈 연산을 지원하지 않지만, 카운터 객체는 추가적인 연산을 지원한다.</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(a=<span class="hljs-number">3</span>, b=<span class="hljs-number">1</span>)       <span class="hljs-comment"># Counter({'a': 3, 'b': 1})</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>d = Counter(a=<span class="hljs-number">1</span>, b=<span class="hljs-number">2</span>)       <span class="hljs-comment"># Counter({'a': 1, 'b': 2})</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c + d                       
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">3</span>})
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c - d                       
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">2</span>})
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c &amp; d                       <span class="hljs-comment"># intersection:  min(c[x], d[x]) </span>
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">1</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">1</span>})
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c | d                       <span class="hljs-comment"># union:  max(c[x], d[x])</span>
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">2</span>})
+</code></pre>
+<p>이 외에도 <code>collections.Counter()</code> 메소드는 자연어 처리 시 Word Count를 쉽게 나타낼 수 있고, 심지어 시간복잡도는 O(N)으로 속도도 빠르다. 앞으로도 다양한 상황에서 잘 써먹을 수 있을 것 같다 😋</p>
+<h1 id="counter()-%EA%B0%9D%EC%B2%B4">Counter() 객체</h1>
+<h2 id="%EC%83%9D%EC%84%B1">생성</h2>
+<p>Counter() 객체를 생성하는 방법은 다음과 같다. count는 0 이하의 음수도 될 수 있으며, dictionary와 같은 구조를 가진다.</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter()                             <span class="hljs-comment"># 빈 카운터 객체 생성</span>
+Counter()
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(<span class="hljs-string">'abbcccdddd'</span>)                 <span class="hljs-comment"># iterable 객체로부터 생성</span>
+Counter({<span class="hljs-string">'d'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'c'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">2</span>, <span class="hljs-string">'a'</span>: <span class="hljs-number">1</span>})
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter({<span class="hljs-string">'one'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'two'</span>: <span class="hljs-number">2</span>})         <span class="hljs-comment"># mapping을 통해 생성</span>
+Counter({<span class="hljs-string">'one'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'two'</span>: <span class="hljs-number">2</span>})
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(cats=<span class="hljs-number">4</span>, dogs=<span class="hljs-number">8</span>)               <span class="hljs-comment"># 매개변수를 통해 생성 </span>
+Counter({<span class="hljs-string">'dogs'</span>: <span class="hljs-number">8</span>, <span class="hljs-string">'cats'</span>: <span class="hljs-number">4</span>})
+</code></pre>
+<p>또한, 3 가지 메소드를 통해 필요한 연산을 지원한다.</p>
+<h2 id="%EB%A9%94%EC%86%8C%EB%93%9C">메소드</h2>
+<h3 id="counter.elements()">Counter.elements()</h3>
+<p>Counter 객체의 정보에 따른 리스트 반환 (양수만)</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(a=<span class="hljs-number">4</span>, b=<span class="hljs-number">2</span>, c=<span class="hljs-number">0</span>, d=<span class="hljs-number">-2</span>)
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">2</span>, <span class="hljs-string">'c'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'d'</span>: <span class="hljs-number">-2</span>})
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>sorted(c.elements())
+[<span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'b'</span>]
+</code></pre>
+<h3 id="counter.most_common(%5Bn%5D)">Counter.most_common([n])</h3>
+<p>Counter 객체의 count의 빈도 상위 n개의 값 반환하는 메소드</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>Counter(<span class="hljs-string">'abracadabra'</span>).most_common(<span class="hljs-number">3</span>)
+[(<span class="hljs-string">'a'</span>, <span class="hljs-number">5</span>), (<span class="hljs-string">'b'</span>, <span class="hljs-number">2</span>), (<span class="hljs-string">'r'</span>, <span class="hljs-number">2</span>)]
+</code></pre>
+<h3 id="counter.update()">Counter.update()</h3>
+<p>Counter 객체에 대하여 다른 mapping 및 Counter 객체 정보를 덧셈 연산하는 메소드</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(a=<span class="hljs-number">4</span>, b=<span class="hljs-number">2</span>, c=<span class="hljs-number">0</span>, d=<span class="hljs-number">-2</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>d = Counter(a=<span class="hljs-number">1</span>, b=<span class="hljs-number">2</span>, c=<span class="hljs-number">3</span>, d=<span class="hljs-number">4</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>c.update(d)
+<span class="hljs-meta">&gt;&gt;&gt; </span>c
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">5</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">4</span>, <span class="hljs-string">'c'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'d'</span>: <span class="hljs-number">2</span>})
+</code></pre>
+<h3 id="counter.substract()">Counter.substract()</h3>
+<p>Counter 객체에 대하여 다른 mapping 및 Counter 객체 정보를 뺄셈 연산하는 메소드</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(a=<span class="hljs-number">4</span>, b=<span class="hljs-number">2</span>, c=<span class="hljs-number">0</span>, d=<span class="hljs-number">-2</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>d = Counter(a=<span class="hljs-number">1</span>, b=<span class="hljs-number">2</span>, c=<span class="hljs-number">3</span>, d=<span class="hljs-number">4</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>c.subtract(d)
+<span class="hljs-meta">&gt;&gt;&gt; </span>c
+Counter({<span class="hljs-string">'a'</span>: <span class="hljs-number">3</span>, <span class="hljs-string">'b'</span>: <span class="hljs-number">0</span>, <span class="hljs-string">'c'</span>: <span class="hljs-number">-3</span>, <span class="hljs-string">'d'</span>: <span class="hljs-number">-6</span>})
+</code></pre>
+<h3 id="%EA%B8%B0%ED%83%80">기타</h3>
+<p>이외에도 Counter 객체는 딕셔너리와 유사한 메소드를 지원한다.</p>
+<pre class="hljs"><code><span class="hljs-meta">&gt;&gt;&gt; </span>c = Counter(a=<span class="hljs-number">4</span>, b=<span class="hljs-number">2</span>, c=<span class="hljs-number">0</span>, d=<span class="hljs-number">-2</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>c.values()                          <span class="hljs-comment"># count 값 리스트로 반환</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>c.items()                           <span class="hljs-comment"># (element, count) 값 튜플로 반환</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>c.clear()                           <span class="hljs-comment"># count 값 모두 리셋 (빈 카운터 객체 반환)</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>list(c)                             <span class="hljs-comment"># element 값 list로 반환</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>set(c)                              <span class="hljs-comment"># element 값 set으로 반환</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>dict(c)                             <span class="hljs-comment"># {element, count} 값 딕셔너리로 반환</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>+c                                  <span class="hljs-comment"># count 값이 양수 값에 해당하는 쌍만 반환</span>
+</code></pre>
+<h1 id="%EC%B0%B8%EA%B3%A0">참고</h1>
+<ul>
+<li><a href="https://docs.python.org/3/library/collections.html#collections.Counter">collections Container datatypes</a></li>
+</ul> </section> <section id="article-navigation"> <div class="article-navigation-item article-navigation-next"> <a href="/article/10.html"> <div class="article-navigation-arrow article-navigation-next">＜</div> <div class="article-navigation-content article-navigation-next"> <p class="article-navigation-title">🐍파이썬 접근 제어자에 대하여</p> <p class="article-navigation-subtitle">Whats the access modifier?</p> </div> </a> </div> <div class="article-navigation-item article-navigation-prev"> <a href="/article/8.html"> <div class="article-navigation-arrow article-navigation-prev">＞</div> <div class="article-navigation-content article-navigation-prev"> <p class="article-navigation-title">☝️Vi 사용법 완벽 가이드</p> <p class="article-navigation-subtitle">The Perfect Guide for Vim Shortcut</p> </div> </a> </div> </section> <section id="article-social-container"> <div id="fb-like" class="fb-like" data-href="https://inkkim.github.io/article/9.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="true"></a> </section> <section id="article-comments"> <script async src="https://utteranc.es/client.js" repo="inkkim/inkkim.github.io-comments" issue-term="pathname" theme="github-light" crossorigin="anonymous">
+	</script> </section> <section id="article-list-button-container"> <a href="/articles.html"> <div id="article-list-button">📚</div> </a> </section> </article> </main> <div id="fb-root"></div> <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0"></script> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> <script defer src="/init.ddb7c0df.js"></script>
+</body></html>

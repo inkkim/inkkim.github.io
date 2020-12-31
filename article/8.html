@@ -1,0 +1,130 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title> ☝️Vi 사용법 완벽 가이드 </title><meta name="viewport" content="width=device-width, user-scalable=no"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:title" content="☝️Vi 사용법 완벽 가이드"><meta property="og:image" content="https://user-images.githubusercontent.com/60086878/95056968-6fc5f100-0730-11eb-8359-b6f389b8c468.jpeg"><meta property="og:description" content="The Perfect Guide for Vim Shortcut"><meta name="twitter:title" content="☝️Vi 사용법 완벽 가이드"><meta name="twitter:image" content="https://user-images.githubusercontent.com/60086878/95056968-6fc5f100-0730-11eb-8359-b6f389b8c468.jpeg"><meta name="twitter:description" content="The Perfect Guide for Vim Shortcut"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="index,follow"><link rel="preload" href="/init.366dd74d.css" as="style"><link rel="preload" href="/article.e1e8064f.css" as="style"><link rel="canonical" href="https://inkkim.github.io/article/8.html"><link rel="shortcut icon" href="/favicon.a35c33cf.ico" type="image/x-icon"><link rel="stylesheet" href="/init.366dd74d.css"><link rel="stylesheet" href="/article.e1e8064f.css"><script async src="https://www.googletagmanager.com/gtag/js?id=UA-179600475-1"></script><script>function a(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],a("js",new Date),a("config","UA-179600475-1");</script></head><body> <header id="top-container" role="navigation"> </header> <main id="main-container"> <article id="article-container"> <h1 id="article-title"> ☝️Vi 사용법 완벽 가이드 </h1> <h2 id="article-subtitle"> The Perfect Guide for Vim Shortcut </h2> <time id="article-date"> 2020.12.28 </time> <section id="article-content-container"> <details><summary>Table of Contents</summary>
+<p><div class="table-of-contents"><ul><li><a href="#vi%EC%9D%B4%EB%9E%80-%3F">Vi이란 ?</a></li><li><a href="#%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</a><ul><li><a href="#%EC%9D%B4%EB%8F%99">이동</a></li><li><a href="#%EC%82%AD%EC%A0%9C">삭제</a></li><li><a href="#%EB%B3%B5%EC%82%AC">복사</a></li><li><a href="#visual-mode">Visual Mode</a></li><li><a href="#%EB%B6%81%EB%A7%88%ED%81%AC">북마크</a></li><li><a href="#%EA%B8%B0%ED%83%80">기타</a><ul><li><a href="#%EC%B6%94%EA%B0%80%EC%98%88%EC%A0%95">추가예정</a></li></ul></li></ul></li><li><a href="#%EC%B0%B8%EA%B3%A0">참고</a></li></ul></div></p>
+</details>
+<h1 id="vi%EC%9D%B4%EB%9E%80-%3F">Vi이란 ?</h1>
+<p><img src="https://user-images.githubusercontent.com/60086878/103211968-f7e11e80-494c-11eb-83fd-06d64ed07917.png" alt=""></p>
+<blockquote>
+<p>Photo by Luca Bravo on Unsplash</p>
+</blockquote>
+<p>Linux나 Unix 유저라면 한 번쯤은 vi editor를 사용해본 경험이 있을 것이다. vi editor란 Unix-like 운영체제 용으로 만든 텍스트 편집기를 말한다. Vi와 더불어 Vi IMproved의 약자인 Vim이라는 기존 vi editor의 성능을 개선한 확장판이 있다. 이 editor들은 터미널에서 바로 파일에 접근하여 내용을 수정할 수 있어 주로 서버, 인프라 엔지니어들이 자주 사용하는 편집기로 대부분의 Linux, Unix OS에 기본 editor로 설치되어 있다.</p>
+<p>vi는 라인 편집기 개념에 기반하여 GUI에 익숙한 사용자들이 처음 이 편집기를 접하는 사람들은 상당히 괴랄한 사용법에 혀를 내두르곤 한다. 사용법을 모르면 입력이 되지 않아 키보드나 컴퓨터가 고장났다고 생각할 수도 있고, 해당 화면을 빠져나오지 못해 곤경에 처할 수도 있다. 이처럼 꽤 높은 진입장벽이 있는 툴임에도 불구하고 나름 전통있는 IDE로서 개발자 친화적인 다양한 단축키를 제공하고 있어서 꽤 두터운 마니아층을 보유하고 있다. 그래서 Visual Studio나 PyCharm과 같이 편집방식으로 vi 인터페이스를 제공하는 IDE들이 많다.</p>
+<p>최근 데이터 플랫폼 공부를 하면서 부쩍 vi를 사용할 일들이 많아졌다. vi의 최대 장점은 터미널에서 바로 파일에 접근하여 수정할 수 있다는 점이 아닐까 싶다. 특히 yaml이나 config 파일을 수정할 때 vi로 바로 접근해서 필요한 부분을 고칠 때 유용하다. XWindow가 마련된 환경이면 다른 IDE를 통해 수정할 수도 있겠지만 매번 파일 불러오는 것도 번거로운 작업일 뿐더러, 오롯이 CLI 환경만 제공되는 서버라고 한다면 vi는 최선의 선택이 될 수 밖에 없다. 데이터 인프라를 구축할 때에도 대부분 서버에서 작업이 이뤄지기 때문에 vi 사용에 능숙해야 한다.</p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103214143-06cacf80-4953-11eb-90be-fb6d0a0c8748.png" alt="">
+vi을 재밌게 익혀보고자 한다면 여기 <a href="https://vim-adventures.com">VIM Adventures</a>라는 Vim 단축키를 이용한 튜토리얼 게임이 있다.</p>
+<h1 id="%EC%82%AC%EC%9A%A9%EB%B2%95">사용법</h1>
+<p><img src="https://user-images.githubusercontent.com/60086878/103212636-b0f42880-494e-11eb-816b-027ddbc8905d.png" alt="image"></p>
+<blockquote>
+<p>출처 Wikipedia</p>
+</blockquote>
+<p>vi editor는 모든 기능이 영문 키보드 안에 집중되어 있다. 심지어 화살표 키 마저도 <code>hjkl</code>가 대체하고 있어 손가락의 동선을 최소화 한다. 그래서 vi 매니아 층을 겨냥한 해피해킹과 같이 아예 방향키가 없는 키맵을 가진 키보드도 있다. 이렇게 매니아 층이 두터운 이유는 vi에 숙달되면 매우 강력한 편집기로써 사용할 수 있기 때문이다. 하지만 숙달되기까지 꽤 오랜 시간이 걸린다는 점은 가장 큰 단점이다.</p>
+<p>vi는 기본적으로 편집이 제한된 Command Mode로 시작한다. 여기서 내용을 수정하기 위해서는 다음 명령어를 통해 Insert Mode로 전환하여야 한다.</p>
+<ul>
+<li><code>a</code> : 커서 다음(오른쪽)에 입력</li>
+<li><code>A</code> : 행 마지막 부분에 입력</li>
+<li><code>i</code> : 커서 앞(왼쪽)에 입력</li>
+<li><code>I</code> : 행 처음 부분에 입력</li>
+<li><code>o</code> : 커서 밑에 빈 행을 추가하여 입력</li>
+<li><code>O</code> : 커서 위에 빈 행을 추가하여 입력</li>
+<li><code>s</code> : 커서에 있는 글자를 지우고 입력</li>
+</ul>
+<p>Insert Mode로 전환하고 나서야 비로소 편집이 가능하며 <code>esc</code> 키를 통해 다시 Command Mode로 돌아갈 수 있다. 또한 Command Mode에서는 다음과 같은 기본적인 명령을 지원한다.</p>
+<h2 id="%EC%9D%B4%EB%8F%99">이동</h2>
+<ul>
+<li><code>h</code> : 왼쪽 방향키</li>
+<li><code>j</code> : 아래쪽 방향키</li>
+<li><code>k</code> : 위쪽 방향키</li>
+<li><code>l</code> : 오른쪽 방향키</li>
+<li><code>w</code> : 다음 단어의 첫 글자로 이동</li>
+<li><code>b</code> : 이전 단어의 첫 글자로 이동</li>
+<li><code>^</code> : 행의 첫 글자로 이동</li>
+<li><code>$</code> : 행의 마지막 글자로 이동</li>
+<li><code>gg</code> : 처음 행으로 이동</li>
+<li><code>G</code> : 마지막 행으로 가기</li>
+<li><code>(</code> : 이전 문장으로 이동</li>
+<li><code>)</code> : 다음 문장으로 이동</li>
+<li><code>{</code> : 이전 문단으로 이동</li>
+<li><code>}</code> : 다음 문단으로 이동</li>
+<li><code>&gt;&gt;</code> : 오른쪽으로 들여쓰기</li>
+<li><code>&lt;&lt;</code> : 들여쓰기 해제</li>
+</ul>
+<h2 id="%EC%82%AD%EC%A0%9C">삭제</h2>
+<ul>
+<li><code>x</code> : 커서 다음 글자 잘라내기</li>
+<li><code>dd</code> : 커서가 위치한 행 삭제</li>
+<li><code>dw</code> : 커서 포함 해당 단어 끝까지 삭제</li>
+<li><code>db</code> : 커서 미포함 해당 단어 시작까지 삭제</li>
+<li><code>d0</code> : 커서 미포함 행 시작까지 삭제</li>
+<li><code>d$</code> : 커서 포함 행 끝까지 삭제</li>
+<li><code>dgg</code> : 커서가 위치한 행 포함 문서 첫 행까지 삭제</li>
+<li><code>dG</code> : 커서가 위치한 행 포함 문서 마지막 행까지 삭제</li>
+</ul>
+<h2 id="%EB%B3%B5%EC%82%AC">복사</h2>
+<ul>
+<li><code>yy</code> : 커서가 위치한 행 복사</li>
+<li><code>yw</code> : 커서 포함 해당 단어 끝까지 복사</li>
+<li><code>yb</code> : 커서 미포함 해당 단어 시작까지 복사</li>
+<li><code>y0</code> : 커서 미포함 행 시작까지 복사</li>
+<li><code>y$</code> : 커서 포함 행 끝까지 복사</li>
+<li><code>ygg</code> : 커서가 위치한 행 포함 문서 첫 행까지 복사</li>
+<li><code>yG</code> : 커서가 위치한 행 포함 문서 마지막 행까지 복사</li>
+<li><code>p</code> : 커서 다음에 붙여넣기</li>
+<li><code>P</code> : 커서 이전에 붙여넣기</li>
+</ul>
+<h2 id="visual-mode">Visual Mode</h2>
+<ul>
+<li><code>v</code> : 문자열 단위로 선택 가능한 Visual Mode로 전환</li>
+<li><code>V</code> : 문장 단위로 선택 가능한 Visual Line Mode로 전환</li>
+<li><code>~</code> : 선택 영역 대/소문자 전환</li>
+<li><code>d</code> : 선택 영역 삭제</li>
+<li><code>c</code> : 선택 영역 삭제 후 Insert Mode로 전환</li>
+<li><code>y</code> : 선택 영역 복사</li>
+<li><code>esc</code> : Visual (Line) Mode 해제</li>
+</ul>
+<h2 id="%EB%B6%81%EB%A7%88%ED%81%AC">북마크</h2>
+<ul>
+<li><code>m{a-zA-Z}</code> : 해당 커서를 북마크로 설정</li>
+<li><code>:marks</code> : 북마크 리스트 확인</li>
+<li><code>₩{a-zA-Z}</code> : 기록된 북마크로 이동</li>
+</ul>
+<h2 id="%EA%B8%B0%ED%83%80">기타</h2>
+<ul>
+<li><code>r{글자}</code> : 커서에 위치한 글자 대체</li>
+<li><code>R</code> : 글자 대체모드</li>
+<li><code>/문자열</code> : 앞에서부터 문자열 찾기</li>
+<li><code>?문자열</code> : 뒤에서부터 문자열 찾기</li>
+<li><code>n</code> : 다음 검색결과</li>
+<li><code>N</code> : 이전 검색결과</li>
+<li><code>%s/old/new</code> : 각 행의 처음 나오는 old를 new로 치환</li>
+<li><code>%/old/new/g</code> : 문서 내 모든 old를 new로 치환</li>
+<li><code>%/old/new/gc</code> : 문서 내 모든 old를 new로 치환하되 각 old마다 치환할 것인지 물음</li>
+<li><code>u</code> : 이전으로 되돌리기 (Undo)</li>
+<li><code>Ctrl + r</code> : 되돌린 작업 재실행 (Redo)</li>
+<li><code>ZZ</code> : 저장 후 종료 (= <code>:wq</code>)</li>
+<li><code>ZQ</code> : 강제 종료 (= <code>:q!</code>)</li>
+</ul>
+<blockquote>
+<p><strong>🍯 정보:</strong> 위 명령어 앞에 숫자와 함께 사용하면 같이 입력된 숫자만큼 해당 명령어가 실행된다. 예를 들어, 3yy는 커서가 위치한 행을 포함하여 아래 3줄까지 복사가 된다.</p>
+</blockquote>
+<p>또한 Command Mode에서는 <code>:</code> 키와 함께 다음과 같은 기본적인 명령을 지원한다.</p>
+<ul>
+<li><code>:q</code> : 종료 (아무런 수정이 일어나지 않아야 가능)</li>
+<li><code>:q!</code>: 강제종료</li>
+<li><code>:w</code> : 저장</li>
+<li><code>:wq</code>: 저장 후 종료</li>
+<li><code>:syntax on</code> : 문법 강조효과</li>
+<li><code>:set number</code> : 행 번호 보이기</li>
+<li><code>:set nonumber</code> : 행 번호 숨기기</li>
+<li><code>:cd</code> : 현재 디렉토리 출력</li>
+<li><code>:terminal</code> : 분할 화면으로 터미널 창 띄우기</li>
+</ul>
+<h3 id="%EC%B6%94%EA%B0%80%EC%98%88%EC%A0%95">추가예정</h3>
+<ul>
+<li>Vim Plugin</li>
+</ul>
+<h1 id="%EC%B0%B8%EA%B3%A0">참고</h1>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Vi">Wikipedia vi</a></li>
+<li><a href="https://www.maketecheasier.com/cheatsheet/vim-keyboard-shortcuts/">VIM Keyboard Shortcuts Cheatsheet</a></li>
+</ul> </section> <section id="article-navigation"> <div class="article-navigation-item article-navigation-next"> <a href="/article/9.html"> <div class="article-navigation-arrow article-navigation-next">＜</div> <div class="article-navigation-content article-navigation-next"> <p class="article-navigation-title">🐍파이썬 Counter 사용법</p> <p class="article-navigation-subtitle">Counter function in collections module</p> </div> </a> </div> <div class="article-navigation-item article-navigation-prev"> <a href="/article/7.html"> <div class="article-navigation-arrow article-navigation-prev">＞</div> <div class="article-navigation-content article-navigation-prev"> <p class="article-navigation-title">🐍파이썬 리스트 복사하기</p> <p class="article-navigation-subtitle">Python Data Structure</p> </div> </a> </div> </section> <section id="article-social-container"> <div id="fb-like" class="fb-like" data-href="https://inkkim.github.io/article/8.html" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="true"></a> </section> <section id="article-comments"> <script async src="https://utteranc.es/client.js" repo="inkkim/inkkim.github.io-comments" issue-term="pathname" theme="github-light" crossorigin="anonymous">
+	</script> </section> <section id="article-list-button-container"> <a href="/articles.html"> <div id="article-list-button">📚</div> </a> </section> </article> </main> <div id="fb-root"></div> <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0"></script> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> <script defer src="/init.ddb7c0df.js"></script>
+</body></html>
