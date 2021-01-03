@@ -146,7 +146,7 @@ footer:
       # url:
 
 # OpenGraph default Image
-og_image: /assets/images/Profile_Jekyll_OG.jpeg
+og_image: "https://user-images.githubusercontent.com/60086878/103473084-e0d07f80-4dd7-11eb-9fff-57afe4f80383.jpeg"
 
 # Reading Files
 include:
@@ -214,7 +214,7 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
+paginate: 10 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
@@ -276,6 +276,7 @@ compress_html:
 
 # Defaults
 defaults:
+
   # _posts/Hadoop
   - scope:
       path: ""
@@ -287,9 +288,23 @@ defaults:
       comments: true
       share: true
       related: true
+      excerpt: "이곳은 **게시글**입니다."
+      header:
+          overlay_image: "/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg"
   
   - scope:
       path: "_posts/BI"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+ 
+  - scope:
+      path: "_posts/Data Engineering"
       type: posts
     values:
       layout: single

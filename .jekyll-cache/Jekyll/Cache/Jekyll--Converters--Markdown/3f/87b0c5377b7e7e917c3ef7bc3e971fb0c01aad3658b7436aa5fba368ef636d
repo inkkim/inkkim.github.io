@@ -1,0 +1,131 @@
+I"�<h1 id="apache-superset-이란-">Apache Superset 이란 ?</h1>
+<p><img src="https://user-images.githubusercontent.com/60086878/102607092-0d935e80-416b-11eb-8529-6f266ab80d04.png" alt="Apache Superset" /></p>
+<ul>
+  <li>Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트</li>
+  <li>2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0</li>
+  <li>직관적인 시각화 및 반응형 대쉬보드 제공</li>
+  <li>다수 상용 RDBMS와 호환
+    <ul>
+      <li>Amazon Redshift, Google BigQuery, Snowflake, Presto</li>
+      <li>Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2</li>
+      <li>SQLite, Sysbase, Vertica, Druid, Greenplum</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102608095-b098a800-416c-11eb-98ba-35aa40e8ee66.png" alt="Gallery" /></p>
+
+<h1 id="설치">설치</h1>
+
+<h2 id="방법">방법</h2>
+<ul>
+  <li><strong>Docker Compose를 이용한 방법</strong></li>
+  <li>apt-get을 이용한 방법</li>
+  <li>Python 가상환경에서 pip를 이용한 방법</li>
+  <li>Kubernetes 환경에서 Helm 차트를 이용한 방법</li>
+</ul>
+
+<p>본 포스팅에서는 연습용으로 설치하는 것이기 때문에 간편하고 가장 빠르게 설치할 수 있는 <strong>Docker Compose를 이용한 방법</strong>으로 안내한다.</p>
+
+<h2 id="docker-compose-설치">Docker Compose 설치</h2>
+<ul>
+  <li>
+    <p>Mac OS<br />
+Docker 설치 후 기본 할당 메모리가 2GB이기 때문에 Superset 실행 시 오류가 날 수 있다. 그러므로 Docker Resources에서 할당 메모리를 6GB로 수정 해야한다.</p>
+  </li>
+  <li>
+    <p>Windows
+아쉽게도 Superset은 윈도우에서 공식적으로 지원하진 않는다. 공식 문서에서도 VirtualBox나 VMWare와 같은 가상 머신 툴을 이용한 방법으로 시도해보길 권장하고 있다. 또한 원활한 구동을 위해 해당 VM에 최소한 8GB RAM과 40GB 스토리지 할당을 권장한다.</p>
+  </li>
+  <li>
+    <p><strong>Linux</strong><br />
+Docker 설치 docker-compose가 설치되어 있지 않으므로, 각 OS에 맞게 별도의 설치가 필요하다. 본 포스팅에서는 <strong>Ubuntu 18.04 LTS 기준</strong>으로 설치를 안내한다.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+</code></pre></div></div>
+
+<ol>
+  <li>Binary 파일에 실행 권한을 부여한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre></div></div>
+
+<ol>
+  <li>아래 명령어로 Docker Compose의 버전을 확인한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker-compose --version
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102610642-e3dd3600-4170-11eb-9b2b-a2ed021f4c10.png" alt="" /></p>
+
+<ol>
+  <li>Superset Repository를 Clone한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/apache/incubator-superset.git
+</code></pre></div></div>
+
+<ol>
+  <li>아래 명령어로 Superset 인스턴스를 실행한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd incubator-superset
+$ docker-compose up
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/60086878/102612471-13da0880-4174-11eb-906b-e4e677555538.png" alt="" /></p>
+
+<ol>
+  <li>아래 localhost:8088로 접근하여 로그인한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USERNAME : admin
+PASSWORD : admin
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/60086878/102612898-ed689d00-4174-11eb-941d-98a41f5091d5.png" alt="" /></p>
+
+<ol>
+  <li>Superset 메인화면</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102612917-f48fab00-4174-11eb-8c45-f6faf6650d80.png" alt="Main Page" /></p>
+
+<ol>
+  <li>Sample Dashboard</li>
+</ol>
+
+<ul>
+  <li>USA Births Names<br />
+모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
+도 매력적이었다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102613328-a202be80-4175-11eb-85da-a106023e96da.png" alt="Sample 1" /></p>
+
+<ul>
+  <li>Sales Dashboard</li>
+</ul>
+
+<p>대시보드에 이모지가 나와서 당황했는데 꽤나 잘 어울린다 🤣
+<img src="https://user-images.githubusercontent.com/60086878/102613361-ad55ea00-4175-11eb-9e92-3d79ce4ab802.png" alt="image" /></p>
+
+<h1 id="첫인상">첫인상</h1>
+<ul>
+  <li>Apache 프로젝트답게 꽤 완성도 높음</li>
+  <li>설치가 쉽고 UI는 투박하지만 트렌디한 대시보드 구성</li>
+  <li>아직 V0.X 단계지만 바로 사용해도 될 것 같은 퀄리티</li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://superset.apache.org/docs/installation/installing-superset-using-docker-compose">Installing Superset Locally Using Docker Compose</a></li>
+  <li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+</ul>
+:ET

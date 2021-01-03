@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>맥북으로 딥러닝하기 (Feat. SSH) 2 - 🤔선미모드</title>
-<meta name="description" content="🧲 맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 1에서는 . . . 이전 글에서는 데스크탑에 우분투를 설치하고, 꽤나 까다로운 Nvidia driver 설치를 거쳐 최종적으로 nvidia-docker를 이용해 Docker 내에서도 GPU 자원을 사용할 수 있는 환경을 구성해보았다.">
+<meta name="description" content="이곳은 게시글입니다.">
 
 
   <meta name="author" content="김인규">
@@ -26,11 +26,11 @@
 <meta property="og:url" content="/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.-SSH)-2/">
 
 
-  <meta property="og:description" content="🧲 맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 1에서는 . . . 이전 글에서는 데스크탑에 우분투를 설치하고, 꽤나 까다로운 Nvidia driver 설치를 거쳐 최종적으로 nvidia-docker를 이용해 Docker 내에서도 GPU 자원을 사용할 수 있는 환경을 구성해보았다.">
+  <meta property="og:description" content="이곳은 게시글입니다.">
 
 
 
-  <meta property="og:image" content="/assets/images/Profile_Jekyll_OG.jpeg">
+  <meta property="og:image" content="/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg">
 
 
 
@@ -165,6 +165,58 @@
 
     <div class="initial-content">
       
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: url('/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          맥북으로 딥러닝하기 (Feat. SSH) 2
+
+        
+      </h1>
+      
+        <p class="page__lead">이곳은 <strong>게시글</strong>입니다.
+</p>
+      
+      
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+</div>
+
+
 
 
   
@@ -325,37 +377,11 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="맥북으로 딥러닝하기 (Feat. SSH) 2">
-    <meta itemprop="description" content="🧲 맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 1에서는 . . .이전 글에서는 데스크탑에 우분투를 설치하고, 꽤나 까다로운 Nvidia driver 설치를 거쳐 최종적으로 nvidia-docker를 이용해 Docker 내에서도 GPU 자원을 사용할 수 있는 환경을 구성해보았다.">
+    <meta itemprop="description" content="이곳은 게시글입니다.">
     <meta itemprop="datePublished" content="2020-10-29T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
-      
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">맥북으로 딥러닝하기 (Feat. SSH) 2
-</h1>
-          
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        </header>
       
 
       <section class="page__content" itemprop="text">
@@ -395,8 +421,10 @@
 </code></pre></div></div>
 
 <ol>
-  <li>아래 명령어로 도커 데몬으로 실행시킨다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd $HOME/Desktop &amp;&amp; mkdir docker
+  <li>아래 명령어로 도커 데몬으로 실행시킨다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd $HOME/Desktop &amp;&amp; mkdir docker
 $ docker run --runtime=nvidia -d -it \ 
 --mount type=bind,source=$HOME/Desktop/docker,target=/tf \
 -p 8888:8888 \
@@ -404,9 +432,7 @@ $ docker run --runtime=nvidia -d -it \
 --name tf-gpu-py3 \
 --restart always \
 tensorflow/tensorflow:2.2.1-gpu-py3
-</code></pre></div>    </div>
-  </li>
-</ol>
+</code></pre></div></div>
 
 <ul>
   <li>docker run –runtime=nvidia // nvidia-docker와 함께 도커 데몬을 실행</li>
@@ -429,12 +455,15 @@ tensorflow/tensorflow:2.2.1-gpu-py3
 </ul>
 
 <ol>
-  <li>아래 명령어로 도커 내 실행되고 있는 jupyter notebook 서버의 토큰값을 확인한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker ps
+  <li>아래 명령어로 도커 내 실행되고 있는 jupyter notebook 서버의 토큰값을 확인한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker ps
 $ docker exec &lt;Container ID&gt; jupyter notebook list
-</code></pre></div>    </div>
-    <p><img src="https://user-images.githubusercontent.com/60086878/97458797-68d07e00-197e-11eb-9cae-8f68aefcd873.png" alt="token" /></p>
-  </li>
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/60086878/97458797-68d07e00-197e-11eb-9cae-8f68aefcd873.png" alt="token" /></p>
+
+<ol>
   <li>주소창에서 localhost:8888로 접근하고, Setup a Password에서 token값을 넣고 이용해 비밀번호를 설정한다.
 <img src="https://user-images.githubusercontent.com/60086878/97459020-a46b4800-197e-11eb-9e68-30bf57c3d461.png" alt="jupyter notebook" />
     <ul>
@@ -442,21 +471,22 @@ $ docker exec &lt;Container ID&gt; jupyter notebook list
 <img src="https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png" alt="main" /></li>
     </ul>
   </li>
-  <li>.notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
-</code></pre></div>    </div>
-    <ul>
-      <li>목록에 GPU가 출력되면 성공 🎉
-<img src="https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png" alt="Check GPU" /></li>
-    </ul>
-  </li>
+  <li>.notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.</li>
 </ol>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+</code></pre></div></div>
 <ul>
-  <li>Tensorflow CNN 예제를 돌려보면서 GPU 활성도 모니터링도 해봤는데, 정상적으로 작동하는 것을 확인했다.
+  <li>
+    <p>목록에 GPU가 출력되면 성공 🎉
+<img src="https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png" alt="Check GPU" /></p>
+  </li>
+  <li>
+    <p>Tensorflow CNN 예제를 돌려보면서 GPU 활성도 모니터링도 해봤는데, 정상적으로 작동하는 것을 확인했다.
 <img src="https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png" alt="Tensorflow ready" />
-<img src="https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png" alt="Tensorflow action" /></li>
+<img src="https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png" alt="Tensorflow action" /></p>
+  </li>
 </ul>
 
 <h1 id="iptime-ddns-설정-및-포트-포워딩">iptime DDNS 설정 및 포트 포워딩</h1>
@@ -502,18 +532,21 @@ device_lib.list_local_devices()
 <p>외부에서 우분투로 접속하게 하려면 방화벽을 설정하고 22번 포트만 열어줘야 한다. 그러기 위해 먼저 이름값 제대로 하는 ufw(Uncomplicated FireWall)을 설치해줘야 한다.</p>
 
 <ol>
-  <li>아래 명령어로 ufw를 설치하고 실행한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install ufw
+  <li>아래 명령어로 ufw를 설치하고 실행한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install ufw
 $ sudo service ufw start
 $ sudo service ufw enable
-</code></pre></div>    </div>
-  </li>
-  <li>아래 명령어로 22번 포트를 허용하고 확인한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo ufw allow 22
-$ sudo ufw status
-</code></pre></div>    </div>
-  </li>
+</code></pre></div></div>
+
+<ol>
+  <li>아래 명령어로 22번 포트를 허용하고 확인한다.</li>
 </ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo ufw allow 22
+$ sudo ufw status
+</code></pre></div></div>
 
 <p><img src="https://user-images.githubusercontent.com/60086878/97461289-fb721c80-1980-11eb-8089-8de63c0c5376.png" alt="ufw status" /></p>
 
@@ -521,45 +554,60 @@ $ sudo ufw status
 <p>맥에서 우분투를 접속하기 위해 ssh를 통해 맥북의 public key를 우분투로 보내서 등록 할 것이다. 즉, 우분투에게 맥북이 관계자라고 증명하는 key를 등록하는 셈이다.</p>
 
 <ol>
-  <li>아래 명령어로 우분투에서 ssh를 설치한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install ssh
-</code></pre></div>    </div>
-  </li>
-  <li>맥 (혹은 다른 기기) 에서 ssh-keygen을 한 후 Enter를 연타한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen
-</code></pre></div>    </div>
-    <ul>
-      <li>필자는 이미 있어서 있다고 나온다..
-<img src="https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png" alt="ssh-keygen" /></li>
-    </ul>
-  </li>
-  <li>ssh key가 정상적으로 생성되었는지 확인한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~/.ssh
-$ ls -al
-</code></pre></div>    </div>
-    <ul>
-      <li><img src="https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png" alt="check ssh key" /></li>
-    </ul>
-  </li>
-  <li>Public Key (id_rsa.pub) 를 우분투로 복사한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-copy-id &lt;Ubuntu 계정&gt;@&lt;DDNS 도메인&gt;
-$ ssh-copy-id ubuntu@example.ipitme.org
-</code></pre></div>    </div>
-  </li>
-  <li>우분투에서 public key가 정상적으로 복사되었는지 확인한다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat ~/.ssh/authorized_keys
-</code></pre></div>    </div>
-    <ul>
-      <li><img src="https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png" alt="Public Key" /></li>
-    </ul>
-  </li>
-  <li>정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh &lt;Ubuntu 계정&gt;@&lt;DDNS 도메인&gt;
-$ ssh ubuntu@example.iptime.org
-</code></pre></div>    </div>
-    <p><img src="https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png" alt="SSH in Mac" /></p>
-  </li>
+  <li>아래 명령어로 우분투에서 ssh를 설치한다.</li>
 </ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install ssh
+</code></pre></div></div>
+
+<ol>
+  <li>맥 (혹은 다른 기기) 에서 ssh-keygen을 한 후 Enter를 연타한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-keygen
+</code></pre></div></div>
+<ul>
+  <li>필자는 이미 있어서 있다고 나온다..
+<img src="https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png" alt="ssh-keygen" /></li>
+</ul>
+
+<ol>
+  <li>ssh key가 정상적으로 생성되었는지 확인한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~/.ssh
+$ ls -al
+</code></pre></div></div>
+<ul>
+  <li><img src="https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png" alt="check ssh key" /></li>
+</ul>
+
+<ol>
+  <li>Public Key (id_rsa.pub) 를 우분투로 복사한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh-copy-id &lt;Ubuntu 계정&gt;@&lt;DDNS 도메인&gt;
+$ ssh-copy-id ubuntu@example.ipitme.org
+</code></pre></div></div>
+
+<ol>
+  <li>우분투에서 public key가 정상적으로 복사되었는지 확인한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat ~/.ssh/authorized_keys
+</code></pre></div></div>
+<ul>
+  <li><img src="https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png" alt="Public Key" /></li>
+</ul>
+
+<ol>
+  <li>정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ssh &lt;Ubuntu 계정&gt;@&lt;DDNS 도메인&gt;
+$ ssh ubuntu@example.iptime.org
+</code></pre></div></div>
+<p><img src="https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png" alt="SSH in Mac" /></p>
 
 <h1 id="-">💻 🔗🔌🖥</h1>
 
@@ -680,6 +728,46 @@ $ ssh ubuntu@example.iptime.org
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Twitter API로 GCP Pipeline 구축하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="permalink">파이썬 접근 제어자에 대하여
 </a>
       
@@ -705,7 +793,7 @@ $ ssh ubuntu@example.iptime.org
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">접근 제어자
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
 </p>
   </article>
 </div>
@@ -745,8 +833,7 @@ $ ssh ubuntu@example.iptime.org
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">완주하지 못한 선수
-
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
 </p>
   </article>
 </div>
@@ -786,55 +873,7 @@ $ ssh ubuntu@example.iptime.org
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Vi이란 ?
-
-
-  Photo by Luca Bravo on Unsplash
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/" rel="permalink">파이썬 리스트 복사하기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">파이썬 리스트 복사 어떻게 할까?
-
-
-  Photo by Zdeněk Macháček on Unsplash
-
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
 </p>
   </article>
 </div>

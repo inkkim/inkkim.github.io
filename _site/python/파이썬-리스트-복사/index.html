@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>파이썬 리스트 복사하기 - 🤔선미모드</title>
-<meta name="description" content="파이썬 리스트 복사 어떻게 할까?     Photo by Zdeněk Macháček on Unsplash">
+<meta name="description" content="이곳은 게시글입니다.">
 
 
   <meta name="author" content="김인규">
@@ -26,11 +26,11 @@
 <meta property="og:url" content="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/">
 
 
-  <meta property="og:description" content="파이썬 리스트 복사 어떻게 할까?     Photo by Zdeněk Macháček on Unsplash">
+  <meta property="og:description" content="이곳은 게시글입니다.">
 
 
 
-  <meta property="og:image" content="/assets/images/Profile_Jekyll_OG.jpeg">
+  <meta property="og:image" content="/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg">
 
 
 
@@ -165,6 +165,58 @@
 
     <div class="initial-content">
       
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: url('/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          파이썬 리스트 복사하기
+
+        
+      </h1>
+      
+        <p class="page__lead">이곳은 <strong>게시글</strong>입니다.
+</p>
+      
+      
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+</div>
+
+
 
 
   
@@ -325,37 +377,11 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="파이썬 리스트 복사하기">
-    <meta itemprop="description" content="파이썬 리스트 복사 어떻게 할까?  Photo by Zdeněk Macháček on Unsplash">
+    <meta itemprop="description" content="이곳은 게시글입니다.">
     <meta itemprop="datePublished" content="2020-12-27T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
-      
-        <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">파이썬 리스트 복사하기
-</h1>
-          
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          3 분 소요
-        
-      </span>
-    
-  </p>
-
-
-        </header>
       
 
       <section class="page__content" itemprop="text">
@@ -389,6 +415,7 @@
 <p>위 예제의 결과만 보면 파이썬이 워낙 간편하다보니 별 의심없이 잘 복사됐다고 생각할 수 있다. 하지만 정확히 말하면 <code class="language-plaintext highlighter-rouge">list2</code>는 <code class="language-plaintext highlighter-rouge">list1</code>의 메모리 주소값을 복사한 것이다. 즉, 같은 메모리를 참조하기 때문에 <code class="language-plaintext highlighter-rouge">list1</code>이 수정되면 <code class="language-plaintext highlighter-rouge">list2</code>도 동시에 수정된다. 하지만 이것을 간과하고 열심히 코드를 짜다보면 나중에 깊은 오류의 구렁텅이에 빠질 수 있다. 혹시나 그런 오류에 빠진 사람들이 이 글을 보고 도움이 되었으면 좋겠다 :)</p>
 
 <h2 id="아니-이게-왜-안돼-">아니 이게 왜 안돼 🐥❓</h2>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list1
 
@@ -414,30 +441,35 @@ list2 : [11, 2, 3, 4]
 <p>앞서 살펴본 문제점과 같이 우리가 원하는 복사가 이뤄지지 않았던 이유는 <code class="language-plaintext highlighter-rouge">list1</code>와 <code class="language-plaintext highlighter-rouge">list2</code> 두 변수가 같은 메모리를 참조하기 때문이다. 결국 우리가 원하는 복사가 이뤄지기 위해서는 <code class="language-plaintext highlighter-rouge">list1</code>와 <code class="language-plaintext highlighter-rouge">list2</code>이 서로 다른 메모리를 참조하도록 해주면 된다. 파이썬 리스트를 다른 리스트에 복사하는 방법은 4가지가 있다.</p>
 
 <h3 id="1-슬라이싱">1) 슬라이싱</h3>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list1[:]
 </code></pre></div></div>
 <p>시작점과 끝점을 생략한 슬라이싱은 리스트의 모든 요소를 뜻한다. 슬라이싱을 통해 변수를 정의하면 파이썬은 새로운 객체를 만든다.</p>
 
 <h3 id="2-list-함수">2) list() 함수</h3>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list(list1)
 </code></pre></div></div>
 <p>파이썬 내장함수 중에는 iterable한 객체를 리스트 객체로 변환해주는 <code class="language-plaintext highlighter-rouge">list()</code> 함수가 있다. 이 함수를 이용해 복사하고자 하는 리스트 객체를 다시 재선언 한다.</p>
 
 <h3 id="3-copy-메소드">3) copy() 메소드</h3>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list1.copy()
 </code></pre></div></div>
 <p>Python3 부터 리스트를 다른 리스트에 복사하는 기능인 <code class="language-plaintext highlighter-rouge">copy()</code> 메소드가 추가되었다. 가독성을 위한 코드라면 이 방법을 사용하는 것을 권장한다.</p>
 
 <h3 id="4-리스트-연산">4) 리스트 연산</h3>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = [] + list1
 </code></pre></div></div>
 <p>리스트 덧셈연산을 이용해 새로운 빈 리스트에 <code class="language-plaintext highlighter-rouge">list1</code>의 요소들을 더한다. 새로운 리스트 객체에 <code class="language-plaintext highlighter-rouge">list1</code>의 요소들이 더해져 결과적으로 우리가 원하는 복사가 이뤄진다.</p>
 
 <h2 id="검증">검증</h2>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; def copy_element(method):
         list1 = [1, 2, 3, 4]
         if method == 1:
@@ -594,6 +626,46 @@ list2 : [1, 2, 3, 4]
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Twitter API로 GCP Pipeline 구축하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          최대 1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="permalink">파이썬 접근 제어자에 대하여
 </a>
       
@@ -619,7 +691,7 @@ list2 : [1, 2, 3, 4]
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">접근 제어자
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
 </p>
   </article>
 </div>
@@ -659,8 +731,7 @@ list2 : [1, 2, 3, 4]
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">완주하지 못한 선수
-
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
 </p>
   </article>
 </div>
@@ -700,51 +771,7 @@ list2 : [1, 2, 3, 4]
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Vi이란 ?
-
-
-  Photo by Luca Bravo on Unsplash
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/kubernetes/AWS-EKS-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-Kubeflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="permalink">AWS EKS 클러스터에 Kubeflow 설치하기
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          8 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.
+    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
 </p>
   </article>
 </div>

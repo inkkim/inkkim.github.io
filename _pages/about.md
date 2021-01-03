@@ -1,16 +1,16 @@
 ---
 permalink: /about/
 title: "🧑🏻‍💻소개"
-#excerpt: ""
 toc: true
+excerpt: "안녕하세요. <br>데이터를 공부하는 **김인규**입니다."
+header:
+    overlay_color: "#333"
+    actions:
+      - label: "CV Download"
+        url: ""
 ---
 
-안녕하세요.  
-
-데이터를 공부하는 **김인규**입니다.
-
-
-[CV]({{ "/docs/quick-start-guide/" | relative_url }}){: .btn .btn--success .btn--large}
+새로 공부한 내용을 꾸준히 기록하는 블로그를 운영중입니다.
 
 ## 📚교육
 
