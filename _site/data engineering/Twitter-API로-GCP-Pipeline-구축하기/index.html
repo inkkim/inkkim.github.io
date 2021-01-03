@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Twitter API로 GCP Pipeline 구축하기 - 🤔선미모드</title>
-<meta name="description" content="이곳은 게시글입니다.">
+<meta name="description" content="Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.">
 
 
   <meta name="author" content="김인규">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">
 
 
-  <meta property="og:description" content="이곳은 게시글입니다.">
+  <meta property="og:description" content="Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.">
 
 
 
@@ -185,7 +185,7 @@
         
       </h1>
       
-        <p class="page__lead">이곳은 <strong>게시글</strong>입니다.
+        <p class="page__lead">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.
 </p>
       
       
@@ -377,7 +377,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Twitter API로 GCP Pipeline 구축하기">
-    <meta itemprop="description" content="이곳은 게시글입니다.">
+    <meta itemprop="description" content="Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.">
     <meta itemprop="datePublished" content="2021-01-02T00:00:00+09:00">
     
 
@@ -389,7 +389,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-bars"></i> 목차</h4></header>
-              <ul class="toc__menu"><li><a href="#architecture">Architecture</a></li><li><a href="#나가며">나가며</a></li><li><a href="#참고">참고</a></li></ul>
+              <ul class="toc__menu"><li><a href="#architecture">Architecture</a></li><li><a href="#twitter-api로부터-실시간으로-발생하는-tweets-text를-요청">Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청</a></li><li><a href="#나가며">나가며</a></li><li><a href="#참고">참고</a></li></ul>
 
             </nav>
           </aside>
@@ -397,13 +397,17 @@
         <h1 id="architecture">Architecture</h1>
 <p><img src="https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png" alt="" /></p>
 
-<p>대략적인 개요는 다음과 같다.</p>
+<p>이번 글에서는 T Academy의 ‘<a href="https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2">데이터 엔지니어링 기초</a>’ 강좌에 대해 정리한다. 실습의 대략적인 개요는 다음과 같다.</p>
 
 <ul>
   <li>Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청</li>
   <li>Pub/Sub Topic으로 전송 (Apache Kafka와 흡사)</li>
-  <li>Publish Trigger에 의해 Cloud Function</li>
+  <li>Publish Trigger에 의해 Big Query로 데이터를 전송하는 Cloud Function을 실행</li>
+  <li>Data Studio와 Big Query를 연동하여 시각화</li>
+  <li>GKE로 위 작업들을 실행하는 컨테이너 배포</li>
 </ul>
+
+<h1 id="twitter-api로부터-실시간으로-발생하는-tweets-text를-요청">Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청</h1>
 
 <h1 id="나가며">나가며</h1>
 <p>이 글은 2020.09.23(목)에 진행된 제81차 토크ON세미나에서 SOCAR의 김상우님이 강의해주신 내용을 토대로 리마인드 차원에서 작성한 것이다. Hands-on 강의 동영상과 함께 실습을 진행해보고자 한다면 <a href="https://tacademy.skplanet.com/frontMain.action">T Academy</a>에서 회원가입 후 ‘<a href="https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2">데이터 엔지니어링 기초</a>’ 강좌에 수강신청하여 진행해보길 바란다.</p>
@@ -544,7 +548,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
+    <p class="archive__item-excerpt" itemprop="description">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.
 </p>
   </article>
 </div>
@@ -584,7 +588,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
+    <p class="archive__item-excerpt" itemprop="description">파이썬 collections 패키지의 Counter() 메소드 사용법과 활용사례를 소개한다.
 </p>
   </article>
 </div>
@@ -624,8 +628,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
-</p>
+    <p class="archive__item-excerpt" itemprop="description">Linux나 Unix 유저라면 한 번쯤은 vi editor를 사용해본 경험이 있을 것이다. vi editor란 Unix-like 운영체제 용으로 만든 텍스트 편집기를 말한다. Vi와 더불어 Vi IMproved의 약자인 Vim이라는 기존 vi editor의 성능을 개선한 확장판이 ...</p>
   </article>
 </div>
 
@@ -664,7 +667,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">이곳은 게시글입니다.
+    <p class="archive__item-excerpt" itemprop="description">오늘은 상당히 기초적이면서도 쉽게 실수 할 수 있는 부분을 다뤄보고자 한다. 바로 나를 포함한 초보자들이 실수할 수 있는 파이썬 리스트를 다른 리스트에 복사하는 방법에 대해 소개한다.
 </p>
   </article>
 </div>

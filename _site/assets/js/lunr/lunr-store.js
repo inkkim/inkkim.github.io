@@ -66,7 +66,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Twitter API로 GCP Pipeline 구축하기",
-        "excerpt":"Architecture 대략적인 개요는 다음과 같다. Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청 Pub/Sub Topic으로 전송 (Apache Kafka와 흡사) Publish Trigger에 의해 Cloud Function 나가며 이 글은 2020.09.23(목)에 진행된 제81차 토크ON세미나에서 SOCAR의 김상우님이 강의해주신 내용을 토대로 리마인드 차원에서 작성한 것이다. Hands-on 강의 동영상과 함께 실습을 진행해보고자 한다면 T Academy에서 회원가입 후...","categories": ["Data Engineering"],
+        "excerpt":"Architecture 이번 글에서는 T Academy의 ‘데이터 엔지니어링 기초’ 강좌에 대해 정리한다. 실습의 대략적인 개요는 다음과 같다. Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청 Pub/Sub Topic으로 전송 (Apache Kafka와 흡사) Publish Trigger에 의해 Big Query로 데이터를 전송하는 Cloud Function을 실행 Data Studio와 Big Query를 연동하여 시각화 GKE로 위 작업들을 실행하는 컨테이너...","categories": ["Data Engineering"],
         "tags": ["Pub/Sub","Cloud Function","Big Query","GKE"],
         "url": "/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/",
         "teaser": null

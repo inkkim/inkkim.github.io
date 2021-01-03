@@ -7,6 +7,7 @@ toc_label: "목차"
 toc_icon: "bars"
 toc_sticky: true
 readtime: true
+excerpt: "AWS EC2 환경에서 Hadoop Cluster를 구축하는 방법을 소개한다."
 tags:
   - 빅데이터
   - 분산처리
