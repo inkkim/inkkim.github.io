@@ -1,0 +1,838 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>오픈소스 시각화 툴 Superset 설치하기 - 🤔선미모드</title>
+<meta name="description" content="Apache Superset 이란 ?     Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트   2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0   직관적인 시각화 및 반응형 대쉬보드 제공   다수 상용 RDBMS와 호환            Amazon Redshift, Google BigQuery, Snowflake, Presto       Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2       SQLite, Sysbase, Vertica, Druid, Greenplum">
+
+
+  <meta name="author" content="김인규">
+  
+  <meta property="article:author" content="김인규">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="🤔선미모드">
+<meta property="og:title" content="오픈소스 시각화 툴 Superset 설치하기">
+<meta property="og:url" content="/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">
+
+
+  <meta property="og:description" content="Apache Superset 이란 ?     Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트   2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0   직관적인 시각화 및 반응형 대쉬보드 제공   다수 상용 RDBMS와 호환            Amazon Redshift, Google BigQuery, Snowflake, Presto       Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2       SQLite, Sysbase, Vertica, Druid, Greenplum">
+
+
+
+  <meta property="og:image" content="/assets/images/Profile_Jekyll_OG.jpeg">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-12-19T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김인규",
+      "url": "/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="JrNPOuaPPcCS0tpOKZm8N-52Vp9S6FhvPConG47v4Pc" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="30c97a180b609213b1a3a11ba67952e0031c7436">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="🤔선미모드 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          🤔선미모드
+          <span class="site-subtitle">24시간이 모자라🎶</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">🧑🏻‍💻소개</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">🗂카테고리</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">📜게시글</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">🏷태그</a>
+            </li><li class="masthead__menu-item">
+              <a href="/page-archive/">📁폴더</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">🔍검색</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep"> ❥ </span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#bi" itemprop="item"><span itemprop="name">Bi</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep"> ❥ </span>
+      
+    
+      
+      
+        <li class="current">오픈소스 시각화 툴 Superset 설치하기</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="https://user-images.githubusercontent.com/60086878/103459418-a1ac1b00-4d52-11eb-8507-2230d282d793.jpeg" alt="김인규" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김인규</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>새로 알게 된 내용을 꾸준히 기록합니다</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:sda1547@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-paper-plane" aria-hidden="true"></i><span class="label">sda1547@gmail.com</span></a></li>
+          
+        
+          
+            <li><a href="https://sda1547.gitbook.io/data-engineering/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-book" aria-hidden="true"></i><span class="label">GitBook</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/inkkim" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="오픈소스 시각화 툴 Superset 설치하기">
+    <meta itemprop="description" content="Apache Superset 이란 ?  Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트  2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0  직관적인 시각화 및 반응형 대쉬보드 제공  다수 상용 RDBMS와 호환          Amazon Redshift, Google BigQuery, Snowflake, Presto      Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2      SQLite, Sysbase, Vertica, Druid, Greenplum      ">
+    <meta itemprop="datePublished" content="2020-12-19T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">오픈소스 시각화 툴 Superset 설치하기
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#apache-superset-이란-">Apache Superset 이란 ?</a></li><li><a href="#설치">설치</a><ul><li><a href="#방법">방법</a></li><li><a href="#docker-compose-설치">Docker Compose 설치</a></li></ul></li><li><a href="#첫인상">첫인상</a></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="apache-superset-이란-">Apache Superset 이란 ?</h1>
+<p><img src="https://user-images.githubusercontent.com/60086878/102607092-0d935e80-416b-11eb-8529-6f266ab80d04.png" alt="Apache Superset" /></p>
+<ul>
+  <li>Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트</li>
+  <li>2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0</li>
+  <li>직관적인 시각화 및 반응형 대쉬보드 제공</li>
+  <li>다수 상용 RDBMS와 호환
+    <ul>
+      <li>Amazon Redshift, Google BigQuery, Snowflake, Presto</li>
+      <li>Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2</li>
+      <li>SQLite, Sysbase, Vertica, Druid, Greenplum</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102608095-b098a800-416c-11eb-98ba-35aa40e8ee66.png" alt="Gallery" /></p>
+
+<h1 id="설치">설치</h1>
+
+<h2 id="방법">방법</h2>
+<ul>
+  <li><strong>Docker Compose를 이용한 방법</strong></li>
+  <li>apt-get을 이용한 방법</li>
+  <li>Python 가상환경에서 pip를 이용한 방법</li>
+  <li>Kubernetes 환경에서 Helm 차트를 이용한 방법</li>
+</ul>
+
+<p>본 포스팅에서는 연습용으로 설치하는 것이기 때문에 간편하고 가장 빠르게 설치할 수 있는 <strong>Docker Compose를 이용한 방법</strong>으로 안내한다.</p>
+
+<h2 id="docker-compose-설치">Docker Compose 설치</h2>
+<ul>
+  <li>
+    <p>Mac OS<br />
+Docker 설치 후 기본 할당 메모리가 2GB이기 때문에 Superset 실행 시 오류가 날 수 있다. 그러므로 Docker Resources에서 할당 메모리를 6GB로 수정 해야한다.</p>
+  </li>
+  <li>
+    <p>Windows
+아쉽게도 Superset은 윈도우에서 공식적으로 지원하진 않는다. 공식 문서에서도 VirtualBox나 VMWare와 같은 가상 머신 툴을 이용한 방법으로 시도해보길 권장하고 있다. 또한 원활한 구동을 위해 해당 VM에 최소한 8GB RAM과 40GB 스토리지 할당을 권장한다.</p>
+  </li>
+  <li>
+    <p><strong>Linux</strong><br />
+Docker 설치 docker-compose가 설치되어 있지 않으므로, 각 OS에 맞게 별도의 설치가 필요하다. 본 포스팅에서는 <strong>Ubuntu 18.04 LTS 기준</strong>으로 설치를 안내한다.</p>
+  </li>
+</ul>
+
+<ol>
+  <li>아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+</code></pre></div></div>
+
+<ol>
+  <li>Binary 파일에 실행 권한을 부여한다.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre></div></div>
+
+<ol>
+  <li>아래 명령어로 Docker Compose의 버전을 확인한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker-compose --version
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102610642-e3dd3600-4170-11eb-9b2b-a2ed021f4c10.png" alt="" /></p>
+
+<ol>
+  <li>Superset Repository를 Clone한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/apache/incubator-superset.git
+</code></pre></div>    </div>
+  </li>
+  <li>아래 명령어로 Superset 인스턴스를 실행한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd incubator-superset
+$ docker-compose up
+</code></pre></div>    </div>
+    <p><img src="https://user-images.githubusercontent.com/60086878/102612471-13da0880-4174-11eb-906b-e4e677555538.png" alt="" /></p>
+  </li>
+  <li>아래 localhost:8088로 접근하여 로그인한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USERNAME : admin
+PASSWORD : admin
+</code></pre></div>    </div>
+    <p><img src="https://user-images.githubusercontent.com/60086878/102612898-ed689d00-4174-11eb-941d-98a41f5091d5.png" alt="" /></p>
+  </li>
+  <li>Superset 메인화면</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102612917-f48fab00-4174-11eb-8c45-f6faf6650d80.png" alt="Main Page" /></p>
+
+<ol>
+  <li>Sample Dashboard</li>
+</ol>
+
+<ul>
+  <li>USA Births Names<br />
+모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
+도 매력적이었다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/102613328-a202be80-4175-11eb-85da-a106023e96da.png" alt="Sample 1" /></p>
+
+<ul>
+  <li>Sales Dashboard</li>
+</ul>
+
+<p>대시보드에 이모지가 나와서 당황했는데 꽤나 잘 어울린다 🤣
+<img src="https://user-images.githubusercontent.com/60086878/102613361-ad55ea00-4175-11eb-9e92-3d79ce4ab802.png" alt="image" /></p>
+
+<h1 id="첫인상">첫인상</h1>
+<ul>
+  <li>Apache 프로젝트답게 꽤 완성도 높음</li>
+  <li>설치가 쉽고 UI는 투박하지만 트렌디한 대시보드 구성</li>
+  <li>아직 V0.X 단계지만 바로 사용해도 될 것 같은 퀄리티</li>
+</ul>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://superset.apache.org/docs/installation/installing-superset-using-docker-compose">Installing Superset Locally Using Docker Compose</a></li>
+  <li><a href="https://docs.docker.com/compose/install/">Install Docker Compose</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#apache-superset" class="page__taxonomy-item" rel="tag">Apache Superset</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%8B%9C%EA%B0%81%ED%99%94" class="page__taxonomy-item" rel="tag">시각화</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4" class="page__taxonomy-item" rel="tag">오픈소스</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#bi" class="page__taxonomy-item" rel="tag">BI</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2020-12-19T00:00:00+09:00">December 19, 2020</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4+%EC%8B%9C%EA%B0%81%ED%99%94+%ED%88%B4+Superset+%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0%20%2Fbi%2F%25EC%2598%25A4%25ED%2594%2588%25EC%2586%258C%25EC%258A%25A4-%25EC%258B%259C%25EA%25B0%2581%25ED%2599%2594-%25ED%2588%25B4-Superset-%25EC%2584%25A4%25EC%25B9%2598%25ED%2595%2598%25EA%25B8%25B0%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fbi%2F%25EC%2598%25A4%25ED%2594%2588%25EC%2586%258C%25EC%258A%25A4-%25EC%258B%259C%25EA%25B0%2581%25ED%2599%2594-%25ED%2588%25B4-Superset-%25EC%2584%25A4%25EC%25B9%2598%25ED%2595%2598%25EA%25B8%25B0%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fbi%2F%25EC%2598%25A4%25ED%2594%2588%25EC%2586%258C%25EC%258A%25A4-%25EC%258B%259C%25EA%25B0%2581%25ED%2599%2594-%25ED%2588%25B4-Superset-%25EC%2584%25A4%25EC%25B9%2598%25ED%2595%2598%25EA%25B8%25B0%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/etc/%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%95%A0%ED%98%B8%EA%B0%80%EC%9D%98-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%A0%95%EB%A6%AC/" class="pagination--pager" title="단축키 애호가의 맥북 단축키 정리
+">이전</a>
+    
+    
+      <a href="/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0/" class="pagination--pager" title="GitBook으로 나만의 책 펴내기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="permalink">파이썬 접근 제어자에 대하여
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">접근 제어자
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="permalink">파이썬 Counter 사용법
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">완주하지 못한 선수
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="permalink">Vi 사용법 완벽 가이드
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Vi이란 ?
+
+
+  Photo by Luca Bravo on Unsplash
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/" rel="permalink">파이썬 리스트 복사하기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 리스트 복사 어떻게 할까?
+
+
+  Photo by Zdeněk Macháček on Unsplash
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/inkkim" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 김인규. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/bi/오픈소스-시각화-툴-Superset-설치하기"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-inkkim-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,160 @@
+I"sA<h1 id="접근-제어자">접근 제어자</h1>
+
+<p>객체지향 기반 프로그래밍에서는 <strong>접근 제어자</strong> 즉, <strong>private</strong>, <strong>protected</strong>, <strong>public</strong>을 이용한 <strong>정보 은닉</strong>을 통해 외부로부터 데이터를 보호한다. 이를 통해 객체의 속성과 메소드를 하나로 묶고, 실제 구현 내용의 일부는 외부에 감추어 은닉할 수 있는 <strong>캡슐화</strong>가 가능한다. 각각의 접근 제어자는 다음과 같은 의미를 가진다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103396288-ad8eb600-4b75-11eb-98d3-2a55798e6fed.png" alt="image" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>접근 제어자</th>
+      <th>문법</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Public</td>
+      <td>name</td>
+      <td>외부로부터 모든 접근 허용</td>
+    </tr>
+    <tr>
+      <td>Protected</td>
+      <td>_name</td>
+      <td>자기 클래스 내부 혹은 상속받은 자식 클래스에서만 접근 허용</td>
+    </tr>
+    <tr>
+      <td>Private</td>
+      <td>__name</td>
+      <td>자기 클래스 내부의 메서드에서만 접근 허용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="예제">예제</h1>
+
+<h2 id="public">Public</h2>
+<p>공개적으로 모든 함수, 변수, 메소드를 공개적으로 사용할 수 있다. 즉, 다른 모든 클래스는 제한없이 쉽게 액세스 할 수 있다. Public Member는 일반적으로 클래스 외부에서 액세스 할 수있는 클래스에서 선언 된 메소드며 모든 일반 클래스는 기본적으로 Public 클래스다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1">## 원 넓이 클래스
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">get_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">radius</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">'500원 동전'</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">circle</span><span class="p">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">circle</span><span class="p">.</span><span class="n">get_area</span><span class="p">())</span>
+<span class="mi">500</span><span class="n">원</span> <span class="n">동전</span> <span class="mf">246.49000000000004</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="p">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'50원 동전'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">circle</span><span class="p">.</span><span class="n">get_name</span><span class="p">(),</span> <span class="n">circle</span><span class="p">.</span><span class="n">get_area</span><span class="p">())</span>
+<span class="mi">50</span><span class="n">원</span> <span class="n">동전</span> <span class="mf">88.7364</span>
+</code></pre></div></div>
+
+<h2 id="protected">Protected</h2>
+
+<p>Protected Member는 prefix로 ‘_‘를 사용하며,  Sub Class에서 사용하겠다는 의미이다. 그러나 강제성은 없으므로 Public과 거의 동일하게 외부 접근가능하다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1">## 학생 정보 클래스 2
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Student1</span><span class="p">:</span>
+    <span class="c1"># 생성자
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">roll</span><span class="p">,</span> <span class="n">branch</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_roll</span> <span class="o">=</span> <span class="n">roll</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_branch</span> <span class="o">=</span> <span class="n">branch</span>
+    
+    <span class="c1"># Roll, Branch 출력 메소드 (Protected)
+</span>    <span class="k">def</span> <span class="nf">_roll_branch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Protected data 출력
+</span>        <span class="k">print</span><span class="p">(</span><span class="s">"Roll: "</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">_roll</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Branch: "</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">_branch</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="c1">## 학생 정보 클래스 2 (Student1 상속)
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Student2</span><span class="p">(</span><span class="n">Student1</span><span class="p">):</span>
+    <span class="c1"># 생성자
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">roll</span><span class="p">,</span> <span class="n">branch</span><span class="p">):</span>
+        <span class="n">Student1</span><span class="p">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">roll</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span>
+
+    <span class="c1"># Name, Roll, Branch 출력 메소드
+</span>    <span class="k">def</span> <span class="nf">details</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Student1의 Protected 변수, 메소드
+</span>        <span class="k">print</span><span class="p">(</span><span class="s">"Name: "</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">_roll_branch</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">info</span> <span class="o">=</span> <span class="n">Student2</span><span class="p">(</span><span class="s">"김인규"</span><span class="p">,</span> <span class="s">"학부생"</span><span class="p">,</span> <span class="s">"바이오메디컬학과"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">info</span><span class="p">.</span><span class="n">_branch</span> <span class="o">=</span> <span class="s">"컴퓨터과학과"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">info</span><span class="p">.</span><span class="n">details</span><span class="p">()</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">김인규</span>
+<span class="n">Roll</span><span class="p">:</span> <span class="n">학부생</span>
+<span class="n">Branch</span><span class="p">:</span> <span class="n">컴퓨터과학과</span>
+</code></pre></div></div>
+
+<h2 id="private">Private</h2>
+<p>Private Member의 경우 변수와 함수는 클래스 내에서만 액세스 할 수 있다. 클래스를 Private으로 선언하기 위해 prefix로 “__“를 사용한다. 기본적으로 자기 클래스 외부에서 Private Member에 대한 접근은 금지된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="c1">## 계좌 관리 클래스
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Account</span><span class="p">:</span>
+        <span class="c1"># 생성자 // 초기 금액 0 (Private)
+</span>        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">__seed</span> <span class="o">=</span> <span class="n">seed</span>              
+
+        <span class="c1"># 출금 메소드
+</span>        <span class="k">def</span> <span class="nf">get_money</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">money</span><span class="p">):</span>         
+            <span class="bp">self</span><span class="p">.</span><span class="n">__seed</span> <span class="o">-=</span> <span class="n">money</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__get_balance</span><span class="p">()</span>
+
+        <span class="c1"># 입금 메소드
+</span>        <span class="k">def</span> <span class="nf">save_money</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">money</span><span class="p">):</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">__seed</span> <span class="o">+=</span> <span class="n">money</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__get_balance</span><span class="p">()</span>
+
+        <span class="c1"># 잔고 확인 메소드(Praivate)
+</span>        <span class="k">def</span> <span class="nf">__get_balance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">__seed</span>
+        
+        <span class="c1"># 잔고 확인 메소드(Public) // 이름 명명 시 뒤에 __가 붙게 되면 Public Member로 간주
+</span>        <span class="k">def</span> <span class="nf">__get_status__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">_seed</span>               
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Account</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">__seed</span> <span class="o">=</span> <span class="mi">2000</span>                           <span class="c1"># Private Member이므로 반영 X
+</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">save_money</span><span class="p">(</span><span class="mi">5000</span><span class="p">))</span>
+<span class="mi">5000</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">get_money</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+<span class="mi">4000</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">__get_status__</span><span class="p">())</span>
+<span class="mi">4000</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">__get_balance</span><span class="p">())</span>                  <span class="c1"># Private Member이므로 ERROR!
+</span><span class="nb">AttributeError</span><span class="p">:</span> <span class="s">'Account'</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s">'__get_balance'</span>
+</code></pre></div></div>
+
+<p>Private Member는 Python의 Name Mangling 기능에 따라 ‘_class__name’형태로 변환된다. 즉, Sub Class에서 이름 충돌을 피하기 위한 조치로 추후 확장 시 충돌이 발생하지 않도록 사전에 방지한다. 다음과 같이 <code class="language-plaintext highlighter-rouge">dir()</code> 명령어를 통해 객체의 속성을 확인하면 Private Member인 ‘__get_balance’는 Name Mangling에 의해 ‘_Account__get_balance’로 변경됐다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="p">[</span><span class="s">'_Account__get_balance'</span><span class="p">,</span> <span class="s">'_Account__seed'</span><span class="p">,</span> <span class="s">'__class__'</span><span class="p">,</span> <span class="s">'__dict__'</span> <span class="p">...</span> <span class="s">'get_money'</span><span class="p">,</span> <span class="s">'save_money'</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">_Account__seed</span> <span class="o">=</span> <span class="mi">0</span>                      <span class="c1"># name mangled variable
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">_Account__get_balance</span><span class="p">)</span>            <span class="c1"># name mangled function
+</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>그러나 해당 속성을 통해 값을 수정하거나 호출해도 동작하는 것을 확인할 수 있다. 즉, 파이썬의 접근 제어자는 완벽한 Private 기능은 아니며, Sub Class에서 변수가 재정이되지 않도록 방지하는 성격의 기능으로 이해하는 것이 좋겠다.</p>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://www.codewithharry.com/videos/python-tutorials-for-absolute-beginners-63">Public, Private &amp; Protected Access Specifiers</a></li>
+  <li><a href="https://medium.com/@YSR/access-modifiers-in-python-public-private-protected-fe5f923bd914">Access Modifiers in Python — Public, Private, &amp; Protected</a></li>
+  <li><a href="https://www.geeksforgeeks.org/access-modifiers-in-python-public-private-and-protected/">Access Modifiers in Python : Public, Private and Protected</a></li>
+  <li><a href="https://www.fun-coding.org/PL&amp;OOP1-5.html">예제로 이해하는 객체지향 문법 (public, private, protected)</a></li>
+</ul>
+:ET

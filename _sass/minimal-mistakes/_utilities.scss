@@ -228,7 +228,8 @@ body:hover .visually-hidden button {
   .fa-facebook,
   .fa-facebook-square,
   .fa-facebook-f {
-    color: $facebook-color;
+    color: #0086CB;
+    //$facebook-color;
   }
 
   .fa-flickr {
@@ -242,7 +243,8 @@ body:hover .visually-hidden button {
   .fa-github,
   .fa-github-alt,
   .fa-github-square {
-    color: $github-color;
+    color: #000000
+    //$github-color;
   }
 
   .fa-gitlab {

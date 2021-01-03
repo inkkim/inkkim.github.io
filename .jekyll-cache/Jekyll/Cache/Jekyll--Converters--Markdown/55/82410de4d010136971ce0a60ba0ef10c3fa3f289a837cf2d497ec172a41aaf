@@ -1,0 +1,15 @@
+I"�<h1 id="apache-superset-이란-">Apache Superset 이란 ?</h1>
+<p><img src="https://user-images.githubusercontent.com/60086878/102607092-0d935e80-416b-11eb-8529-6f266ab80d04.png" alt="Apache Superset" /></p>
+<ul>
+  <li>Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트</li>
+  <li>2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0</li>
+  <li>직관적인 시각화 및 반응형 대쉬보드 제공</li>
+  <li>다수 상용 RDBMS와 호환
+    <ul>
+      <li>Amazon Redshift, Google BigQuery, Snowflake, Presto</li>
+      <li>Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2</li>
+      <li>SQLite, Sysbase, Vertica, Druid, Greenplum</li>
+    </ul>
+  </li>
+</ul>
+:ET
