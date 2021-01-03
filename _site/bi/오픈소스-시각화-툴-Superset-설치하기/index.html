@@ -439,69 +439,54 @@ Docker 설치 docker-compose가 설치되어 있지 않으므로, 각 OS에 맞�
   </li>
 </ul>
 
-<ol>
-  <li>아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.</li>
-</ol>
+<p>1.아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 </code></pre></div></div>
 
-<ol>
-  <li>Binary 파일에 실행 권한을 부여한다.</li>
-</ol>
+<p>2.Binary 파일에 실행 권한을 부여한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chmod +x /usr/local/bin/docker-compose
 </code></pre></div></div>
 
-<ol>
-  <li>아래 명령어로 Docker Compose의 버전을 확인한다.</li>
-</ol>
+<p>3.아래 명령어로 Docker Compose의 버전을 확인한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker-compose --version
 </code></pre></div></div>
 
 <p><img src="https://user-images.githubusercontent.com/60086878/102610642-e3dd3600-4170-11eb-9b2b-a2ed021f4c10.png" alt="" /></p>
 
-<ol>
-  <li>Superset Repository를 Clone한다.</li>
-</ol>
+<p>4.Superset Repository를 Clone한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/apache/incubator-superset.git
 </code></pre></div></div>
 
-<ol>
-  <li>아래 명령어로 Superset 인스턴스를 실행한다.</li>
-</ol>
+<p>5.아래 명령어로 Superset 인스턴스를 실행한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd incubator-superset
 $ docker-compose up
 </code></pre></div></div>
 <p><img src="https://user-images.githubusercontent.com/60086878/102612471-13da0880-4174-11eb-906b-e4e677555538.png" alt="" /></p>
 
-<ol>
-  <li>아래 localhost:8088로 접근하여 로그인한다.</li>
-</ol>
+<p>6.아래 localhost:8088로 접근하여 로그인한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USERNAME : admin
 PASSWORD : admin
 </code></pre></div></div>
 <p><img src="https://user-images.githubusercontent.com/60086878/102612898-ed689d00-4174-11eb-941d-98a41f5091d5.png" alt="" /></p>
 
-<ol>
-  <li>Superset 메인화면</li>
-</ol>
+<p>7.Superset 메인화면</p>
 
 <p><img src="https://user-images.githubusercontent.com/60086878/102612917-f48fab00-4174-11eb-8c45-f6faf6650d80.png" alt="Main Page" /></p>
 
-<ol>
-  <li>Sample Dashboard</li>
-</ol>
+<p>8.Sample Dashboard</p>
 
 <ul>
-  <li>USA Births Names<br />
-모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
-도 매력적이었다.</li>
+  <li>USA Births Names</li>
 </ul>
+
+<p>모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
+도 매력적이었다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/60086878/102613328-a202be80-4175-11eb-85da-a106023e96da.png" alt="Sample 1" /></p>
 
@@ -648,7 +633,7 @@ PASSWORD : admin
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          6 분 소요
         
       </span>
     

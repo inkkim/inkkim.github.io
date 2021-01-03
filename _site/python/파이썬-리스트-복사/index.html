@@ -412,6 +412,7 @@
 &gt;&gt;&gt; print(list2)
 [1, 2, 3, 4]
 </code></pre></div></div>
+
 <p>위 예제의 결과만 보면 파이썬이 워낙 간편하다보니 별 의심없이 잘 복사됐다고 생각할 수 있다. 하지만 정확히 말하면 <code class="language-plaintext highlighter-rouge">list2</code>는 <code class="language-plaintext highlighter-rouge">list1</code>의 메모리 주소값을 복사한 것이다. 즉, 같은 메모리를 참조하기 때문에 <code class="language-plaintext highlighter-rouge">list1</code>이 수정되면 <code class="language-plaintext highlighter-rouge">list2</code>도 동시에 수정된다. 하지만 이것을 간과하고 열심히 코드를 짜다보면 나중에 깊은 오류의 구렁텅이에 빠질 수 있다. 혹시나 그런 오류에 빠진 사람들이 이 글을 보고 도움이 되었으면 좋겠다 :)</p>
 
 <h2 id="아니-이게-왜-안돼-">아니 이게 왜 안돼 🐥❓</h2>
@@ -445,6 +446,7 @@ list2 : [11, 2, 3, 4]
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list1[:]
 </code></pre></div></div>
+
 <p>시작점과 끝점을 생략한 슬라이싱은 리스트의 모든 요소를 뜻한다. 슬라이싱을 통해 변수를 정의하면 파이썬은 새로운 객체를 만든다.</p>
 
 <h3 id="2-list-함수">2) list() 함수</h3>
@@ -452,6 +454,7 @@ list2 : [11, 2, 3, 4]
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list(list1)
 </code></pre></div></div>
+
 <p>파이썬 내장함수 중에는 iterable한 객체를 리스트 객체로 변환해주는 <code class="language-plaintext highlighter-rouge">list()</code> 함수가 있다. 이 함수를 이용해 복사하고자 하는 리스트 객체를 다시 재선언 한다.</p>
 
 <h3 id="3-copy-메소드">3) copy() 메소드</h3>
@@ -459,6 +462,7 @@ list2 : [11, 2, 3, 4]
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = list1.copy()
 </code></pre></div></div>
+
 <p>Python3 부터 리스트를 다른 리스트에 복사하는 기능인 <code class="language-plaintext highlighter-rouge">copy()</code> 메소드가 추가되었다. 가독성을 위한 코드라면 이 방법을 사용하는 것을 권장한다.</p>
 
 <h3 id="4-리스트-연산">4) 리스트 연산</h3>
@@ -466,6 +470,7 @@ list2 : [11, 2, 3, 4]
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; list1 = [1, 2, 3, 4]
 &gt;&gt;&gt; list2 = [] + list1
 </code></pre></div></div>
+
 <p>리스트 덧셈연산을 이용해 새로운 빈 리스트에 <code class="language-plaintext highlighter-rouge">list1</code>의 요소들을 더한다. 새로운 리스트 객체에 <code class="language-plaintext highlighter-rouge">list1</code>의 요소들이 더해져 결과적으로 우리가 원하는 복사가 이뤄진다.</p>
 
 <h2 id="검증">검증</h2>
@@ -516,6 +521,7 @@ list2 : [1, 2, 3, 4] / id : 4552075648
 list1 : [11, 2, 3, 4]
 list2 : [1, 2, 3, 4]
 </code></pre></div></div>
+
 <p>각자의 방법 모두 서로 다른 리스트 객체에 값이 할당되며, list1의 요소에 수정이 일어나도 list2 요소에 영향을 끼치지 않는 독립적인 개체임을 확인할 수 있다.</p>
 
 <h1 id="참고">참고</h1>
@@ -644,7 +650,7 @@ list2 : [1, 2, 3, 4]
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          6 분 소요
         
       </span>
     

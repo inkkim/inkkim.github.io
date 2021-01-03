@@ -24,7 +24,8 @@ tags:
 # 핵심 컴포넌트
 
 ## 하둡 분산 파일 시스템(HDFS, Hadoop Distributed File System)
- 앞서 언급했듯이 하둡은 확장성과 장애 허용성을 가진 분산 파일 시스템이다. 대규모 데이터셋 분석이라는 하둡의 원래 용도에 맞게, HDFS는 일반적으로 상당히 긴 순차 접근(Sequential Access)방식을 통해 디스크에 불변 데이터를 저장하는데 최적화돼 있다. 그러므로 HDFS는 하둡 스택 내 다른 컴포넌트를 지원하는 핵심 기술이다.
+
+앞서 언급했듯이 하둡은 확장성과 장애 허용성을 가진 분산 파일 시스템이다. 대규모 데이터셋 분석이라는 하둡의 원래 용도에 맞게, HDFS는 일반적으로 상당히 긴 순차 접근(Sequential Access)방식을 통해 디스크에 불변 데이터를 저장하는데 최적화돼 있다. 그러므로 HDFS는 하둡 스택 내 다른 컴포넌트를 지원하는 핵심 기술이다.
 
 - 데이터를 설정 가능한 크기의 블록으로 나눠 저장 (기본값은 128MB)
 - 데이터 회복성 및 병렬 처리를 위해 여러 대의 서버에 각 블록의 복제본(Replica) 저장
@@ -32,9 +33,10 @@ tags:
 - 파일의 일부분 수정 미지원으로 불변성을 보장하여 수평적 확장성과 데이터 회복력을 비교적 단순한 방법으로 획득
 
 ## 얀(YARN, Yet Another Resource Negotiator)
- 하둡의 클러스터 관리 시스템으로 가장 효율적인 방법으로 계산, 리소스를 할당하고 사용자 애플리케이션을 스케쥴링하는 시스템이다. 스케쥴링과 리소스 관리로 데이터 지역성을 극대화하고, 계산량이 많은 애플리케이션이 리소스를 독점하지 않게 제어 및 교체 가능한 스케쥴링 시스템을 지원한다. 사용자당 리소스 제한이나 작업 대기열당 리소스 할당량 등 공용 리소스 시스템의 스케쥴링에 필요한 기본적인 환경 설정을 스케쥴러에 입력할 수 있다.
 
- ![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96365911-08bc2980-117f-11eb-95ac-d37e775255ad.png)
+하둡의 클러스터 관리 시스템으로 가장 효율적인 방법으로 계산, 리소스를 할당하고 사용자 애플리케이션을 스케쥴링하는 시스템이다. 스케쥴링과 리소스 관리로 데이터 지역성을 극대화하고, 계산량이 많은 애플리케이션이 리소스를 독점하지 않게 제어 및 교체 가능한 스케쥴링 시스템을 지원한다. 사용자당 리소스 제한이나 작업 대기열당 리소스 할당량 등 공용 리소스 시스템의 스케쥴링에 필요한 기본적인 환경 설정을 스케쥴러에 입력할 수 있다.
+
+![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96365911-08bc2980-117f-11eb-95ac-d37e775255ad.png)
  
 - 구성 
     - Resource Manager라고 불리는 마스터 노드
@@ -49,6 +51,7 @@ tags:
 - 컨테이너를 비공개로 설정할 수도 있고, 사용자가 요청한 작업을 적절한 시점에 시작할 수도 있음
 
 ## 맵리듀스(MapReduce)
+
 - 2004년 구글에서 대용량 데이터를 분산처리하기 위해 발표한 대용량 분산 처리 프레임워크
 - 테라바이트 또는 페타바이트 이상의 대용량 데이터를 저렴한 x86 서버를 클러스터링해 분산 처리
 - 데이터를 처리하는 기본 단위는 매퍼(Mapper)와 리듀스(Reduce)
@@ -107,10 +110,8 @@ $ ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
 
 ![SSH Access](https://user-images.githubusercontent.com/60086878/96367234-7d936180-1187-11eb-8583-473b718bcc44.png)
 
-
 ## 리눅스 환경설정
-1. SELINUX 끄기
-
+1.SELINUX 끄기
 
 원활한 설치를 위해 Red Hat 보안 요소인 SELINUX를 끄고 진행
 - etc 파일 수정을 위해 sudo 명령어로 config 파일 열기
@@ -131,7 +132,7 @@ SELINUX=disabled
 $ sudo reboot
 ```
 
-2. 보안상 새로운 계정을 생성
+2.보안상 새로운 계정을 생성
 
 - hadoop 이름으로 새로운 계정 생성
 
@@ -145,7 +146,7 @@ $ useradd hadoop
 $ passwd hadoop
 ```
 
-3. hadoop 계정에 sudo 권한 부여
+3.hadoop 계정에 sudo 권한 부여
 
 - etc 파일 수정을 위해 sudo 명령어와 쓰기 권한없이 바로 편집할 수 있는 visud 명령어를 통해 sudoers파일 열기
 
@@ -160,10 +161,11 @@ hadoop  ALL=(ALL)   ALL
 ```
 ![Add Permission](https://user-images.githubusercontent.com/60086878/96367971-e67cd880-118b-11eb-80ed-635a50aab6ef.png)
 
-4. SSH Key-based 인증 설정
+4.SSH Key-based 인증 설정
 
 
- 공개키를 등록하여 각 인스턴스끼리 비밀번호 없이 지속적인 통신을 가능하게 함
+공개키를 등록하여 각 인스턴스끼리 비밀번호 없이 지속적인 통신을 가능하게 함
+
 - hadoop 계정 로그인
 
 ```
@@ -195,9 +197,10 @@ $ ssh localhost
 ```
 
 ## Hadoop 설치
-1. Java 설치
 
- Hadoop은 Java로 쓰여진 오픈 소스이므로 사전에 Java 설치 필수이다. 따라서 Java 버전에 영향을 많이 받으므로, Hadoop 3.2.1 버전과 호환되는 java-1.8.0-openjdk 버전 설치한다.
+1.Java 설치
+
+Hadoop은 Java로 쓰여진 오픈 소스이므로 사전에 Java 설치 필수이다. 따라서 Java 버전에 영향을 많이 받으므로, Hadoop 3.2.1 버전과 호환되는 java-1.8.0-openjdk 버전 설치한다.
 
 - Java 설치
 
@@ -211,7 +214,7 @@ $ sudo dnf install java-1.8.0-openjdk ant -y
 $ java -version
 ```
 
-2. Hadoop 설치
+2.Hadoop 설치
 
 [Hadoop 3.2.1](https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz) 해당 링크를 복사하여 설치
 - 웹 파일 다운로드 패키지 다운로드
@@ -392,19 +395,24 @@ $ sudo shutdown -h now
 ```
 
 ## 이미지 생성 및 복사
-1. 이미지 복사
+
+1.이미지 복사
+
 - 인스턴스 목록에서 해당 인스턴스 선택 후 복사
+
 ![Create AMI](https://user-images.githubusercontent.com/60086878/96369153-55a9fb00-1193-11eb-865d-5a4c82677af9.png)
 
-2. AMI 생성
-- AMI 목록에서 해당 이미지 생성 (나머지 구성은 동일하게 하되, 인스턴스 구성은 2개로 진행)
+2.AMI 생성
 
+- AMI 목록에서 해당 이미지 생성 (나머지 구성은 동일하게 하되, 인스턴스 구성은 2개로 진행)
 - 인스턴스 목록에서 각 인스턴스를 구분하기 쉽게, 인스턴스 이름을 각각 Client, Namenode, Secondnode로 수정
+
 ![Set Name](https://user-images.githubusercontent.com/60086878/96369527-7ecb8b00-1195-11eb-9a89-483cc5396bac.png)
 
 - 이전과 동일한 방법으로 3개의 터미널에서 각각의 인스턴스에 접속 (인스턴스는 재부팅 후 Public IP가 재할당되므로 재확인 후 접속)
 
-3. hostname 설정
+3.hostname 설정
+
 - 각각의 인스턴스에서 진행
 
 ```
@@ -413,7 +421,8 @@ $ sudo hostnamectl set-hostname namenode
 $ sudo hostnamectl set-hostname secondnode
 ```
 
-4. 각각의 인스턴스 연결
+4.각각의 인스턴스 연결
+
 - hosts 파일 열기
 
 ```
@@ -443,7 +452,9 @@ $ ssh namenode
 모두 이상없이 연결된다면 각각의 인스턴스가 서로 인증없이 통신할 수 있는 상태를 의미
 
 ## Hadoop 실행
-1. Hadoop 구동
+
+1.Hadoop 구동
+
 - hdfs 파일 포맷
 
 ```
@@ -471,17 +482,21 @@ $ jps
 ```
 secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실행
 
-2. Hadoop 모니터링
+2.Hadoop 모니터링
+
 외부에서 인스턴스에 접속할 수 있도록 방화벽 설정을 통해 특정 IP와 포트를 설정하는 작업이 필요
 
 - 내 IP 확인
+
 [내 IP 주소 확인](https://www.findip.kr)
 
 - 보안그룹 설정 접근
+
 ![Security Group](https://user-images.githubusercontent.com/60086878/96371729-2baa0600-119e-11eb-8347-cc7c3548c1fb.png)
 
 
 - 인스턴스의 보안그룹 탭으로 접근하여 각 인스턴스에 해당하는 보안그룹의 인바운드 규칙 편집
+
 ![Setting Security Group](https://user-images.githubusercontent.com/60086878/96371898-12ee2000-119f-11eb-8782-ff4388e21825.png)
 
 
@@ -489,6 +504,7 @@ secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실
 
 - namenode Public IP:50070
 - secondnode Public IP:8088
+
 ![Manage Page](https://user-images.githubusercontent.com/60086878/96372012-d53dc700-119f-11eb-8dff-a1dd1c25c075.png)
 
 # 참고

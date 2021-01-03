@@ -395,6 +395,7 @@
           </aside>
         
         <h1 id="완주하지-못한-선수">완주하지 못한 선수</h1>
+
 <p><img src="https://user-images.githubusercontent.com/60086878/103338570-22081d00-4ac2-11eb-9c1e-bc934b7dd499.png" alt="" /></p>
 
 <p>프로그래머스 코딩테스트 연습에 완주하지 못한 선수(Lv.1)라는 문제가 있다. 여느 때와 같이 파이썬으로 문제를 풀이하는데 정확성 테스트는 모두 통과했지만 효율성 검사에서 모두 시간 초과로 실패했다. 내가 처음에 풀이했던 방식은 다음과 같다.</p>
@@ -408,6 +409,7 @@
 <p>왜 그런가 생각해보면 <code class="language-plaintext highlighter-rouge">list.remove()</code>는 시간복잡도가 O(N)이고, 반복문이 한 번 들어가게 되니 O(N²)이 된다. 아마도 효율성 검사에서 O(N²)이면 실패하게 만드는 케이스가 있는 것으로 추정된다.</p>
 
 <h2 id="listsort">list.sort()</h2>
+
 <p><img src="https://user-images.githubusercontent.com/60086878/103339676-592bfd80-4ac5-11eb-84da-625403ecc65d.png" alt="" /></p>
 
 <p><code class="language-plaintext highlighter-rouge">list.sort()</code> 메소드를 이용해 정렬하고, 같은 인덱스를 기준으로 비교하면서 다른 요소가 나올 때까지 비교해 구하는 방식으로 풀었더니 정확성과 효율성 모두 통과할 수 있었다.</p>
@@ -462,6 +464,7 @@
 <h2 id="메소드">메소드</h2>
 
 <h3 id="counterelements">Counter.elements()</h3>
+
 <p>Counter 객체의 정보에 따른 리스트 반환 (양수만)</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
@@ -472,6 +475,7 @@
 </code></pre></div></div>
 
 <h3 id="countermost_commonn">Counter.most_common([n])</h3>
+
 <p>Counter 객체의 count의 빈도 상위 n개의 값 반환하는 메소드</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">(</span><span class="s">'abracadabra'</span><span class="p">).</span><span class="n">most_common</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -479,6 +483,7 @@
 </code></pre></div></div>
 
 <h3 id="counterupdate">Counter.update()</h3>
+
 <p>Counter 객체에 대하여 다른 mapping 및 Counter 객체 정보를 덧셈 연산하는 메소드</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
@@ -489,6 +494,7 @@
 </code></pre></div></div>
 
 <h3 id="countersubstract">Counter.substract()</h3>
+
 <p>Counter 객체에 대하여 다른 mapping 및 Counter 객체 정보를 뺄셈 연산하는 메소드</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
@@ -499,6 +505,7 @@
 </code></pre></div></div>
 
 <h3 id="기타">기타</h3>
+
 <p>이외에도 Counter 객체는 딕셔너리와 유사한 메소드를 지원한다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
@@ -639,7 +646,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          6 분 소요
         
       </span>
     

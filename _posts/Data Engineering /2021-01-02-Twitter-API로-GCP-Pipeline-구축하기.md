@@ -67,25 +67,25 @@ Twitter Developer에 로그인 후 Developer Portal에 접근하면 프로젝트
 
 Google Cloud Platform(이하 GCP)에서는 모든 구글 계정 사용자에게 1년 안에 사용 가능한 $300 달러 상당의 크레딧을 제공하고 있습니다. 최초 이용 시 결제수단 등록이 필요할 수 있습니다.
 
-1. 새 프로젝트 생성
+1.새 프로젝트 생성
 
 ![](https://user-images.githubusercontent.com/60086878/103475014-c5bc3a80-4dec-11eb-9834-718284026a2b.png)
 
 기존에 사용하시던 프로젝트와 혼재되지 않도록 새로운 프로젝트를 생성합니다.
 
-2. 서비스 계정 생성
+2.서비스 계정 생성
 
 ![](https://user-images.githubusercontent.com/60086878/103475077-7f1b1000-4ded-11eb-86eb-ed65860adba1.png)
 
 햄버거 버튼 - ID 및 보안 - 서비스 계정 - 서비스 계정 만들기에 접근하여 위와 같이 BigQuery 데이터 편집자, 게시 구독 편집자 권한을 부여 해줍니다.
 
-3. 서비스 계정 키 생성
+3.서비스 계정 키 생성
 
 ![](https://user-images.githubusercontent.com/60086878/103475155-e8028800-4ded-11eb-9163-d64916ed271e.png)
 
 해당 서비스 계정의 옵션에서 키 만들기를 눌러 JSON 타입의 비공개 키를 생성 해줍니다.
 
-## Pub/Sub 주제 생성
+# Pub/Sub 주제 생성
 
 Pub/Sub은 Apache Kafka와 유사한 기능을 제공하는 GCP의 관리형 서비스입니다. 실시간으로 대량의 데이터를 한 곳에 저장하여 Publisher와 Subscriber 형태로 여러 서비스에 특정 주제의 데이터만 Listen하게 해주는 기능을 제공합니다.
 
@@ -95,7 +95,7 @@ Pub/Sub은 Apache Kafka와 유사한 기능을 제공하는 GCP의 관리형 서
 
 햄버거 버튼 - 빅데이터 - Pub/Sub - 주제 만들기에 접근하여 twitter라는 이름의 주제를 생성해줍니다.
 
-## BigQuery 테이블 생성
+# BigQuery 테이블 생성
 
 BigQuery는 AWS RedShift, Snowflake와 같은 GCP의 DW 서비스입니다. SQL 쿼리를 분산 처리 매우 빠른 속도와 성능을 자랑하며 쿼리 데이터 수에 따라 비용이 부과되는 특징이 있습니다.
 
@@ -103,17 +103,17 @@ BigQuery는 AWS RedShift, Snowflake와 같은 GCP의 DW 서비스입니다. SQL 
 
 햄버거 버튼 - 빅데이터 - BigQuery에 접근하여 데이터 세트와 테이블을 생성 해줍니다.여기서 데이터 세트는 상용 RDBMS의 데이터베이스(스키마)에 해당하고, 테이블은 동일합니다. 테이블 스키마는 위와 같이 생성해줍니다.
 
-## Cloud Functions 설정
+# Cloud Functions 설정
 
 GCP Cloud Functions는 특정 요청이 들어올 경우 정의된 함수를 실행시켜주는 기능입니다. 이번 실습에서는 Pub/Sub에 데이터가 들어오면 해당 데이터를 BigQuery에 정의된 테이블로 insert하는 함수입니다.
 
-1. 구성
+1.구성
 
 ![](https://user-images.githubusercontent.com/60086878/103477893-6cf99b80-4e06-11eb-873a-5888d7315589.png)
 
 Pub/Sub의 twitter Topic - Cloud 함수 트리거에 접근합니다. Topic을 경유해서 Cloud Functions를 생성했기 때문에 트리거 유형과 주제 유형은 원하는대로 설정되어 있으니 그대로 저장 후 다음으로 넘어갑니다.
 
-2. 코드
+2.코드
 
 ![](https://user-images.githubusercontent.com/60086878/103477873-3e7bc080-4e06-11eb-8c62-bc507051d891.png)
 
@@ -160,7 +160,7 @@ google-cloud-bigquery
 
 이번 실습에서는 Twitter API와 GCP 서비스들과 상호작용 하기위해 Python 코드를 사용합니다. 코드를 작성하기에 앞서 이전에 발급받은 Tiwtter API Key와 Access Token에 대한 정보를 환경변수로 작성합니다. 또한 GCP 계정 설정과정에서 발급한 서비스 계정에 대한 JSON 타입의 비공개 키 또한 Python 파일과 동일한 디렉토리에 위치시킵니다.
 
-1. Twitter API, Access ToKen, GCP SA Credentials 환경변수 설정
+1.Twitter API, Access ToKen, GCP SA Credentials 환경변수 설정
 
 ```bash
 # .zshrc (혹은 .bashrc) 안에서 작성
@@ -173,7 +173,7 @@ export TWITTER_ACCESS_TOKEN_SECRET="TWITTER ACCESS TOKEN SECRET"
 $ source ~/.zshrc 
 ```
 
-2. Python 코드 작성
+2.Python 코드 작성
 
 - 이때, 
 
@@ -250,7 +250,7 @@ BigQuery에서 쿼리를 조회해보면 테이블에 정의된 스키마에 맞
 
 이제 위 Python 코드를 Docker Container로 말아서 최종적으로 GKE에 배포하여 무인으로 동작하게 할 것입니다.
 
-1. Dockerfile 작성
+1.Dockerfile 작성
 
 ```Dockerfile
 # Base Image 설정
@@ -284,7 +284,7 @@ $ docker build -t twitter .
 $ docker images
 ```
 
-2. Google cloud SDK gcloud 설치
+2.Google cloud SDK gcloud 설치
 
 GCP는 CLI 환경에서 서비스를 이용할 수 있도록 [gcloud](https://cloud.google.com/sdk/docs/downloads-versioned-archives?hl=ko)라는 자체 SDK를 제공합니다. 수월한 GKE 구축을 위해 다음과 같이 gcloud를 설치합니다.
 
@@ -300,7 +300,7 @@ $ cd google-cloud-sdk/ && ./install.sh
 $ gcloud init
 ```
 
-3. GCP Container Registry에 Docker Image Push
+3.GCP Container Registry에 Docker Image Push
 
 GCP에서는 자사 서비스에서 Container가 빠르게 배포될 수 있도록 개인 Container Registry를 제공합니다. 아래 명령어로 Docker Image에 태그를 붙이고, Container Registry에 Push한다.
 
@@ -312,7 +312,7 @@ $ gcloud auth configure-docker # 인증된 Docker 구성
 $ docker push gcr.io/twitter-300412/twitter
 ```
 
-4. GKE에 배포
+4.GKE에 배포
 
 ![](https://user-images.githubusercontent.com/60086878/103479422-d8e10180-4e10-11eb-8cde-a7a43ab461e8.png)
 
@@ -326,7 +326,7 @@ $ docker push gcr.io/twitter-300412/twitter
 
 손쉽게 GKE 클러스터가 생성되고 우리가 배포한 컨테이너도 `nginx-1-f7f74655b-xkrml`라는 Pod로써 안정적으로 작동되고 있습니다. 이제 GKE에 의해 Twitter API로 Twitter Streaming를 요청하여 Pub/Sub과 BigQuery로 전송하는 일련의 과정들이 자동으로 수행되고 있습니다. 즉, `data`라는 키워드가 포함된 Tweets 데이터가 자동으로 수집되는 데이터 파이프라인이 완성된 것입니다.
 
-5. Google Studio로 연결
+# Google Studio로 연결
 
 ![](https://user-images.githubusercontent.com/60086878/103480193-3c216280-4e16-11eb-96c6-f4f64d867929.png)
 

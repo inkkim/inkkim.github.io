@@ -448,66 +448,65 @@
 <p>출시년도로부터 데스크탑 버전은 <strong>5년</strong>, 서버 버전은 <strong>10년</strong> 업데이트 지원해준다고 한다.</p>
 
 <h2 id="부팅-usb-만들기">부팅 USB 만들기</h2>
-<ol>
-  <li>먼저 <a href="https://releases.ubuntu.com/bionic/">Ubuntu 18.04 LTS Download Link</a>에서 Desktop 버전 iso 이미지를 다운받는다.</li>
-  <li><a href="https://rufus.ie">Rufus</a>를 다운받아 부팅 USB를 만든다.
-    <ul>
-      <li>HiSEON님이 정리해주신 <a href="https://hiseon.me/linux/ubuntu/ubuntu-install-usb/">우분투 부팅 USB 만들기</a>를 참고하여 만들었습니다.</li>
-    </ul>
-  </li>
-</ol>
+<p>1.먼저 <a href="https://releases.ubuntu.com/bionic/">Ubuntu 18.04 LTS Download Link</a>에서 Desktop 버전 iso 이미지를 다운받는다.</p>
+
+<p>2.<a href="https://rufus.ie">Rufus</a>를 다운받아 부팅 USB를 만든다.</p>
+
+<ul>
+  <li>HiSEON님이 정리해주신 <a href="https://hiseon.me/linux/ubuntu/ubuntu-install-usb/">우분투 부팅 USB 만들기</a>를 참고하여 만들었습니다.</li>
+</ul>
 
 <h2 id="부팅-우선순위-변경">부팅 우선순위 변경</h2>
+
 <p>설치 전에 알아보니 2개의 SSD에 독립적으로 OS를 설치하여 멀티부팅을 하려면 설치 과정에서 다른 SSD는 물리적으로 제거하고 설치를 진행하지 않으면 부트로더가 한 쪽에 설치되어 부팅이 되지 않는 문제가 있을 수 있다고 한다. 안전하게 제거하고 설치를 진행했다.</p>
 
-<ol>
-  <li>부팅 시 F2나 DEL키를 통해 BIOS에 진입한다. (BIOS 진입 키는 각 메인보드 제조사마다 상이하니 확인 후 진행)</li>
-  <li>부팅 우선순위(Boot Prioriy)에서 드래그를 통해 부팅 USB를 가장 상위로 위치시킨 후 재부팅한다.</li>
-</ol>
+<p>1.부팅 시 F2나 DEL키를 통해 BIOS에 진입한다. (BIOS 진입 키는 각 메인보드 제조사마다 상이하니 확인 후 진행)</p>
+
+<p>2.부팅 우선순위(Boot Prioriy)에서 드래그를 통해 부팅 USB를 가장 상위로 위치시킨 후 재부팅한다.</p>
 
 <h2 id="설치">설치</h2>
-<ol>
-  <li>
-    <p>편한 언어로 선택하고 Install Ubuntu 클릭한다.
-<img src="https://user-images.githubusercontent.com/60086878/97251824-fb243500-184b-11eb-81c6-b622e10b3eee.png" alt="Ubuntu Install 1" /></p>
-  </li>
-  <li>
-    <p>특이사항 없으니, Continue를 클릭한다.
-<img src="https://user-images.githubusercontent.com/60086878/97252001-581feb00-184c-11eb-9f60-afc1e7280266.png" alt="Ubuntu Install 2" /></p>
-  </li>
-  <li>
-    <p>기존에 파티션을 나누어 설치하시는 분들은 Something else, 필자처럼 깨끗한 SSD에 설치하는 경우 Erase disk and install Ubuntu 선택 후 Install Now를 클릭한다.
-<img src="https://user-images.githubusercontent.com/60086878/97252135-9ae1c300-184c-11eb-9616-f639f60b9480.png" alt="Ubuntu Install 3" /></p>
-  </li>
-  <li>
-    <p>위치를 설정한다.
-<img src="https://user-images.githubusercontent.com/60086878/97252722-01b3ac00-184e-11eb-9d40-edde20707ca3.png" alt="Ubuntu Install 4" /></p>
-  </li>
-  <li>
-    <p>유저 기본정보를 입력한다.
-<img src="https://user-images.githubusercontent.com/60086878/97252749-13954f00-184e-11eb-91ac-ac132ae42629.png" alt="Ubuntu Install 5" /></p>
-  </li>
-</ol>
+
+<p>1.편한 언어로 선택하고 Install Ubuntu 클릭한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97251824-fb243500-184b-11eb-81c6-b622e10b3eee.png" alt="Ubuntu Install 1" /></p>
+
+<p>2.특이사항 없으니, Continue를 클릭한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97252001-581feb00-184c-11eb-9f60-afc1e7280266.png" alt="Ubuntu Install 2" /></p>
+
+<p>3.기존에 파티션을 나누어 설치하시는 분들은 Something else, 필자처럼 깨끗한 SSD에 설치하는 경우 Erase disk and install Ubuntu 선택 후 Install Now를 클릭한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97252135-9ae1c300-184c-11eb-9616-f639f60b9480.png" alt="Ubuntu Install 3" /></p>
+
+<p>4.위치를 설정한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97252722-01b3ac00-184e-11eb-9d40-edde20707ca3.png" alt="Ubuntu Install 4" /></p>
+
+<p>5.유저 기본정보를 입력한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97252749-13954f00-184e-11eb-91ac-ac132ae42629.png" alt="Ubuntu Install 5" /></p>
 
 <h1 id="nvidia-드라이버-설치">Nvidia 드라이버 설치</h1>
-<p>우분투에서 GPU가 제대로 작동하려면 해당 모델에 맞는 드라이버가 적절하게 설치되어야 한다. 처음에는 ubuntu-drivers를 이용한 자동설치 방법을 보고는 쉽게 생각하고 설치했는데, 처음에는 잘 작동하는가 싶더니 재부팅하니 아예 GPU를 인식하지 못하고, default graphic마저 disabled되어서 터미널창만 반복적으로 부팅되는 문제가 발생했다.
-<img src="https://user-images.githubusercontent.com/60086878/97261708-b952b900-1862-11eb-97d0-7714f56a5697.png" alt="Error" /></p>
+
+<p>우분투에서 GPU가 제대로 작동하려면 해당 모델에 맞는 드라이버가 적절하게 설치되어야 한다. 처음에는 ubuntu-drivers를 이용한 자동설치 방법을 보고는 쉽게 생각하고 설치했는데, 처음에는 잘 작동하는가 싶더니 재부팅하니 아예 GPU를 인식하지 못하고, default graphic마저 disabled되어서 터미널창만 반복적으로 부팅되는 문제가 발생했다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97261708-b952b900-1862-11eb-97d0-7714f56a5697.png" alt="Error" /></p>
 
 <p>설치 전에 우분투와 신나게 놀다가 이것저것 많이 설치해놓은 상황이었는데, 구글에서 해답을 얻지 못한채 빠르게 다시 설치하기로 했다. 이러한 이슈가 있으니 다른 유틸리티나 설정보다도 Nvidia 드라이버 설치를 완료하고 하길 추천한다..</p>
 
 <p>만약 필자와 같은 오류를 만난 이들을 위해 내가 Nvidia 드라이버를 수동으로 설치한 방법을 소개한다.</p>
 
-<ol>
-  <li><a href="https://www.nvidia.com/Download/index.aspx">Nvidia Download Driver</a>에서 해당 GPU 모델에 맞는 드라이버를 받는다.
-    <ul>
-      <li>우분투는 Linux 64-bitd이다.</li>
-      <li>Type은 Long Lived와 Short Lived는 각각 minor, major 업데이트 위주
-<img src="https://user-images.githubusercontent.com/60086878/97253330-7c30fb80-184f-11eb-92a8-5d99d8b9c149.png" alt="Nvidia Driver 1" />
-<img src="https://user-images.githubusercontent.com/60086878/97261447-35003600-1862-11eb-8e3a-13094b3f77d3.png" alt="Nvidia Driver 2" /></li>
-    </ul>
-  </li>
-  <li>혹시 이전에 설치했던 Nvidia driver 파일을 삭제하고, Nvida driver 설치에 필요한 Development Package gcc, make를 설치한다.</li>
-</ol>
+<p>1.<a href="https://www.nvidia.com/Download/index.aspx">Nvidia Download Driver</a>에서 해당 GPU 모델에 맞는 드라이버를 받는다.</p>
+
+<ul>
+  <li>우분투는 Linux 64-bitd이다.</li>
+  <li>Type은 Long Lived와 Short Lived는 각각 minor, major 업데이트 위주</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/97253330-7c30fb80-184f-11eb-92a8-5d99d8b9c149.png" alt="Nvidia Driver 1" />
+<img src="https://user-images.githubusercontent.com/60086878/97261447-35003600-1862-11eb-8e3a-13094b3f77d3.png" alt="Nvidia Driver 2" /></p>
+
+<p>2.혹시 이전에 설치했던 Nvidia driver 파일을 삭제하고, Nvida driver 설치에 필요한 Development Package gcc, make를 설치한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt --purge autoremove nvidia*
 $ sudo apt-get update
@@ -515,34 +514,28 @@ $ sudo apt-get install gcc
 $ sudo apt-get install make
 </code></pre></div></div>
 
-<ol>
-  <li>Nvidia driver 설치 과정에서 충돌을 피하기 위해 nouveau를 blacklist 추가한다.</li>
-</ol>
+<p>3.Nvidia driver 설치 과정에서 충돌을 피하기 위해 nouveau를 blacklist 추가한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nano /etc/modprobe.d/blacklist.conf
 </code></pre></div></div>
+
 <p><img src="https://user-images.githubusercontent.com/60086878/97263549-90342780-1866-11eb-9ead-4c832d3160c3.png" alt="blacklist" /></p>
+
 <ul>
   <li>blacklist를 추가 하고서도 설치과정에서 nouveau 관련 오류를 마주하는 경우가 있는데, 이 때는 Nvidia driver installer가 동의 시 자동으로 생성해주는 방법으로 하면 된다.</li>
 </ul>
 
-<ol>
-  <li>Ctrl + Alt + F3를 눌러 가상콘솔로 이동하여 Nvidia driver가 설치된 경로로 이동하여 installer를 실행한다.</li>
-</ol>
+<p>4.Ctrl + Alt + F3를 눌러 가상콘솔로 이동하여 Nvidia driver가 설치된 경로로 이동하여 installer를 실행한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo bash YOUR_DIR/NVIDIA-Linux-x86_64-450.80.02.run
 </code></pre></div></div>
 
-<ol>
-  <li>설치가 완료되면 재부팅한다.</li>
-</ol>
+<p>5.설치가 완료되면 재부팅한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo reboot
 </code></pre></div></div>
 
-<ol>
-  <li>아래 명령어를 통해 Nvidia driver가 GPU 자원을 제대로 인식하는지 확인한다.</li>
-</ol>
+<p>6.아래 명령어를 통해 Nvidia driver가 GPU 자원을 제대로 인식하는지 확인한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nvidia-smi
 </code></pre></div></div>
@@ -550,28 +543,23 @@ $ sudo apt-get install make
 <p>++ 필자의 경우 로그인 화면에서 그래픽이 깨지는 현상이 있는데, 로그인하여 데스크톱 화면으로 들어가면 정상작동한다.</p>
 
 <h1 id="docker-설치">Docker 설치</h1>
-<ol>
-  <li>apt-get 업그레이드 및 업데이트를 한다.</li>
-</ol>
+
+<p>1.apt-get 업그레이드 및 업데이트를 한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt update
 $ sudo apt upgrade
 </code></pre></div></div>
 
-<ol>
-  <li>도커 설치에 필요한 필수 패키지 다운로드를 한다.</li>
-</ol>
+<p>2.도커 설치에 필요한 필수 패키지 다운로드를 한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install curl apt-transport-https ca-certificates software-properties-common
 </code></pre></div></div>
 
-<ol>
-  <li>도커 Repository를 추가한다.
-    <ul>
-      <li>GPG Key 추가</li>
-    </ul>
-  </li>
-</ol>
+<p>3.도커 Repository를 추가한다.</p>
+
+<ul>
+  <li>GPG Key 추가</li>
+</ul>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install curl
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -595,16 +583,12 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ apt-cache policy docker-ce
 </code></pre></div></div>
 
-<ol>
-  <li>최종적으로 도커를 설치한다.</li>
-</ol>
+<p>4.최종적으로 도커를 설치한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install docker-ce
 </code></pre></div></div>
 
-<ol>
-  <li>도커의 실행상태를 확인한다.</li>
-</ol>
+<p>5.도커의 실행상태를 확인한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl status docker
 </code></pre></div></div>
@@ -615,26 +599,20 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl enable docker
 </code></pre></div></div>
 
-<ol>
-  <li>도커 명령어 실행할 때마다 sudo 권한을 묻지 않도록 도커 권한을 부여한다.</li>
-</ol>
+<p>6.도커 명령어 실행할 때마다 sudo 권한을 묻지 않도록 도커 권한을 부여한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo usermod -aG docker $USER
 </code></pre></div></div>
 
 <h1 id="nvidia-docker-20-설치">Nvidia-Docker 2.0 설치</h1>
-<ol>
-  <li>혹시 이전에 설치되어있는 nvidia-docker 1.0이 있다면 삭제한다.</li>
-</ol>
+<p>1.혹시 이전에 설치되어있는 nvidia-docker 1.0이 있다면 삭제한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 
 $ docker ps -q -a -f volume={} | xargs -r docker rm -f
 $ sudo apt-get purge nvidia-docker
 </code></pre></div></div>
 
-<ol>
-  <li>Repository 설정 및 업데이트를 해준다.</li>
-</ol>
+<p>2.Repository 설정 및 업데이트를 해준다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
   sudo apt-key add -
@@ -649,20 +627,17 @@ $ distribution/nvidia-docker.list | \
 $ sudo apt-get update
 </code></pre></div></div>
 
-<ol>
-  <li>nvidia-docker 2.0를 설치한다.</li>
-</ol>
+<p>3.nvidia-docker 2.0를 설치한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install nvidia-docker2
 $ sudo pkill -SIGHUP dockerd
 </code></pre></div></div>
 
-<ol>
-  <li>도커 내부에서 nvidia-smi 명령어가 제대로 작동하는지 확인한다. 이 명령어를 입력하고 아래와 같은 화면이 나오면 성공이다.</li>
-</ol>
+<p>4.도커 내부에서 nvidia-smi 명령어가 제대로 작동하는지 확인한다. 이 명령어를 입력하고 아래와 같은 화면이 나오면 성공이다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 </code></pre></div></div>
+
 <p><img src="https://user-images.githubusercontent.com/60086878/97267697-e8225c80-186d-11eb-95b0-5df5d1c899d6.png" alt="nvidia-smi in Docker" /></p>
 
 <p>여기까지가 우분투를 설치하고 도커 내에 nvidia-docker를 설치하여 GPU 자원을 사용할 수 있도록 하는 과정이다. 글이 너무 길어지는 관계로 이만 줄이고, <a href="https://inkkim.github.io/article/2.html">💻맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 2</a>에서 글을 이어가겠다.</p>
@@ -804,7 +779,7 @@ $ sudo pkill -SIGHUP dockerd
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          최대 1 분 소요
+          6 분 소요
         
       </span>
     

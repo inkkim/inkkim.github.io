@@ -1,23 +1,330 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-03T17:16:52+09:00</updated><id>/feed.xml</id><title type="html">🤔선미모드</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;architecture&quot;&gt;Architecture&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-03T23:32:47+09:00</updated><id>/feed.xml</id><title type="html">🤔선미모드</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리한다. 실습의 대략적인 개요는 다음과 같다.&lt;/p&gt;
+&lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청&lt;/li&gt;
   &lt;li&gt;Pub/Sub Topic으로 전송 (Apache Kafka와 흡사)&lt;/li&gt;
-  &lt;li&gt;Publish Trigger에 의해 Big Query로 데이터를 전송하는 Cloud Function을 실행&lt;/li&gt;
-  &lt;li&gt;Data Studio와 Big Query를 연동하여 시각화&lt;/li&gt;
+  &lt;li&gt;Publish Trigger에 의해 BigQuery로 데이터를 전송하는 Cloud Functions를 실행&lt;/li&gt;
+  &lt;li&gt;Data Studio와 BigQuery를 연동하여 시각화&lt;/li&gt;
   &lt;li&gt;GKE로 위 작업들을 실행하는 컨테이너 배포&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;twitter-api로부터-실시간으로-발생하는-tweets-text를-요청&quot;&gt;Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청&lt;/h1&gt;
+&lt;h1 id=&quot;데이터-수집&quot;&gt;데이터 수집&lt;/h1&gt;
+&lt;p&gt;Twitter는 Streaming Data를 수집하기 아주 좋은 예시입니다. Twitter Developer에서 개발자들에게 분석 혹은 서비스에 필요한 API를 제공합니다. 물론 사용량에따라 티어가 있지만 프리티어도 예제로 활용하기에 충분합니.&lt;/p&gt;
 
-&lt;h1 id=&quot;나가며&quot;&gt;나가며&lt;/h1&gt;
-&lt;p&gt;이 글은 2020.09.23(목)에 진행된 제81차 토크ON세미나에서 SOCAR의 김상우님이 강의해주신 내용을 토대로 리마인드 차원에서 작성한 것이다. Hands-on 강의 동영상과 함께 실습을 진행해보고자 한다면 &lt;a href=&quot;https://tacademy.skplanet.com/frontMain.action&quot;&gt;T Academy&lt;/a&gt;에서 회원가입 후 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 수강신청하여 진행해보길 바란다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Twitter Developer 회원 등록&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;먼저 &lt;a href=&quot;https://developer.twitter.com/en&quot;&gt;Twitter Developer&lt;/a&gt;에서 회원가입을 진행합니다.&lt;/p&gt;
+
+&lt;p&gt;기본 개인정보를 기입하고 다음과 같이 데이터를 어디에 사용할 것인지 적으라고 합니다. 200자 이상 영어로 적으라고 하는데 대충 공부하는데 쓴다는 내용으로 채우고 넘어가면 되겠습니다. 주의할 점은 Twitter Developer 계정은 기존 Twitter 계정을 기반으로 등록하는 과정입니다. 이후 Twitter 계정에 등록된 이메일 계정으로 확인 이메일이 전송되니 기존에 설정된 이메일 계정이 없다면 첫 번째 절차에서 이메일을 수정해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474496-d5855000-4de7-11eb-88e4-2052b0863b9c.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;확인 이메일 회신&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;아래 처럼 등록에 성공했다는 페이지와 함께 확인 이메일을 보냈다는 문구가 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474502-e2a23f00-4de7-11eb-8353-b916f3ca7fe2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;등록된 이메일 계정에서 확인 메일에 Confirm 버튼을 눌러줍니5.다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474592-d23e9400-4de8-11eb-8490-910edc7f87e0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;API Key와 Access Token 발급&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474682-b38ccd00-4de9-11eb-8b01-449777e0167a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Twitter Developer에 로그인 후 Developer Portal에 접근하면 프로젝트 생성 절차가 진행되며 위와 같은 대시보드가 나옵니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474744-2dbd5180-4dea-11eb-8d8a-110d3e75c612.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;화면 중앙에 열쇠 아이콘으로 보안 페이지에 접근하면 API Key와 Access Token을 발급할 수 있는 페이지가 나옵니다. 계정 가입일 기준 약 2주 이후에는 보안상 더 이상 조회가 불가능하니 미리 저장해두어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474833-031fc880-4deb-11eb-9473-cfcd5d6de4ff.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;필자의 경우 편의를 위해 위와 같이 각 Value들을 .zshrc (혹은 .bashrc)에 환경변수로 저장해 두었습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;google-cloud-platform-gcp-계정-설정&quot;&gt;Google Cloud Platform (GCP) 계정 설정&lt;/h1&gt;
+
+&lt;p&gt;Google Cloud Platform(이하 GCP)에서는 모든 구글 계정 사용자에게 1년 안에 사용 가능한 $300 달러 상당의 크레딧을 제공하고 있습니다. 최초 이용 시 결제수단 등록이 필요할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;1.새 프로젝트 생성&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475014-c5bc3a80-4dec-11eb-9834-718284026a2b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기존에 사용하시던 프로젝트와 혼재되지 않도록 새로운 프로젝트를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;2.서비스 계정 생성&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475077-7f1b1000-4ded-11eb-86eb-ed65860adba1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;햄버거 버튼 - ID 및 보안 - 서비스 계정 - 서비스 계정 만들기에 접근하여 위와 같이 BigQuery 데이터 편집자, 게시 구독 편집자 권한을 부여 해줍니다.&lt;/p&gt;
+
+&lt;p&gt;3.서비스 계정 키 생성&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475155-e8028800-4ded-11eb-9163-d64916ed271e.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 서비스 계정의 옵션에서 키 만들기를 눌러 JSON 타입의 비공개 키를 생성 해줍니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;pubsub-주제-생성&quot;&gt;Pub/Sub 주제 생성&lt;/h1&gt;
+
+&lt;p&gt;Pub/Sub은 Apache Kafka와 유사한 기능을 제공하는 GCP의 관리형 서비스입니다. 실시간으로 대량의 데이터를 한 곳에 저장하여 Publisher와 Subscriber 형태로 여러 서비스에 특정 주제의 데이터만 Listen하게 해주는 기능을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;하지만 이 실습에서는 Cloud Function의 Trigger 역할로만 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475184-52b3c380-4dee-11eb-89ea-9ee5ee390a8f.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;햄버거 버튼 - 빅데이터 - Pub/Sub - 주제 만들기에 접근하여 twitter라는 이름의 주제를 생성해줍니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;bigquery-테이블-생성&quot;&gt;BigQuery 테이블 생성&lt;/h1&gt;
+
+&lt;p&gt;BigQuery는 AWS RedShift, Snowflake와 같은 GCP의 DW 서비스입니다. SQL 쿼리를 분산 처리 매우 빠른 속도와 성능을 자랑하며 쿼리 데이터 수에 따라 비용이 부과되는 특징이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477125-d1186180-4dfe-11eb-9b99-e5c00bb8cf52.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;햄버거 버튼 - 빅데이터 - BigQuery에 접근하여 데이터 세트와 테이블을 생성 해줍니다.여기서 데이터 세트는 상용 RDBMS의 데이터베이스(스키마)에 해당하고, 테이블은 동일합니다. 테이블 스키마는 위와 같이 생성해줍니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;cloud-functions-설정&quot;&gt;Cloud Functions 설정&lt;/h1&gt;
+
+&lt;p&gt;GCP Cloud Functions는 특정 요청이 들어올 경우 정의된 함수를 실행시켜주는 기능입니다. 이번 실습에서는 Pub/Sub에 데이터가 들어오면 해당 데이터를 BigQuery에 정의된 테이블로 insert하는 함수입니다.&lt;/p&gt;
+
+&lt;p&gt;1.구성&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477893-6cf99b80-4e06-11eb-873a-5888d7315589.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pub/Sub의 twitter Topic - Cloud 함수 트리거에 접근합니다. Topic을 경유해서 Cloud Functions를 생성했기 때문에 트리거 유형과 주제 유형은 원하는대로 설정되어 있으니 그대로 저장 후 다음으로 넘어갑니다.&lt;/p&gt;
+
+&lt;p&gt;2.코드&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477873-3e7bc080-4e06-11eb-8c62-bc507051d891.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;런타임은 Python 3.7 진입점은 기존 코드를 활용할 것이니 그대로 유지합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# main.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;google.cloud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bigquery&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tweets_to_bq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tweet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bigquery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dataset_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'twitter_data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# BigQuery 데이터 세트
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;table_ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataset_ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'twitter'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# BigQuery 테이블
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table_ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;tweet_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tweet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;rows_to_insert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tweet_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tweet_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'created_at'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tweet_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert_rows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rows_to_insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello_pubsub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Triggered from a message on a Cloud Pub/Sub topic.
+    Args:
+         event (dict): Event payload.
+         context (google.cloud.functions.Context): Metadata for the event.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pubsub_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b64decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'utf-8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pubsub_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tweets_to_bq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pubsub_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;requirements.txt에는 함수 실행에 필요한 패키지를 적어줍니다.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# requirements.txt
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;google&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cloud&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bigquery&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;python-코드-작성&quot;&gt;Python 코드 작성&lt;/h1&gt;
+
+&lt;p&gt;이번 실습에서는 Twitter API와 GCP 서비스들과 상호작용 하기위해 Python 코드를 사용합니다. 코드를 작성하기에 앞서 이전에 발급받은 Tiwtter API Key와 Access Token에 대한 정보를 환경변수로 작성합니다. 또한 GCP 계정 설정과정에서 발급한 서비스 계정에 대한 JSON 타입의 비공개 키 또한 Python 파일과 동일한 디렉토리에 위치시킵니다.&lt;/p&gt;
+
+&lt;p&gt;1.Twitter API, Access ToKen, GCP SA Credentials 환경변수 설정&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# .zshrc (혹은 .bashrc) 안에서 작성&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GOOGLE_APPLICATION_CREDENTIALS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./twitter-300412-3f24e09c59ef.json&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TWITTER_API&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TWITTER API KEY&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TWITTER_API_SECRET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TWITTER API SECRET KEY&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TWITTER_ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TWITTER ACCESS TOKEN&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TWITTER_ACCESS_TOKEN_SECRET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TWITTER ACCESS TOKEN SECRET&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.zshrc 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2.Python 코드 작성&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이때,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tweepy&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;google.cloud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pubsub_v1&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;google.oauth2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service_account&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# GCP 서비스 계정 비공개 키
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'GOOGLE_APPLICATION_CREDENTIALS'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# GCP 계정 인증
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;credentials&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Credentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_service_account_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;key_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scopes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://www.googleapis.com/auth/cloud-platform&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Pub/Sub 인증
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pubsub_v1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PublisherClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;credentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Pub/Sub Topic 지정 (프로젝트 ID, Topic)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'twitter-300412'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'twitter'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Twitter API Key / Access Token
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'TWITTER_API'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;twitter_api_secret_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'TWITTER_API_SECRET'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;twitter_access_token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'TWITTER_ACCESS_TOKEN'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;twitter_access_token_secret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'TWITTER_ACCESS_TOKEN_SECRET'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# json 파일은 BigQuery에서 생성한 테이블의 스키마 정보와 일치하게 작성 
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SimpleStreamListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tweepy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StreamListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# status가 실제로 받는 데이터 객체이므로, BigQuery에서 생성한 테이블의 스키마 정보에 맞춰 파일 생성
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;tweet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'created_at'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;created_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;topic_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tweet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'utf-8'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;420&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;stream_listener&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SimpleStreamListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Twitter API 계정 및 액세스 인증
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tweepy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OAuthHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_api_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;twitter_api_secret_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter_access_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;twitter_access_token_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# tweepy.Stream 객체 선언
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitterStream&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tweepy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Stream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stream_listener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 특정 주제어가 포함된 Tweets Streaming
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitterStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;track&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;또한 Python과 Twitter API와 GCP 서비스와 상호작용하기 위한 패키지를 설치합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tweepy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;3.8.0 google-cloud-pubsub&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;1.6.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477806-7b938300-4e05-11eb-934a-4f0dfb0862e8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 파이썬 파일을 실행하면 다음과 같이 실시간 Tweets 데이터들을 확인할 수 있습니다. 이 데이터들이 Pub/Sub의 twitter Topic로 스트리밍 되면서 동시에 Cloud Functions에 정의된 함수에 의해 BigQuery로 데이터가 들어가고 있는것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103478229-62400600-4e08-11eb-9d63-88440a706e43.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;BigQuery에서 쿼리를 조회해보면 테이블에 정의된 스키마에 맞춰 데이터가 적재되고 있음을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;gke에-컨테이너-배포&quot;&gt;GKE에 컨테이너 배포&lt;/h1&gt;
+
+&lt;p&gt;이제 위 Python 코드를 Docker Container로 말아서 최종적으로 GKE에 배포하여 무인으로 동작하게 할 것입니다.&lt;/p&gt;
+
+&lt;p&gt;1.Dockerfile 작성&lt;/p&gt;
+
+&lt;div class=&quot;language-Dockerfile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Base Image 설정&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; python:3.7-slim&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Working Directory 설정&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /app&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 실행에 필요한  파일 복사&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;## Twitter.py / GCP SA Key.json / requirements.txt&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; . /app&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 패키지 설치&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--trusted-host&lt;/span&gt; pypi.python.org &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; requirements.txt
+
+&lt;span class=&quot;c&quot;&gt;# 환경변수 설정&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; GOOGLE_APPLICATION_CREDENTIALS=&quot;./twitter-300412-3f24e09c59ef.json&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; TWITTER_API=&quot;TWITTER API KEY&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; TWITTER_API_SECRET=&quot;TWITTER API SECRET KEY&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; TWITTER_ACCESS_TOKEN=&quot;TWITTER ACCESS TOKEN&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; TWITTER_ACCESS_TOKEN_SECRET=&quot;TWITTER ACCESS TOKEN SECRET&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [&quot;python&quot;, &quot;Twitter.py&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위와 같이 Dockerfile을 작성하고, 아래 명령어로 Docker Image를 빌드합니다. 약 1-2분 후 완료되면 정상적으로 빌드되었는지 확인합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 약 1-2분 소요&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; twitter &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;2.Google cloud SDK gcloud 설치&lt;/p&gt;
+
+&lt;p&gt;GCP는 CLI 환경에서 서비스를 이용할 수 있도록 &lt;a href=&quot;https://cloud.google.com/sdk/docs/downloads-versioned-archives?hl=ko&quot;&gt;gcloud&lt;/a&gt;라는 자체 SDK를 제공합니다. 수월한 GKE 구축을 위해 다음과 같이 gcloud를 설치합니다.&lt;/p&gt;
+
+&lt;p&gt;먼저 아래 명령어로 OS (32/64)비트 버전을 확인하고 패키지를 설치하여 압축을 풀어줍니다. (아래 명령어는 Mac OS를 기준으로 합니다.) 다른 OS의 경우 &lt;a href=&quot;https://cloud.google.com/sdk/docs/downloads-versioned-archives?hl=ko&quot;&gt;gcloud&lt;/a&gt;에서 해당되는 OS용 패키지를 다운 받으시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;압축 해제가 완료되면 install.sh 파일을 실행시켜 안내에따라 설치를 진행합니다. 이 과정에는 사용하고자 하는 Google 계정의 인증과 프로젝트를 설정하는 과정이 포함되어 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;getconf LONG_BIT
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-320.0.0-darwin-x86_64.tar.gz?hl&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ko
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xvzf&lt;/span&gt; google-cloud-sdk-320.0.0-darwin-x86_64.tar.gz&lt;span class=&quot;se&quot;&gt;\?&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;hl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ko
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;google-cloud-sdk/ &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./install.sh
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gcloud init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;3.GCP Container Registry에 Docker Image Push&lt;/p&gt;
+
+&lt;p&gt;GCP에서는 자사 서비스에서 Container가 빠르게 배포될 수 있도록 개인 Container Registry를 제공합니다. 아래 명령어로 Docker Image에 태그를 붙이고, Container Registry에 Push한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ docker tag 이미지:태그 gcr.io/프로젝트 ID/이미지:태그&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker tag twitter gcr.io/twitter-300412/twitter
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gcloud auth configure-docker &lt;span class=&quot;c&quot;&gt;# 인증된 Docker 구성&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker push gcr.io/twitter-300412/twitter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4.GKE에 배포&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479422-d8e10180-4e10-11eb-8cde-a7a43ab461e8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;햄버거 버튼 - 도구 - Container Registry에 접근하면 위와 같이 Local에서 Push한 Image가 올라온 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479539-b13e6900-4e11-11eb-93f7-962021551a03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 이미지에 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GKE에 배포&lt;/code&gt;를 통해 기존 컨테이너 이미지로 배포를 시작하면 약 5분 정도 기다리면 배포가 완료됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479759-30806c80-4e13-11eb-8cfc-de75a492f8ae.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;손쉽게 GKE 클러스터가 생성되고 우리가 배포한 컨테이너도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx-1-f7f74655b-xkrml&lt;/code&gt;라는 Pod로써 안정적으로 작동되고 있습니다. 이제 GKE에 의해 Twitter API로 Twitter Streaming를 요청하여 Pub/Sub과 BigQuery로 전송하는 일련의 과정들이 자동으로 수행되고 있습니다. 즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt;라는 키워드가 포함된 Tweets 데이터가 자동으로 수집되는 데이터 파이프라인이 완성된 것입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;google-studio로-연결&quot;&gt;Google Studio로 연결&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103480193-3c216280-4e16-11eb-96c6-f4f64d867929.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Google Studio에서 보고서 작성을 하면 다른 Google 서비스와 연결 여부를 물어본다. 이때 이전에 생성한 BigQuery의 테이블과 연결하면 바로 데이터를 연결하여 간단한 시각화가 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103480234-72f77880-4e16-11eb-9e72-8eae3d92937a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;마치며&quot;&gt;마치며&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 글은 2020.09.23(목)에 진행된 제81차 토크ON세미나에서 SOCAR의 김상우님이 강의해주신 내용을 토대로 리마인드 차원에서 작성한 것입니다. Hands-on 강의 동영상과 함께 실습을 진행해보고자 한다면 &lt;a href=&quot;https://tacademy.skplanet.com/frontMain.action&quot;&gt;T Academy&lt;/a&gt;에서 회원가입 후 &lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt; 강좌에 수강신청하여 진행해보실 수 있습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;T Academy - 데이터 엔지니어링 기초&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Data Engineering" /><category term="Pub/Sub" /><category term="Cloud Function" /><category term="Big Query" /><category term="GKE" /><summary type="html">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.</summary></entry><entry><title type="html">파이썬 접근 제어자에 대하여</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="alternate" type="text/html" title="파이썬 접근 제어자에 대하여" /><published>2020-12-31T00:00:00+09:00</published><updated>2020-12-31T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/">&lt;h1 id=&quot;접근-제어자&quot;&gt;접근 제어자&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;T Academy - 데이터 엔지니어링 기초&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Data Engineering" /><category term="Pub/Sub" /><category term="Cloud Function" /><category term="BigQuery" /><category term="GKE" /><summary type="html">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.</summary></entry><entry><title type="html">파이썬 접근 제어자에 대하여</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="alternate" type="text/html" title="파이썬 접근 제어자에 대하여" /><published>2020-12-31T00:00:00+09:00</published><updated>2020-12-31T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/">&lt;h1 id=&quot;접근-제어자&quot;&gt;접근 제어자&lt;/h1&gt;
 
 &lt;p&gt;객체지향 기반 프로그래밍에서는 &lt;strong&gt;접근 제어자&lt;/strong&gt; 즉, &lt;strong&gt;private&lt;/strong&gt;, &lt;strong&gt;protected&lt;/strong&gt;, &lt;strong&gt;public&lt;/strong&gt;을 이용한 &lt;strong&gt;정보 은닉&lt;/strong&gt;을 통해 외부로부터 데이터를 보호한다. 이를 통해 객체의 속성과 메소드를 하나로 묶고, 실제 구현 내용의 일부는 외부에 감추어 은닉할 수 있는 &lt;strong&gt;캡슐화&lt;/strong&gt;가 가능한다. 각각의 접근 제어자는 다음과 같은 의미를 가진다.&lt;/p&gt;
 
@@ -53,6 +360,7 @@
 &lt;h1 id=&quot;예제&quot;&gt;예제&lt;/h1&gt;
 
 &lt;h2 id=&quot;public&quot;&gt;Public&lt;/h2&gt;
+
 &lt;p&gt;공개적으로 모든 함수, 변수, 메소드를 공개적으로 사용할 수 있다. 즉, 다른 모든 클래스는 제한없이 쉽게 액세스 할 수 있다. Public Member는 일반적으로 클래스 외부에서 액세스 할 수있는 클래스에서 선언 된 메소드며 모든 일반 클래스는 기본적으로 Public 클래스다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;## 원 넓이 클래스
@@ -116,6 +424,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;private&quot;&gt;Private&lt;/h2&gt;
+
 &lt;p&gt;Private Member의 경우 변수와 함수는 클래스 내에서만 액세스 할 수 있다. 클래스를 Private으로 선언하기 위해 prefix로 “__“를 사용한다. 기본적으로 자기 클래스 외부에서 Private Member에 대한 접근은 금지된다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;## 계좌 관리 클래스
@@ -177,6 +486,7 @@
   &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/access-modifiers-in-python-public-private-and-protected/&quot;&gt;Access Modifiers in Python : Public, Private and Protected&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.fun-coding.org/PL&amp;amp;OOP1-5.html&quot;&gt;예제로 이해하는 객체지향 문법 (public, private, protected)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="객체지향" /><category term="Class" /><summary type="html">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.</summary></entry><entry><title type="html">파이썬 Counter 사용법</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="파이썬 Counter 사용법" /><published>2020-12-30T00:00:00+09:00</published><updated>2020-12-30T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/">&lt;h1 id=&quot;완주하지-못한-선수&quot;&gt;완주하지 못한 선수&lt;/h1&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103338570-22081d00-4ac2-11eb-9c1e-bc934b7dd499.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;프로그래머스 코딩테스트 연습에 완주하지 못한 선수(Lv.1)라는 문제가 있다. 여느 때와 같이 파이썬으로 문제를 풀이하는데 정확성 테스트는 모두 통과했지만 효율성 검사에서 모두 시간 초과로 실패했다. 내가 처음에 풀이했던 방식은 다음과 같다.&lt;/p&gt;
@@ -190,6 +500,7 @@
 &lt;p&gt;왜 그런가 생각해보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list.remove()&lt;/code&gt;는 시간복잡도가 O(N)이고, 반복문이 한 번 들어가게 되니 O(N²)이 된다. 아마도 효율성 검사에서 O(N²)이면 실패하게 만드는 케이스가 있는 것으로 추정된다.&lt;/p&gt;
 
 &lt;h2 id=&quot;listsort&quot;&gt;list.sort()&lt;/h2&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103339676-592bfd80-4ac5-11eb-84da-625403ecc65d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list.sort()&lt;/code&gt; 메소드를 이용해 정렬하고, 같은 인덱스를 기준으로 비교하면서 다른 요소가 나올 때까지 비교해 구하는 방식으로 풀었더니 정확성과 효율성 모두 통과할 수 있었다.&lt;/p&gt;
@@ -244,6 +555,7 @@
 &lt;h2 id=&quot;메소드&quot;&gt;메소드&lt;/h2&gt;
 
 &lt;h3 id=&quot;counterelements&quot;&gt;Counter.elements()&lt;/h3&gt;
+
 &lt;p&gt;Counter 객체의 정보에 따른 리스트 반환 (양수만)&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -254,6 +566,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;countermost_commonn&quot;&gt;Counter.most_common([n])&lt;/h3&gt;
+
 &lt;p&gt;Counter 객체의 count의 빈도 상위 n개의 값 반환하는 메소드&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'abracadabra'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most_common&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -261,6 +574,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;counterupdate&quot;&gt;Counter.update()&lt;/h3&gt;
+
 &lt;p&gt;Counter 객체에 대하여 다른 mapping 및 Counter 객체 정보를 덧셈 연산하는 메소드&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -271,6 +585,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;countersubstract&quot;&gt;Counter.substract()&lt;/h3&gt;
+
 &lt;p&gt;Counter 객체에 대하여 다른 mapping 및 Counter 객체 정보를 뺄셈 연산하는 메소드&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -281,6 +596,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;기타&quot;&gt;기타&lt;/h3&gt;
+
 &lt;p&gt;이외에도 Counter 객체는 딕셔너리와 유사한 메소드를 지원한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -308,10 +624,12 @@
 
 &lt;p&gt;최근 데이터 플랫폼 공부를 하면서 부쩍 vi를 사용할 일들이 많아졌다. vi의 최대 장점은 터미널에서 바로 파일에 접근하여 수정할 수 있다는 점이 아닐까 싶다. 특히 yaml이나 config 파일을 수정할 때 vi로 바로 접근해서 필요한 부분을 고칠 때 유용하다. XWindow가 마련된 환경이면 다른 IDE를 통해 수정할 수도 있겠지만 매번 파일 불러오는 것도 번거로운 작업일 뿐더러, 오롯이 CLI 환경만 제공되는 서버라고 한다면 vi는 최선의 선택이 될 수 밖에 없다. 데이터 인프라를 구축할 때에도 대부분 서버에서 작업이 이뤄지기 때문에 vi 사용에 능숙해야 한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103214143-06cacf80-4953-11eb-90be-fb6d0a0c8748.png&quot; alt=&quot;&quot; /&gt;
-vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-adventures.com&quot;&gt;VIM Adventures&lt;/a&gt;라는 Vim 단축키를 이용한 튜토리얼 게임이 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103214143-06cacf80-4953-11eb-90be-fb6d0a0c8748.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-adventures.com&quot;&gt;VIM Adventures&lt;/a&gt;라는 Vim 단축키를 이용한 튜토리얼 게임이 있다.&lt;/p&gt;
 
 &lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103212636-b0f42880-494e-11eb-816b-027ddbc8905d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;출처 Wikipedia&lt;/p&gt;
@@ -320,6 +638,7 @@ vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-ad
 &lt;p&gt;vi editor는 모든 기능이 영문 키보드 안에 집중되어 있다. 심지어 화살표 키 마저도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hjkl&lt;/code&gt;가 대체하고 있어 손가락의 동선을 최소화 한다. 그래서 vi 매니아 층을 겨냥한 해피해킹과 같이 아예 방향키가 없는 키맵을 가진 키보드도 있다. 이렇게 매니아 층이 두터운 이유는 vi에 숙달되면 매우 강력한 편집기로써 사용할 수 있기 때문이다. 하지만 숙달되기까지 꽤 오랜 시간이 걸린다는 점은 가장 큰 단점이다.&lt;/p&gt;
 
 &lt;p&gt;vi는 기본적으로 편집이 제한된 Command Mode로 시작한다. 여기서 내용을 수정하기 위해서는 다음 명령어를 통해 Insert Mode로 전환하여야 한다.&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; : 커서 다음(오른쪽)에 입력&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt; : 행 마지막 부분에 입력&lt;/li&gt;
@@ -417,6 +736,7 @@ vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-ad
 &lt;/blockquote&gt;
 
 &lt;p&gt;또한 Command Mode에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; 키와 함께 다음과 같은 기본적인 명령을 지원한다.&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt; : 종료 (아무런 수정이 일어나지 않아야 가능)&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt;: 강제종료&lt;/li&gt;
@@ -456,6 +776,7 @@ vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-ad
 &amp;gt;&amp;gt;&amp;gt; print(list2)
 [1, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;위 예제의 결과만 보면 파이썬이 워낙 간편하다보니 별 의심없이 잘 복사됐다고 생각할 수 있다. 하지만 정확히 말하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;의 메모리 주소값을 복사한 것이다. 즉, 같은 메모리를 참조하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;이 수정되면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;도 동시에 수정된다. 하지만 이것을 간과하고 열심히 코드를 짜다보면 나중에 깊은 오류의 구렁텅이에 빠질 수 있다. 혹시나 그런 오류에 빠진 사람들이 이 글을 보고 도움이 되었으면 좋겠다 :)&lt;/p&gt;
 
 &lt;h2 id=&quot;아니-이게-왜-안돼-&quot;&gt;아니 이게 왜 안돼 🐥❓&lt;/h2&gt;
@@ -489,6 +810,7 @@ list2 : [11, 2, 3, 4]
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
 &amp;gt;&amp;gt;&amp;gt; list2 = list1[:]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;시작점과 끝점을 생략한 슬라이싱은 리스트의 모든 요소를 뜻한다. 슬라이싱을 통해 변수를 정의하면 파이썬은 새로운 객체를 만든다.&lt;/p&gt;
 
 &lt;h3 id=&quot;2-list-함수&quot;&gt;2) list() 함수&lt;/h3&gt;
@@ -496,6 +818,7 @@ list2 : [11, 2, 3, 4]
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
 &amp;gt;&amp;gt;&amp;gt; list2 = list(list1)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;파이썬 내장함수 중에는 iterable한 객체를 리스트 객체로 변환해주는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list()&lt;/code&gt; 함수가 있다. 이 함수를 이용해 복사하고자 하는 리스트 객체를 다시 재선언 한다.&lt;/p&gt;
 
 &lt;h3 id=&quot;3-copy-메소드&quot;&gt;3) copy() 메소드&lt;/h3&gt;
@@ -503,6 +826,7 @@ list2 : [11, 2, 3, 4]
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
 &amp;gt;&amp;gt;&amp;gt; list2 = list1.copy()
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Python3 부터 리스트를 다른 리스트에 복사하는 기능인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy()&lt;/code&gt; 메소드가 추가되었다. 가독성을 위한 코드라면 이 방법을 사용하는 것을 권장한다.&lt;/p&gt;
 
 &lt;h3 id=&quot;4-리스트-연산&quot;&gt;4) 리스트 연산&lt;/h3&gt;
@@ -510,6 +834,7 @@ list2 : [11, 2, 3, 4]
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
 &amp;gt;&amp;gt;&amp;gt; list2 = [] + list1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;리스트 덧셈연산을 이용해 새로운 빈 리스트에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;의 요소들을 더한다. 새로운 리스트 객체에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;의 요소들이 더해져 결과적으로 우리가 원하는 복사가 이뤄진다.&lt;/p&gt;
 
 &lt;h2 id=&quot;검증&quot;&gt;검증&lt;/h2&gt;
@@ -560,6 +885,7 @@ list2 : [1, 2, 3, 4] / id : 4552075648
 list1 : [11, 2, 3, 4]
 list2 : [1, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;각자의 방법 모두 서로 다른 리스트 객체에 값이 할당되며, list1의 요소에 수정이 일어나도 list2 요소에 영향을 끼치지 않는 독립적인 개체임을 확인할 수 있다.&lt;/p&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
@@ -581,6 +907,7 @@ list2 : [1, 2, 3, 4]
 &lt;p&gt;운 좋게도 학원 측에서 AWS 크레딧을 지원받아 AWS 환경에서 구축해 볼 수 있었다. 따라서 이번 포스팅은 AWS EKS 기준으로 Kubeflow 설치 방법을 소개한다.&lt;/p&gt;
 
 &lt;h1 id=&quot;kubeflow란-&quot;&gt;Kubeflow란 ?&lt;/h1&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103114462-fc35df00-46a1-11eb-96da-776017192c9b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;공식 문서에서는 Kubeflow를 다음과 같이 설명하고 있다.&lt;/p&gt;
@@ -598,11 +925,13 @@ list2 : [1, 2, 3, 4]
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;설치&quot;&gt;설치&lt;/h1&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103115087-9d259980-46a4-11eb-8444-e2191b03bdc6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;공식 문서에 따르면 사용자의 상황에 따른 설치 가이드를 제시한다. 위에 언급했듯이 마침 클라우드 환경이 제공되어 이번 포스팅에서는 AWS EKS에 배포하는 방법으로 설명한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;eks-클러스터-구축&quot;&gt;EKS 클러스터 구축&lt;/h2&gt;
+
 &lt;p&gt;&lt;strong&gt;AWS EKS&lt;/strong&gt;는 Kubernetes 컨트롤 플레인 또는 노드 설치를 쉽게 도와주는 서비스로 작동 및 유지 관리할 필요 없이 AWS에서 Kubernetes를 손쉽게 실행할 수 있게 해주는 관리형 서비스다. EKS는 비정상 컨트롤 플레인 인스턴스를 자동으로 감지하고 교체하며, 자동화된 업그레이드 및 패치를 제공한다.&lt;/p&gt;
 
 &lt;p&gt;EKS 클러스터 구축은 AWS eskworshop에서 제공하는 가이드대로 진행했다. 원활한 환경 구축을 위해 AWS CLI를 이용한 방법으로 설명한다.&lt;/p&gt;
@@ -612,6 +941,7 @@ list2 : [1, 2, 3, 4]
 &lt;p&gt;EKS 클러스터 구축을 위해 필요한 AWS CLI와 aws-iam-authenticator를 설치하고, k8s 컨트롤 플레인 제어에 필요한 kubectl과 eksctl 바이너리 파일을 설치한다.&lt;/p&gt;
 
 &lt;h4 id=&quot;bastion-server&quot;&gt;Bastion server&lt;/h4&gt;
+
 &lt;ul&gt;
   &lt;li&gt;AWS 계정 권한을 가지고 CLI 환경으로 AWS Application들을 사용하기 위한 역할&lt;/li&gt;
   &lt;li&gt;네트워크가 지원되는 어떤 컴퓨터든 상관 없고, 리소스도 최소한도만 있어도 됨. 다만, 공동 작업이 필요한 경우 다중접속이 가능해야 함&lt;/li&gt;
@@ -620,35 +950,30 @@ list2 : [1, 2, 3, 4]
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;kubectl&quot;&gt;Kubectl&lt;/h4&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;CLI환경에서 Kubernetes 클러스터를 구성 및 application 배포, 검사, 리소스 관리,
-로그 확인 등의 기능&lt;/li&gt;
+  &lt;li&gt;CLI환경에서 Kubernetes 클러스터를 구성 및 application 배포, 검사, 리소스 관리, 로그 확인 등의 기능&lt;/li&gt;
   &lt;li&gt;노드 간 마이너 버전 차이가 0.2이상 나면 오류 발생할 수 있음&lt;/li&gt;
-  &lt;li&gt;예를 들어, master 노드에서 v1.18를 사용하면, 다른 노드에서는 v1.17 ~ v1.19 사용 가능
-1.&lt;a href=&quot;https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl&quot;&gt;최신 Stable 버전&lt;/a&gt;을 다운로드한다.&lt;/li&gt;
+  &lt;li&gt;예를 들어, master 노드에서 v1.18를 사용하면, 다른 노드에서는 v1.17 ~ v1.19 사용 가능&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;1.&lt;a href=&quot;https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl&quot;&gt;최신 Stable 버전&lt;/a&gt;을 다운로드한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -LO https://storage.googleapis.com/kubernetes-release/ release/v1.17.0/bin/linux/amd64/
 $ kubectl
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;kubectl binary 파일에 실행권한을 부여한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.kubectl binary 파일에 실행권한을 부여한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ chmod +x ./kubectl 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;kubectl binary 파일을 바이너리 폴더로 이동시킨다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.kubectl binary 파일을 바이너리 폴더로 이동시킨다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo mv ./kubectl /usr/local/bin/$ kubectl 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;kubectl 명령어로 버전을 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.kubectl 명령어로 버전을 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl version --client 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -656,22 +981,19 @@ $ kubectl
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116121-97ca4e00-46a8-11eb-8ae1-29eeb0f8862a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;aws-cli&quot;&gt;AWS CLI&lt;/h4&gt;
+
 &lt;ul&gt;
   &lt;li&gt;AWS EC2를 이용해 Bestion server를 만들어 AWS CLI 환경 구축&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;AWS CLI2를 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.AWS CLI2를 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd ~
 $ curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;
 $ unzip awscliv2.zip 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 AWS CLI 설치를 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.아래 명령어로 AWS CLI 설치를 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ aws --version
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -683,58 +1005,45 @@ $ unzip awscliv2.zip
   &lt;li&gt;AWS EKS가 IAM을 사용하여 aws-iam-authenticator를 통해 Kubernetes 클러스터에 인증을 제공&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;AWS S3로부터 aws-iam-authenticator binary 파일을 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.AWS S3로부터 aws-iam-authenticator binary 파일을 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/aws -iam-authenticator
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;aws-iam-authenticator binary 파일에 실행권한을 부여한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.aws-iam-authenticator binary 파일에 실행권한을 부여한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ chmod +x ./aws-iam-authenticator 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;aws-iam-authenticator binary 파일을 $HOME/bin에 위치시킨다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.aws-iam-authenticator binary 파일을 $HOME/bin에 위치시킨다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir -p $HOME/bin &amp;amp;&amp;amp; cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator &amp;amp;&amp;amp; export PATH=$PATH:$HOME/bin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;.bash_profile에 환경변수를 추가한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4..bash_profile에 환경변수를 추가한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'export PATH=$PATH:$HOME/bin' &amp;gt;&amp;gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;aws-iam-authenticator가 실행되는지 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;5.aws-iam-authenticator가 실행되는지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ aws-iam-authenticator help
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;eksctl&quot;&gt;eksctl&lt;/h4&gt;
+
 &lt;ul&gt;
   &lt;li&gt;EKS에 클러스터를 구축하는데 필요한 CLI tool&lt;/li&gt;
   &lt;li&gt;CloudFormation에 사용&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;최신 버전을 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.최신 버전을 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl --silent --location &quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz&quot; | tar xz -C /tmp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;eksctl binary 파일을 /usr/local/bin으로 위치시킨다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.eksctl binary 파일을 /usr/local/bin으로 위치시킨다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo mv /tmp/eksctl /usr/local/bin 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -742,18 +1051,16 @@ $ unzip awscliv2.zip
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116474-f8a65600-46a9-11eb-9ae6-a1d9a9280b71.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;yq&quot;&gt;yq&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 yq를 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;p&gt;1.아래 명령어로 yq를 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'yq() {
   docker run --rm -i -v &quot;${PWD}&quot;:/workdir mikefarah/yq yq &quot;$@&quot;}' | tee -a ~/.bashrc &amp;amp;&amp;amp; source ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;jq&quot;&gt;jq&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 jq를 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;p&gt;1.아래 명령어로 jq를 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum -y install jq gettext bash-completion moreutils
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -765,33 +1072,24 @@ $ .  ~/.bash_profile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;iam-role&quot;&gt;IAM Role&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;관리자 권한으로 &lt;a href=&quot;https://console.aws.amazon.com/iam/home#/roles$new?step=review&amp;amp;commonUseCase=EC2%2BEC2&amp;amp;selectedUseCase=EC2&amp;amp;policies=arn:aws:iam::aws:policy%2FAdministratorAccess&quot;&gt;Create role&lt;/a&gt;에서 IAM role 생성한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;사용 사례 선택 - EC2 선택 후 다음:권한을 누른다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;AdministratorAccess 정책을 선택 후 다음:태그를 누른다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;태그는 생략하고 다음:검토를 누른다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;역할 이름을 입력한 후 역할 만들기를 누른다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;인스턴스 대시보드에서 작업-보안-IAM Role 변경에 접근하여 Bastion Server에 해당하는 인스턴스의 IAM Role을 생성한 Role로 수정한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bastion Server에서 .aws/credentials 파일이 있다면 삭제한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;아래 명령어로 AWS REGION이 알맞게 불러와지는지 확인한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;p&gt;1.관리자 권한으로 &lt;a href=&quot;https://console.aws.amazon.com/iam/home#/roles$new?step=review&amp;amp;commonUseCase=EC2%2BEC2&amp;amp;selectedUseCase=EC2&amp;amp;policies=arn:aws:iam::aws:policy%2FAdministratorAccess&quot;&gt;Create role&lt;/a&gt;에서 IAM role 생성한다.&lt;/p&gt;
+
+&lt;p&gt;2.사용 사례 선택 - EC2 선택 후 다음:권한을 누른다.&lt;/p&gt;
+
+&lt;p&gt;3.AdministratorAccess 정책을 선택 후 다음:태그를 누른다.&lt;/p&gt;
+
+&lt;p&gt;4.태그는 생략하고 다음:검토를 누른다.&lt;/p&gt;
+
+&lt;p&gt;5.역할 이름을 입력한 후 역할 만들기를 누른다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6.인스턴스 대시보드에서 작업-보안-IAM Role 변경에 접근하여 Bastion Server에 해당하는 인스턴스의 IAM Role을 생성한 Role로 수정한다.&lt;/p&gt;
+
+&lt;p&gt;7.Bastion Server에서 .aws/credentials 파일이 있다면 삭제한다.&lt;/p&gt;
+
+&lt;p&gt;8.아래 명령어로 AWS REGION이 알맞게 불러와지는지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 $ export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
@@ -799,9 +1097,7 @@ $ export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/d
 $ test -n &quot;$AWS_REGION&quot; &amp;amp;&amp;amp; echo AWS_REGION is &quot;$AWS_REGION&quot; || echo AWS_REGION is not set
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;AWS CLI 명령어가 원활하게 진행될 수 있도록 AWS 계정 정보를 환경변수로 설정한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;9.AWS CLI 명령어가 원활하게 진행될 수 있도록 AWS 계정 정보를 환경변수로 설정한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo &quot;export ACCOUNT_ID=${ACCOUNT_ID}&quot; | tee -a ~/.bash_profile
 $ echo &quot;export AWS_REGION=${AWS_REGION}&quot; | tee -a ~/.bash_profile
@@ -809,17 +1105,17 @@ $ aws configure set default.region ${AWS_REGION}
 $ aws configure get default.region
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 IAM Role이 유효한지 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;10.아래 명령어로 IAM Role이 유효한지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws sts get-caller-identity --query Arn | grep eksworkshop-admin-i -q &amp;amp;&amp;amp; echo &quot;IAM role valid&quot; || echo &quot;IAM role NOT valid&quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;ec2-vs-fargate&quot;&gt;EC2 vs. Fargate&lt;/h3&gt;
+
 &lt;p&gt;EKS 클러스터는 노드를 관리할 필요 없는 AWS Fargate와 같은 관리형과 AWS CloudFormation을 통해 자동으로 EC2 노드가 구성되는 자체 관리형을 지원한다.&lt;/p&gt;
 
 &lt;p&gt;각 유형에 따른 특징은 다음과 같다.&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;EC2
     &lt;ul&gt;
@@ -841,13 +1137,10 @@ $ aws configure get default.region
 
 &lt;p&gt;이 포스팅에서는 기본 구성인 EC2를 이용한 자체관리형 노드로 구성하는 방법을 소개한다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 내용을 cluster.yaml로 생성한다.
-    &lt;ul&gt;
-      &lt;li&gt;yaml파일로 구성된 manifest들은 indent가 중요하므로 각별히 신경써주어야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.아래 내용을 cluster.yaml로 생성한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;yaml파일로 구성된 manifest들은 indent가 중요하므로 각별히 신경써주어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: eksctl.io/v1alpha5 kind: ClusterConfig
 metadata:
@@ -882,9 +1175,7 @@ nodeGroups:
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 bastion server의 ssh key를 생성한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.아래 명령어로 bastion server의 ssh key를 생성한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 모두 Enter 입력하여 기본값 생성 
 $ ssh-keygen -t rsa
@@ -892,23 +1183,17 @@ $ ssh-keygen -t rsa
 $ cat .ssh/id_rsa.pub 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 클러스터를 구성을 명령하면 수 분 내로 손쉽게 EKS(k8s) 클러스터가 구성된다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.아래 명령어로 클러스터를 구성을 명령하면 수 분 내로 손쉽게 EKS(k8s) 클러스터가 구성된다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ eksctl create cluster -f cluster.yaml 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 노드의 상태를 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.아래 명령어로 노드의 상태를 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl get nodes 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;(Optional) 노드 갯수 축소 및 확장 하려면 &lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/eks-worker-node-actions/&quot;&gt;아래 명령어&lt;/a&gt;를 참고한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;5.(Optional) 노드 갯수 축소 및 확장 하려면 &lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/eks-worker-node-actions/&quot;&gt;아래 명령어&lt;/a&gt;를 참고한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 노드 갯수 조정
 $ eksctl scale nodegroup --cluster=클러스터 이름 --nodes=노드 개수 --name=노드그룹 이름 --nodes-min=1 --nodes-max=6
@@ -933,9 +1218,7 @@ nodeGroups:
     volumeSize: 50
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;(Optional) EKS 클러스터 및 노드를 삭제 하려면 &lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/delete-cluster.html&quot;&gt;아래 명령어&lt;/a&gt;를 참고한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;6.(Optional) EKS 클러스터 및 노드를 삭제 하려면 &lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/delete-cluster.html&quot;&gt;아래 명령어&lt;/a&gt;를 참고한다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;eksctl ≥ 0.31.0-rc.0 이상인지 확인&lt;/li&gt;
@@ -973,6 +1256,7 @@ nodeGroups:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;optionalcluster-autoscalerca-설정&quot;&gt;(Optional)Cluster Autoscaler(CA) 설정&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Service Account IAM role Annotation
     &lt;ul&gt;
@@ -1052,63 +1336,47 @@ update-auto-scaling-group \
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;kubeflow-설치&quot;&gt;Kubeflow 설치&lt;/h2&gt;
+
 &lt;p&gt;현재 Amazon에서 지원하는 EKS버전과 Kubeflow v1.2의 호환 여부는 다음과 같다. 본 포스팅에서는 EKS v1.17을 사용하고 있으므로, Kubeflow v1.2 기준으로 설치 과정을 소개한다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103150473-eb778d00-47b7-11eb-9c31-438418569d62.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bastion Server에서 Kubeflow GitHub에서 &lt;a href=&quot;https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz&quot;&gt;Release v1.2.0&lt;/a&gt;을 다운로드 한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;다음 명령어로 tar 압축을 해제한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.Bastion Server에서 Kubeflow GitHub에서 &lt;a href=&quot;https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz&quot;&gt;Release v1.2.0&lt;/a&gt;을 다운로드 한다.&lt;/p&gt;
+
+&lt;p&gt;2.다음 명령어로 tar 압축을 해제한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tar -xvf kfctl_v1.2.0-0-gbc038f9_linux.tar.gz
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 kfctl Binary 파일을 이동시킨다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.아래 명령어로 kfctl Binary 파일을 이동시킨다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mv ./kfctl /usr/local/bin 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;배포 과정을 간략화 하기위해 아래 환경변수를 추가한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.배포 과정을 간략화 하기위해 아래 환경변수를 추가한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export PATH=$PATH:&quot;/usr/local/bin&quot;
 $ export CONFIG_URI=&quot;https://raw.githubusercontent.com/kubeflow/manifests/v1.2-branch/kfdef/kfctl_aws.v1.2.0.yaml&quot;
 $ export AWS_CLUSTER_NAME=eksworkshop-eksctl-i / **클러스터 이름
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 클러스터 이름으로 폴더를 생성하고, kubeflow 설치를 위한 manifest를 다운로드 받는다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;5.아래 명령어로 클러스터 이름으로 폴더를 생성하고, kubeflow 설치를 위한 manifest를 다운로드 받는다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir ${AWS_CLUSTER_NAME} &amp;amp;&amp;amp; cd ${AWS_CLUSTER_NAME}
 $ wget -O kfctl_aws.yaml $CONFIG_URI
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 Kubeflow 클러스터를 생성한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;6.아래 명령어로 Kubeflow 클러스터를 생성한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kfctl apply -V -f kfctl_aws.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;설치가 완료되기까지 약 수 분이 소요된다. 명령어 프롬프트가 나타나면 아래 명령어로 kubeflow namespace에 pod들이 올라왔는지 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;7.설치가 완료되기까지 약 수 분이 소요된다. 명령어 프롬프트가 나타나면 아래 명령어로 kubeflow namespace에 pod들이 올라왔는지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl -n kubeflow get all
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Kubeflow 대시보드에 접근하기 위해 아래 명령어로 Kubeflow 서비스의 Endpoint(ADDRESS)를 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;8.Kubeflow 대시보드에 접근하기 위해 아래 명령어로 Kubeflow 서비스의 Endpoint(ADDRESS)를 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl get ingress -n istio-system
 
@@ -1116,9 +1384,7 @@ NAMESPACE      NAME            HOSTS   ADDRESS                                  
 istio-system   istio-ingress   *       a743484b-istiosystem-istio-2af2-xxxxxx.ap-northeast-2.elb.amazonaws.com   80      1h
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Default 계정은 다음과 같다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;9.Default 계정은 다음과 같다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ID : admin@kubeflow.org
 PW : 12341234
@@ -1133,6 +1399,7 @@ PW : 12341234
   &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/what-is-eks.html&quot;&gt;Amazon EKS란 무엇입니까?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/eks-worker-node-actions/&quot;&gt;EKS Worker Node Action&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="AWS" /><category term="EKS" /><category term="Kubeflow" /><summary type="html">이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.</summary></entry><entry><title type="html">GitBook으로 나만의 책 펴내기</title><link href="/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0/" rel="alternate" type="text/html" title="GitBook으로 나만의 책 펴내기" /><published>2020-12-23T00:00:00+09:00</published><updated>2020-12-23T00:00:00+09:00</updated><id>/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0</id><content type="html" xml:base="/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0/">&lt;h1 id=&quot;gitbook이란-&quot;&gt;GitBook이란 ?&lt;/h1&gt;
+
 &lt;p&gt;GitBook은 개인이나 팀이 내부 지식을 쉽게 공동 저작물을 문서화 할 수 있게 도와주는 최신 문서 플랫폼이다.
 &lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102992242-38602700-455e-11eb-800e-e930be982c34.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -1159,61 +1426,51 @@ PW : 12341234
 
 &lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;GitBook에 회원가입 한다.
-    &lt;ul&gt;
-      &lt;li&gt;GitHub 계정을 이용한 간편 회원가입을 지원한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.GitBook에 회원가입 한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GitHub 계정을 이용한 간편 회원가입을 지원한다.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102995711-fb4b6300-4564-11eb-875b-a5339af50778.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Create a new space를 눌러 첫 Space를 생성한다.
-    &lt;ul&gt;
-      &lt;li&gt;Space는 GitBook의 책 제목과 같은 격&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.Create a new space를 눌러 첫 Space를 생성한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Space는 GitBook의 책 제목과 같은 격&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102995880-52513800-4565-11eb-8c7a-f1df8b79e3d8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;New 버튼으로 새로운 Page, Group 등을 생성할 수 있다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.New 버튼으로 새로운 Page, Group 등을 생성할 수 있다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102996701-e7a0fc00-4566-11eb-8001-3c137b26e08d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;다양한 소스로부터 import 기능도 지원한다.
-    &lt;ul&gt;
-      &lt;li&gt;Google Docs&lt;/li&gt;
-      &lt;li&gt;Github Wiki&lt;/li&gt;
-      &lt;li&gt;Dropbox Paper&lt;/li&gt;
-      &lt;li&gt;Notion&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.다양한 소스로부터 import 기능도 지원한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Google Docs&lt;/li&gt;
+  &lt;li&gt;Github Wiki&lt;/li&gt;
+  &lt;li&gt;Dropbox Paper&lt;/li&gt;
+  &lt;li&gt;Notion&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102996850-28991080-4567-11eb-99f1-7ab24a0128ba.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;팀으로 활용 시 계정별 수정 로그가 남아 이력 관리가 가능하다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;5.팀으로 활용 시 계정별 수정 로그가 남아 이력 관리가 가능하다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102997101-a2c99500-4567-11eb-9c17-b47c893e4055.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;GitHub의 특정 Repository와 연동이 가능하다. 즉, GitHub와 GitBook 어디에서 문서를 작성하더라도 양방향으로 동시에 반영되어 수정이 될 수 있다.
-    &lt;ul&gt;
-      &lt;li&gt;TIL을 기록하고자 한다면 GitHub에 그냥 마크다운으로 하는 것보다 보기 쉽게 구조화 할 수 있고, 쉽게 이미지를 삽입할 수 있어 편리한 것 같다.&lt;/li&gt;
-      &lt;li&gt;GitBook에서 수정 시 GitHub에도 commit으로 반영되므로 잔디심기에도 유용하다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102997166-c7257180-4567-11eb-88eb-1b4591c559bd.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;도메인은 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://ID.gitbook.io/Space Name&lt;/code&gt; 으로 생성되며, GitHub Page와 같이 커스텀 도메인 기능도 지원하고있다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;6.GitHub의 특정 Repository와 연동이 가능하다. 즉, GitHub와 GitBook 어디에서 문서를 작성하더라도 양방향으로 동시에 반영되어 수정이 될 수 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;TIL을 기록하고자 한다면 GitHub에 그냥 마크다운으로 하는 것보다 보기 쉽게 구조화 할 수 있고, 쉽게 이미지를 삽입할 수 있어 편리한 것 같다.&lt;/li&gt;
+  &lt;li&gt;GitBook에서 수정 시 GitHub에도 commit으로 반영되므로 잔디심기에도 유용하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102997166-c7257180-4567-11eb-88eb-1b4591c559bd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;7.도메인은 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://ID.gitbook.io/Space Name&lt;/code&gt; 으로 생성되며, GitHub Page와 같이 커스텀 도메인 기능도 지원하고있다.&lt;/p&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&quot;https://docs.gitbook.com&quot;&gt;What is GitBook&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="GitBook" /><summary type="html">GitBook은 개인이나 팀이 내부 지식을 쉽게 공동 저작물을 문서화 할 수 있게 도와주는 최신 문서 플랫폼이다.</summary></entry><entry><title type="html">오픈소스 시각화 툴 Superset 설치하기</title><link href="/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="오픈소스 시각화 툴 Superset 설치하기" /><published>2020-12-19T00:00:00+09:00</published><updated>2020-12-19T00:00:00+09:00</updated><id>/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;apache-superset-이란-&quot;&gt;Apache Superset 이란 ?&lt;/h1&gt;
@@ -1261,69 +1518,54 @@ Docker 설치 docker-compose가 설치되어 있지 않으므로, 각 OS에 맞�
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Binary 파일에 실행 권한을 부여한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.Binary 파일에 실행 권한을 부여한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod +x /usr/local/bin/docker-compose
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 Docker Compose의 버전을 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.아래 명령어로 Docker Compose의 버전을 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker-compose --version
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102610642-e3dd3600-4170-11eb-9b2b-a2ed021f4c10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Superset Repository를 Clone한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.Superset Repository를 Clone한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/apache/incubator-superset.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 Superset 인스턴스를 실행한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;5.아래 명령어로 Superset 인스턴스를 실행한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd incubator-superset
 $ docker-compose up
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102612471-13da0880-4174-11eb-906b-e4e677555538.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 localhost:8088로 접근하여 로그인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;6.아래 localhost:8088로 접근하여 로그인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;USERNAME : admin
 PASSWORD : admin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102612898-ed689d00-4174-11eb-941d-98a41f5091d5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Superset 메인화면&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;7.Superset 메인화면&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102612917-f48fab00-4174-11eb-8c45-f6faf6650d80.png&quot; alt=&quot;Main Page&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Sample Dashboard&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;8.Sample Dashboard&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;USA Births Names&lt;br /&gt;
-모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
-도 매력적이었다.&lt;/li&gt;
+  &lt;li&gt;USA Births Names&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
+도 매력적이었다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102613328-a202be80-4175-11eb-85da-a106023e96da.png&quot; alt=&quot;Sample 1&quot; /&gt;&lt;/p&gt;
 
@@ -1355,25 +1597,35 @@ PASSWORD : admin
 &lt;p&gt;본론으로 돌아와서 단축키를 사용하는 본질적인 이유를 들여다보면 단축키를 사용했을 때 동일한 결과물을 내는 데 시간을 획기적으로 줄여줄 수 있기 때문이다. 이를테면 PDF 20 페이지에 해당하는 텍스트를 다른 문서에 첨부하고자 할 때 직접 눈으로 보고 텍스트를 옮겨적는 것보단 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + C&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + V&lt;/code&gt; 조합의 단축키를 활용하는 것이 훨씬 빠른 것처럼 말이다.&lt;/p&gt;
 
 &lt;h1 id=&quot;단축키의-장점&quot;&gt;단축키의 장점&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102584666-3f47fd80-414a-11eb-86a8-ea2b46fb65ce.png&quot; alt=&quot;&quot; /&gt;
-출처 : https://unsplash.com/photos/s5mUMNMxABA&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102584666-3f47fd80-414a-11eb-86a8-ea2b46fb65ce.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Photo by Moritz Kindler On Unsplash&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;내가 생각하는 단축키의 장점은 다음과 같다.&lt;/p&gt;
+
 &lt;h2 id=&quot;1-반복-작업-시-시간-획기적으로-단축&quot;&gt;1) 반복 작업 시 시간 획기적으로 단축&lt;/h2&gt;
+
 &lt;p&gt;특정 실행창이 여러 개 떠있을 때 마우스로 하나씩 종료 버튼을 누르는 것보단 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Q&lt;/code&gt; 명령어로 한 번에 끄는 것이 빠르다.&lt;/p&gt;
 
 &lt;h2 id=&quot;2-대부분의-응용-프로그램에서-통용되는-단축키&quot;&gt;2) 대부분의 응용 프로그램에서 통용되는 단축키&lt;/h2&gt;
+
 &lt;p&gt;대부분의 응용 프로그램에서 작성중인 상태 또는 문서를 저장할 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + S&lt;/code&gt;를 통해 저장할 수 있다. 예를 들어, MS Word, 한글 등 대부분의 문서편집 툴에서 동일하게 작동한다. 따라서 자주 쓰이는 범용적인 단축키를 외워두면 다른 툴에서도 작동할 확률이 높다.&lt;/p&gt;
 
 &lt;h2 id=&quot;3-새로운-툴에-쉽게-적응&quot;&gt;3) 새로운 툴에 쉽게 적응&lt;/h2&gt;
+
 &lt;p&gt;하나의 문법처럼 대부분의 응용 프로그램에서 비슷한 단축키를 지원하는 경우가 많아 새로운 툴에 적응하기 매우 수월하다. 필자는 새로운 툴을 사용할 때 Keyboard Shortcut부터 확인하고 사용해보는 습관이 있는데, 새로운 툴을 적응하는데 매우 큰 도움이 된다.&lt;/p&gt;
 
 &lt;h2 id=&quot;4-마우스-없이-대부분의-작업-가능&quot;&gt;4) 마우스 없이 대부분의 작업 가능&lt;/h2&gt;
+
 &lt;p&gt;단축키 사용을 습관화하면 마우스가 오히려 불편해지는(?) 지경에 이르러 특수한 경우 이외에 마우스 없이 모든 작업을 빠르게 처리할 수 있다. 특히 노트북 유저들은 마우스를 휴대하고 다니는 것도 굉장히 수고로운 일이 아닐 수 없다. 더구나 맥북 유저라면 마우스 연결을 위한 포트 허브도 포함될 것이다. 단축키와 트랙패드의 조합에 익숙해지면 이러한 수고로움을 덜 수 있다. 참고로 필자는 3년간 노트북을 사용하며 마우스를 사용한 적이 없다.&lt;/p&gt;
 
 &lt;h1 id=&quot;맥-단축키-정리-트랙패드-제스쳐-포함&quot;&gt;맥 단축키 정리 (트랙패드 제스쳐 포함)&lt;/h1&gt;
 
 &lt;h2 id=&quot;1-키보드&quot;&gt;1) 키보드&lt;/h2&gt;
+
 &lt;p&gt;이 포스팅에서는 대부분의 툴에서 범용적으로 사용되는 맥북 키보드 단축키들 위주로 대해 몇 가지 소개한다.&lt;/p&gt;
 
 &lt;h3 id=&quot;텍스트&quot;&gt;텍스트&lt;/h3&gt;
@@ -1425,8 +1677,9 @@ PASSWORD : admin
 
 &lt;h2 id=&quot;2-트랙패드&quot;&gt;2) 트랙패드&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102589630-9e117500-4152-11eb-8810-22d24dff4459.gif&quot; alt=&quot;&quot; /&gt;
-트랙패드는 아래 환경설정 기준으로 설명한다. 사용 습관에에 맞게 제스쳐별 기능 수정이 가능하니 참고하면 되겠다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102589630-9e117500-4152-11eb-8810-22d24dff4459.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;트랙패드는 아래 환경설정 기준으로 설명한다. 사용 습관에에 맞게 제스쳐별 기능 수정이 가능하니 참고하면 되겠다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;손가락 세게 누르기&lt;/code&gt; : 훑어보기, 사전&lt;/li&gt;
@@ -1443,13 +1696,15 @@ PASSWORD : admin
 &lt;h2 id=&quot;3-추가-기능&quot;&gt;3) 추가 기능&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control + 두 손가락 상하로 쓸기&lt;/code&gt; : 시스템 화면 확대/축소
-시스템 환경설정 - 손쉬운 사용 - 확대/축소 - 확대/축소하려면 스크롤 제스처를 다음 보조키와 함께 사용 체크
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102591852-057cf400-4156-11eb-9db5-30333bbf4ad0.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;마우스 커서 코너로 가져가기&lt;/code&gt; : 핫 코너 기능&lt;/p&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control + 두 손가락 상하로 쓸기&lt;/code&gt; : 시스템 화면 확대/축소&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;시스템 환경설정 - 손쉬운 사용 - 확대/축소 - 확대/축소하려면 스크롤 제스처를 다음 보조키와 함께 사용 체크&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102591852-057cf400-4156-11eb-9db5-30333bbf4ad0.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;마우스 커서 코너로 가져가기&lt;/code&gt; : 핫 코너 기능
     &lt;ul&gt;
       &lt;li&gt;Mission Control&lt;/li&gt;
       &lt;li&gt;데스크탑&lt;/li&gt;
@@ -1461,6 +1716,7 @@ PASSWORD : admin
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102592515-e894f080-4156-11eb-9491-2b1be6bfdfd6.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="맥북" /><category term="단축키" /><category term="생산성" /><summary type="html">이 글에서는 대부분의 툴에서 범용적으로 사용되는 맥북 키보드 단축키들 위주로 대해 몇 가지 소개한다.</summary></entry><entry><title type="html">맥북으로 딥러닝하기 (Feat. SSH) 2</title><link href="/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.-SSH)-2/" rel="alternate" type="text/html" title="맥북으로 딥러닝하기 (Feat. SSH) 2" /><published>2020-10-29T00:00:00+09:00</published><updated>2020-10-29T00:00:00+09:00</updated><id>/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.%20SSH)-2</id><content type="html" xml:base="/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.-SSH)-2/">&lt;h1 id=&quot;-맥북으로-딥러닝하기feat-ubuntu-1804-lts-1에서는---&quot;&gt;🧲 &lt;a href=&quot;https://inkkim.github.io/article/1.html&quot;&gt;맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 1&lt;/a&gt;에서는 . . .&lt;/h1&gt;
+
 &lt;p&gt;이전 글에서는 데스크탑에 우분투를 설치하고, 꽤나 까다로운 Nvidia driver 설치를 거쳐 최종적으로 nvidia-docker를 이용해 Docker 내에서도 GPU 자원을 사용할 수 있는 환경을 구성해보았다.&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 이어서 docker를 이용하여 손쉽게 딥러닝 개발환경을 구축해보고, 최종적으로 SSH(Secure Shell Protocol)를 통해 맥북에서 접근이 가능하도록 만들어보겠다.&lt;/p&gt;
@@ -1471,24 +1727,26 @@ PASSWORD : admin
 
 &lt;p&gt;특정 OS의 구속되지 않고 컨테이너로써 Host OS와 다른 컨테이너로부터 독립된 환경을 구성할 수 있다. 심지어 성능 저하가 거의 없이 동일한 환경을 구성해주어 많은 개발자들의 큰 수고를 덜어주고 있다. 나 역시 이 편리한 툴을 이용하여 Tensorflow-gpu를 설치하여 딥러닝 개발환경을 구축하려고 한다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;먼저 Docker Hub에서 원하는 Tensorflow 이미지를 선택한다. Tensorflow Official Repository에서는 Tensorflow 버전별로 다양한 이미지를 제공하고 있다. 무려 천만 건 이상의 다운로드를 기록중이다. ❗😲❗
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97440883-687ab780-196b-11eb-8fea-5568c959c430.png&quot; alt=&quot;Docker Hub&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.먼저 Docker Hub에서 원하는 Tensorflow 이미지를 선택한다. Tensorflow Official Repository에서는 Tensorflow 버전별로 다양한 이미지를 제공하고 있다. 무려 천만 건 이상의 다운로드를 기록중이다. ❗😲❗&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97440883-687ab780-196b-11eb-8fea-5568c959c430.png&quot; alt=&quot;Docker Hub&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;이렇게 버전에 따라 태그를 나눠 배포하고 있다. 
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97441942-a0cec580-196c-11eb-9ab9-ef6746dce720.png&quot; alt=&quot;Tensorflow Tag&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;CLI환경에서도 명령어로 찾을 수 있다. 특별한 케이스가 아닌 경우 STAR 개수를 많이 받은 것으로 받으면 된다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97451551-30797180-1977-11eb-9df3-948f7ce81933.png&quot; alt=&quot;CLI Command&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;이렇게 버전에 따라 태그를 나눠 배포하고 있다.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97441942-a0cec580-196c-11eb-9ab9-ef6746dce720.png&quot; alt=&quot;Tensorflow Tag&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CLI환경에서도 명령어로 찾을 수 있다. 특별한 케이스가 아닌 경우 STAR 개수를 많이 받은 것으로 받으면 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97451551-30797180-1977-11eb-9df3-948f7ce81933.png&quot; alt=&quot;CLI Command&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker search &amp;lt;이미지 이름&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 도커 데몬으로 실행시킨다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.아래 명령어로 도커 데몬으로 실행시킨다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd $HOME/Desktop &amp;amp;&amp;amp; mkdir docker
 $ docker run --runtime=nvidia -d -it \ 
@@ -1501,114 +1759,110 @@ tensorflow/tensorflow:2.2.1-gpu-py3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;docker run –runtime=nvidia // nvidia-docker와 함께 도커 데몬을 실행&lt;/li&gt;
-  &lt;li&gt;-d // 백그라운드에서 실행&lt;/li&gt;
-  &lt;li&gt;-it // tty 가상콘솔 할당&lt;/li&gt;
-  &lt;li&gt;-mount type=bind, source=&lt;호스트 경로=&quot;&quot;&gt;, target=&lt;컨테이너 경로=&quot;&quot;&gt;&lt;/컨테이너&gt;&lt;/호스트&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run --runtime=nvidia&lt;/code&gt; // nvidia-docker와 함께 도커 데몬을 실행&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d&lt;/code&gt; // 백그라운드에서 실행&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-it&lt;/code&gt; // tty 가상콘솔 할당&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mount type=bind, source=&amp;lt;호스트 경로&amp;gt;, target=&amp;lt;컨테이너 경로&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;// 호스트와 컨테이너 저장소 바인딩 (원래 컨테이너는 휘발성이므로 컨테이너가 삭제되어도 호스트에 파일이 남도록 설정)&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;-p : 호스트 포트:컨테이너포트 // 호스트-&amp;gt;컨테이너 포트 포워딩&lt;/li&gt;
-  &lt;li&gt;–name // 컨테이너 이름 명명&lt;/li&gt;
-  &lt;li&gt;–restart always // 도커 데몬이 실행되면 항상 실행&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-p&lt;/code&gt; : 호스트 포트:컨테이너포트 // 호스트-&amp;gt;컨테이너 포트 포워딩&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--name&lt;/code&gt; // 컨테이너 이름 명명&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--restart always&lt;/code&gt; // 도커 데몬이 실행되면 항상 실행&lt;/li&gt;
   &lt;li&gt;&amp;lt;Repositor Name&amp;gt;/&amp;lt;Image Name&amp;gt;:&amp;lt;Tag Name&amp;gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;exec&gt; (optional) // default값은 jupyter notebook 서버 실행
-&lt;/exec&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec&lt;/code&gt; (optional) // default값은 jupyter notebook 서버 실행&lt;/li&gt;
   &lt;li&gt;컨테이너 내 CLI(Command Line Interface)환경으로 진입하려면? /bin/bash&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 도커 내 실행되고 있는 jupyter notebook 서버의 토큰값을 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;3.아래 명령어로 도커 내 실행되고 있는 jupyter notebook 서버의 토큰값을 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker ps
 $ docker exec &amp;lt;Container ID&amp;gt; jupyter notebook list
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97458797-68d07e00-197e-11eb-9cae-8f68aefcd873.png&quot; alt=&quot;token&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;주소창에서 localhost:8888로 접근하고, Setup a Password에서 token값을 넣고 이용해 비밀번호를 설정한다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97459020-a46b4800-197e-11eb-9e68-30bf57c3d461.png&quot; alt=&quot;jupyter notebook&quot; /&gt;
-    &lt;ul&gt;
-      &lt;li&gt;성공❗
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png&quot; alt=&quot;main&quot; /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;.notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.주소창에서 localhost:8888로 접근하고, Setup a Password에서 token값을 넣고 이용해 비밀번호를 설정한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97459020-a46b4800-197e-11eb-9e68-30bf57c3d461.png&quot; alt=&quot;jupyter notebook&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;성공❗&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png&quot; alt=&quot;main&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5.notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;목록에 GPU가 출력되면 성공 🎉
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png&quot; alt=&quot;Check GPU&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Tensorflow CNN 예제를 돌려보면서 GPU 활성도 모니터링도 해봤는데, 정상적으로 작동하는 것을 확인했다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png&quot; alt=&quot;Tensorflow ready&quot; /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png&quot; alt=&quot;Tensorflow action&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;목록에 GPU가 출력되면 성공 🎉&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png&quot; alt=&quot;Check GPU&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tensorflow CNN 예제를 돌려보면서 GPU 활성도 모니터링도 해봤는데, 정상적으로 작동하는 것을 확인했다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png&quot; alt=&quot;Tensorflow ready&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png&quot; alt=&quot;Tensorflow action&quot; /&gt;&lt;/p&gt;
+
 &lt;h1 id=&quot;iptime-ddns-설정-및-포트-포워딩&quot;&gt;iptime DDNS 설정 및 포트 포워딩&lt;/h1&gt;
+
 &lt;p&gt;iptime에서는 DDNS(Dynamic Domain Name System)
 을 무료로 제공한다. 이 서비스를 이용하면 수시로 변할 수 있는 유동 IP를 매번 확인해서 접속하지 않아도 되고, 돈내고 고정 IP를 사용하지 않고도 나만의 도메인을 가질 수 있다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;데스크탑에서 주소창에 192.168.0.1을 이용해 iptime 설정 페이지에 접속한다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97590628-27a1a200-1a42-11eb-90b8-6c043676007a.png&quot; alt=&quot;iptime&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;관리도구-고급설정-NAT/라우터 관리-포트포워드 설정에 들어가서 아래와 같이 외부에서 접속한 포트를 내부 포트로 연결시켜준다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.데스크탑에서 주소창에 192.168.0.1을 이용해 iptime 설정 페이지에 접속한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97590628-27a1a200-1a42-11eb-90b8-6c043676007a.png&quot; alt=&quot;iptime&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2.관리도구-고급설정-NAT/라우터 관리-포트포워드 설정에 들어가서 아래와 같이 외부에서 접속한 포트를 내부 포트로 연결시켜준다.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;맥북에서 내부IP:8888로 접근하면 우분투 127.0.0.1:8888로 연결&lt;/li&gt;
-  &lt;li&gt;jupyter notebook은 8888 / tensor board는 6006
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97588148-8c0f3200-1a3f-11eb-8915-07ebae30ee04.png&quot; alt=&quot;Port Fowarding&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;맥북에서 내부IP:8888로 접근하면 우분투 127.0.0.1:8888로 연결&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;jupyter notebook은 8888 / tensor board는 6006&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;고급설정-특수기능-DDNS 설정에 들어가서 호스트 이름(도메인으로 사용할 네임)을 원하는 대로 정하고 사용자 ID는 자주 사용하는 이메일로 입력하고 등록한다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97589150-8a923980-1a40-11eb-9eff-46e922d43b8b.png&quot; alt=&quot;DDNS&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;추가로 고급설정-보안기능-공유기 접속/보안관리에 들어가서 원격 관리 포트 사용을 체크하고 다른 포트와 중복되지 않는 10000 이상의 값을 주고 적용한다. 필자는 65000포트를 적용했다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97589608-0f7d5300-1a41-11eb-8aeb-4a09fc8eb973.png&quot; alt=&quot;Setting Port&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;이제 &amp;lt;Host Name&amp;gt;.iptime.org:65000으로 들어가보면 다시 iptime 관리자 페이지에 접근할 수 있다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97588148-8c0f3200-1a3f-11eb-8915-07ebae30ee04.png&quot; alt=&quot;Port Fowarding&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.고급설정-특수기능-DDNS 설정에 들어가서 호스트 이름(도메인으로 사용할 네임)을 원하는 대로 정하고 사용자 ID는 자주 사용하는 이메일로 입력하고 등록한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97589150-8a923980-1a40-11eb-9eff-46e922d43b8b.png&quot; alt=&quot;DDNS&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4.추가로 고급설정-보안기능-공유기 접속/보안관리에 들어가서 원격 관리 포트 사용을 체크하고 다른 포트와 중복되지 않는 10000 이상의 값을 주고 적용한다. 필자는 65000포트를 적용했다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97589608-0f7d5300-1a41-11eb-8aeb-4a09fc8eb973.png&quot; alt=&quot;Setting Port&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5.이제 &amp;lt;Host Name&amp;gt;.iptime.org:65000으로 들어가보면 다시 iptime 관리자 페이지에 접근할 수 있다.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;로그인 옵션이 설정되어있지 않으면 네트워크 보안에 치명적이니 꼭 로그인 옵션을 설정하자.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97590879-6f282e00-1a42-11eb-8fdb-e0b3993b260a.png&quot; alt=&quot;iptime by Host&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;로그인 옵션이 설정되어있지 않으면 네트워크 보안에 치명적이니 꼭 로그인 옵션을 설정하자.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97590879-6f282e00-1a42-11eb-8fdb-e0b3993b260a.png&quot; alt=&quot;iptime by Host&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;우분투-방화벽-설정&quot;&gt;우분투 방화벽 설정&lt;/h1&gt;
+
 &lt;p&gt;외부에서 우분투로 접속하게 하려면 방화벽을 설정하고 22번 포트만 열어줘야 한다. 그러기 위해 먼저 이름값 제대로 하는 ufw(Uncomplicated FireWall)을 설치해줘야 한다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 ufw를 설치하고 실행한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.아래 명령어로 ufw를 설치하고 실행한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install ufw
 $ sudo service ufw start
 $ sudo service ufw enable
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 22번 포트를 허용하고 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.아래 명령어로 22번 포트를 허용하고 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ufw allow 22
 $ sudo ufw status
@@ -1617,65 +1871,53 @@ $ sudo ufw status
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97461289-fb721c80-1980-11eb-8089-8de63c0c5376.png&quot; alt=&quot;ufw status&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;ssh-접속-환경-설정&quot;&gt;ssh 접속 환경 설정&lt;/h1&gt;
+
 &lt;p&gt;맥에서 우분투를 접속하기 위해 ssh를 통해 맥북의 public key를 우분투로 보내서 등록 할 것이다. 즉, 우분투에게 맥북이 관계자라고 증명하는 key를 등록하는 셈이다.&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;아래 명령어로 우분투에서 ssh를 설치한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;1.아래 명령어로 우분투에서 ssh를 설치한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install ssh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;맥 (혹은 다른 기기) 에서 ssh-keygen을 한 후 Enter를 연타한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;2.맥 (혹은 다른 기기) 에서 ssh-keygen을 한 후 Enter를 연타한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ul&gt;
-  &lt;li&gt;필자는 이미 있어서 있다고 나온다..
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png&quot; alt=&quot;ssh-keygen&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;필자는 이미 있어서 있다고 나온다..&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;ssh key가 정상적으로 생성되었는지 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png&quot; alt=&quot;ssh-keygen&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3.ssh key가 정상적으로 생성되었는지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd ~/.ssh
 $ ls -al
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png&quot; alt=&quot;check ssh key&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png&quot; alt=&quot;check ssh key&quot; /&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Public Key (id_rsa.pub) 를 우분투로 복사한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;4.Public Key (id_rsa.pub) 를 우분투로 복사한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-copy-id &amp;lt;Ubuntu 계정&amp;gt;@&amp;lt;DDNS 도메인&amp;gt;
 $ ssh-copy-id ubuntu@example.ipitme.org
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;우분투에서 public key가 정상적으로 복사되었는지 확인한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;5.우분투에서 public key가 정상적으로 복사되었는지 확인한다.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cat ~/.ssh/authorized_keys
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png&quot; alt=&quot;Public Key&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png&quot; alt=&quot;Public Key&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6.정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh &amp;lt;Ubuntu 계정&amp;gt;@&amp;lt;DDNS 도메인&amp;gt;
 $ ssh ubuntu@example.iptime.org
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png&quot; alt=&quot;SSH in Mac&quot; /&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;-&quot;&gt;💻 🔗🔌🖥&lt;/h1&gt;
+&lt;h1 id=&quot;연결-완료--&quot;&gt;연결 완료 💻 🔗🔌🖥&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97596875-8a963780-1a48-11eb-900a-2b089c69b362.png&quot; alt=&quot;jupyter notebook in Mac&quot; /&gt;&lt;/p&gt;
 
