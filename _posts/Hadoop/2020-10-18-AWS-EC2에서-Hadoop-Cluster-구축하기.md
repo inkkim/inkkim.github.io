@@ -113,6 +113,7 @@ $ ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
 
 원활한 설치를 위해 Red Hat 보안 요소인 SELINUX를 끄고 진행
 - etc 파일 수정을 위해 sudo 명령어로 config 파일 열기
+
 ```
 $ sudo vi /etc/selinux/config
 ```
@@ -124,6 +125,7 @@ SELINUX=disabled
 ```
 
 - 변경사항 적용을 위해 재부팅
+
 ```
 $ sudo reboot
 ```
@@ -131,11 +133,13 @@ $ sudo reboot
 2. 보안상 새로운 계정을 생성
 
 - hadoop 이름으로 새로운 계정 생성
+
 ```
 $ useradd hadoop
 ```
 
 - 비밀번호 설정
+
 ```
 $ passwd hadoop
 ```
@@ -143,11 +147,13 @@ $ passwd hadoop
 3. hadoop 계정에 sudo 권한 부여
 
 - etc 파일 수정을 위해 sudo 명령어와 쓰기 권한없이 바로 편집할 수 있는 visud 명령어를 통해 sudoers파일 열기
+
 ```
 $ sudo visudo /etc/sudoers
 ```
 
 - 계정권한 부여 명령 추가
+
 ```
 hadoop  ALL=(ALL)   ALL
 ```
@@ -158,26 +164,31 @@ hadoop  ALL=(ALL)   ALL
 
  공개키를 등록하여 각 인스턴스끼리 비밀번호 없이 지속적인 통신을 가능하게 함
 - hadoop 계정 로그인
+
 ```
 $ su hadoop
 ```
 
 - SSH Key 생성 (명령어 실행 후 엔터)
+
 ```
 $ ssh-keygen -t rsa
 ```
 
 - authorized_keys파일에 공개키 추가
+
 ```
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh authorized_keys
 ```
 
 - authorized_keys 권한 부여
+
 ```
 $ chmod 640 ~/.ssh/authorized_keys
 ```
 
 - ssh 접속 확인
+
 ```
 $ ssh localhost
 ```
@@ -185,24 +196,25 @@ $ ssh localhost
 ## Hadoop 설치
 1. Java 설치
 
-
  Hadoop은 Java로 쓰여진 오픈 소스이므로 사전에 Java 설치 필수이다. 따라서 Java 버전에 영향을 많이 받으므로, Hadoop 3.2.1 버전과 호환되는 java-1.8.0-openjdk 버전 설치한다.
 
 - Java 설치
+
 ```
 $ sudo dnf install java-1.8.0-openjdk ant -y
 ```
 
 - Java 명령어로 설치여부 확인
+
 ```
 $ java -version
 ```
 
 2. Hadoop 설치
 
-
- [Hadoop 3.2.1](https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz) 해당 링크를 복사하여 설치
+[Hadoop 3.2.1](https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz) 해당 링크를 복사하여 설치
 - 웹 파일 다운로드 패키지 다운로드
+
 ```
 $ sudo yum install wget
 ```
@@ -216,11 +228,13 @@ $ tar -xvzf hadoop-3.2.1.tar.gz
 ```
 
 - 폴더명 변경
+
 ```
 $ mv hadoop-3.2.1 hadoop
 ```
 
 - 환경변수 설정
+
 ```
 $ vi ~/.bashrc
 ```
@@ -245,17 +259,20 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 JAVA_HOME은 /usr/lib/jvm/ 밑에 폴더명으로 설정(다운로드 시기에 따라 빌드 버전이 다를 수 있음)
 
 - 하둡 환경파일 수정
+
 ```
 $ cd ~/hadoop/etc/hadoop
 ```
 
 - workers ()
+
 ```
 datanode1
 datanode2
 ```
 
 - core-site.xml
+
 ```
 <configuration>
  <property>
@@ -270,6 +287,7 @@ datanode2
 ```
 
 - hdfs-site.xml
+
 ```
 <configuration>
 	<property>
@@ -304,6 +322,7 @@ datanode2
 ```
 
 - mapred-site.xml
+
 ```
 <configuration>
         <property>
@@ -334,6 +353,7 @@ datanode2
 ```
 
 - yarn-site.xml
+
 ```
 <configuration>
 
@@ -358,12 +378,14 @@ datanode2
 ```
 
 - hdfs 저장을 위한 디렉토리 생성
+
 ```
 $ cd hadoop
 $ mkdir data
 ```
 
 - 종료
+
 ```
 $ sudo shutdown -h now
 ```
@@ -383,6 +405,7 @@ $ sudo shutdown -h now
 
 3. hostname 설정
 - 각각의 인스턴스에서 진행
+
 ```
 $ sudo hostnamectl set-hostname client
 $ sudo hostnamectl set-hostname namenode
@@ -391,11 +414,13 @@ $ sudo hostnamectl set-hostname secondnode
 
 4. 각각의 인스턴스 연결
 - hosts 파일 열기
+
 ```
 $ sudo vi /etc/hosts
 ```
 
 - 각각의 Private IP 연동 (172.x.x.x)
+
 ```
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
@@ -408,6 +433,7 @@ $ sudo vi /etc/hosts
 ![Private IP](https://user-images.githubusercontent.com/60086878/96369633-2943ae00-1196-11eb-951f-b45c8d91a16f.png)
 
 - SSH 접근 확인 (hadoop 계정에서 실행)
+
 ```
 $ ssh client
 $ ssh secondnode
@@ -418,11 +444,13 @@ $ ssh namenode
 ## Hadoop 실행
 1. Hadoop 구동
 - hdfs 파일 포맷
+
 ```
 $ hadoop namenode -format 
 ```
 
 - dfs(namenode) 시작
+
 ```
 $ start-dfs.sh
 $ jps
@@ -435,6 +463,7 @@ namenode에서는 jps 명령어 시 DataNode, NameNode가 실행
 secondnode에서는 jps 명령어 시 DataNode, SecondaryNameNode가 실행
 
 - yarn(secondnode) 시작
+
 ```
 $ start-yarn.sh
 $ jps

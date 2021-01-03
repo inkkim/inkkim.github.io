@@ -67,19 +67,26 @@ EKS 클러스터 구축을 위해 필요한 AWS CLI와 aws-iam-authenticator를 
 - 노드 간 마이너 버전 차이가 0.2이상 나면 오류 발생할 수 있음
 - 예를 들어, master 노드에서 v1.18를 사용하면, 다른 노드에서는 v1.17 ~ v1.19 사용 가능
 1.[최신 Stable 버전](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)을 다운로드한다.
+
 ```
 $ curl -LO https://storage.googleapis.com/kubernetes-release/ release/v1.17.0/bin/linux/amd64/
 $ kubectl
 ```
+
 2. kubectl binary 파일에 실행권한을 부여한다.
+
 ```
 $ chmod +x ./kubectl 
 ```
+
 3. kubectl binary 파일을 바이너리 폴더로 이동시킨다.
+
 ```
 $ sudo mv ./kubectl /usr/local/bin/$ kubectl 
 ```
+
 4. kubectl 명령어로 버전을 확인한다.
+
 ```
 $ kubectl version --client 
 ```
@@ -90,6 +97,7 @@ $ kubectl version --client
 - AWS EC2를 이용해 Bestion server를 만들어 AWS CLI 환경 구축
 
 1. AWS CLI2를 설치한다.
+
 ```
 $ cd ~
 $ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -104,6 +112,7 @@ $ aws --version
 ![](https://user-images.githubusercontent.com/60086878/103116254-28089300-46a9-11eb-8f8b-eafc08a22728.png)
 
 #### aws-iam-authenticator
+
 - AWS EKS가 IAM을 사용하여 aws-iam-authenticator를 통해 Kubernetes 클러스터에 인증을 제공
 
 1. AWS S3로부터 aws-iam-authenticator binary 파일을 설치한다.
@@ -131,6 +140,7 @@ $ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
 
 5. aws-iam-authenticator가 실행되는지 확인한다.
+
 ```
 $ aws-iam-authenticator help
 ```
@@ -141,11 +151,13 @@ $ aws-iam-authenticator help
 - CloudFormation에 사용
 
 1. 최신 버전을 설치한다.
+
 ```
 $ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 ```
 
 2. eksctl binary 파일을 /usr/local/bin으로 위치시킨다.
+
 ```
 $ sudo mv /tmp/eksctl /usr/local/bin 
 ```
@@ -154,6 +166,7 @@ $ sudo mv /tmp/eksctl /usr/local/bin
 
 #### yq
 1. 아래 명령어로 yq를 설치한다.
+
 ```
 $ echo 'yq() {
   docker run --rm -i -v "${PWD}":/workdir mikefarah/yq yq "$@"}' | tee -a ~/.bashrc && source ~/.bashrc
@@ -161,11 +174,13 @@ $ echo 'yq() {
 
 #### jq
 1. 아래 명령어로 jq를 설치한다.
+
 ```
 $ sudo yum -y install jq gettext bash-completion moreutils
 ```
 
 #### AWS Load Balancer Controller Version 설정
+
 ```
 $ echo 'export LBC_VERSION="v2.0.0"' >>  ~/.bash_profile
 $ .  ~/.bash_profile
@@ -188,6 +203,7 @@ $ .  ~/.bash_profile
 7. Bastion Server에서 .aws/credentials 파일이 있다면 삭제한다.
 
 8. 아래 명령어로 AWS REGION이 알맞게 불러와지는지 확인한다.
+
 ```
 $ export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 $ export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
@@ -196,6 +212,7 @@ $ test -n "$AWS_REGION" && echo AWS_REGION is "$AWS_REGION" || echo AWS_REGION i
 ```
 
 9. AWS CLI 명령어가 원활하게 진행될 수 있도록 AWS 계정 정보를 환경변수로 설정한다.
+
 ```
 $ echo "export ACCOUNT_ID=${ACCOUNT_ID}" | tee -a ~/.bash_profile
 $ echo "export AWS_REGION=${AWS_REGION}" | tee -a ~/.bash_profile
@@ -204,6 +221,7 @@ $ aws configure get default.region
 ```
 
 10. 아래 명령어로 IAM Role이 유효한지 확인한다.
+
 ```
 aws sts get-caller-identity --query Arn | grep eksworkshop-admin-i -q && echo "IAM role valid" || echo "IAM role NOT valid"
 ```
@@ -225,8 +243,6 @@ EKS 클러스터는 노드를 관리할 필요 없는 AWS Fargate와 같은 관�
     - 컨테이너를 실행하기 위해 가상 머신 그룹을 프로비저닝, 구성 또는 조정할 필요 없음
 
 이 포스팅에서는 기본 구성인 EC2를 이용한 자체관리형 노드로 구성하는 방법을 소개한다.
-
-
 
 1. 아래 내용을 cluster.yaml로 생성한다.
 - yaml파일로 구성된 manifest들은 indent가 중요하므로 각별히 신경써주어야 한다.
@@ -423,6 +439,7 @@ update-auto-scaling-group \
 1. Bastion Server에서 Kubeflow GitHub에서 [Release v1.2.0](https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz)을 다운로드 한다.
  
 2. 다음 명령어로 tar 압축을 해제한다.
+
 ```
 $ tar -xvf kfctl_v1.2.0-0-gbc038f9_linux.tar.gz
 ```
@@ -443,17 +460,20 @@ $ export AWS_CLUSTER_NAME=eksworkshop-eksctl-i / **클러스터 이름
 
 
 5. 아래 명령어로 클러스터 이름으로 폴더를 생성하고, kubeflow 설치를 위한 manifest를 다운로드 받는다.
+
 ```
 $ mkdir ${AWS_CLUSTER_NAME} && cd ${AWS_CLUSTER_NAME}
 $ wget -O kfctl_aws.yaml $CONFIG_URI
 ```
 
 6. 아래 명령어로 Kubeflow 클러스터를 생성한다.
+
 ```
 $ kfctl apply -V -f kfctl_aws.yaml
 ```
 
 7. 설치가 완료되기까지 약 수 분이 소요된다. 명령어 프롬프트가 나타나면 아래 명령어로 kubeflow namespace에 pod들이 올라왔는지 확인한다.
+
 ```
 $ kubectl -n kubeflow get all
 ```
@@ -468,6 +488,7 @@ istio-system   istio-ingress   *       a743484b-istiosystem-istio-2af2-xxxxxx.ap
 ```
 
 9. Default 계정은 다음과 같다.
+
 ```
 ID : admin@kubeflow.org
 PW : 12341234
