@@ -1,4 +1,10 @@
 var store = [{
+        "title": "Kubernetes 기본용어 정리",
+        "excerpt":"🤸‍♂️들어가며 이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊 ⛴Kubernetes란 ? 개요 Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 K8s, 케이(에이)츠 라고 부르기도 합니다. 현재...","categories": ["Kubernetes"],
+        "tags": ["Kubernetes","CKA"],
+        "url": "/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/",
+        "teaser": null
+      },{
         "title": "AWS EC2에서 Hadoop Cluster 구축하기",
         "excerpt":"🐘하둡(Hadoop)이란 ? 대규모 검색 색인을 구축하기 위해 Java로 개발된 오픈 소스 분산 컴퓨팅 플랫폼 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.f(개발자의 네이밍 세계는 생각보다 단순하다.) 핵심 컴포넌트 하둡 분산 파일 시스템(HDFS, Hadoop Distributed File System) 앞서 언급했듯이 하둡은 확장성과...","categories": ["Hadoop"],
         "tags": ["빅데이터","분산처리","데이터플랫폼"],

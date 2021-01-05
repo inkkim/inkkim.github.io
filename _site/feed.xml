@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-03T23:32:47+09:00</updated><id>/feed.xml</id><title type="html">🤔선미모드</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-05T20:38:26+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다.&lt;/p&gt;
@@ -160,10 +160,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;2.Python 코드 작성&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이때,&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;

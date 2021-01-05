@@ -16,16 +16,16 @@ minimal_mistakes_skin    : "default" #, "air", "aqua", "contrast", "dark", "dirt
 
 # Site Settings
 locale                   : "ko"
-title                    : "🤔선미모드"
+title                    : "Eliot's DB"
 title_separator          : "-"
-subtitle                 : "24시간이 모자라🎶"
+subtitle                 : "From 2020"
 name                     : "김인규"
 description              : "새로 알게 된 내용을 꾸준히 기록합니다."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : "assets/images/My_Emoji_300.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : True # true, false (default)
 words_per_minute         : 200
@@ -96,7 +96,7 @@ analytics:
 # Site Author
 author:
   name             : "김인규"
-  avatar           : "https://user-images.githubusercontent.com/60086878/103459418-a1ac1b00-4d52-11eb-8507-2230d282d793.jpeg"
+  avatar           : "/assets/images/Profile_Jekyll.jpeg"
   bio              : "새로 알게 된 내용을 꾸준히 기록합니다"
   location         : 
   email            : 

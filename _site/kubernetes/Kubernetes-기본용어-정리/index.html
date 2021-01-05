@@ -1,0 +1,821 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Kubernetes 기본용어 정리 - Eliot’s DB</title>
+<meta name="description" content="CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.">
+
+
+  <meta name="author" content="김인규">
+  
+  <meta property="article:author" content="김인규">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Eliot's DB">
+<meta property="og:title" content="Kubernetes 기본용어 정리">
+<meta property="og:url" content="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">
+
+
+  <meta property="og:description" content="CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.">
+
+
+
+  <meta property="og:image" content="/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-01-05T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김인규",
+      "url": "/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="JrNPOuaPPcCS0tpOKZm8N-52Vp9S6FhvPConG47v4Pc" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="30c97a180b609213b1a3a11ba67952e0031c7436">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Eliot's DB Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon.ico/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon.ico/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon.ico/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon.ico/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon.ico/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon.ico/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon.ico/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon.ico/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.ico/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon.ico/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon.ico/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon.ico/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/My_Emoji_300.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Eliot's DB
+          <span class="site-subtitle">From 2020</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">🧑🏻‍💻소개</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">🗂카테고리</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">📜게시글</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">🏷태그</a>
+            </li><li class="masthead__menu-item">
+              <a href="/page-archive/">📁폴더</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">🔍검색</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style=" background-image: url('/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Kubernetes 기본용어 정리
+
+        
+      </h1>
+      
+        <p class="page__lead">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.
+</p>
+      
+      
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 분 소요
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+</div>
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep"> ❥ </span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#kubernetes" itemprop="item"><span itemprop="name">Kubernetes</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep"> ❥ </span>
+      
+    
+      
+      
+        <li class="current">Kubernetes 기본용어 정리</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/Profile_Jekyll.jpeg" alt="김인규" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김인규</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>새로 알게 된 내용을 꾸준히 기록합니다</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:sda1547@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-paper-plane" aria-hidden="true"></i><span class="label">sda1547@gmail.com</span></a></li>
+          
+        
+          
+            <li><a href="https://sda1547.gitbook.io/data-engineering/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-book" aria-hidden="true"></i><span class="label">GitBook</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/inkkim" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Kubernetes 기본용어 정리">
+    <meta itemprop="description" content="CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.">
+    <meta itemprop="datePublished" content="2020-01-05T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#️들어가며">🤸‍♂️들어가며</a></li><li><a href="#kubernetes란-">⛴Kubernetes란 ?</a><ul><li><a href="#개요">개요</a></li><li><a href="#탄생-배경">탄생 배경</a></li><li><a href="#대항마">대항마?</a></li></ul></li><li><a href="#아키텍쳐">🏗아키텍쳐</a></li><li><a href="#참고">참고</a></li><li><a href="#참고-1">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="️들어가며">🤸‍♂️들어가며</h1>
+<p>이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊</p>
+
+<h1 id="kubernetes란-">⛴Kubernetes란 ?</h1>
+
+<h2 id="개요">개요</h2>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103609779-f2459300-4f61-11eb-951e-8fa51bc3c9e0.png" alt="K8s Logo" /></p>
+
+<p>Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 <code class="language-plaintext highlighter-rouge">K8s</code>, <code class="language-plaintext highlighter-rouge">케이(에이)츠</code> 라고 부르기도 합니다. 현재 K8s 오픈 소스 프로젝트는 Cloud Native Computing Foundation(CNCF)가 주관하고 있습니다.</p>
+
+<p>K8s의 전신은 Google 내부 프로젝트인 Borg가 전신입니다. 매일 수 억개의 컨테이너를 배포 및 생성하는 플랫폼으로 Google의 십 수년간의 컨테이너 오케스트레이션 노하우 기술이 녹아들어간 기술입니다. 지난 2014년에 Google에서 오픈소스로 공개하여 현재는 여러 IT 대기업들이 개발에 참여하고 있습니다.</p>
+
+<h2 id="탄생-배경">탄생 배경</h2>
+
+<ul>
+  <li>기존의 서버 운영방식</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png" alt="image" /></p>
+
+<p>각 서버마다 운영하는 애플리케이션이 달라 각 서버마다 용도에 맞는 네이밍을 합니다. 즉, 서버 하나에 용도가 한정되며 그에 맞게 관리가 되는 시스템이었습니다. 이러한 이유로 서버마다 특정 애플리케이션을 구동하기 위한 환경이 모두 다르고,</p>
+
+<p>이때 만약 서버 A에 문제가 발생한 상황을 가정해봅시다. 서버 엔지니어는 서버 A에 서비스중인 애플리케이션 A가 지속적으로 배포하기 위해 문제가 된 서버를 복구할 때까지 다른 서버에 배포  해야 합니다. 하지만 다른 서버 역시 별도의 애플리케이션이 서비스중이기 때문에 애플리케이션 A와의 서버 B의 호환여부와 동시에 배포할 수 있는 리소스가 충분한지 여부도 확인해야 하는 매우 번거로운 과정이 따릅니다.</p>
+
+<p>이러한 문제 상황은 언제 어느 서버에서 생길지 모르고, 발생할 때마다 위와 같은 절차가 이뤄지게 되면서 운영상의 어려움이 발생합니다.</p>
+
+<ul>
+  <li>Docker의 등장</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png" alt="image" /></p>
+
+<p>가상화를 통한 리눅스 컨테이너 기술을 적용한 Docker의 등장으로 환경에 상관없이 Docker가 설치되어있는 환경이면 동일하게 애플리케이션을 실행할 수 있게 됐습니다. 덕분에 기존보다 관리가 한결 수월하게 됐지만, 컨테이너의 수가 늘어나면서 이것을 관리하는 것조차 어려움이 생겼습니다. 그래서 속속 등장하기 시작한게 컨테이너 오케스트레이션 기술입니다. Kubernetes는 그리스어로 배의 조타수라는 뜻으로, 로고도 조타 핸들 모양을 하고 있습니다.</p>
+
+<ul>
+  <li>K8s 클러스터 운영방식</li>
+</ul>
+
+<p>K8s는 Master에서 Worker Node와 클러스터 내 Pod들을 관리합니다.</p>
+
+<h2 id="대항마">대항마?</h2>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103619989-0e532f80-4f76-11eb-9ecf-4523d7699dba.png" alt="image" /></p>
+
+<p>이러한 컨테이너 오케스트레이션 플랫폼은 K8s 이외에도 Docker Swarm이나 Apache Mesos와 Marathon 등이 있지만 현재는 K8s가 표준처럼 사용되고 있습니다.</p>
+
+<h1 id="아키텍쳐">🏗아키텍쳐</h1>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png" alt="image" /></p>
+
+<p>K8s는 Containerized Application을 실행하는 노드라고 하는 워커 머신의</p>
+
+<p>K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/103617297-5facf000-4f71-11eb-887b-107abd5b78b4.png" alt="image" /></p>
+
+<h1 id="참고">참고</h1>
+<p><a href="https://kubernetes.io/docs/home/">Kubernetes Documentation</a>
+<a href="https://www.redhat.com/ko/topics/containers/what-is-kubernetes">쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점</a>
+<a href="https://subicura.com/2019/05/19/kubernetes-basic-1.html">쿠버네티스 시작하기 - Kubernetes란 무엇인가?</a></p>
+
+<h1 id="참고-1">참고</h1>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#cka" class="page__taxonomy-item" rel="tag">CKA</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#kubernetes" class="page__taxonomy-item" rel="tag">Kubernetes</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#kubernetes" class="page__taxonomy-item" rel="tag">Kubernetes</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2020-01-05T00:00:00+09:00">January 5, 2020</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Kubernetes+%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4+%EC%A0%95%EB%A6%AC%20%2Fkubernetes%2FKubernetes-%25EA%25B8%25B0%25EB%25B3%25B8%25EC%259A%25A9%25EC%2596%25B4-%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fkubernetes%2FKubernetes-%25EA%25B8%25B0%25EB%25B3%25B8%25EC%259A%25A9%25EC%2596%25B4-%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fkubernetes%2FKubernetes-%25EA%25B8%25B0%25EB%25B3%25B8%25EC%259A%25A9%25EC%2596%25B4-%25EC%25A0%2595%25EB%25A6%25AC%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">이전</a>
+    
+    
+      <a href="/hadoop/AWS-EC2%EC%97%90%EC%84%9C-Hadoop-Cluster-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" class="pagination--pager" title="AWS EC2에서 Hadoop Cluster 구축하기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">이 글은 어때요?</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Twitter API로 GCP Pipeline 구축하기
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> 2021/01/02 &nbsp; <i class="far fa-folder-open"></i> Data Engineering</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="permalink">파이썬 접근 제어자에 대하여
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> 2020/12/31 &nbsp; <i class="far fa-folder-open"></i> Python</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="permalink">파이썬 Counter 사용법
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> 2020/12/30 &nbsp; <i class="far fa-folder-open"></i> Python</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">파이썬 collections 패키지의 Counter() 메소드 사용법과 활용사례를 소개한다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="permalink">Vi 사용법 완벽 가이드
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> 2020/12/28 &nbsp; <i class="far fa-folder-open"></i> Etc</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Linux나 Unix 유저라면 한 번쯤은 vi editor를 사용해본 경험이 있을 것이다. vi editor란 Unix-like 운영체제 용으로 만든 텍스트 편집기를 말한다. Vi와 더불어 Vi IMproved의 약자인 Vim이라는 기존 vi editor의 성능을 개선한 확장판이 ...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/inkkim" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 김인규. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/kubernetes/Kubernetes-기본용어-정리"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-inkkim-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

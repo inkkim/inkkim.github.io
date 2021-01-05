@@ -175,8 +175,6 @@ $ source ~/.zshrc
 
 2.Python 코드 작성
 
-- 이때, 
-
 ```python
 import json
 import os
