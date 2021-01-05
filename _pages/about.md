@@ -4,7 +4,7 @@ title: "🧑🏻‍💻소개"
 toc: true
 excerpt: "안녕하세요. <br>데이터를 공부하는 **김인규**입니다."
 header:
-    overlay_image: /assets/images/MY_Emoji_1200.png
+    overlay_image: /assets/images/My_Emoji_1200.png
     overlay_color: "#333"
     actions:
       - label: "CV Download"
