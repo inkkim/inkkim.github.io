@@ -29,7 +29,7 @@
       {% if page.tagline %}
         <p class="page__lead">{{ page.tagline | markdownify | remove: "<p>" | remove: "</p>" }}</p>
       {% elsif page.title == "🧑🏻‍💻소개" and page.header.show_overlay_excerpt != false and page.excerpt %}
-        <p class="page__lead" style="font-size:45px;">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
+        <p class="page__lead" style="font-size:50px;">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
         <p class="page__lead" style="font-size:20px;">{{ "새로운 것을 배우며 스스로 성장하는 모습에 즐거움을 느낍니다.<br>이 블로그에 새로 알게 된 내용을 정리하며, 오늘도 **성장** 중입니다.🚀" | markdownify | remove: "<p>" | remove: "</p>" }}</p>
       {% elsif page.header.show_overlay_excerpt != false and page.excerpt %}
         <p class="page__lead">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>
