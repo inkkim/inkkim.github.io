@@ -1,4 +1,4 @@
-I"b<h1 id="️들어가며">🤸‍♂️들어가며</h1>
+I"�<h1 id="️들어가며">🤸‍♂️들어가며</h1>
 <p>이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊</p>
 
 <h1 id="kubernetes란-">⛴Kubernetes란 ?</h1>
@@ -53,12 +53,10 @@
 
 <p>K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103617297-5facf000-4f71-11eb-887b-107abd5b78b4.png" alt="image" /></p>
+<p>🚧 아직 작성중입니다.</p>
 
 <h1 id="참고">참고</h1>
 <p><a href="https://kubernetes.io/docs/home/">Kubernetes Documentation</a>
 <a href="https://www.redhat.com/ko/topics/containers/what-is-kubernetes">쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점</a>
 <a href="https://subicura.com/2019/05/19/kubernetes-basic-1.html">쿠버네티스 시작하기 - Kubernetes란 무엇인가?</a></p>
-
-<h1 id="참고-1">참고</h1>
 :ET

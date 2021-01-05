@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-05T20:38:26+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-06T00:06:20+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Kubernetes 기본용어 정리</title><link href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="Kubernetes 기본용어 정리" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-05T00:00:00+09:00</updated><id>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">&lt;h1 id=&quot;️들어가며&quot;&gt;🤸‍♂️들어가며&lt;/h1&gt;
+&lt;p&gt;이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊&lt;/p&gt;
+
+&lt;h1 id=&quot;kubernetes란-&quot;&gt;⛴Kubernetes란 ?&lt;/h1&gt;
+
+&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103609779-f2459300-4f61-11eb-951e-8fa51bc3c9e0.png&quot; alt=&quot;K8s Logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K8s&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;케이(에이)츠&lt;/code&gt; 라고 부르기도 합니다. 현재 K8s 오픈 소스 프로젝트는 Cloud Native Computing Foundation(CNCF)가 주관하고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;K8s의 전신은 Google 내부 프로젝트인 Borg가 전신입니다. 매일 수 억개의 컨테이너를 배포 및 생성하는 플랫폼으로 Google의 십 수년간의 컨테이너 오케스트레이션 노하우 기술이 녹아들어간 기술입니다. 지난 2014년에 Google에서 오픈소스로 공개하여 현재는 여러 IT 대기업들이 개발에 참여하고 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;탄생-배경&quot;&gt;탄생 배경&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기존의 서버 운영방식&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;각 서버마다 운영하는 애플리케이션이 달라 각 서버마다 용도에 맞는 네이밍을 합니다. 즉, 서버 하나에 용도가 한정되며 그에 맞게 관리가 되는 시스템이었습니다. 이러한 이유로 서버마다 특정 애플리케이션을 구동하기 위한 환경이 모두 다르고,&lt;/p&gt;
+
+&lt;p&gt;이때 만약 서버 A에 문제가 발생한 상황을 가정해봅시다. 서버 엔지니어는 서버 A에 서비스중인 애플리케이션 A가 지속적으로 배포하기 위해 문제가 된 서버를 복구할 때까지 다른 서버에 배포  해야 합니다. 하지만 다른 서버 역시 별도의 애플리케이션이 서비스중이기 때문에 애플리케이션 A와의 서버 B의 호환여부와 동시에 배포할 수 있는 리소스가 충분한지 여부도 확인해야 하는 매우 번거로운 과정이 따릅니다.&lt;/p&gt;
+
+&lt;p&gt;이러한 문제 상황은 언제 어느 서버에서 생길지 모르고, 발생할 때마다 위와 같은 절차가 이뤄지게 되면서 운영상의 어려움이 발생합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker의 등장&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;가상화를 통한 리눅스 컨테이너 기술을 적용한 Docker의 등장으로 환경에 상관없이 Docker가 설치되어있는 환경이면 동일하게 애플리케이션을 실행할 수 있게 됐습니다. 덕분에 기존보다 관리가 한결 수월하게 됐지만, 컨테이너의 수가 늘어나면서 이것을 관리하는 것조차 어려움이 생겼습니다. 그래서 속속 등장하기 시작한게 컨테이너 오케스트레이션 기술입니다. Kubernetes는 그리스어로 배의 조타수라는 뜻으로, 로고도 조타 핸들 모양을 하고 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;K8s 클러스터 운영방식&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;K8s는 Master에서 Worker Node와 클러스터 내 Pod들을 관리합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;대항마&quot;&gt;대항마?&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103619989-0e532f80-4f76-11eb-9ecf-4523d7699dba.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이러한 컨테이너 오케스트레이션 플랫폼은 K8s 이외에도 Docker Swarm이나 Apache Mesos와 Marathon 등이 있지만 현재는 K8s가 표준처럼 사용되고 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;아키텍쳐&quot;&gt;🏗아키텍쳐&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;K8s는 Containerized Application을 실행하는 노드라고 하는 워커 머신의&lt;/p&gt;
+
+&lt;p&gt;K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다.&lt;/p&gt;
+
+&lt;p&gt;🚧 아직 작성중입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://kubernetes.io/docs/home/&quot;&gt;Kubernetes Documentation&lt;/a&gt;
+&lt;a href=&quot;https://www.redhat.com/ko/topics/containers/what-is-kubernetes&quot;&gt;쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점&lt;/a&gt;
+&lt;a href=&quot;https://subicura.com/2019/05/19/kubernetes-basic-1.html&quot;&gt;쿠버네티스 시작하기 - Kubernetes란 무엇인가?&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="Kubernetes" /><category term="CKA" /><category term="작성중" /><summary type="html">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.</summary></entry><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다.&lt;/p&gt;
@@ -1711,218 +1771,4 @@ PASSWORD : admin
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102592515-e894f080-4156-11eb-9491-2b1be6bfdfd6.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="맥북" /><category term="단축키" /><category term="생산성" /><summary type="html">이 글에서는 대부분의 툴에서 범용적으로 사용되는 맥북 키보드 단축키들 위주로 대해 몇 가지 소개한다.</summary></entry><entry><title type="html">맥북으로 딥러닝하기 (Feat. SSH) 2</title><link href="/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.-SSH)-2/" rel="alternate" type="text/html" title="맥북으로 딥러닝하기 (Feat. SSH) 2" /><published>2020-10-29T00:00:00+09:00</published><updated>2020-10-29T00:00:00+09:00</updated><id>/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.%20SSH)-2</id><content type="html" xml:base="/etc/%EB%A7%A5%EB%B6%81%EC%9C%BC%EB%A1%9C-%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%98%EA%B8%B0-(Feat.-SSH)-2/">&lt;h1 id=&quot;-맥북으로-딥러닝하기feat-ubuntu-1804-lts-1에서는---&quot;&gt;🧲 &lt;a href=&quot;https://inkkim.github.io/article/1.html&quot;&gt;맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 1&lt;/a&gt;에서는 . . .&lt;/h1&gt;
-
-&lt;p&gt;이전 글에서는 데스크탑에 우분투를 설치하고, 꽤나 까다로운 Nvidia driver 설치를 거쳐 최종적으로 nvidia-docker를 이용해 Docker 내에서도 GPU 자원을 사용할 수 있는 환경을 구성해보았다.&lt;/p&gt;
-
-&lt;p&gt;이번 글에서는 이어서 docker를 이용하여 손쉽게 딥러닝 개발환경을 구축해보고, 최종적으로 SSH(Secure Shell Protocol)를 통해 맥북에서 접근이 가능하도록 만들어보겠다.&lt;/p&gt;
-
-&lt;h1 id=&quot;tensorflow-gpu-도커-이미지-설치-&quot;&gt;Tensorflow-gpu 도커 이미지 설치 🐳&lt;/h1&gt;
-
-&lt;p&gt;Docker Hub에서는 수 많은 유저들이 각자 필요에 의해서 제작해놓은 도커 이미지가 공유되고 있다. 도커 이미지는 쉽게 말해서 특정 프로그램이나 서비스를 구동하기 위해서 필요한 모든 설치나 환경설정이 완료되어있는 상태를 박제한 것이다. 우리는 이 이미지를 다운받아 도커 데몬을 이용해 이것을 공유한 사람과 완벽하게 같은 환경을 실행할 수 있게 된다.&lt;/p&gt;
-
-&lt;p&gt;특정 OS의 구속되지 않고 컨테이너로써 Host OS와 다른 컨테이너로부터 독립된 환경을 구성할 수 있다. 심지어 성능 저하가 거의 없이 동일한 환경을 구성해주어 많은 개발자들의 큰 수고를 덜어주고 있다. 나 역시 이 편리한 툴을 이용하여 Tensorflow-gpu를 설치하여 딥러닝 개발환경을 구축하려고 한다.&lt;/p&gt;
-
-&lt;p&gt;1.먼저 Docker Hub에서 원하는 Tensorflow 이미지를 선택한다. Tensorflow Official Repository에서는 Tensorflow 버전별로 다양한 이미지를 제공하고 있다. 무려 천만 건 이상의 다운로드를 기록중이다. ❗😲❗&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97440883-687ab780-196b-11eb-8fea-5568c959c430.png&quot; alt=&quot;Docker Hub&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;이렇게 버전에 따라 태그를 나눠 배포하고 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97441942-a0cec580-196c-11eb-9ab9-ef6746dce720.png&quot; alt=&quot;Tensorflow Tag&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CLI환경에서도 명령어로 찾을 수 있다. 특별한 케이스가 아닌 경우 STAR 개수를 많이 받은 것으로 받으면 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97451551-30797180-1977-11eb-9df3-948f7ce81933.png&quot; alt=&quot;CLI Command&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker search &amp;lt;이미지 이름&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.아래 명령어로 도커 데몬으로 실행시킨다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd $HOME/Desktop &amp;amp;&amp;amp; mkdir docker
-$ docker run --runtime=nvidia -d -it \ 
---mount type=bind,source=$HOME/Desktop/docker,target=/tf \
--p 8888:8888 \
--p 6006:6006 \
---name tf-gpu-py3 \
---restart always \
-tensorflow/tensorflow:2.2.1-gpu-py3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run --runtime=nvidia&lt;/code&gt; // nvidia-docker와 함께 도커 데몬을 실행&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d&lt;/code&gt; // 백그라운드에서 실행&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-it&lt;/code&gt; // tty 가상콘솔 할당&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-mount type=bind, source=&amp;lt;호스트 경로&amp;gt;, target=&amp;lt;컨테이너 경로&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;// 호스트와 컨테이너 저장소 바인딩 (원래 컨테이너는 휘발성이므로 컨테이너가 삭제되어도 호스트에 파일이 남도록 설정)&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-p&lt;/code&gt; : 호스트 포트:컨테이너포트 // 호스트-&amp;gt;컨테이너 포트 포워딩&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--name&lt;/code&gt; // 컨테이너 이름 명명&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--restart always&lt;/code&gt; // 도커 데몬이 실행되면 항상 실행&lt;/li&gt;
-  &lt;li&gt;&amp;lt;Repositor Name&amp;gt;/&amp;lt;Image Name&amp;gt;:&amp;lt;Tag Name&amp;gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec&lt;/code&gt; (optional) // default값은 jupyter notebook 서버 실행&lt;/li&gt;
-  &lt;li&gt;컨테이너 내 CLI(Command Line Interface)환경으로 진입하려면? /bin/bash&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;3.아래 명령어로 도커 내 실행되고 있는 jupyter notebook 서버의 토큰값을 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker ps
-$ docker exec &amp;lt;Container ID&amp;gt; jupyter notebook list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97458797-68d07e00-197e-11eb-9cae-8f68aefcd873.png&quot; alt=&quot;token&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4.주소창에서 localhost:8888로 접근하고, Setup a Password에서 token값을 넣고 이용해 비밀번호를 설정한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97459020-a46b4800-197e-11eb-9e68-30bf57c3d461.png&quot; alt=&quot;jupyter notebook&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;성공❗&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png&quot; alt=&quot;main&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;5.notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;목록에 GPU가 출력되면 성공 🎉&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png&quot; alt=&quot;Check GPU&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Tensorflow CNN 예제를 돌려보면서 GPU 활성도 모니터링도 해봤는데, 정상적으로 작동하는 것을 확인했다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png&quot; alt=&quot;Tensorflow ready&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png&quot; alt=&quot;Tensorflow action&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;iptime-ddns-설정-및-포트-포워딩&quot;&gt;iptime DDNS 설정 및 포트 포워딩&lt;/h1&gt;
-
-&lt;p&gt;iptime에서는 DDNS(Dynamic Domain Name System)
-을 무료로 제공한다. 이 서비스를 이용하면 수시로 변할 수 있는 유동 IP를 매번 확인해서 접속하지 않아도 되고, 돈내고 고정 IP를 사용하지 않고도 나만의 도메인을 가질 수 있다.&lt;/p&gt;
-
-&lt;p&gt;1.데스크탑에서 주소창에 192.168.0.1을 이용해 iptime 설정 페이지에 접속한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97590628-27a1a200-1a42-11eb-90b8-6c043676007a.png&quot; alt=&quot;iptime&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2.관리도구-고급설정-NAT/라우터 관리-포트포워드 설정에 들어가서 아래와 같이 외부에서 접속한 포트를 내부 포트로 연결시켜준다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;맥북에서 내부IP:8888로 접근하면 우분투 127.0.0.1:8888로 연결&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;jupyter notebook은 8888 / tensor board는 6006&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97588148-8c0f3200-1a3f-11eb-8915-07ebae30ee04.png&quot; alt=&quot;Port Fowarding&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3.고급설정-특수기능-DDNS 설정에 들어가서 호스트 이름(도메인으로 사용할 네임)을 원하는 대로 정하고 사용자 ID는 자주 사용하는 이메일로 입력하고 등록한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97589150-8a923980-1a40-11eb-9eff-46e922d43b8b.png&quot; alt=&quot;DDNS&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4.추가로 고급설정-보안기능-공유기 접속/보안관리에 들어가서 원격 관리 포트 사용을 체크하고 다른 포트와 중복되지 않는 10000 이상의 값을 주고 적용한다. 필자는 65000포트를 적용했다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97589608-0f7d5300-1a41-11eb-8aeb-4a09fc8eb973.png&quot; alt=&quot;Setting Port&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;5.이제 &amp;lt;Host Name&amp;gt;.iptime.org:65000으로 들어가보면 다시 iptime 관리자 페이지에 접근할 수 있다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;로그인 옵션이 설정되어있지 않으면 네트워크 보안에 치명적이니 꼭 로그인 옵션을 설정하자.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97590879-6f282e00-1a42-11eb-8fdb-e0b3993b260a.png&quot; alt=&quot;iptime by Host&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;우분투-방화벽-설정&quot;&gt;우분투 방화벽 설정&lt;/h1&gt;
-
-&lt;p&gt;외부에서 우분투로 접속하게 하려면 방화벽을 설정하고 22번 포트만 열어줘야 한다. 그러기 위해 먼저 이름값 제대로 하는 ufw(Uncomplicated FireWall)을 설치해줘야 한다.&lt;/p&gt;
-
-&lt;p&gt;1.아래 명령어로 ufw를 설치하고 실행한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install ufw
-$ sudo service ufw start
-$ sudo service ufw enable
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.아래 명령어로 22번 포트를 허용하고 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo ufw allow 22
-$ sudo ufw status
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97461289-fb721c80-1980-11eb-8089-8de63c0c5376.png&quot; alt=&quot;ufw status&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;ssh-접속-환경-설정&quot;&gt;ssh 접속 환경 설정&lt;/h1&gt;
-
-&lt;p&gt;맥에서 우분투를 접속하기 위해 ssh를 통해 맥북의 public key를 우분투로 보내서 등록 할 것이다. 즉, 우분투에게 맥북이 관계자라고 증명하는 key를 등록하는 셈이다.&lt;/p&gt;
-
-&lt;p&gt;1.아래 명령어로 우분투에서 ssh를 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo apt-get install ssh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.맥 (혹은 다른 기기) 에서 ssh-keygen을 한 후 Enter를 연타한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-keygen
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;필자는 이미 있어서 있다고 나온다..&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png&quot; alt=&quot;ssh-keygen&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3.ssh key가 정상적으로 생성되었는지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd ~/.ssh
-$ ls -al
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png&quot; alt=&quot;check ssh key&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4.Public Key (id_rsa.pub) 를 우분투로 복사한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh-copy-id &amp;lt;Ubuntu 계정&amp;gt;@&amp;lt;DDNS 도메인&amp;gt;
-$ ssh-copy-id ubuntu@example.ipitme.org
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5.우분투에서 public key가 정상적으로 복사되었는지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cat ~/.ssh/authorized_keys
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png&quot; alt=&quot;Public Key&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6.정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ ssh &amp;lt;Ubuntu 계정&amp;gt;@&amp;lt;DDNS 도메인&amp;gt;
-$ ssh ubuntu@example.iptime.org
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png&quot; alt=&quot;SSH in Mac&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;연결-완료--&quot;&gt;연결 완료 💻 🔗🔌🖥&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/97596875-8a963780-1a48-11eb-900a-2b089c69b362.png&quot; alt=&quot;jupyter notebook in Mac&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;드디어❗맥북에서 넉넉한 데스크탑의 자원을 사용할 수 있는 환경이 마련되었다. 이제 우리는 인터넷이 연결된 어디서든 맥북으로 데스크탑에서 구동되는 jupyter notebook 서버에 접근하여 원활한 데이터 분석을 할 수 있다.👏 추가로 데스크탑에 WOL(Wake On Lan)을 설정하여 스마트폰으로 원격 시동을 주문하여 원하는 때 데스크탑을 On/Off 할 수 있다. (해당 내용은 조만간 다뤄보도록 하겠다.)&lt;/p&gt;
-
-&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://storycompiler.tistory.com/112&quot;&gt;Ubuntu/Linux ssh 공개키의 모든 것&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.ssh.com/ssh/copy-id&quot;&gt;ssh-copy-id&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@RouYunPan/how-to-use-tensorflow-gpu-with-docker-2b72f784fdf3&quot;&gt;How to use Tensorflow-gpu with Docker&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jeongwookie.github.io/2019/05/23/190523-ubuntu-jupyter-notebook-remote/&quot;&gt;Server Setting - 고정 ip 없이 주피터(jupyter) 원격 접속 설정하기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="SSH" /><category term="iptime" /><category term="Tensorflow-gpu" /><summary type="html">이번 글에서는 이어서 docker를 이용하여 손쉽게 딥러닝 개발환경을 구축해보고, 최종적으로 SSH(Secure Shell Protocol)를 통해 맥북에서 접근이 가능하도록 만들어보겠다.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102592515-e894f080-4156-11eb-9491-2b1be6bfdfd6.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="맥북" /><category term="단축키" /><category term="생산성" /><summary type="html">이 글에서는 대부분의 툴에서 범용적으로 사용되는 맥북 키보드 단축키들 위주로 대해 몇 가지 소개한다.</summary></entry></feed>

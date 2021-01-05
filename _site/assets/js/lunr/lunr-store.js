@@ -1,10 +1,4 @@
 var store = [{
-        "title": "Kubernetes 기본용어 정리",
-        "excerpt":"🤸‍♂️들어가며 이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊 ⛴Kubernetes란 ? 개요 Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 K8s, 케이(에이)츠 라고 부르기도 합니다. 현재...","categories": ["Kubernetes"],
-        "tags": ["Kubernetes","CKA"],
-        "url": "/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/",
-        "teaser": null
-      },{
         "title": "AWS EC2에서 Hadoop Cluster 구축하기",
         "excerpt":"🐘하둡(Hadoop)이란 ? 대규모 검색 색인을 구축하기 위해 Java로 개발된 오픈 소스 분산 컴퓨팅 플랫폼 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.f(개발자의 네이밍 세계는 생각보다 단순하다.) 핵심 컴포넌트 하둡 분산 파일 시스템(HDFS, Hadoop Distributed File System) 앞서 언급했듯이 하둡은 확장성과...","categories": ["Hadoop"],
         "tags": ["빅데이터","분산처리","데이터플랫폼"],
@@ -75,5 +69,11 @@ var store = [{
         "excerpt":"들어가며 이번 글에서는 T Academy의 ‘데이터 엔지니어링 기초’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다. Twitter API로부터 실시간으로 발생하는 Tweets Text를 요청 Pub/Sub Topic으로 전송 (Apache Kafka와 흡사) Publish Trigger에 의해 BigQuery로 데이터를 전송하는 Cloud Functions를 실행 Data Studio와 BigQuery를 연동하여 시각화 GKE로 위 작업들을 실행하는 컨테이너 배포...","categories": ["Data Engineering"],
         "tags": ["Pub/Sub","Cloud Function","BigQuery","GKE"],
         "url": "/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "Kubernetes 기본용어 정리 ",
+        "excerpt":"🤸‍♂️들어가며 이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊 ⛴Kubernetes란 ? 개요 Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 K8s, 케이(에이)츠 라고 부르기도 합니다. 현재...","categories": ["Kubernetes"],
+        "tags": ["Kubernetes","CKA","작성중"],
+        "url": "/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/",
         "teaser": null
       }]

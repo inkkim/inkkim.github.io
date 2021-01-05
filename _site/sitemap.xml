@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/</loc>
-<lastmod>2020-01-05T00:00:00+09:00</lastmod>
-</url>
-<url>
 <loc>/hadoop/AWS-EC2%EC%97%90%EC%84%9C-Hadoop-Cluster-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/</loc>
 <lastmod>2020-10-18T00:00:00+09:00</lastmod>
 </url>
@@ -51,6 +47,10 @@
 <url>
 <loc>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/</loc>
 <lastmod>2021-01-02T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/</loc>
+<lastmod>2021-01-05T00:00:00+09:00</lastmod>
 </url>
 <url>
 <loc>/about/</loc>

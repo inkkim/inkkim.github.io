@@ -289,7 +289,9 @@ defaults:
       share: true
       related: true
       header:
-          overlay_image: "/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg"
+        overlay_image: "/assets/images/My_Emoji_Dance_1200.png"
+        overlay_color: "#333"
+          # overlay_image: "/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg"
   
   - scope:
       path: "_posts/BI"

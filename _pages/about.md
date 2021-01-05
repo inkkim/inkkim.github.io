@@ -4,6 +4,7 @@ title: "🧑🏻‍💻소개"
 toc: true
 excerpt: "안녕하세요. <br>데이터를 공부하는 **김인규**입니다."
 header:
+    overlay_image: /assets/images/MY_Emoji_1200.png
     overlay_color: "#333"
     actions:
       - label: "CV Download"
@@ -14,7 +15,7 @@ header:
 
 ## 📚교육
 
-- 2020.01.18 ~ 2020.02.14 [42 Seoul La Piscine](https://42seoul.kr/about)
+- 2020.06.15 ~ 2020.12.04 [엔코아 데이터 과학자 양성과정](https://playdata.io)
 
 - 2020.01.20 ~ 2020.08.09 [청년 AI · Big Data 아카데미](https://pabi.smartlearn.io)
     
@@ -23,7 +24,7 @@ header:
     - 2020.01.20 ~ 2020.04.26 컴퓨터공학 입문
     - 2020.06.15 ~ 2020.08.09 빅데이터분석꽈 R프로그래밍
 
-- 2020.06.15 ~ 2020.12.04 [엔코아 데이터 과학자 양성과정](https://playdata.io)
+- 2020.01.18 ~ 2020.02.14 [42 Seoul La Piscine](https://42seoul.kr/about)
 
 ---
 
