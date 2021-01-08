@@ -24,11 +24,8 @@
         <a href="{{ post.url | relative_url }}" rel="permalink">{{ title }}</a>
       {% endif %}
     </h2>
-    <!-- 여기 수정해야함 -->
-    {% if post.categories[0] != null%}
+    {% if post.categories[0] != null %}
     <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> {{ post.date | date: "%Y/%m/%d" }} &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> {{ post.categories }}</p>
-	  {% else %}
-    <p class="archive__item-excerpt"><i class="far fa-calendar-alt"></i> {{ post.date | date: "%Y/%m/%d" }}
 	  {% endif %}
     {% include page__meta.html type=include.type %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
