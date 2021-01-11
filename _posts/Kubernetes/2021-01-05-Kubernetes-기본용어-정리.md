@@ -63,32 +63,56 @@ K8s 클러스터는 프로덕션 환경에서 배포되는 컨테이너가 정�
 
 # 🏗아키텍쳐
 
+![image](https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png)
+
+K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다. 클라우드 네이티브 관점에서 시스템의 지속적인 변화를 관찰하며 대응할 수 있게 하는 것입니다. K8s에서는 이러한 Control Loop 시스템을 구현하기 위해 아래와 같은 컴포넌트들로 구성되어 있습니다.
+
 ![image](https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png)
 
 K8s의 컴포넌트는 크게 Master Node에 위치한 Control Plane 영역과 Worker Node 영역으로 구분 됩니다. 
 
 ## Control Plane
 
-Control Plane은 Master Node에서 Worer Node와 클러스터 내 Pod들을 관리합니다. 이를 구성하는 요소들은 다음과 같습니다.
+Control Plane은 Master Node에서 Worker Node와 클러스터 내 Pod들을 관리합니다. 이를 구성하는 요소들은 다음과 같습니다.
 
-- `API Server` : K8s 클러스터의 REST API를 제공하는 역할을 합니다. 사용자는 K8s CLI 명령도구인 kubectl을 통해 API Server에 명령을 요청하고, K8s 클러스터 내 대부분의 컴포넌트와 상호작용하는 API Server는 요쳥된 명령을 etcd에 저장한 후 다시 다른 Worker Node 들에게 해당 명령을 전달합니다.
+- `kube-api server` : K8s 클러스터의 REST API를 제공하는 역할을 합니다. 사용자는 K8s CLI 명령도구인 kubectl을 통해 `kube-api server`에 명령을 요청하고, K8s 클러스터 내 대부분의 컴포넌트와 상호작용하는 `kube-api server`는 요쳥된 명령을 etcd에 저장한 후 다시 다른 Worker Node 들에게 해당 명령을 전달합니다. 
 
-- `etcd` : 
+- `etcd` : 고가용성 Key-Value 저장소로 K8s에 필요한 모든 데이터를 저장하는 실질적인 데이터베이스 입니다. 본래 구글의 Borg에서 사용하던 내부 분산 저장 솔루션인 Chubby의 역할을 하는 오픈소스 플랫폼입니다. K8s 클러스터 내 모든 설정값이나 클러스터의 상태를 저장하며 `kube-api server`와 유일하게 상호작용 할 수 있으며, 다른 모듈은 `kube-api server`를 거쳐 `etcd` 데이터에 접근합니다. `etcd`는 서버 1개당 프로세스 1개만 사용할 수 있는데, 보통 etcd 자체를 클러스터링 한 후 여러 서버에 분산하여 실행해 안정성을 보장합니다.
 
+- `kube-scheduler` : 노드가 할당되지 않은 새로운 Pod를 항상 체크하며 클러스터 내 노드의 자원 상태를 확인하여 해당 Pod가 실행할 최적의 노드를 선택해 줍니다. 만약 적합한 노드가 없다면 `kube-scheduler`가 Pod를 배치할 수 있을 때까지 할당하지 않습니다. 
+
+- `kube-controller-manager` : Desired-state를 미리 정의한 뒤 Current-state가 Desired-state가 되도록 하는 Control Loop 시스템입니다. 예를 들어, 에어컨과 같이 희망온도를 설정하면 에어컨이 그에 맞게 온도를 유지하려고 하는 것과 같습니다. 실제 컴포넌트로는 실행할 Pod의 개수를 관리하는 Replication Controller와 클러스터 내 전체 노드에 특정 Pod를 실행하도록 하는 Daemon Set Controller 등이 있습니다. 이들은 복잡성을 낮추기 위해 각각 단일 바이너리로 컴파일되어 단일 프로세스로서 실행됩니다.
+
+- `cloud-controller-manager` : 클라우드별 컨트롤 로직을 포함하는 컴포넌트입니다. `cloud-controller-manager`를 통해 클러스터를 클라우드 공급자의 API에 연결합니다. `kube-controller-manager`와 동일하게 논리적으로 독립적인 여러 Control Loop 시스템을 단일 프로세스로 실행합니다. 실제 컴포넌트로는 클라우드 상에서 노드가 삭제되었는지 여부를 판단하는 Node Controller와 클라우드 공급자의 로드밸런서를 생성 및 삭제하는 것을 담당하는 Service Controller가 있습니다.
 
 ## Worker Node
 
-![image](https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png)
+- `kubelet` : 각 노드에서 실행되며, 노드에 할당된 Pod의 생명주기를 관리합니다. `kube-api server`로부터 요청을 받아 직접적으로 Pod를 생성하는 컴포넌트이며, Pod 안의 컨테이너에 Health check를 주기적으로 확인하여 Master Node에 상태를 전달하기도 합니다.
 
-K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다.
+- `kube-proxy` : 각 노드에서 실행되며, Pod로 연결되는 네트워크 프록시로 노드의 네트워크 규칙을 유지 및 관리하는 컴포넌트입니다. 이에 따라 내부 네트워크 세션이나 클러스터 외부에서 Pod로 네트워크 통신을 할 수 있도록 해줍니다.
 
-# 대항마?
+# 오브젝트
 
-![image](https://user-images.githubusercontent.com/60086878/103619989-0e532f80-4f76-11eb-9ecf-4523d7699dba.png)
+K8s 오브젝트는 하나의 의도를 담은 레코드로 K8s 시스템에서 클러스터의 상태를 나타내고, 영속성을 가집니다. 즉, 사용자가 오브젝트를 생성함으로써 클러스터의 워크로드를 어떤 형태로 보이고자 하는지 K8s 시스템에 전달하며 이것이 곧 Desired State가 됩니다.
 
-이러한 컨테이너 오케스트레이션 플랫폼은 K8s 이외에도 Docker Swarm이나 Apache Mesos와 Marathon 등이 있지만 현재는 K8s가 표준처럼 사용되고 있습니다.
+# 워크로드
+
+K8s에서 구동되는 애플리케이션으로, 클러스터 상의 컨테이너를 구동 및 관리하는 데 사용하는 객체를 의미합니다. 
+
+- `Pod` : 1개 이상의 Container를 포함하여 K8s에서 생성하고 관리할 수 있고, 배포 가능한 가장 작은 단위입니다. 
+
+- `ReplicaSet` : Desired State를 유지하기 위해 두는 일종의 안전 장치입니다. 레플리카 수 유지를 위해 생성하는 신규 파드에 대한 데이터를 명시하는 파드 템플릿을 포함 합니다. 명시된 동일한 Replica(Pod)의 복제 개수에 대한 보증됩니다.
+
+- `StatefulSet` : Pod 이름에 대한 규칙성 부여와 개별 Pod에 대한 디스크 볼륨관리로 수시로 삭제되고 재생성되는 Pod 내의 디스크 내용이 유지될 수 있도록 하는 워크로드 리소스입니다.
+
+- `Deployment` : Replica Controller가 **롤링 업데이트**하는 방식을 자동화해서 추상화한 개념이 Deployment입니다. 과거 배포 이력 유지 및 이전 버전으로 Revision이 관리되어 쉽게 **롤백**이 가능합니다. 가장 보편적인 배포 단위이기도 하며, Desired 상태를 위해 Deployment내의 Replica Set, Pod들의 상태가 정해지게 됩니다. create 커맨드에 –record 플래그 붙이면 디플로이먼트 생성이 롤아웃 히스토리에 기록됩니다.
+
+- `DeamonSet` : 클러스터 내 단일 Pod 복사본이 어느 노드 집합에서든 잘 작동하게 하는 역할을 합니다. 클러스터 스토리지 및 로그 수집, 노드 모니터링 데몬 실행합니다. 만약 클러스터에 새로운 노드가 설치되면 데몬셋이 동작하여 자동으로 해당 노드에 파드를 실행합니다. 클러스터에서 노드가 제거 될 경우 해당 노드에서 실행중이던 데몬셋 파드는 다른 노드로 이동하지 않고 그대로 사라지게 됩니다.
+
+- `Job` : 실행된 후에 종료해야 하는 성격의 작업을 실행할 때 사용되는 컨트롤러 입니다. 종류로는 단일 잡, (워크 큐가 있는) 병렬 잡 등이 있습니다.
 
 # 참고
 [Kubernetes Documentation](https://kubernetes.io/docs/home/)
 [쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점](https://www.redhat.com/ko/topics/containers/what-is-kubernetes)
 [쿠버네티스 시작하기 - Kubernetes란 무엇인가?](https://subicura.com/2019/05/19/kubernetes-basic-1.html)
+
