@@ -347,6 +347,17 @@ defaults:
       comments: true
       share: true
       related: true
+
+  - scope:
+      path: "_posts/Splunk"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
  
   # _pages  about / archive . . .		
   - scope:
