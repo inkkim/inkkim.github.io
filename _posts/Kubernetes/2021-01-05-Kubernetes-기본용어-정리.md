@@ -31,7 +31,7 @@ K8s의 전신은 Google 내부 프로젝트인 Borg가 전신입니다. 매일 �
 
 ![image](https://user-images.githubusercontent.com/60086878/103895670-1c4eaf00-5134-11eb-951c-d24dd925297d.png)
 
-- 기존의 서버 운영방식
+### 기존의 서버 운영방식
 
 ![image](https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png)
 
@@ -39,13 +39,13 @@ K8s의 전신은 Google 내부 프로젝트인 Borg가 전신입니다. 매일 �
 
 이러한 상황에서 만약 서버 A에 문제가 발생한 상황을 가정 해봅시다. 서버 엔지니어는 서버 A에 서비스중인 애플리케이션 A가 지속적으로 배포하기 위해 문제가 된 서버를 복구할 때까지 다른 서버에 배포  해야 합니다. 하지만 다른 서버 역시 별도의 애플리케이션이 서비스중이기 때문에 애플리케이션 A와의 서버 B의 호환여부와 동시에 배포할 수 있는 리소스가 충분한지 여부도 확인해야 하는 매우 번거로운 과정이 따릅니다. 이러한 문제 상황은 언제 어느 서버에서 생길지 모르고, 발생할 때마다 위와 같은 절차가 이뤄지게 되면서 운영상의 어려움과 상당한 비용이 발생합니다.
 
-- 가상화 기술의 개발
+### 가상화 기술의 개발
 
 ![image](https://user-images.githubusercontent.com/60086878/103897289-a4ce4f00-5136-11eb-856c-d1179fba1b36.png)
 
 가상화 기술의 등장으로 한 서버에서 여러 가상 시스템 (VM)을 실행할 수 있게 됐습니다. 이는 기존의 방법보다 리소스를 더 효율적으로 활용할 수 있으며, 쉽게 애플리케이션을 추가하고 업데이트 할 수 있게 됐습니다. 다만, 각 VM은 Host Machine의 하드웨어를 공유하여 운영체제를 병렬로 운영할 수 있어 관리 비용이 줄어든다는 장점이 있지만, 반대로 각각의 VM을 위한 커널이 필요하기 때문에 불필요한 리소스 소모를 감수해야 한다는 단점이 존재한다.
 
-- Docker의 등장
+### Docker의 등장
 
 ![image](https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png)
 
@@ -53,7 +53,7 @@ K8s의 전신은 Google 내부 프로젝트인 Borg가 전신입니다. 매일 �
 
 덕분에 기존보다 관리가 한결 수월하게 됐지만, 컨테이너의 수가 늘어나면서 이것을 관리하는 것조차 어려움이 생겼습니다. 그래서 속속 등장하기 시작한게 컨테이너 오케스트레이션 기술입니다. Kubernetes는 그리스어로 배의 조타수라는 뜻으로, 로고도 조타 핸들 모양을 하고 있습니다. 
 
-- K8s 클러스터 운영방식
+### K8s 클러스터 운영방식
 
 ![image](https://user-images.githubusercontent.com/60086878/103905066-7b66f080-5141-11eb-8318-d4a19389b91a.png)
 
@@ -112,7 +112,8 @@ K8s에서 구동되는 애플리케이션으로, 클러스터 상의 컨테이�
 - `Job` : 실행된 후에 종료해야 하는 성격의 작업을 실행할 때 사용되는 컨트롤러 입니다. 종류로는 단일 잡, (워크 큐가 있는) 병렬 잡 등이 있습니다.
 
 # 참고
-[Kubernetes Documentation](https://kubernetes.io/docs/home/)
-[쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점](https://www.redhat.com/ko/topics/containers/what-is-kubernetes)
-[쿠버네티스 시작하기 - Kubernetes란 무엇인가?](https://subicura.com/2019/05/19/kubernetes-basic-1.html)
+
+- [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+- [쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점](https://www.redhat.com/ko/topics/containers/what-is-kubernetes)
+- [쿠버네티스 시작하기 - Kubernetes란 무엇인가?](https://subicura.com/2019/05/19/kubernetes-basic-1.html)
 
