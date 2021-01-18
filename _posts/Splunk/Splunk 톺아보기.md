@@ -1,0 +1,104 @@
+---
+title: "Splunk 톺아보기"
+categories: 
+  - Splunk
+toc: true
+toc_label: "목차"
+toc_icon: "bars"
+toc_sticky: true
+readtime: true
+excerpt: "다양한 로그 데이터 분석으로 IT운영, 보안, IoT에 특화된 머신 빅데이터 플랫폼 Splunk에 대해 알아봅니다."
+tags:
+  - Splunk
+  - SIEM
+  - log
+---
+
+# Splunk란?
+
+![image](https://user-images.githubusercontent.com/60086878/104919033-f7322a00-59d8-11eb-97d8-cef888baa5fa.png)
+
+Splunk란 기업 내 존재하는 다양한 유형의 머신 데이터에 대해 위치, 규모, 종류에 관계없이 수집 및 분석을 수행할 수 있는 **머신 빅데이터 플랫폼**입니다. 여기서 머신 데이터란 서버/Network 로그, 설비 데이터, 애플리케이션 로그, 기타 모든 텍스트 형태의 데이터 등을 말합니다. 
+
+이러한 데이터들은 Splunk를 통해 정형/비정형 데이터 모두 수용할 수 있으며 데이터 포맷, 용량에 제한이 없는 것이 특징 입니다. 또한 `수집 - 저장 - 분석 - 시각화`까지 별도의 외부 솔루션이나 복잡한 코딩 필요없이 모두 가능하다는 점 또한 Splunk의 강점 입니다. 모든 데이터는 실시간으로 분석이 가능하며 분산 저장 및 검색으로 뛰어난 성능을 자랑합니다.
+
+이러한 Splunk는 [Splunkbase.com](https://splunkbase.splunk.com)을 통해 약 DevOps, IT 운영, 보안, BA, IoT/산업 데이터 등 다양한 분야의 수 천개의 Application을 지원하여 외부 시스템과의 연동이나 확장이 용이 합니다.
+
+Splunk는 Enterprise, Cloud 등 유상 라이센스 형태로 제공되며, 다른 빅데이터 엔진과 다르게 다음과 같은 특징들이 있습니다.
+
+- Schema at Read : 데이터를 읽을 때 Field(Schema)가 정해짐
+- SPL(Splunk Processing Language) 사용  : |(Pipe)로 초보자도 쉽게 데이터 조회
+- 모든 종류의 Raw 데이터 수용 
+
+## 활용 사례
+
+### SIEM (Security Information and Event Management)
+
+SIEM이란 보안 이벤트 데이터, 네트워크 스트림 데이터를 실시간으로 분석하여 위협관리, 사고대응 하는 시스템입니다. 또한 공격, 위협 탐지 및 관리, 조사, 모니터링, 탐지 하는 데 사용됩니다.
+
+Splunk는 여러 이종의 데이터를 제약없이 수용할 수 있기 때문에 SIEM과 같은 보안, IT 운영 관제 분야에서 많이 사용되고 있으며 Splunk ES(Enterprise Security)라는 솔루션도 제공되고 있습니다.
+
+### UEBA (User and Entity Behavior Analytics)
+
+UEBA란 일반적인 보안 분석이 아닌 사용자 행위를 주된 목적으로 하는 분석입니다. 이외에도 host, device와 같은 것들과 함께 분석됩니다. 이는 분석대상이 사용자의 행위에 집중되어 있고, 결론적으로 악의적인 행동을 탐지하는 것을 목표로 하는 시스템입니다. 이에 대한 분석은 Rule-based 혹은 머신러닝으로 이뤄지기도 합니다.
+
+### FDS(Fraud Detection System)
+
+FDS란 금융권 기업에서 온라인 금융 거래 정보를 실시간 수집 및 분석하여 의심 거래 추적 및 인증을 강화하는 시스템입니다. 이 역시 Splunk의 뛰어난 로그 검색 성능 덕분에 대량의 트랜잭션 데이터가 오고가는 금융권에서도 많이 사용하고 있습니다.
+
+## 단점
+
+Splunk는 뛰어난 검색 성능과 무한한 확장성을 가지면서 데이터 수집부터 분석 및 시각화까지 모두 갖춘 뛰어난 빅데이터 엔진임에 틀림 없습니다. 하지만 완벽해보이는 Splunk에도 단점이 있습니다.
+
+- 유상 라이센스이기 때문에 비용이 부담스러워 용도에 따라 사용에 제약사항이 될 수 있습니다.
+
+- 수 천개의 App 생태계를 보유하고 있지만 여전히 지원되지 않는 부분이 존재합니다. 
+
+- 이벤트 검색을 위한 SPL은 어려운 언어는 아니지만 오롯이 Splunk를 위한 언어라는 점 또한 장애물로 작용할 수 있습니다. 
+
+- 오픈소스가 아니기 때문에 활용 사례가 잘 공유되지 않는 점이 아쉽습니다.
+
+## 주요 컴포넌트
+
+![image](https://user-images.githubusercontent.com/60086878/104925844-ae7f6e80-59e2-11eb-8fbd-66a59870f703.png)
+
+Splunk는 크게 Search Head, Indexer, Forwarder 총 3개로 나뉩니다. Fowarder는 데이터를 수집하여 Indexer에 저장하고 Search Head는 Indexer에 저장된 Index를 SPL를 통해 검색하는 구조입니다. 각 컴포넌트(서버)의 자세한 역할을 다음과 같습니다.
+
+### Search Head
+
+- 웹 기반 UI로서 사용자 생성 및 권한을 정의하고, APP 관리 기능을 제공함
+- SPL을 통해 Indexer에 저장된 Index를 검색
+- Chart, Report, Dashboard를 통한 데이터 시각화
+- 재사용이 가능한 다양한 데이텀 모델 정의
+
+### Indexer
+
+- 머신 데이터 저장 및 프로세싱 기능 제공
+- Search Head로부터 SPL로써 검색 요청을 받아 저장된 데이터에 대한 프로세싱 수행
+- 데이터는 Bucket 단위로 저장되며, 로그의 종류 및 보관 기간 등 각각의 요건에 맞는 저장 정책 제공
+    - Hot Bucket
+        - 현재 수집되는 데이터가 Writing 되고 있는 Bucket
+        - 가장 최근의 데이터를 저장하고 있으므로, 고속 스토리지(SSD) 사용
+    - Warm Bucket
+        - 더 이상의 Writing은 없고, Read Only 상태의 데이터
+        - 비교적 최근의 데이터를 저장하고 있으므로, 고속 스토리지(SSD) 사용
+    - Cold Bucket
+        - 장기간 보관을 위한 Bucket
+        - 낮은 빈도로 접근되므로 저가 대용량 스토리지(HDD) 사용
+    - Frozen Bucket
+        - 보관정책 주기가 지난 데이터
+        - 삭제 및 아카이빙
+    - Thawed Bucket
+        - 아카이빙 된 데이터를 다시 분석하기 위해 시스템에 장착하는 위치
+
+### Foarwarder
+
+- 로컬 시스템에 저장된 다양한 머신 데이터에 대한 수집 및 전달
+- File, 네트워크(TCP, UDP) 등 다양한 방식으로 데이터 수집
+    - Agent(Forwarder) : File, Table, Wire Data 
+    - Agentless : HTTP, TCP, UDP, JMS
+
+
+
+# 참고
+- [Splunk 소개](http://www.valence.co.kr/images/rk-0068/Splunk_new.pdf)
