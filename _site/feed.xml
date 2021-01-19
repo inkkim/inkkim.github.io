@@ -1,4 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-08T23:26:40+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Kubernetes 기본용어 정리</title><link href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="Kubernetes 기본용어 정리" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-05T00:00:00+09:00</updated><id>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">&lt;h1 id=&quot;️들어가며&quot;&gt;🤸‍♂️들어가며&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-19T21:55:21+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Splunk 톺아보기</title><link href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 톺아보기" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/">&lt;h1 id=&quot;splunk란&quot;&gt;Splunk란?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104919033-f7322a00-59d8-11eb-97d8-cef888baa5fa.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Splunk란 기업 내 존재하는 다양한 유형의 머신 데이터에 대해 위치, 규모, 종류에 관계없이 수집 및 분석을 수행할 수 있는 &lt;strong&gt;머신 빅데이터 플랫폼&lt;/strong&gt;입니다. 여기서 머신 데이터란 서버/Network 로그, 설비 데이터, 애플리케이션 로그, 기타 모든 텍스트 형태의 데이터 등을 말합니다.&lt;/p&gt;
+
+&lt;p&gt;이러한 데이터들은 Splunk를 통해 정형/비정형 데이터 모두 수용할 수 있으며 데이터 포맷, 용량에 제한이 없는 것이 특징 입니다. 또한 &lt;strong&gt;수집 - 저장 - 분석 - 시각화&lt;/strong&gt;까지 별도의 외부 솔루션이나 복잡한 코딩 필요없이 모두 가능하다는 점 또한 Splunk의 강점 입니다. 모든 데이터는 실시간으로 분석이 가능하며 분산 저장 및 검색으로 뛰어난 성능을 자랑합니다.&lt;/p&gt;
+
+&lt;p&gt;이러한 Splunk는 &lt;a href=&quot;https://splunkbase.splunk.com&quot;&gt;Splunkbase.com&lt;/a&gt;을 통해 약 DevOps, IT 운영, 보안, BA, IoT/산업 데이터 등 다양한 분야의 수 천개의 Application을 지원하여 외부 시스템과의 연동이나 확장이 용이 합니다.&lt;/p&gt;
+
+&lt;p&gt;Splunk는 Enterprise, Cloud 등 유상 라이센스 형태로 제공되며, 다른 빅데이터 엔진과 다르게 다음과 같은 특징들이 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Schema at Read : 데이터를 읽을 때 Field(Schema)가 정해짐&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SPL(Splunk Processing Language) 사용  : |(Pipe)로 초보자도 쉽게 데이터 조회&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;모든 종류의 Raw 데이터 수용&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;활용-사례&quot;&gt;활용 사례&lt;/h2&gt;
+
+&lt;h3 id=&quot;siem-security-information-and-event-management&quot;&gt;SIEM (Security Information and Event Management)&lt;/h3&gt;
+
+&lt;p&gt;SIEM이란 보안 이벤트 데이터, 네트워크 스트림 데이터를 실시간으로 분석하여 위협관리, 사고대응 하는 시스템입니다. 또한 공격, 위협 탐지 및 관리, 조사, 모니터링, 탐지 하는 데 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;Splunk는 여러 이종의 데이터를 제약없이 수용할 수 있기 때문에 SIEM과 같은 보안, IT 운영 관제 분야에서 많이 사용되고 있으며 Splunk ES(Enterprise Security)라는 솔루션도 제공되고 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;ueba-user-and-entity-behavior-analytics&quot;&gt;UEBA (User and Entity Behavior Analytics)&lt;/h3&gt;
+
+&lt;p&gt;UEBA란 일반적인 보안 분석이 아닌 사용자 행위를 주된 목적으로 하는 분석입니다. 이외에도 host, device와 같은 것들과 함께 분석됩니다. 이는 분석대상이 사용자의 행위에 집중되어 있고, 결론적으로 악의적인 행동을 탐지하는 것을 목표로 하는 시스템입니다. 이에 대한 분석은 Rule-based 혹은 머신러닝으로 이뤄지기도 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;fdsfraud-detection-system&quot;&gt;FDS(Fraud Detection System)&lt;/h3&gt;
+
+&lt;p&gt;FDS란 금융권 기업에서 온라인 금융 거래 정보를 실시간 수집 및 분석하여 의심 거래 추적 및 인증을 강화하는 시스템입니다. 이 역시 Splunk의 뛰어난 로그 검색 성능 덕분에 대량의 트랜잭션 데이터가 오고가는 금융권에서도 많이 사용하고 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;단점&quot;&gt;단점&lt;/h2&gt;
+
+&lt;p&gt;Splunk는 뛰어난 검색 성능과 무한한 확장성을 가지면서 데이터 수집부터 분석 및 시각화까지 모두 갖춘 뛰어난 빅데이터 엔진임에 틀림 없습니다. 하지만 완벽해보이는 Splunk에도 단점이 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;유상 라이센스&lt;/strong&gt;이기 때문에 비용이 부담스러워 용도에 따라 사용에 제약사항이 될 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;수 천개의 App 생태계를 보유하고 있지만 여전히 지원되지 않는 부분이 존재합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;이벤트 검색을 위한 &lt;strong&gt;SPL&lt;/strong&gt;은 어려운 언어는 아니지만 오롯이 Splunk를 위한 언어라는 점 또한 장애물로 작용할 수 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;오픈소스가 아니기 때문에 활용 사례가 잘 공유되지 않는 점이 아쉽습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;주요-컴포넌트&quot;&gt;주요 컴포넌트&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104925844-ae7f6e80-59e2-11eb-8fbd-66a59870f703.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Splunk는 크게 Search Head, Indexer, Forwarder 총 3개로 나뉩니다. &lt;strong&gt;Fowarder&lt;/strong&gt;는 데이터를 수집하여 &lt;strong&gt;Indexer&lt;/strong&gt;에 저장하고 &lt;strong&gt;Search Head&lt;/strong&gt;는 Indexer에 저장된 Index를 SPL를 통해 검색하는 구조입니다. 각 컴포넌트(서버)의 자세한 역할을 다음과 같습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;search-head&quot;&gt;Search Head&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;웹 기반 UI로서 사용자 생성 및 권한을 정의하고, APP 관리 기능을 제공함&lt;/li&gt;
+  &lt;li&gt;SPL을 통해 Indexer에 저장된 Index를 검색&lt;/li&gt;
+  &lt;li&gt;Chart, Report, Dashboard를 통한 데이터 시각화&lt;/li&gt;
+  &lt;li&gt;재사용이 가능한 다양한 데이텀 모델 정의&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;indexer&quot;&gt;Indexer&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;머신 데이터 저장 및 프로세싱 기능 제공&lt;/li&gt;
+  &lt;li&gt;Search Head로부터 SPL로써 검색 요청을 받아 저장된 데이터에 대한 프로세싱 수행&lt;/li&gt;
+  &lt;li&gt;데이터는 Bucket 단위로 저장되며, 로그의 종류 및 보관 기간 등 각각의 요건에 맞는 저장 정책 제공
+    &lt;ul&gt;
+      &lt;li&gt;Hot Bucket
+        &lt;ul&gt;
+          &lt;li&gt;현재 수집되는 데이터가 Writing 되고 있는 Bucket&lt;/li&gt;
+          &lt;li&gt;가장 최근의 데이터를 저장하고 있으므로, 고속 스토리지(SSD) 사용&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Warm Bucket
+        &lt;ul&gt;
+          &lt;li&gt;더 이상의 Writing은 없고, Read Only 상태의 데이터&lt;/li&gt;
+          &lt;li&gt;비교적 최근의 데이터를 저장하고 있으므로, 고속 스토리지(SSD) 사용&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Cold Bucket
+        &lt;ul&gt;
+          &lt;li&gt;장기간 보관을 위한 Bucket&lt;/li&gt;
+          &lt;li&gt;낮은 빈도로 접근되므로 저가 대용량 스토리지(HDD) 사용&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Frozen Bucket
+        &lt;ul&gt;
+          &lt;li&gt;보관정책 주기가 지난 데이터&lt;/li&gt;
+          &lt;li&gt;삭제 및 아카이빙&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Thawed Bucket
+        &lt;ul&gt;
+          &lt;li&gt;아카이빙 된 데이터를 다시 분석하기 위해 시스템에 장착하는 위치&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;foarwarder&quot;&gt;Foarwarder&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;로컬 시스템에 저장된 다양한 머신 데이터에 대한 수집 및 전달&lt;/li&gt;
+  &lt;li&gt;File, 네트워크(TCP, UDP) 등 다양한 방식으로 데이터 수집
+    &lt;ul&gt;
+      &lt;li&gt;Agent(Forwarder) : File, Table, Wire Data&lt;/li&gt;
+      &lt;li&gt;Agentless : HTTP, TCP, UDP, JMS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.valence.co.kr/images/rk-0068/Splunk_new.pdf&quot;&gt;Splunk 소개&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Splunk" /><category term="Splunk" /><category term="SIEM" /><category term="UEBA" /><summary type="html">다양한 로그 데이터 분석으로 IT운영, 보안, IoT에 특화된 머신 빅데이터 플랫폼 Splunk에 대해 알아봅니다.</summary></entry><entry><title type="html">Kubernetes 기본용어 정리</title><link href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="Kubernetes 기본용어 정리" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-05T00:00:00+09:00</updated><id>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">&lt;h1 id=&quot;️들어가며&quot;&gt;🤸‍♂️들어가며&lt;/h1&gt;
 &lt;p&gt;이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊&lt;/p&gt;
 
 &lt;h1 id=&quot;kubernetes란-&quot;&gt;⛴Kubernetes란 ?&lt;/h1&gt;
@@ -15,9 +144,7 @@
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103895670-1c4eaf00-5134-11eb-951c-d24dd925297d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;기존의 서버 운영방식&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;기존의-서버-운영방식&quot;&gt;기존의 서버 운영방식&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
@@ -25,17 +152,13 @@
 
 &lt;p&gt;이러한 상황에서 만약 서버 A에 문제가 발생한 상황을 가정 해봅시다. 서버 엔지니어는 서버 A에 서비스중인 애플리케이션 A가 지속적으로 배포하기 위해 문제가 된 서버를 복구할 때까지 다른 서버에 배포  해야 합니다. 하지만 다른 서버 역시 별도의 애플리케이션이 서비스중이기 때문에 애플리케이션 A와의 서버 B의 호환여부와 동시에 배포할 수 있는 리소스가 충분한지 여부도 확인해야 하는 매우 번거로운 과정이 따릅니다. 이러한 문제 상황은 언제 어느 서버에서 생길지 모르고, 발생할 때마다 위와 같은 절차가 이뤄지게 되면서 운영상의 어려움과 상당한 비용이 발생합니다.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;가상화 기술의 개발&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;가상화-기술의-개발&quot;&gt;가상화 기술의 개발&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103897289-a4ce4f00-5136-11eb-856c-d1179fba1b36.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;가상화 기술의 등장으로 한 서버에서 여러 가상 시스템 (VM)을 실행할 수 있게 됐습니다. 이는 기존의 방법보다 리소스를 더 효율적으로 활용할 수 있으며, 쉽게 애플리케이션을 추가하고 업데이트 할 수 있게 됐습니다. 다만, 각 VM은 Host Machine의 하드웨어를 공유하여 운영체제를 병렬로 운영할 수 있어 관리 비용이 줄어든다는 장점이 있지만, 반대로 각각의 VM을 위한 커널이 필요하기 때문에 불필요한 리소스 소모를 감수해야 한다는 단점이 존재한다.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Docker의 등장&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;docker의-등장&quot;&gt;Docker의 등장&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
@@ -43,9 +166,7 @@
 
 &lt;p&gt;덕분에 기존보다 관리가 한결 수월하게 됐지만, 컨테이너의 수가 늘어나면서 이것을 관리하는 것조차 어려움이 생겼습니다. 그래서 속속 등장하기 시작한게 컨테이너 오케스트레이션 기술입니다. Kubernetes는 그리스어로 배의 조타수라는 뜻으로, 로고도 조타 핸들 모양을 하고 있습니다.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;K8s 클러스터 운영방식&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;k8s-클러스터-운영방식&quot;&gt;K8s 클러스터 운영방식&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103905066-7b66f080-5141-11eb-8318-d4a19389b91a.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
@@ -55,39 +176,83 @@
 
 &lt;h1 id=&quot;아키텍쳐&quot;&gt;🏗아키텍쳐&lt;/h1&gt;
 
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다. 클라우드 네이티브 관점에서 시스템의 지속적인 변화를 관찰하며 대응할 수 있게 하는 것입니다. K8s에서는 이러한 Control Loop 시스템을 구현하기 위해 아래와 같은 컴포넌트들로 구성되어 있습니다.&lt;/p&gt;
+
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;K8s의 컴포넌트는 크게 Master Node에 위치한 Control Plane 영역과 Worker Node 영역으로 구분 됩니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;control-plane&quot;&gt;Control Plane&lt;/h2&gt;
 
-&lt;p&gt;Control Plane은 Master Node에서 Worer Node와 클러스터 내 Pod들을 관리합니다. 이를 구성하는 요소들은 다음과 같습니다.&lt;/p&gt;
+&lt;p&gt;Control Plane은 Master Node에서 Worker Node와 클러스터 내 Pod들을 관리합니다. 이를 구성하는 요소들은 다음과 같습니다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;API Server&lt;/code&gt; : K8s 클러스터의 REST API를 제공하는 역할을 합니다. 사용자는 K8s CLI 명령도구인 kubectl을 통해 API Server에 명령을 요청하고, K8s 클러스터 내 대부분의 컴포넌트와 상호작용하는 API Server는 요쳥된 명령을 etcd에 저장한 후 다시 다른 Worker Node 들에게 해당 명령을 전달합니다.&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-api server&lt;/code&gt; : K8s 클러스터의 REST API를 제공하는 역할을 합니다. 사용자는 K8s CLI 명령도구인 kubectl을 통해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-api server&lt;/code&gt;에 명령을 요청하고, K8s 클러스터 내 대부분의 컴포넌트와 상호작용하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-api server&lt;/code&gt;는 요쳥된 명령을 etcd에 저장한 후 다시 다른 Worker Node 들에게 해당 명령을 전달합니다.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;etcd&lt;/code&gt; :&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;etcd&lt;/code&gt; : 고가용성 Key-Value 저장소로 K8s에 필요한 모든 데이터를 저장하는 실질적인 데이터베이스 입니다. 본래 구글의 Borg에서 사용하던 내부 분산 저장 솔루션인 Chubby의 역할을 하는 오픈소스 플랫폼입니다. K8s 클러스터 내 모든 설정값이나 클러스터의 상태를 저장하며 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-api server&lt;/code&gt;와 유일하게 상호작용 할 수 있으며, 다른 모듈은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-api server&lt;/code&gt;를 거쳐 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;etcd&lt;/code&gt; 데이터에 접근합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;etcd&lt;/code&gt;는 서버 1개당 프로세스 1개만 사용할 수 있는데, 보통 etcd 자체를 클러스터링 한 후 여러 서버에 분산하여 실행해 안정성을 보장합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-scheduler&lt;/code&gt; : 노드가 할당되지 않은 새로운 Pod를 항상 체크하며 클러스터 내 노드의 자원 상태를 확인하여 해당 Pod가 실행할 최적의 노드를 선택해 줍니다. 만약 적합한 노드가 없다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-scheduler&lt;/code&gt;가 Pod를 배치할 수 있을 때까지 할당하지 않습니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-controller-manager&lt;/code&gt; : Desired-state를 미리 정의한 뒤 Current-state가 Desired-state가 되도록 하는 Control Loop 시스템입니다. 예를 들어, 에어컨과 같이 희망온도를 설정하면 에어컨이 그에 맞게 온도를 유지하려고 하는 것과 같습니다. 실제 컴포넌트로는 실행할 Pod의 개수를 관리하는 Replication Controller와 클러스터 내 전체 노드에 특정 Pod를 실행하도록 하는 Daemon Set Controller 등이 있습니다. 이들은 복잡성을 낮추기 위해 각각 단일 바이너리로 컴파일되어 단일 프로세스로서 실행됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloud-controller-manager&lt;/code&gt; : 클라우드별 컨트롤 로직을 포함하는 컴포넌트입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloud-controller-manager&lt;/code&gt;를 통해 클러스터를 클라우드 공급자의 API에 연결합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-controller-manager&lt;/code&gt;와 동일하게 논리적으로 독립적인 여러 Control Loop 시스템을 단일 프로세스로 실행합니다. 실제 컴포넌트로는 클라우드 상에서 노드가 삭제되었는지 여부를 판단하는 Node Controller와 클라우드 공급자의 로드밸런서를 생성 및 삭제하는 것을 담당하는 Service Controller가 있습니다.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;worker-node&quot;&gt;Worker Node&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubelet&lt;/code&gt; : 각 노드에서 실행되며, 노드에 할당된 Pod의 생명주기를 관리합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-api server&lt;/code&gt;로부터 요청을 받아 직접적으로 Pod를 생성하는 컴포넌트이며, Pod 안의 컨테이너에 Health check를 주기적으로 확인하여 Master Node에 상태를 전달하기도 합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube-proxy&lt;/code&gt; : 각 노드에서 실행되며, Pod로 연결되는 네트워크 프록시로 노드의 네트워크 규칙을 유지 및 관리하는 컴포넌트입니다. 이에 따라 내부 네트워크 세션이나 클러스터 외부에서 Pod로 네트워크 통신을 할 수 있도록 해줍니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다.&lt;/p&gt;
+&lt;h1 id=&quot;오브젝트&quot;&gt;오브젝트&lt;/h1&gt;
 
-&lt;h1 id=&quot;대항마&quot;&gt;대항마?&lt;/h1&gt;
+&lt;p&gt;K8s 오브젝트는 하나의 의도를 담은 레코드로 K8s 시스템에서 클러스터의 상태를 나타내고, 영속성을 가집니다. 즉, 사용자가 오브젝트를 생성함으로써 클러스터의 워크로드를 어떤 형태로 보이고자 하는지 K8s 시스템에 전달하며 이것이 곧 Desired State가 됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103619989-0e532f80-4f76-11eb-9ecf-4523d7699dba.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;워크로드&quot;&gt;워크로드&lt;/h1&gt;
 
-&lt;p&gt;이러한 컨테이너 오케스트레이션 플랫폼은 K8s 이외에도 Docker Swarm이나 Apache Mesos와 Marathon 등이 있지만 현재는 K8s가 표준처럼 사용되고 있습니다.&lt;/p&gt;
+&lt;p&gt;K8s에서 구동되는 애플리케이션으로, 클러스터 상의 컨테이너를 구동 및 관리하는 데 사용하는 객체를 의미합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pod&lt;/code&gt; : 1개 이상의 Container를 포함하여 K8s에서 생성하고 관리할 수 있고, 배포 가능한 가장 작은 단위입니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ReplicaSet&lt;/code&gt; : Desired State를 유지하기 위해 두는 일종의 안전 장치입니다. 레플리카 수 유지를 위해 생성하는 신규 파드에 대한 데이터를 명시하는 파드 템플릿을 포함 합니다. 명시된 동일한 Replica(Pod)의 복제 개수에 대한 보증됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulSet&lt;/code&gt; : Pod 이름에 대한 규칙성 부여와 개별 Pod에 대한 디스크 볼륨관리로 수시로 삭제되고 재생성되는 Pod 내의 디스크 내용이 유지될 수 있도록 하는 워크로드 리소스입니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Deployment&lt;/code&gt; : Replica Controller가 &lt;strong&gt;롤링 업데이트&lt;/strong&gt;하는 방식을 자동화해서 추상화한 개념이 Deployment입니다. 과거 배포 이력 유지 및 이전 버전으로 Revision이 관리되어 쉽게 &lt;strong&gt;롤백&lt;/strong&gt;이 가능합니다. 가장 보편적인 배포 단위이기도 하며, Desired 상태를 위해 Deployment내의 Replica Set, Pod들의 상태가 정해지게 됩니다. create 커맨드에 –record 플래그 붙이면 디플로이먼트 생성이 롤아웃 히스토리에 기록됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DeamonSet&lt;/code&gt; : 클러스터 내 단일 Pod 복사본이 어느 노드 집합에서든 잘 작동하게 하는 역할을 합니다. 클러스터 스토리지 및 로그 수집, 노드 모니터링 데몬 실행합니다. 만약 클러스터에 새로운 노드가 설치되면 데몬셋이 동작하여 자동으로 해당 노드에 파드를 실행합니다. 클러스터에서 노드가 제거 될 경우 해당 노드에서 실행중이던 데몬셋 파드는 다른 노드로 이동하지 않고 그대로 사라지게 됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Job&lt;/code&gt; : 실행된 후에 종료해야 하는 성격의 작업을 실행할 때 사용되는 컨트롤러 입니다. 종류로는 단일 잡, (워크 큐가 있는) 병렬 잡 등이 있습니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://kubernetes.io/docs/home/&quot;&gt;Kubernetes Documentation&lt;/a&gt;
-&lt;a href=&quot;https://www.redhat.com/ko/topics/containers/what-is-kubernetes&quot;&gt;쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점&lt;/a&gt;
-&lt;a href=&quot;https://subicura.com/2019/05/19/kubernetes-basic-1.html&quot;&gt;쿠버네티스 시작하기 - Kubernetes란 무엇인가?&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="Kubernetes" /><category term="CKA" /><category term="작성중" /><summary type="html">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.</summary></entry><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/home/&quot;&gt;Kubernetes Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.redhat.com/ko/topics/containers/what-is-kubernetes&quot;&gt;쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://subicura.com/2019/05/19/kubernetes-basic-1.html&quot;&gt;쿠버네티스 시작하기 - Kubernetes란 무엇인가?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="Kubernetes" /><category term="CKA" /><category term="작성중" /><summary type="html">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.</summary></entry><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다.&lt;/p&gt;
@@ -1672,132 +1837,4 @@ PASSWORD : admin
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://superset.apache.org/docs/installation/installing-superset-using-docker-compose&quot;&gt;Installing Superset Locally Using Docker Compose&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/install/&quot;&gt;Install Docker Compose&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="BI" /><category term="시각화" /><category term="오픈소스" /><category term="Apache Superset" /><summary type="html">Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator의 BI 프로젝트 Superset에 대해 소개한다.</summary></entry><entry><title type="html">단축키 애호가의 맥북 단축키 정리</title><link href="/etc/%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%95%A0%ED%98%B8%EA%B0%80%EC%9D%98-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="단축키 애호가의 맥북 단축키 정리" /><published>2020-12-18T00:00:00+09:00</published><updated>2020-12-18T00:00:00+09:00</updated><id>/etc/%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%95%A0%ED%98%B8%EA%B0%80%EC%9D%98-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="/etc/%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%95%A0%ED%98%B8%EA%B0%80%EC%9D%98-%EB%A7%A5%EB%B6%81-%EB%8B%A8%EC%B6%95%ED%82%A4-%EC%A0%95%EB%A6%AC/">&lt;h1 id=&quot;단축키는-왜-필요할까&quot;&gt;단축키는 왜 필요할까?&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102581690-6b608000-4144-11eb-9844-f730e5eae8b5.png&quot; alt=&quot;&quot; /&gt;
-출처 : https://unsplash.com/photos/kt-wA0GDFq8&lt;/p&gt;
-
-&lt;p&gt;아마 우리에게 가장 익숙한 단축키는 복사와 붙여넣기를 뜻하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + C&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + V&lt;/code&gt; 일 것이다. 또 다른 사례로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Z&lt;/code&gt;는 특정 실행 건 바로 이전의 상태로 되돌리기 기능이 있다. 하지만 이 외에도 여러 단축키가 있지만 자주 사용하지 않는 단축키는 많은 사람들이 그 존재 여부도 모르는 경우가 많다. 이번 포스팅으로 많은 맥 유저들이 유용한 단축키를 익혀 맥 활용도를 높이고, 생산성 향상도 맛 보셨으면 좋겠다.&lt;/p&gt;
-
-&lt;p&gt;본론으로 돌아와서 단축키를 사용하는 본질적인 이유를 들여다보면 단축키를 사용했을 때 동일한 결과물을 내는 데 시간을 획기적으로 줄여줄 수 있기 때문이다. 이를테면 PDF 20 페이지에 해당하는 텍스트를 다른 문서에 첨부하고자 할 때 직접 눈으로 보고 텍스트를 옮겨적는 것보단 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + C&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + V&lt;/code&gt; 조합의 단축키를 활용하는 것이 훨씬 빠른 것처럼 말이다.&lt;/p&gt;
-
-&lt;h1 id=&quot;단축키의-장점&quot;&gt;단축키의 장점&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102584666-3f47fd80-414a-11eb-86a8-ea2b46fb65ce.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Photo by Moritz Kindler On Unsplash&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;내가 생각하는 단축키의 장점은 다음과 같다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-반복-작업-시-시간-획기적으로-단축&quot;&gt;1) 반복 작업 시 시간 획기적으로 단축&lt;/h2&gt;
-
-&lt;p&gt;특정 실행창이 여러 개 떠있을 때 마우스로 하나씩 종료 버튼을 누르는 것보단 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Q&lt;/code&gt; 명령어로 한 번에 끄는 것이 빠르다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-대부분의-응용-프로그램에서-통용되는-단축키&quot;&gt;2) 대부분의 응용 프로그램에서 통용되는 단축키&lt;/h2&gt;
-
-&lt;p&gt;대부분의 응용 프로그램에서 작성중인 상태 또는 문서를 저장할 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + S&lt;/code&gt;를 통해 저장할 수 있다. 예를 들어, MS Word, 한글 등 대부분의 문서편집 툴에서 동일하게 작동한다. 따라서 자주 쓰이는 범용적인 단축키를 외워두면 다른 툴에서도 작동할 확률이 높다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-새로운-툴에-쉽게-적응&quot;&gt;3) 새로운 툴에 쉽게 적응&lt;/h2&gt;
-
-&lt;p&gt;하나의 문법처럼 대부분의 응용 프로그램에서 비슷한 단축키를 지원하는 경우가 많아 새로운 툴에 적응하기 매우 수월하다. 필자는 새로운 툴을 사용할 때 Keyboard Shortcut부터 확인하고 사용해보는 습관이 있는데, 새로운 툴을 적응하는데 매우 큰 도움이 된다.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-마우스-없이-대부분의-작업-가능&quot;&gt;4) 마우스 없이 대부분의 작업 가능&lt;/h2&gt;
-
-&lt;p&gt;단축키 사용을 습관화하면 마우스가 오히려 불편해지는(?) 지경에 이르러 특수한 경우 이외에 마우스 없이 모든 작업을 빠르게 처리할 수 있다. 특히 노트북 유저들은 마우스를 휴대하고 다니는 것도 굉장히 수고로운 일이 아닐 수 없다. 더구나 맥북 유저라면 마우스 연결을 위한 포트 허브도 포함될 것이다. 단축키와 트랙패드의 조합에 익숙해지면 이러한 수고로움을 덜 수 있다. 참고로 필자는 3년간 노트북을 사용하며 마우스를 사용한 적이 없다.&lt;/p&gt;
-
-&lt;h1 id=&quot;맥-단축키-정리-트랙패드-제스쳐-포함&quot;&gt;맥 단축키 정리 (트랙패드 제스쳐 포함)&lt;/h1&gt;
-
-&lt;h2 id=&quot;1-키보드&quot;&gt;1) 키보드&lt;/h2&gt;
-
-&lt;p&gt;이 포스팅에서는 대부분의 툴에서 범용적으로 사용되는 맥북 키보드 단축키들 위주로 대해 몇 가지 소개한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;텍스트&quot;&gt;텍스트&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + A&lt;/code&gt; : 해당 커서로부터 모든 항목 선택&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + X&lt;/code&gt; : 선택한 항목 잘라내기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Z&lt;/code&gt; : 실행 이전으로 되돌리기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + C&lt;/code&gt; : 선택한 항목 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + V&lt;/code&gt; : 선택한 항목 붙여넣기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + F&lt;/code&gt; : 문서에서 특정 단어 찾기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + 방향키&lt;/code&gt; : 해당 방향의 끝 부분으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Control + Space&lt;/code&gt; : 이모지 뷰어 표시&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + B&lt;/code&gt; : 선택한 텍스트 볼드체 On/Off&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + I&lt;/code&gt; : 선택한 텍스트 이탤릭체 On/Off&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + U&lt;/code&gt; : 선택한 텍스트 밑줄 On/Off&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + K&lt;/code&gt; : 웹링크 추가&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Back Space&lt;/code&gt; : 커서 기준 왼쪽 텍스트 모두 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + +, -&lt;/code&gt; : 텍스트 확대/축소&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fn + Back Space&lt;/code&gt; : 커서 기준 오른쪽 텍스트 삭제 (Delete 키)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;화면&quot;&gt;화면&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + H&lt;/code&gt; : 현재 화면 가리기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + M&lt;/code&gt; : 현재 화면 Dock으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + W&lt;/code&gt; : 현재 창 닫기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Q&lt;/code&gt; : 현재 응용 프로그램 닫기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + P&lt;/code&gt; : 현재 화면 프린트&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + S&lt;/code&gt; : 현재 문서 저장&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + ,&lt;/code&gt; : 현재 앱의 환경 설정&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + N&lt;/code&gt; : 새로운 창 열기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + T&lt;/code&gt; : 새 탭 열기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + 숫자&lt;/code&gt; : 해당하는 번호의 탭으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Shift + [, ]&lt;/code&gt; : 해당 탭에서 왼쪽, 오른쪽 탭으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Control + F&lt;/code&gt; : 전체 화면&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Tab&lt;/code&gt; : 실행중인 앱 목록&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + +, -&lt;/code&gt; : 화면 확대/축소&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;기타&quot;&gt;기타&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Space&lt;/code&gt; : Spotlight 검색창&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Shift + 5&lt;/code&gt; : 화면 캡쳐 및 기록&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Control + Q&lt;/code&gt; : 화면 잠금&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + Back Space&lt;/code&gt; : 파일 삭제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이 외에도 ‘&lt;a href=&quot;https://karabiner-elements.pqrs.org&quot;&gt;karabiner&lt;/a&gt;‘라는 키 맵핑 애플리케이션을 통해 단축키를 커스텀할 수 있다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-트랙패드&quot;&gt;2) 트랙패드&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102589630-9e117500-4152-11eb-8810-22d24dff4459.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;트랙패드는 아래 환경설정 기준으로 설명한다. 사용 습관에에 맞게 제스쳐별 기능 수정이 가능하니 참고하면 되겠다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;손가락 세게 누르기&lt;/code&gt; : 훑어보기, 사전&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;두 손가락 좌우로 쓸기&lt;/code&gt; : 이전/앞 페이지로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;두 손가락 상하로 쓸기&lt;/code&gt; : 페이지 스크롤&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;두 손가락 오른쪽 끝에서 왼쪽으로 쓸기&lt;/code&gt; : 알림센터 불러오기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;두 손가락 오므리기&lt;/code&gt; : 웹 페이지 및 사진 확대/축소&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;두 손가락 터치&lt;/code&gt; : 우클릭&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;세 손가락 위로 쓸어올리기&lt;/code&gt; : 현재 실행중인 앱 보이기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;네 손가락 오므리기&lt;/code&gt; : 앱 서랍 보이기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;네 손가락 좌우로 쓸기&lt;/code&gt; : 다른 데스크탑으로 이동&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;3-추가-기능&quot;&gt;3) 추가 기능&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control + 두 손가락 상하로 쓸기&lt;/code&gt; : 시스템 화면 확대/축소&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;시스템 환경설정 - 손쉬운 사용 - 확대/축소 - 확대/축소하려면 스크롤 제스처를 다음 보조키와 함께 사용 체크&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102591852-057cf400-4156-11eb-9db5-30333bbf4ad0.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;마우스 커서 코너로 가져가기&lt;/code&gt; : 핫 코너 기능
-    &lt;ul&gt;
-      &lt;li&gt;Mission Control&lt;/li&gt;
-      &lt;li&gt;데스크탑&lt;/li&gt;
-      &lt;li&gt;화면보호기&lt;/li&gt;
-      &lt;li&gt;잠금화면&lt;/li&gt;
-      &lt;li&gt;Launchpad&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102592515-e894f080-4156-11eb-9491-2b1be6bfdfd6.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="맥북" /><category term="단축키" /><category term="생산성" /><summary type="html">이 글에서는 대부분의 툴에서 범용적으로 사용되는 맥북 키보드 단축키들 위주로 대해 몇 가지 소개한다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>김인규</name></author><category term="BI" /><category term="시각화" /><category term="오픈소스" /><category term="Apache Superset" /><summary type="html">Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator의 BI 프로젝트 Superset에 대해 소개한다.</summary></entry></feed>

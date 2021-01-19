@@ -76,4 +76,10 @@ var store = [{
         "tags": ["Kubernetes","CKA","작성중"],
         "url": "/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/",
         "teaser": null
+      },{
+        "title": "Splunk 톺아보기",
+        "excerpt":"Splunk란? Splunk란 기업 내 존재하는 다양한 유형의 머신 데이터에 대해 위치, 규모, 종류에 관계없이 수집 및 분석을 수행할 수 있는 머신 빅데이터 플랫폼입니다. 여기서 머신 데이터란 서버/Network 로그, 설비 데이터, 애플리케이션 로그, 기타 모든 텍스트 형태의 데이터 등을 말합니다. 이러한 데이터들은 Splunk를 통해 정형/비정형 데이터 모두 수용할 수 있으며 데이터...","categories": ["Splunk"],
+        "tags": ["Splunk","SIEM","UEBA"],
+        "url": "/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/",
+        "teaser": null
       }]
