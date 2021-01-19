@@ -11,7 +11,44 @@ header:
         url: ""
 ---
 
-새로 공부한 내용을 꾸준히 기록하는 블로그를 운영중입니다.
+## 👀관심사
+
+### Data Engineering
+  - Data Collection
+  - Batch Processing
+    - Airflow
+  - Stream Processing
+    - kafka
+
+#### Big Data Engine
+  - Hadoop
+  - Spark
+  - Splunk
+  - Elasticsearch
+
+#### Database
+  - PostgreSQL
+  - MySQL
+  - MariaDB
+  - Hive
+  - GCP BigQuery
+  - AWS Aurora
+
+#### BI Tools
+  - PowerBI
+  - Superset
+  - Kibana
+
+#### MLops
+  - Kubeflow
+
+#### Cloud Native
+  - Kubernetes
+  - Docker
+
+#### Programming Language
+  - Python
+  - R
 
 ## 📚교육
 
@@ -26,10 +63,6 @@ header:
 
 - 2020.01.18 ~ 2020.02.14 [42 Seoul La Piscine](https://42seoul.kr/about)
 
----
-
 ## 📈프로젝트
 
-- 서울특별시 공공자전거 따릉이 실시간 잔여대수 예측 🔗[링크](https://www2.slideshare.net/ssuser4c5412/ss-240320800)
-
----
+- 서울특별시 공공자전거 따릉이 실시간 잔여대수 예측 🔗[링크](https://www2.slideshare.net/ssuser4c5412/ss-240320800) 🎥[영상](https://youtu.be/5Hc8c8loy_4)

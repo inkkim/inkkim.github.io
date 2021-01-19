@@ -1,0 +1,78 @@
+I"<h2 id="관심사">👀관심사</h2>
+
+<h3 id="data-engineering">Data Engineering</h3>
+<ul>
+  <li>Data Collection</li>
+  <li>Batch Processing</li>
+  <li>Stream Processing</li>
+</ul>
+
+<h4 id="big-data-engine">Big Data Engine</h4>
+<ul>
+  <li>Hadoop</li>
+  <li>Spark</li>
+  <li>Splunk</li>
+  <li>Elasticsearch</li>
+</ul>
+
+<h4 id="database">Database</h4>
+<ul>
+  <li>PostgreSQL</li>
+  <li>MySQL</li>
+  <li>MariaDB</li>
+  <li>Hive</li>
+  <li>GCP BigQuery</li>
+  <li>AWS Aurora</li>
+</ul>
+
+<h4 id="bi-tools">BI Tools</h4>
+<ul>
+  <li>PowerBI</li>
+  <li>Superset</li>
+  <li>Kibana</li>
+</ul>
+
+<h4 id="mlops">MLops</h4>
+<ul>
+  <li>Kubeflow</li>
+</ul>
+
+<h4 id="cloud-native">Cloud Native</h4>
+<ul>
+  <li>Kubernetes</li>
+  <li>Docker</li>
+</ul>
+
+<h4 id="programming-language">Programming Language</h4>
+<ul>
+  <li>Python</li>
+  <li>R</li>
+</ul>
+
+<h2 id="교육">📚교육</h2>
+
+<ul>
+  <li>
+    <p>2020.06.15 ~ 2020.12.04 <a href="https://playdata.io">엔코아 데이터 과학자 양성과정</a></p>
+  </li>
+  <li>
+    <p>2020.01.20 ~ 2020.08.09 <a href="https://pabi.smartlearn.io">청년 AI · Big Data 아카데미</a></p>
+
+    <ul>
+      <li>2020.01.20 ~ 2020.04.26 Computational Thinking</li>
+      <li>2020.01.20 ~ 2020.04.26 Python 프로그래밍</li>
+      <li>2020.01.20 ~ 2020.04.26 컴퓨터공학 입문</li>
+      <li>2020.06.15 ~ 2020.08.09 빅데이터분석꽈 R프로그래밍</li>
+    </ul>
+  </li>
+  <li>
+    <p>2020.01.18 ~ 2020.02.14 <a href="https://42seoul.kr/about">42 Seoul La Piscine</a></p>
+  </li>
+</ul>
+
+<h2 id="프로젝트">📈프로젝트</h2>
+
+<ul>
+  <li>서울특별시 공공자전거 따릉이 실시간 잔여대수 예측 🔗<a href="https://www2.slideshare.net/ssuser4c5412/ss-240320800">링크</a> 🎥<a href="https://youtu.be/5Hc8c8loy_4">영상</a></li>
+</ul>
+:ET
