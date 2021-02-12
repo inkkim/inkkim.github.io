@@ -1,18 +1,33 @@
-I"~<h2 id="관심사">👀관심사</h2>
+I"�<h2 id="좋아하는-말">💬좋아하는 말</h2>
 
-<h3 id="기술">기술</h3>
+<blockquote>
+  <p>기계는 잘못 없어요. 다 제 잘못이죠.</p>
+</blockquote>
 
-<p><code class="language-plaintext highlighter-rouge">Data Engineering</code></p>
+<blockquote>
+  <p>최대한 많이, 최대한 빨리 실패하라.</p>
+</blockquote>
 
+<blockquote>
+  <p>Done is better than perfect.</p>
+</blockquote>
+
+<h2 id="관심사">👀관심사</h2>
+
+<h3 id="data-engineering">Data Engineering</h3>
 <ul>
   <li>Data Collection</li>
-  <li>Batch Processing</li>
-  <li>Stream Processing</li>
+  <li>Batch Processing
+    <ul>
+      <li>Airflow</li>
+    </ul>
+  </li>
+  <li>Stream Processing
+    <ul>
+      <li>kafka</li>
+    </ul>
+  </li>
 </ul>
-
-<h4 id="mlops">MLOps</h4>
-
-<h3 id="스택">스택</h3>
 
 <h4 id="big-data-engine">Big Data Engine</h4>
 <ul>
@@ -39,7 +54,7 @@
   <li>Kibana</li>
 </ul>
 
-<h4 id="mlops-1">MLops</h4>
+<h4 id="mlops">MLops</h4>
 <ul>
   <li>Kubeflow</li>
 </ul>

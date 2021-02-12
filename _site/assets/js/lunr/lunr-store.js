@@ -82,4 +82,16 @@ var store = [{
         "tags": ["Splunk","SIEM","UEBA"],
         "url": "/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/",
         "teaser": null
+      },{
+        "title": "Splunk 분산환경 구축하기",
+        "excerpt":"Splunk 배포방식 Splunk의 주요 컴포넌트는 검색을 담당하는 Search Head, 수집을 담당하는 Fowarder, 저장을 담당하는 Indexer가 존재합니다. 이 컴포넌트들을 어떤 형태로 배포하는지에 따라 다음과 같이 Splunk의 배포방식을 구분합니다. Standalone Splunk의 모든 기능과 컴포넌트가 단일 인스턴스에 모두 존재하는 가장 간소화 된 형태입니다. 주로 PoC를 위한 테스트나 개인적인 학습 용도로 사용합니다. Splunk를 설치하면...","categories": ["Splunk"],
+        "tags": ["Splunk","Clustering"],
+        "url": "/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/",
+        "teaser": null
+      },{
+        "title": "Elastic Goods Box 수령 후기",
+        "excerpt":"Elastic Cloud 작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack...","categories": ["Etc"],
+        "tags": ["Elastic"],
+        "url": "/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/",
+        "teaser": null
       }]

@@ -1,4 +1,633 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-01-19T22:50:41+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Splunk 톺아보기</title><link href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 톺아보기" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/">&lt;h1 id=&quot;splunk란&quot;&gt;Splunk란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-02-12T22:50:04+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Elastic Goods Box 수령 후기</title><link href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="Elastic Goods Box 수령 후기" /><published>2021-02-12T00:00:00+09:00</published><updated>2021-02-12T00:00:00+09:00</updated><id>/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/">&lt;h1 id=&quot;elastic-cloud&quot;&gt;Elastic Cloud&lt;/h1&gt;
+
+&lt;p&gt;작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack 기능까지 포함하여 2주간 무료로 체험판을 경험해볼 수 있었습니다. ELK Stack이 모두 갖춰진 인스턴스가 뚝딱 만들어지니 다시 설치할 필요없이 너무 편리하게 체험해볼 수 있어서 좋았습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107752386-0307d680-6d62-11eb-8804-c368eff694f3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후 설문조사에 참여하여 행운의 6인에 선정되어 Elastic Korea 측으로부터 Goods Box를 선물 받았습니다! 로고부터 너무 깔끔하고 평소 Elastic Stack에 관심을 가지고 공부하던 중에 이렇게 Goods를 선물로 주시니 너무 감사했습니다. 요즘은 이런 개발자스러운 스티커나 굿즈가 왜 이렇게도 가지고 싶던지 ㅎㅎ..&lt;/p&gt;
+
+&lt;h1 id=&quot;구성&quot;&gt;구성&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774774-cd271a00-6d82-11eb-8e2c-acc368dbe397.jpg&quot; alt=&quot;20210206_020713&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;꽤나 튼튼한 민트색같은 연두색 박스에 담아 보내주셨습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774854-e9c35200-6d82-11eb-9052-0271df5ef094.jpg&quot; alt=&quot;20210206_114834&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;박스 내부에는 나름 포장 뽀시래기도 넣어서 선물 분위기를 내주셨습니다 😊&lt;/p&gt;
+
+&lt;h2 id=&quot;sticker&quot;&gt;Sticker&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774910-fa73c800-6d82-11eb-9783-e7882b18af0d.jpg&quot; alt=&quot;20210206_151311&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본적인 Elastic Logo 모양의 스티커와 자사 솔루션 스티커들로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;카드명함-지갑&quot;&gt;카드명함 지갑&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775020-1f683b00-6d83-11eb-8d70-6ea383f5a829.jpg&quot; alt=&quot;20210206_153021&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;은은한 Elastic Logo가 새겨진 블랙 색상의 2-slot 카드명함 지갑입니다. 이건 무려 3개나 챙겨주셨어요!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775026-20996800-6d83-11eb-9b76-c162ae3fd13a.jpg&quot; alt=&quot;20210206_153026&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;후면에는 3M 양면 강력 테이프가 부착되어 있어 스마트폰 케이스 뒤에 부착할 수 있을 것 같습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;griptok&quot;&gt;Griptok&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775125-3dce3680-6d83-11eb-9eb1-bf13f1a86d21.jpg&quot; alt=&quot;20210206_153119&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;요즘 스마트폰 뒤에 많이들 부착하는 그립톡도 2개 챙겨주셨습니다. 가장 실용적이고 마음에 드는 선물입니다!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775129-3eff6380-6d83-11eb-9a29-c9a8bfb63587.jpg&quot; alt=&quot;20210206_153130&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;수첩볼펜&quot;&gt;수첩/볼펜&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775205-58a0ab00-6d83-11eb-9f56-122f48dafdf8.jpg&quot; alt=&quot;20210206_153057&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775210-59d1d800-6d83-11eb-92d9-733d260c71dc.jpg&quot; alt=&quot;20210206_153107&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;수첩은 쨍한 하늘색인게 묘하게 이쁘고, 크기도 딱 포켓에 들어갈만한 사이즈여서 얇은 겉옷에 넣어두기 좋을 것 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775259-67875d80-6d83-11eb-9ab2-78d6362afe89.jpg&quot; alt=&quot;20210206_153202&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Elastic Logo가 그려진 볼펜과 수첩입니다. 볼펜은 호텔 탁자에서 만나볼 수 있는 사무용 볼펜과 많이 닮았습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;양말&quot;&gt;양말&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775481-acab8f80-6d83-11eb-90b7-dc69403972cd.jpg&quot; alt=&quot;20210206_153406&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;알록달록한 색상에 Elastic Logo가 그려진 긴 양말입니다. 이건 날이 풀리면 반바지에 운동화로 코디 시도해봐야겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-charging-cable&quot;&gt;Multi Charging Cable&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775376-8980e000-6d83-11eb-9de6-d864cac323e2.jpg&quot; alt=&quot;20210206_153427&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5 in 1 Multi Charging Cable 입니다. USB 케이블은 전류를 공급받기 위한 케이블이고, 나머지는 충전을 위한  Micro 5pin, lightning cable, USB-C type 케이블로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;요즘 대부분 USB-C type으로 넘어오긴 했지만 여전히 Micro 5pin이나 Lightning Cable만 지원하는 악명높은 기기들이 많습니다. 휴대용으로 이 케이블 하나만 들고다니면 급할 때 충전 못하는 골치아픈 일은 피할 수 있을 것 같습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;elastic-logo-t-shirts&quot;&gt;Elastic Logo T-Shirts&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775540-c6e56d80-6d83-11eb-9825-f90eb555ed39.jpg&quot; alt=&quot;20210206_150848&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;전면에 Elastic Logo가 크게 프린팅 되어 있는 검은색 티셔츠입니다. 사실 가장 기대했던 Goods인데 그래서인지 가장 아쉽기도 한 부분입니다.&lt;/p&gt;
+
+&lt;p&gt;일단 사이즈는 L인데 정사이즈라 저에게는 조금 작은게 아쉽습니다 😂 이왕이면 발송 전에 사이즈 조사 한 번 해서 보내주셨으면 조금 더 만족스러웠지 않을까 싶습니다.&lt;/p&gt;
+
+&lt;p&gt;그리고 프린팅 된 부분이 너무 엉성해서 세탁 몇 번이면 너덜너덜해질 것 같습니다.. 어깨 소매 부분도 짧아서 썩 예쁜 핏은 아니어서 집에서 편하게 입는 정도로 굴려 줘야겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775555-ca78f480-6d83-11eb-9bc5-1bc6de8f6dc5.jpg&quot; alt=&quot;20210206_153337&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;뒷면은 조그마한 Elastic Logo로 마무리 된 형태입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;위생용품&quot;&gt;위생용품&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775637-e54b6900-6d83-11eb-83a9-e61e84918572.jpg&quot; alt=&quot;20210206_153306&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;휴대용 손소독제와 KF94 마스크 그리고 양치 셋트까지 혹독한 감염병 시대에 빛나는 깨알 위생용품들까지 챙겨주셨습니다!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775693-f85e3900-6d83-11eb-84f7-eb0646f4ca07.jpg&quot; alt=&quot;20210206_150456&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;예쁜 선물 주셔서 감사합니다~🙏 잘 쓸게요 Elastic!👍&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="Elastic" /><summary type="html">최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다.</summary></entry><entry><title type="html">Splunk 분산환경 구축하기</title><link href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 분산환경 구축하기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;splunk-배포방식&quot;&gt;Splunk 배포방식&lt;/h1&gt;
+
+&lt;p&gt;Splunk의 주요 컴포넌트는 &lt;strong&gt;검색&lt;/strong&gt;을 담당하는 Search Head, &lt;strong&gt;수집&lt;/strong&gt;을 담당하는 Fowarder, &lt;strong&gt;저장&lt;/strong&gt;을 담당하는 Indexer가 존재합니다. 이 컴포넌트들을 어떤 형태로 배포하는지에 따라 다음과 같이 Splunk의 배포방식을 구분합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;standalone&quot;&gt;Standalone&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105357987-eb44a300-5c38-11eb-8348-cdea6343bd51.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Splunk의 모든 기능과 컴포넌트가 단일 인스턴스에 모두 존재하는 가장 간소화 된 형태입니다. 주로 PoC를 위한 테스트나 개인적인 학습 용도로 사용합니다. Splunk를 설치하면 만나게 될 가장 기본적인 설정입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;basic&quot;&gt;Basic&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105358377-72921680-5c39-11eb-9179-ac69dd58e414.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Standalone과 비슷한 설정이지만 Splunk Server와 Forwarder로 데이터 저장과 수집이 구분된 형태입니다. Forwarder는 데이터 소스에 위치하여 데이터를 수집하고 Splunk Server에 전송합니다. Splunk Server는 데이터를 저장하며, Forwarder의 설정을 관리합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-instance&quot;&gt;Multi-Instance&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105358787-f64c0300-5c39-11eb-8e6b-b59ef5999d9e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Splunk는 분산 환경 Clustering을 통해 검색과 저장 성능이 크게 향상 될 수 있습니다. Multi-Instance 배포방식은 Splunk의 주요 컴포넌트가 모두 구분된 형태로 가장 효율적인 아키텍쳐입니다. &lt;strong&gt;검색&lt;/strong&gt;을 담당하는 Search Head, &lt;strong&gt;저장&lt;/strong&gt;을 담당하는 Indexer, &lt;strong&gt;수집&lt;/strong&gt;을 담당하는 Fowarder가 각각 다른 인스턴스에 위치하여 서로 연결되어 있는 형태입니다. 이 외에도 Indexer Clustering을 관리하는 Cluster Master(CM)이 존재할 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;search-head-clustering&quot;&gt;Search Head Clustering&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Search Head들을 그룹화하여 검색을 위한 중앙 리소스를 형성하는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;deployer&quot;&gt;Deployer&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;다른 클러스터 App이나 설정값을 배포하는 인스턴스&lt;/li&gt;
+  &lt;li&gt;클러스터 외에 위치하여 각 Indexer들에 설정값이나 App을 업데이트 하는 역할&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;search-peers&quot;&gt;Search Peers&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Search Head Cluster 내 Indexer들로 각 Indexer들은 독립적임&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;load-balancer&quot;&gt;Load Balancer&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;User와 Cluster Member들 사이에 존재하는 third-party 소프트웨어로 User는 Search Head Cluseter에 하나의 인터페이스를 통해 접근할 수 있음&lt;/li&gt;
+  &lt;li&gt;하나의 Indexer가 Captain 역할을 하며 클러스터 내 다양한 활동을 총괄함&lt;/li&gt;
+  &lt;li&gt;각 Indexer들은 Search Request,Schedule Jobs, Replicate Artifacts, Update Configurations, Coordinate other activities등을 수행하기 위해 서로 상호작용 할 수 있음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;captain&quot;&gt;Captain&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기본적으로 Search Header Cluster내 동적으로 선정되며, 동작하지 않는 경우 사용자가 임의로 고정할 수도 있음&lt;/li&gt;
+  &lt;li&gt;Scheduling Jobs을 현재 작업량에 따라 각 Indexer들에게 할당&lt;/li&gt;
+  &lt;li&gt;일괄적인 App 배포와 Search Head Member들을 관리하기 위한 Deployer가 필요&lt;/li&gt;
+  &lt;li&gt;최소 3개의 Search Head가 있어야 Cluster 구성 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;indexer-clustering&quot;&gt;Indexer Clustering&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;데이터 손실을 예방하기 위해 데이터를 복제 후 분산 저장&lt;/li&gt;
+  &lt;li&gt;여러 Indexer들을 관리함으로써 가용성 향상 도모&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cluster-mastercm&quot;&gt;Cluster Master(CM)&lt;/h2&gt;
+
+&lt;p&gt;데이터를 저장하지 않고, Peer Indexer의 작업 조정하는 역할을 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;peer-indexer&quot;&gt;Peer Indexer&lt;/h2&gt;
+
+&lt;p&gt;Fowarder로부터 데이터를 수신받아 Bucket에 저장하며, Indexer끼리 Clustering을 이룹니다. Indexer Cluster 내 모든 Peer Indexer들은 모두 CM과 연결되어 있으며, 각 Peer Indexer들은 복제 포트를 통해 서로 통신하여 데이터를 복제합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;데이터-흐름도&quot;&gt;데이터 흐름도&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105367163-817dc680-5c43-11eb-9130-c69781bc801a.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번 포스팅에서 다뤄볼 아키텍쳐는 Multi-Instance 분산 환경입니다. 컴퓨터 리소스가 한정된 관계로 분산환경에 이해를 돕기 위해 최소한의 인스턴스 수로 구성하였습니다.&lt;/p&gt;
+
+&lt;p&gt;데이터는 TA App을 통해 해당 인스턴스의 리소스 데이터를 수집합니다.  Search Head는 Forwarder로 데이터를 보내고 Forwarder는 다시 Indexer로 해당 데이터를 보냅니다.&lt;/p&gt;
+
+&lt;p&gt;데이터를 전달받은 Indexer는 Bucket에 저장하며, Cluster Master를 매개로 연결된 Indexer Cluster에서 다른 Peer에게 정의된 Replication Factor만큼 자신의 Bucket을 복제합니다. 이때 각 Indexer는 복제 포트(8080)을 통해 서로 상호작용 하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;Deployer는 Search Head Clustering의 설정을 담당하며, 각 Search Head에 Job을 분배합니다. 최종적으로 사용자가 Search Head에서 SPL을 통해 모든 인스턴스의 데이터가 저장된 Indexer Cluster에 저장된 데이터를 조회할 수 있게 됩니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;splunk-분산환경-구축&quot;&gt;Splunk 분산환경 구축&lt;/h1&gt;
+
+&lt;p&gt;분산환경 구축을 위해 Search Head(2), Indexer(3), Forwarder(1), Deployer(1), Cluster Master(1) 총 8대의 PC가 필요합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;인스턴스-구성&quot;&gt;인스턴스 구성&lt;/h2&gt;
+
+&lt;p&gt;인스턴스 구성을 위해 Google Cloud Platform(GCP) VM을 이용해 8개 대의 PC를 구성 하겠습니다. 참고로 GCP는 한 리전에 최대 8개 VM 인스턴스까지 생성 가능합니다. 같은 리전에서 생성된 VM 인스턴스는 같은 대역폭의 내부 IP를 할당받기 때문에 별도의 네트워크 설정이 필요 없습니다.&lt;/p&gt;
+
+&lt;p&gt;그럼 먼저 공통적인 설치와 환경설정은 하나의 인스턴스에서 진행합니다. 이후 해당 인스턴스를 머신 이미지로 만들어 나머지 7개의 복제 인스턴스를 만든 후 분산환경을 설정하는 순으로 진행됩니다.&lt;/p&gt;
+
+&lt;p&gt;각 VM 인스턴스의 OS는 Ubuntu 18.04.5, 사양은 n1-standard-1 (vCPUs: 1, RAM: 3.75GB)로 통일 하겠습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;n1-standard-1 (vCPUs: 1, RAM: 3.75GB) * 8 예상 청구 비용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105579362-7785d000-5dc9-11eb-9314-87e25464b1b1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;참고로 n1-standart-1은 9개의 인스턴스를 약 26시간 사용했을 때 $14.30 가량 청구 금액이 예상됩니다. 하지만 GCP에서는 신규 가입자에게 1년 안에 사용이 가능한 $300 크레딧을 제공하고 있으니 추가로 비용을 지불할 일은 없으니 안심하고 사용해도 됩니다!&lt;/p&gt;
+
+&lt;p&gt;GCP는 추가 비용이 청구될 경우 미리 등록된 결제 수단으로 청구되는 결제 시스템으로 운영되고 있습니다. 따라서 GCP를 최초 활성화 할 때 비용이 청구될 카드를 먼저 등록하는 과정이 있으니 참고하시길 바랍니다. 이 글에서는 회원가입 과정은 생략하도록 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1.GCP 계정 활성화&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GCP를 최초 활성화 한 후 프로젝트를 생성하면 다음과 같은 대시보드를 확인하실 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580040-532bf280-5dcd-11eb-874f-e4355a34a9c8.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.VM 인스턴스 생성&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;좌측 상단의 햄버거 버튼에서 &lt;strong&gt;컴퓨팅 - Compute Engine - 가상머신 - VM 인스턴스 - 만들기&lt;/strong&gt;에서 새로운 인스턴스를 생성합니다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;인스턴스 세부설정은 아래와 같이 설정합니다.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;리전 : asia-northeast3(서울)&lt;/li&gt;
+      &lt;li&gt;머신구성
+        &lt;ul&gt;
+          &lt;li&gt;시리즈 : N1&lt;/li&gt;
+          &lt;li&gt;머신 유형 : n1-standard-1(vCPU 1개, 3.75GB 메모리)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;부팅 디스크 : Ubuntu 18.04 LTS&lt;/li&gt;
+      &lt;li&gt;방화벽 : HTTP(S) 트래픽 허용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580290-d732aa00-5dce-11eb-9e85-1542daf3570a.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;약 1 - 2분 후 인스턴스 생성이 완료됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3.방화벽 규칙 설정&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;VM 인스턴스는 기본적으로 GCP VPC에 의해 네트워크가 완전 격리되어 있습니다. 분산환경 구축을 위해서는 여러 인스턴스가 서로 통신할 수 있어야 하므로 필요한 네트워크 대역과 포트를 허용 해주어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;Splunk에서 사용하는 포트는 다음과 같습니다. 이 중에서 통신을 하는 데 사용되는 포트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8089&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;9997&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8080&lt;/code&gt;입니다. 또한 Web에 접근하기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8000&lt;/code&gt; 포트도 개방되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580427-abfc8a80-5dcf-11eb-807f-2df82de803f5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;방화벽 규칙 설정은 &lt;strong&gt;햄버거 버튼 - 네트워킹 - VPC 네트워크 - 방화벽 - 방화벽 규칙 만들기&lt;/strong&gt;에서 아래와 같이 설정합니다.
+    &lt;ul&gt;
+      &lt;li&gt;대상 : 네트워크의 모든 인스턴스&lt;/li&gt;
+      &lt;li&gt;소스 IP 범위 : 0.0.0.0/0&lt;/li&gt;
+      &lt;li&gt;프로토콜 및 포트 : 지정된 프로토콜 및 포트
+        &lt;ul&gt;
+          &lt;li&gt;tcp : 8089, 9997, 8080, 8000&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580651-f92d2c00-5dd0-11eb-829d-ae46497c4971.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4.Splunk 설치&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;이번 포스팅에서는 Splunk 제품 중에서도 Splunk Enterprise으로 진행합니다. Splunk가 유상 솔루션이긴 하지만 60일 체험판을 제공하고 있습니다. 단, 다운로드를 위해 Splunk 홈페이지 회원가입이 요구됩니다. 이는 이후에 Splunk App을 설치할 때에도 필요하니 가입해두시는 편이 좋습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VM 인스턴스에서 새로 생성한 인스턴스의 &lt;strong&gt;연결 - SSH&lt;/strong&gt;를 통해 접속합니다.
+    &lt;ul&gt;
+      &lt;li&gt;원활한 설치를 위해 root 계정을 활성화 합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;passwd
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;su
+Password:
+root@splunk:/home/&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;아래 명령어로 Splunk Enterprise를 다운로드 합니다.
+    &lt;ul&gt;
+      &lt;li&gt;Release는 2021.01.24 기준 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8.1.1&lt;/code&gt; 입니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; /opt/splunk.tgz https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64&amp;amp;platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;linux&amp;amp;version&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;8.1.1&amp;amp;product&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;splunk&amp;amp;filename&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;splunk-8.1.1-08187535c166-Linux-x86_64.tgz&amp;amp;wget&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;종종 http, https 접근에 대한 방화벽 규칙을 허용 해도 VM 인스턴스에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wget&lt;/code&gt;이나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;을 명령어로 위 주소에 대한 다운로드 파일을 받아오지 못하는 문제가 있습니다. 원인을 아시는 분은 댓글 남겨주시길 바랍니다.🙏&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;위 방법이 안 될 경우, 로컬에서 설치 파일을 받아 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scp&lt;/code&gt; 명령어로 넘겨주는 방법으로 대체합니다.
+    &lt;ul&gt;
+      &lt;li&gt;로컬에서 &lt;a href=&quot;www.splunk.com&quot;&gt;Splunk&lt;/a&gt;에서 로그인 후 &lt;strong&gt;Products - Splunk Enterprise - Free Trial - Linux&lt;/strong&gt;에서 .tgz 설치 파일을 다운 받습니다.&lt;/li&gt;
+      &lt;li&gt;VM 인스턴스에서 다음 명령어로 ssh key pair를 생성합니다.
+        &lt;ul&gt;
+          &lt;li&gt;해당 과정은 root 계정으로 진행합니다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;생성한 keyfile01(Private Key)는 복사하여 로컬에 저장합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# VM 인스턴스&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-keygen &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; rsa &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; ~/.ssh/keyfile01 &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; root
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod &lt;/span&gt;400 ~/.ssh/keyfile01
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.ssh/keyfile01.pub &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; authorized_keys
+
+&lt;span class=&quot;c&quot;&gt;# 로컬 (~/.ssh 에 keyfile01(Private Key) 저장 후 진행)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;scp splunk-8.1.1-08187535c166-Linux-x86_64.tar root@xxx.xxx.xxx.xxx:/opt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해당 압축 파일을 아래 명령어로 압축 해제 해줍니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /opt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-xvzf&lt;/span&gt; splunk-8.1.1-08187535c166-Linux-x86_64.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Splunk 설치 파일은 압축이 해제된 폴더 내 splunk/bin 위치에 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;splunk/bin
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./splunk start &lt;span class=&quot;nt&quot;&gt;--accept-license&lt;/span&gt;
+This appears to be your first &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;running this version of Splunk.
+
+Splunk software must create an administrator account during startup. Otherwise, you cannot log &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Create credentials &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;the administrator account.
+Characters &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;not appear on the screen when you &lt;span class=&quot;nb&quot;&gt;type &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;credentials.
+
+Please enter an administrator username: &amp;lt;admin&amp;gt;
+Password must contain at least:
+   &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 8 total printable ASCII character&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Please enter a new password: &amp;lt;Password&amp;gt;
+Please confirm new password: &amp;lt;Password&amp;gt;
+
+Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://127.0.0.1:8000 to be available..... Done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마침내 Splunk 서버 설치를 완료했습니다. 이전에 방화벽 규칙 중에 Web Port에 해당하는 8000을 허용 해두었으므로, 이제 해당 VM 인스턴스의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;외부 IP:8000&lt;/code&gt;로 Splunk 서버에 접근할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105704187-c199bd80-5f51-11eb-844d-fb85c4e0b726.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5.데이터 수집 설정&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Splunk 분산 환경이 제대로 동작하는지 확인하기 위해 테스트로 각 인스턴스의 리소스 데이터를 수집 해보겠습니다. Splunk에서 Linux 혹은 Unix 계열의 OS에서 리소스 데이터를 수집하는 방법은 &lt;strong&gt;Splunk App for Unix and Linux&lt;/strong&gt;와 &lt;strong&gt;Splunk Add-on for Unix and Linux&lt;/strong&gt;를 이용하는 것입니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앱 - 추가 앱 찾기 - nix 검색&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105706356-c7dd6900-5f54-11eb-9bbd-260357f43ecb.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Splunk Add-on for Unix and Linux&lt;/strong&gt;와 &lt;strong&gt;Splunk App for Unix and Linux&lt;/strong&gt;를 설치합니다.
+    &lt;ul&gt;
+      &lt;li&gt;설치 시 splunk 홈페이지의 계정이 필요합니다.&lt;/li&gt;
+      &lt;li&gt;모두 설치 후 나중에 다시 시작을 합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105706631-1f7bd480-5f55-11eb-8487-8ad431c93823.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VM 인스턴스 CLI 환경에서 App의 수집 정보를 아래와 같이 설정합니다.
+    &lt;ul&gt;
+      &lt;li&gt;Splunk 내 App들은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/splunk/etc/apps&lt;/code&gt; 내에 위치합니다.&lt;/li&gt;
+      &lt;li&gt;혹시 Vi 편집기가 낯선 분들은 &lt;a href=&quot;https://inkkim.github.io/etc/Vi-사용법-완벽-가이드/&quot;&gt;Vi 사용법 완벽 가이드&lt;/a&gt;를 참고하세요.&lt;/li&gt;
+      &lt;li&gt;App의 default 디렉토리에는 기본 설정 관련 각종 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.conf&lt;/code&gt; 파일이 위치합니다.&lt;/li&gt;
+      &lt;li&gt;App의 local 디렉토리는 default와 동일하게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.conf&lt;/code&gt; 파일이 위치할 수 있으며, default 보다 우선 적용 대상에 속합니다. 그래서 일반적으로 default의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.conf&lt;/code&gt;파일은 그대로 유지하고, 수정이 필요한 부분은 local에 복사하여 수정합니다.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.conf&lt;/code&gt; 파일은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt; 스탠자를 기준으로 설정이 구분됩니다.
+        &lt;ul&gt;
+          &lt;li&gt;[default] 스탠자는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.conf&lt;/code&gt; 파일 내 공통적으로 적용할 설정값을 정의합니다.
+            &lt;ul&gt;
+              &lt;li&gt;저장할 기본 index를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index = ubuntu&lt;/code&gt;로 설정합니다.
+                &lt;ul&gt;
+                  &lt;li&gt;해당 인덱스가 없으면 수집하지 않습니다.&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;inputs.conf&lt;/code&gt;에서는 기본적으로 모든 수집 옵션이 비활성화 되어 있으므로, 필요한 수집 옵션만 활성화합니다.
+            &lt;ul&gt;
+              &lt;li&gt;disabled = 1 -&amp;gt; 0&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /opt/splunk/etc/apps/Splunk_TA_nix/local
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; /opt/splunk/etc/apps/Splunk_TA_nix/defualt/inputs.conf /opt/splunk/etc/apps/Splunk_TA_nix/local/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi /opt/splunk/etc/apps/Splunk_TA_nix/local/inputs.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713003-f449b300-5f5d-11eb-95bc-0ab5fbe5df79.png&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713207-2eb35000-5f5e-11eb-84ee-c6799983e1f7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;수집할 데이터가 저장될 인덱스를 생성합니다.
+    &lt;ul&gt;
+      &lt;li&gt;설정 - 데이터 - 인덱스 - 새로 만들기인덱스에서 &lt;strong&gt;ubutu&lt;/strong&gt; 인덱스 저장&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713647-bd27d180-5f5e-11eb-9462-b6bedfb8660d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;App 및 인덱스 설정 동기화를 위해 서버를 재시작 합니다.
+    &lt;ul&gt;
+      &lt;li&gt;설정 - 시스템 - 서버 컨트롤 - Splunk 다시 시작&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713923-08da7b00-5f5f-11eb-869b-2d697ae6d415.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Search &amp;amp; Report App에서 아래 명령어로 데이터 수집 현황을 확인합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105714232-6f5f9900-5f5f-11eb-96d8-1d66d299eb1e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기까지 Host의 리소스 데이터를 수집하는 Standalone Splunk Server 설정이 완료 됐습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6.VM 인스턴스 복제&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;GCP에서는 스냅샷 기능처럼 현재 상태를 이미지로 만드는 머신 이미지 기능을 제공합니다. 이제 공통적인 설정은 마무리 됐으니 이 VM 인스턴스의 상태를 머신 이미지로 만들고, 이를 이용해 나머지 7개의 VM 인스턴스를 생성 해보겠습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해당 VM 인스턴스의 메뉴 - 새 머신 이미지에서 머신 이미지를 생성합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105715660-388a8280-5f61-11eb-9ad6-b5477d371e33.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Compute Engine - 가상 머신 - VM 인스턴스 - 인스턴스 만들기 - 머신 이미지의 새 VM 인스턴스에서 새로 생성한 머신 이미지를 이용해 새 인스턴스를 생성합니다.
+    &lt;ul&gt;
+      &lt;li&gt;NGD(&lt;del&gt;노가다&lt;/del&gt;) Method로 나머지 7개의 인스턴스를 생성합니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105719003-2a3e6580-5f65-11eb-93ca-6dfe6605b6a9.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105720631-fbc18a00-5f66-11eb-8e44-9c3278f48f02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;분산환경-설정&quot;&gt;분산환경 설정&lt;/h2&gt;
+
+&lt;p&gt;Splunk 분산환경 구축을 위해 각 인스턴스에 임의로 Splunk 서버를 다음과 같이 지정하겠습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Splunk 서버&lt;/th&gt;
+      &lt;th&gt;VM 인스턴스&lt;/th&gt;
+      &lt;th&gt;역할&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cluster Master(CM)&lt;/td&gt;
+      &lt;td&gt;splunk0&lt;/td&gt;
+      &lt;td&gt;Indexer Cluster에서 Peer Indexer 관리&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Indexer&lt;/td&gt;
+      &lt;td&gt;splunk1/splunk2/splunk3&lt;/td&gt;
+      &lt;td&gt;데이터를 Forwarder에서 전달받아 저장하고, Search Head로부터 SPL로 데이터 조회 요청을 처리&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Forwarder&lt;/td&gt;
+      &lt;td&gt;splunk4&lt;/td&gt;
+      &lt;td&gt;데이터 수집 후 Indexer에게 전달&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Deployer&lt;/td&gt;
+      &lt;td&gt;splunk5&lt;/td&gt;
+      &lt;td&gt;Search Head에 대한 설정과 App 정보를 일괄 배포 및 관리&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Search Head&lt;/td&gt;
+      &lt;td&gt;splunk6/splunk7&lt;/td&gt;
+      &lt;td&gt;SPL문을 통해 Indexer에 데이터 조회 요청&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;먼저 8개 서버 모두 일괄적으로 Splunk Server가 부팅 시 자동시작 되도록 설정하겠습니다. 참고로 Mac은 Iterm2나 Windows는 MobaXterm과 같은 툴을 이용하시면 멀티 세션관리하는 데 수월합니다. 이번 글에서는 Mac의 Iterm2를 기준으로 설명하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;Iterm2에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + d&lt;/code&gt;는 Split 세션을 생성합니다. 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Option + Command + i&lt;/code&gt;키를 누르면 다중 입력을 활성화합니다. 이점 참고하여 멀티 세션에서 동일한 작업을 해야할 때 요긴하게 사용하시길 바랍니다 :)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106152770-2a3aa180-61c1-11eb-90bb-6d89581eb305.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Local&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ~/.ssh/keyfile01 root@&amp;lt;VM 인스턴스 외부IP&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# 각 VM 인스턴스&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/opt/splunk/bin/./splunk stop
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/opt/splunk/bin/./splunk start &lt;span class=&quot;nt&quot;&gt;--accept-license&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/opt/splunk/bin/./splunk &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;boot-start 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;또한 각 서버의 역할을 명시하기 위해 다음과 같이 Splunk 서버의 별칭을 정의합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;설정 - 시스템 - 서버 설정 - 일반 설정에서 Splunk 서버 이름 및 기본 호스트 이름을 각 Splunk 서버 역할에 맞게 수정&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106154637-2871dd80-61c3-11eb-9a83-6180b1a738ab.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;VM 인스턴스에서 아래 명령어로 모든 Splunk Server Restart&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/opt/splunk/bin/./splunk restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;1.Search Head -&amp;gt; Forwarder&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;먼저 Search Head에서 수집중인 리소스 데이터를 Forwarder에 전달 하겠습니다. 여기서 반드시 아셔야 할 것은 원래 &lt;strong&gt;Search Head는 원래 오롯이 Indexer의 데이터를 조회하는 역할&lt;/strong&gt;이지만 이번 글에서는 적은 수의 VM 인스턴스로 분산환경을 구축 하다보니 Universal Forwarder의 역할도 수행하는 것입니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Forwarder에서는 설정 - 데이터 - 전달 및 수신 - 데이터 수신 - 수신 설정 - 새 수신 포트에서 9997 수신포트 추가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160573-52c69980-61c9-11eb-822f-ae10d3ff33dd.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 Search Head에서 설정 - 데이터 - 전달 및 수신 - 데이터 전달 - 전달 설정 - 새 전달 호스트를 통해 Forwarder를 추가
+    &lt;ul&gt;
+      &lt;li&gt;IP는 해당 VM 인스턴스(Forwarder:splunk4)의 내부 IP 사용&lt;/li&gt;
+      &lt;li&gt;Port는 수신 포트 9997&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160467-3296da80-61c9-11eb-8568-e6456c3de554.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Forwarder에서 Search &amp;amp; Reporting 앱을 통해 리소스 데이터를 수집중인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ubuntu&lt;/code&gt;라는 Index를 조회하여 수집 현황 확인
+    &lt;ul&gt;
+      &lt;li&gt;Forwarder, Search Head 1, 2 데이터 모두 조회 가능&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160317-0bd8a400-61c9-11eb-8d88-492f2db097b4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.Forwarder -&amp;gt; Indexer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Forwarder는 수집한 데이터를 각 Indexer에 전달하고, Indexer는 전달받은 데이터를 Bucket에 저장합니다. 이전 방법과 동일하지만 이번에는 Forwarder가 각 Indexer에 데이터를 전달하고, 각 Indexer는 수신합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 Indexer에서 설정 - 데이터 - 전달 및 수신 - 데이터 수신 - 수신 설정 - 새 수신 포트에서 9997 수신포트 추가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160622-5f4af200-61c9-11eb-8686-a34795c1429d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Forwarder에서 설정 - 데이터 - 전달 및 수신 - 데이터 전달 - 전달 설정 - 새 전달 호스트를 통해 각 Indexer 추가
+    &lt;ul&gt;
+      &lt;li&gt;IP는 해당 VM 인스턴스(Indexer:splunk1~3)의 내부 IP 사용&lt;/li&gt;
+      &lt;li&gt;Port는 수신 포트 9997&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160753-83a6ce80-61c9-11eb-8efd-1abb486a0b76.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Cluster Master &amp;lt;-&amp;gt; Indexers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;데이터 저장 안정성과 검색 효율성을 위한 인덱서 클러스터링을 활성화하기 위하여 Cluster Master 즉, 마스터 노드로 활성화 합니다. 각 Indexer들은 CM의 피어 노드로 활성화 합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cluster Master에서 설정 - 분산 환경 - 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 마스터 노드 선택
+    &lt;ul&gt;
+      &lt;li&gt;보안키 설정 후 마스터 노드 활성화 후 재시작&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106161600-8bb33e00-61ca-11eb-87e3-50b9bdb88b54.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 Indexer에서 설정 - 분산 환경 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 피어 노드 선택
+    &lt;ul&gt;
+      &lt;li&gt;마스터 URI : Cluster Master의 내부 IP&lt;/li&gt;
+      &lt;li&gt;피어 복제 포트 : 8080&lt;/li&gt;
+      &lt;li&gt;보안키 : 마스터 노드 활성화 시 설정한 보안키&lt;/li&gt;
+      &lt;li&gt;클러스터 레이블 : cm&lt;/li&gt;
+      &lt;li&gt;피어노드 활성화 후 재시작&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106161796-be5d3680-61ca-11eb-9b1e-25e0c1b93cb7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;각 Search Head에서 설정 - 분산 환경 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 검색 헤드 노드 선택
+    &lt;ul&gt;
+      &lt;li&gt;마스터 URI : Cluster Master의 내부 IP&lt;/li&gt;
+      &lt;li&gt;보안키 : 마스터 노드 활성화 시 설정한 보안키&lt;/li&gt;
+      &lt;li&gt;검색 헤드 노드 활성화 후 재시작&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;작성중입니다 . . .  🚧&lt;/p&gt;
+
+&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Whatisdistributedsearch&quot;&gt;About distributed search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Overviewofconfiguration&quot;&gt;Deploy a distributed search environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Splunk" /><category term="Splunk" /><category term="Clustering" /><summary type="html">빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.</summary></entry><entry><title type="html">Splunk 톺아보기</title><link href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 톺아보기" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/">&lt;h1 id=&quot;splunk란&quot;&gt;Splunk란?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104919033-f7322a00-59d8-11eb-97d8-cef888baa5fa.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
@@ -122,7 +751,85 @@
       &lt;li&gt;Agentless : HTTP, TCP, UDP, JMS&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;Universal Forwarder
+    &lt;ul&gt;
+      &lt;li&gt;데이터 수집과 Indexer로 전달이 주목적인 바이너리&lt;/li&gt;
+      &lt;li&gt;목적에 맞게 필요한 기능만 포함하여 &lt;strong&gt;경량화&lt;/strong&gt; 된 형태&lt;/li&gt;
+      &lt;li&gt;수집한 데이터를 Heavy Forwarder 혹은 Indexer로 전송&lt;/li&gt;
+      &lt;li&gt;CSV와 같은 정형데이터 외에 다른 데이터는 &lt;strong&gt;Parsing 불가&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;syslog, intermediate forwarder&lt;/li&gt;
+      &lt;li&gt;Built-in License외 추가 License 필요 없음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Heavy Forwarder
+    &lt;ul&gt;
+      &lt;li&gt;DB data와 같은 특정 데이터는 Universal Fowarder와 달리 모든 기능을 갖춘 Heavy Forwarder이 요구됨
+        &lt;ul&gt;
+          &lt;li&gt;DBconnect, Checkpoint, Cisco IPS&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Data를 Indexer에 저장하기 전에 &lt;strong&gt;Parsing&lt;/strong&gt;함
+        &lt;ul&gt;
+          &lt;li&gt;줄 삭제 및 합치기&lt;/li&gt;
+          &lt;li&gt;Timestamp 추출&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Data Lake와 같은 Splunk가 아닌 다른 목적지에도 데이터를 보낼 수 있음&lt;/li&gt;
+      &lt;li&gt;Splunk Enterprise License 요구됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;데이터-구조&quot;&gt;데이터 구조&lt;/h2&gt;
+
+&lt;h3 id=&quot;index&quot;&gt;Index&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Splunk 내 가장 큰 데이터 저장단위&lt;/li&gt;
+  &lt;li&gt;RDBMS의 Database급&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;source&quot;&gt;Source&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Index 내 카테고리 의미&lt;/li&gt;
+  &lt;li&gt;PostgreSQL의 Schema급&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sourcetype&quot;&gt;Sourcetype&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;RDBMS의 Table급&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bucket&quot;&gt;Bucket&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Indexer 내 Index들을 저장하는 장소&lt;/li&gt;
+  &lt;li&gt;로그의 종류 및 보관 기간 등 각각의 요건에 맞는 저장 정책 제공
+    &lt;ul&gt;
+      &lt;li&gt;수집시기에 따라 고속/대용량 스토리지에 저장&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;app&quot;&gt;App&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105181756-8cffbd80-5b6f-11eb-91f4-c02692431799.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;App을 통해 용도,역할, 사용자에 따라 Splunk 내 다른 작업공간을 할당 할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;search--report-app&quot;&gt;Search &amp;amp; Report App&lt;/h3&gt;
+
+&lt;p&gt;SPL을 통해 데이터를 조회하고 분석 및 시각화&lt;/p&gt;
+
+&lt;h3 id=&quot;nix-app-for-unix-and-linux&quot;&gt;Nix App for Unix and Linux&lt;/h3&gt;
+
+&lt;p&gt;Host내 Computing Resource에 대한 데이터를 수집&lt;/p&gt;
+
+&lt;h3 id=&quot;splunk-db-connect-dbx&quot;&gt;Splunk DB Connect (DBX)&lt;/h3&gt;
+
+&lt;p&gt;상용 RDBMS와 Splunk의 연동 지원&lt;/p&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
 &lt;ul&gt;
@@ -1648,193 +2355,4 @@ PW : 12341234
   &lt;li&gt;&lt;a href=&quot;https://www.eksworkshop.com/020_prerequisites/&quot;&gt;Amazon EKS Workshop Start the workshop&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/what-is-eks.html&quot;&gt;Amazon EKS란 무엇입니까?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/eks-worker-node-actions/&quot;&gt;EKS Worker Node Action&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="AWS" /><category term="EKS" /><category term="Kubeflow" /><summary type="html">이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.</summary></entry><entry><title type="html">GitBook으로 나만의 책 펴내기</title><link href="/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0/" rel="alternate" type="text/html" title="GitBook으로 나만의 책 펴내기" /><published>2020-12-23T00:00:00+09:00</published><updated>2020-12-23T00:00:00+09:00</updated><id>/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0</id><content type="html" xml:base="/etc/GitBook%EC%9C%BC%EB%A1%9C-%EB%82%98%EB%A7%8C%EC%9D%98-%EC%B1%85-%ED%8E%B4%EB%82%B4%EA%B8%B0/">&lt;h1 id=&quot;gitbook이란-&quot;&gt;GitBook이란 ?&lt;/h1&gt;
-
-&lt;p&gt;GitBook은 개인이나 팀이 내부 지식을 쉽게 공동 저작물을 문서화 할 수 있게 도와주는 최신 문서 플랫폼이다.
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102992242-38602700-455e-11eb-800e-e930be982c34.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;주로 기업에서는 사용 설명서 정도로 많이 활용을 하고, 팀 단위로 내부 지식공유에도 많이 활용된다. 요즘엔 개인들이 자신이 배운 내용(TIL)들을 기록하는 용도로도 종종 만나볼 수 있다.&lt;/p&gt;
-
-&lt;p&gt;필자의 경우도 Git 블로그에 포스팅하면서 생겼던 고민이 배웠던 개념을 정리한 내용과 실습했던 내용에 대한 구분을 두고 싶었다. 카테고리 기능을 추가하여 해결하려던 찰나에 GitBook이라는 툴을 발견하여 앞으로 개념 정리 관련된 내용은 Gitbook에 정리할 생각이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;특징&quot;&gt;특징&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;GitHub 연동 기능&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;공동 수정을 위한 Draft 기능&lt;/li&gt;
-  &lt;li&gt;팀 관리 기능으로 접근 권한 제어 기능&lt;/li&gt;
-  &lt;li&gt;마크다운 및 이모지 기능&lt;/li&gt;
-  &lt;li&gt;페이지와 그룹을 통한 문서 구조화 기능&lt;/li&gt;
-  &lt;li&gt;코드 블럭, 테이블, 힌트 탭 지원&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;활용사례&quot;&gt;활용사례&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://esbook.kimjmin.net&quot;&gt;Elastic 가이드북&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://react.vlpt.us&quot;&gt;벨로퍼트와 함께하는 모던 리액트&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://sda1547.gitbook.io/data-engineering/&quot;&gt;Data-Engineering-Note&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
-
-&lt;p&gt;1.GitBook에 회원가입 한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;GitHub 계정을 이용한 간편 회원가입을 지원한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102995711-fb4b6300-4564-11eb-875b-a5339af50778.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2.Create a new space를 눌러 첫 Space를 생성한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Space는 GitBook의 책 제목과 같은 격&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102995880-52513800-4565-11eb-8c7a-f1df8b79e3d8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3.New 버튼으로 새로운 Page, Group 등을 생성할 수 있다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102996701-e7a0fc00-4566-11eb-8001-3c137b26e08d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4.다양한 소스로부터 import 기능도 지원한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Google Docs&lt;/li&gt;
-  &lt;li&gt;Github Wiki&lt;/li&gt;
-  &lt;li&gt;Dropbox Paper&lt;/li&gt;
-  &lt;li&gt;Notion&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102996850-28991080-4567-11eb-99f1-7ab24a0128ba.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;5.팀으로 활용 시 계정별 수정 로그가 남아 이력 관리가 가능하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102997101-a2c99500-4567-11eb-9c17-b47c893e4055.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6.GitHub의 특정 Repository와 연동이 가능하다. 즉, GitHub와 GitBook 어디에서 문서를 작성하더라도 양방향으로 동시에 반영되어 수정이 될 수 있다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;TIL을 기록하고자 한다면 GitHub에 그냥 마크다운으로 하는 것보다 보기 쉽게 구조화 할 수 있고, 쉽게 이미지를 삽입할 수 있어 편리한 것 같다.&lt;/li&gt;
-  &lt;li&gt;GitBook에서 수정 시 GitHub에도 commit으로 반영되므로 잔디심기에도 유용하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102997166-c7257180-4567-11eb-88eb-1b4591c559bd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;7.도메인은 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://ID.gitbook.io/Space Name&lt;/code&gt; 으로 생성되며, GitHub Page와 같이 커스텀 도메인 기능도 지원하고있다.&lt;/p&gt;
-
-&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.gitbook.com&quot;&gt;What is GitBook&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="GitBook" /><summary type="html">GitBook은 개인이나 팀이 내부 지식을 쉽게 공동 저작물을 문서화 할 수 있게 도와주는 최신 문서 플랫폼이다.</summary></entry><entry><title type="html">오픈소스 시각화 툴 Superset 설치하기</title><link href="/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="오픈소스 시각화 툴 Superset 설치하기" /><published>2020-12-19T00:00:00+09:00</published><updated>2020-12-19T00:00:00+09:00</updated><id>/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/bi/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4-%EC%8B%9C%EA%B0%81%ED%99%94-%ED%88%B4-Superset-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;apache-superset-이란-&quot;&gt;Apache Superset 이란 ?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102607092-0d935e80-416b-11eb-8529-6f266ab80d04.png&quot; alt=&quot;Apache Superset&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator 프로젝트&lt;/li&gt;
-  &lt;li&gt;2020.12.19 기준 31,5700 GitHub Star, Release v0.38.0&lt;/li&gt;
-  &lt;li&gt;직관적인 시각화 및 반응형 대쉬보드 제공&lt;/li&gt;
-  &lt;li&gt;다수 상용 RDBMS와 호환
-    &lt;ul&gt;
-      &lt;li&gt;Amazon Redshift, Google BigQuery, Snowflake, Presto&lt;/li&gt;
-      &lt;li&gt;Oracle, PostgreSQL, MySQL, MariaDB, SQL Server, IBM DB2&lt;/li&gt;
-      &lt;li&gt;SQLite, Sysbase, Vertica, Druid, Greenplum&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102608095-b098a800-416c-11eb-98ba-35aa40e8ee66.png&quot; alt=&quot;Gallery&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;설치&quot;&gt;설치&lt;/h1&gt;
-
-&lt;h2 id=&quot;방법&quot;&gt;방법&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Docker Compose를 이용한 방법&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;apt-get을 이용한 방법&lt;/li&gt;
-  &lt;li&gt;Python 가상환경에서 pip를 이용한 방법&lt;/li&gt;
-  &lt;li&gt;Kubernetes 환경에서 Helm 차트를 이용한 방법&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;본 포스팅에서는 연습용으로 설치하는 것이기 때문에 간편하고 가장 빠르게 설치할 수 있는 &lt;strong&gt;Docker Compose를 이용한 방법&lt;/strong&gt;으로 안내한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;docker-compose-설치&quot;&gt;Docker Compose 설치&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Mac OS&lt;br /&gt;
-Docker 설치 후 기본 할당 메모리가 2GB이기 때문에 Superset 실행 시 오류가 날 수 있다. 그러므로 Docker Resources에서 할당 메모리를 6GB로 수정 해야한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Windows
-아쉽게도 Superset은 윈도우에서 공식적으로 지원하진 않는다. 공식 문서에서도 VirtualBox나 VMWare와 같은 가상 머신 툴을 이용한 방법으로 시도해보길 권장하고 있다. 또한 원활한 구동을 위해 해당 VM에 최소한 8GB RAM과 40GB 스토리지 할당을 권장한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Linux&lt;/strong&gt;&lt;br /&gt;
-Docker 설치 docker-compose가 설치되어 있지 않으므로, 각 OS에 맞게 별도의 설치가 필요하다. 본 포스팅에서는 &lt;strong&gt;Ubuntu 18.04 LTS 기준&lt;/strong&gt;으로 설치를 안내한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;1.아래 명령어로 Docker Compose의 최신 stable releases를 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.Binary 파일에 실행 권한을 부여한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo chmod +x /usr/local/bin/docker-compose
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.아래 명령어로 Docker Compose의 버전을 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ docker-compose --version
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102610642-e3dd3600-4170-11eb-9b2b-a2ed021f4c10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4.Superset Repository를 Clone한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/apache/incubator-superset.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5.아래 명령어로 Superset 인스턴스를 실행한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd incubator-superset
-$ docker-compose up
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102612471-13da0880-4174-11eb-906b-e4e677555538.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6.아래 localhost:8088로 접근하여 로그인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;USERNAME : admin
-PASSWORD : admin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102612898-ed689d00-4174-11eb-941d-98a41f5091d5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;7.Superset 메인화면&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102612917-f48fab00-4174-11eb-8c45-f6faf6650d80.png&quot; alt=&quot;Main Page&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;8.Sample Dashboard&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;USA Births Names&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;모던한 디자인에 여타 시각화 툴에 비해 꿇리지 않는 기능들을 볼 수 있다. 파스텔 톤의 색감도 Superset만의 특장점인 것 같아서 좋았다. 또한 대시보드 컴포넌트에 임의로 이미지를 삽입할 수 있게 해 높은 커스텀 자유도를 보장다는 점
-도 매력적이었다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102613328-a202be80-4175-11eb-85da-a106023e96da.png&quot; alt=&quot;Sample 1&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Sales Dashboard&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;대시보드에 이모지가 나와서 당황했는데 꽤나 잘 어울린다 🤣
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/102613361-ad55ea00-4175-11eb-9e92-3d79ce4ab802.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;첫인상&quot;&gt;첫인상&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Apache 프로젝트답게 꽤 완성도 높음&lt;/li&gt;
-  &lt;li&gt;설치가 쉽고 UI는 투박하지만 트렌디한 대시보드 구성&lt;/li&gt;
-  &lt;li&gt;아직 V0.X 단계지만 바로 사용해도 될 것 같은 퀄리티&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://superset.apache.org/docs/installation/installing-superset-using-docker-compose&quot;&gt;Installing Superset Locally Using Docker Compose&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/install/&quot;&gt;Install Docker Compose&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="BI" /><category term="시각화" /><category term="오픈소스" /><category term="Apache Superset" /><summary type="html">Airbnb에서 개발해 오픈소스로 공개한 Apache Incubator의 BI 프로젝트 Superset에 대해 소개한다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="AWS" /><category term="EKS" /><category term="Kubeflow" /><summary type="html">이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.</summary></entry></feed>

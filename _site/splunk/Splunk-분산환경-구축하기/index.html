@@ -1,0 +1,1302 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Splunk 분산환경 구축하기 - Eliot’s DB</title>
+<meta name="description" content="빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.">
+
+
+  <meta name="author" content="김인규">
+  
+  <meta property="article:author" content="김인규">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko">
+<meta property="og:site_name" content="Eliot's DB">
+<meta property="og:title" content="Splunk 분산환경 구축하기">
+<meta property="og:url" content="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">
+
+
+  <meta property="og:description" content="빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.">
+
+
+
+  <meta property="og:image" content="/assets/images/My_Emoji_Dance_1200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2021-01-20T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "김인규",
+      "url": "/"
+    
+  }
+</script>
+
+
+  <meta name="google-site-verification" content="JrNPOuaPPcCS0tpOKZm8N-52Vp9S6FhvPConG47v4Pc" />
+
+
+
+
+
+  <meta name="naver-site-verification" content="30c97a180b609213b1a3a11ba67952e0031c7436">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Eliot's DB Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon.ico/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon.ico/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon.ico/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon.ico/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon.ico/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon.ico/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon.ico/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon.ico/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.ico/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon.ico/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon.ico/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon.ico/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/My_Emoji_300.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Eliot's DB
+          <span class="site-subtitle">Since 2020</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">🧑🏻‍💻소개</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">🗂카테고리</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">📜게시글</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">🏷태그</a>
+            </li><li class="masthead__menu-item">
+              <a href="/page-archive/">📁폴더</a>
+            </li><li class="masthead__menu-item">
+              <a href="/search/">🔍검색</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+  
+
+
+
+
+
+
+
+<div class="page__hero--overlay"
+  style="background-color: #333; background-image: url('/assets/images/My_Emoji_Dance_1200.png');"
+>
+  
+    <div class="wrapper">
+      <h1 id="page-title" class="page__title" itemprop="headline">
+        
+          Splunk 분산환경 구축하기
+
+        
+      </h1>
+      
+        <p class="page__lead">빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.
+</p>
+      
+      
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 분 소요
+        
+      </span>
+    
+  </p>
+
+
+      
+      
+    </div>
+  
+  
+</div>
+
+
+
+
+  
+    
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep"> ❥ </span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/categories/#splunk" itemprop="item"><span itemprop="name">Splunk</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep"> ❥ </span>
+      
+    
+      
+      
+        <li class="current">Splunk 분산환경 구축하기</li>
+      
+    
+  </ol>
+</nav>
+
+  
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/Profile_Jekyll.jpeg" alt="김인규" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">김인규</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>새로 알게 된 내용을 꾸준히 기록합니다</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, South Korea</span>
+        </li>
+      
+
+      
+        
+                      
+            <li><a href="mailto:sda1547@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-paper-plane" style="color:black" aria-hidden="true"></i><span class="label">sda1547@gmail.com</span></a></li>
+          
+        
+                      
+            <li><a href="https://sda1547.gitbook.io/data-engineering/" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-book" style="color:black" aria-hidden="true"></i><span class="label">GitBook</span></a></li>
+          
+        
+          
+        
+          
+        
+                      
+            <li><a href="https://github.com/inkkim" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" style="color:black" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Splunk 분산환경 구축하기">
+    <meta itemprop="description" content="빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.">
+    <meta itemprop="datePublished" content="2021-01-20T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-bars"></i> 목차</h4></header>
+              <ul class="toc__menu"><li><a href="#splunk-배포방식">Splunk 배포방식</a><ul><li><a href="#standalone">Standalone</a></li><li><a href="#basic">Basic</a></li><li><a href="#multi-instance">Multi-Instance</a></li></ul></li><li><a href="#search-head-clustering">Search Head Clustering</a><ul><li><a href="#deployer">Deployer</a></li><li><a href="#search-peers">Search Peers</a></li><li><a href="#load-balancer">Load Balancer</a></li><li><a href="#captain">Captain</a></li></ul></li><li><a href="#indexer-clustering">Indexer Clustering</a><ul><li><a href="#cluster-mastercm">Cluster Master(CM)</a></li><li><a href="#peer-indexer">Peer Indexer</a></li></ul></li><li><a href="#데이터-흐름도">데이터 흐름도</a></li><li><a href="#splunk-분산환경-구축">Splunk 분산환경 구축</a><ul><li><a href="#인스턴스-구성">인스턴스 구성</a></li><li><a href="#분산환경-설정">분산환경 설정</a></li></ul></li><li><a href="#참고">참고</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h1 id="splunk-배포방식">Splunk 배포방식</h1>
+
+<p>Splunk의 주요 컴포넌트는 <strong>검색</strong>을 담당하는 Search Head, <strong>수집</strong>을 담당하는 Fowarder, <strong>저장</strong>을 담당하는 Indexer가 존재합니다. 이 컴포넌트들을 어떤 형태로 배포하는지에 따라 다음과 같이 Splunk의 배포방식을 구분합니다.</p>
+
+<h2 id="standalone">Standalone</h2>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105357987-eb44a300-5c38-11eb-8348-cdea6343bd51.png" alt="image" /></p>
+
+<p>Splunk의 모든 기능과 컴포넌트가 단일 인스턴스에 모두 존재하는 가장 간소화 된 형태입니다. 주로 PoC를 위한 테스트나 개인적인 학습 용도로 사용합니다. Splunk를 설치하면 만나게 될 가장 기본적인 설정입니다.</p>
+
+<h2 id="basic">Basic</h2>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105358377-72921680-5c39-11eb-9179-ac69dd58e414.png" alt="image" /></p>
+
+<p>Standalone과 비슷한 설정이지만 Splunk Server와 Forwarder로 데이터 저장과 수집이 구분된 형태입니다. Forwarder는 데이터 소스에 위치하여 데이터를 수집하고 Splunk Server에 전송합니다. Splunk Server는 데이터를 저장하며, Forwarder의 설정을 관리합니다.</p>
+
+<h2 id="multi-instance">Multi-Instance</h2>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105358787-f64c0300-5c39-11eb-8e6b-b59ef5999d9e.png" alt="image" /></p>
+
+<p>Splunk는 분산 환경 Clustering을 통해 검색과 저장 성능이 크게 향상 될 수 있습니다. Multi-Instance 배포방식은 Splunk의 주요 컴포넌트가 모두 구분된 형태로 가장 효율적인 아키텍쳐입니다. <strong>검색</strong>을 담당하는 Search Head, <strong>저장</strong>을 담당하는 Indexer, <strong>수집</strong>을 담당하는 Fowarder가 각각 다른 인스턴스에 위치하여 서로 연결되어 있는 형태입니다. 이 외에도 Indexer Clustering을 관리하는 Cluster Master(CM)이 존재할 수 있습니다.</p>
+
+<h1 id="search-head-clustering">Search Head Clustering</h1>
+
+<ul>
+  <li>Search Head들을 그룹화하여 검색을 위한 중앙 리소스를 형성하는 것</li>
+</ul>
+
+<h2 id="deployer">Deployer</h2>
+
+<ul>
+  <li>다른 클러스터 App이나 설정값을 배포하는 인스턴스</li>
+  <li>클러스터 외에 위치하여 각 Indexer들에 설정값이나 App을 업데이트 하는 역할</li>
+</ul>
+
+<h2 id="search-peers">Search Peers</h2>
+
+<ul>
+  <li>Search Head Cluster 내 Indexer들로 각 Indexer들은 독립적임</li>
+</ul>
+
+<h2 id="load-balancer">Load Balancer</h2>
+
+<ul>
+  <li>User와 Cluster Member들 사이에 존재하는 third-party 소프트웨어로 User는 Search Head Cluseter에 하나의 인터페이스를 통해 접근할 수 있음</li>
+  <li>하나의 Indexer가 Captain 역할을 하며 클러스터 내 다양한 활동을 총괄함</li>
+  <li>각 Indexer들은 Search Request,Schedule Jobs, Replicate Artifacts, Update Configurations, Coordinate other activities등을 수행하기 위해 서로 상호작용 할 수 있음</li>
+</ul>
+
+<h2 id="captain">Captain</h2>
+
+<ul>
+  <li>기본적으로 Search Header Cluster내 동적으로 선정되며, 동작하지 않는 경우 사용자가 임의로 고정할 수도 있음</li>
+  <li>Scheduling Jobs을 현재 작업량에 따라 각 Indexer들에게 할당</li>
+  <li>일괄적인 App 배포와 Search Head Member들을 관리하기 위한 Deployer가 필요</li>
+  <li>최소 3개의 Search Head가 있어야 Cluster 구성 가능</li>
+</ul>
+
+<h1 id="indexer-clustering">Indexer Clustering</h1>
+
+<ul>
+  <li>데이터 손실을 예방하기 위해 데이터를 복제 후 분산 저장</li>
+  <li>여러 Indexer들을 관리함으로써 가용성 향상 도모</li>
+</ul>
+
+<h2 id="cluster-mastercm">Cluster Master(CM)</h2>
+
+<p>데이터를 저장하지 않고, Peer Indexer의 작업 조정하는 역할을 합니다.</p>
+
+<h2 id="peer-indexer">Peer Indexer</h2>
+
+<p>Fowarder로부터 데이터를 수신받아 Bucket에 저장하며, Indexer끼리 Clustering을 이룹니다. Indexer Cluster 내 모든 Peer Indexer들은 모두 CM과 연결되어 있으며, 각 Peer Indexer들은 복제 포트를 통해 서로 통신하여 데이터를 복제합니다.</p>
+
+<h1 id="데이터-흐름도">데이터 흐름도</h1>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105367163-817dc680-5c43-11eb-9130-c69781bc801a.png" alt="image" /></p>
+
+<p>이번 포스팅에서 다뤄볼 아키텍쳐는 Multi-Instance 분산 환경입니다. 컴퓨터 리소스가 한정된 관계로 분산환경에 이해를 돕기 위해 최소한의 인스턴스 수로 구성하였습니다.</p>
+
+<p>데이터는 TA App을 통해 해당 인스턴스의 리소스 데이터를 수집합니다.  Search Head는 Forwarder로 데이터를 보내고 Forwarder는 다시 Indexer로 해당 데이터를 보냅니다.</p>
+
+<p>데이터를 전달받은 Indexer는 Bucket에 저장하며, Cluster Master를 매개로 연결된 Indexer Cluster에서 다른 Peer에게 정의된 Replication Factor만큼 자신의 Bucket을 복제합니다. 이때 각 Indexer는 복제 포트(8080)을 통해 서로 상호작용 하게 됩니다.</p>
+
+<p>Deployer는 Search Head Clustering의 설정을 담당하며, 각 Search Head에 Job을 분배합니다. 최종적으로 사용자가 Search Head에서 SPL을 통해 모든 인스턴스의 데이터가 저장된 Indexer Cluster에 저장된 데이터를 조회할 수 있게 됩니다.</p>
+
+<h1 id="splunk-분산환경-구축">Splunk 분산환경 구축</h1>
+
+<p>분산환경 구축을 위해 Search Head(2), Indexer(3), Forwarder(1), Deployer(1), Cluster Master(1) 총 8대의 PC가 필요합니다.</p>
+
+<h2 id="인스턴스-구성">인스턴스 구성</h2>
+
+<p>인스턴스 구성을 위해 Google Cloud Platform(GCP) VM을 이용해 8개 대의 PC를 구성 하겠습니다. 참고로 GCP는 한 리전에 최대 8개 VM 인스턴스까지 생성 가능합니다. 같은 리전에서 생성된 VM 인스턴스는 같은 대역폭의 내부 IP를 할당받기 때문에 별도의 네트워크 설정이 필요 없습니다.</p>
+
+<p>그럼 먼저 공통적인 설치와 환경설정은 하나의 인스턴스에서 진행합니다. 이후 해당 인스턴스를 머신 이미지로 만들어 나머지 7개의 복제 인스턴스를 만든 후 분산환경을 설정하는 순으로 진행됩니다.</p>
+
+<p>각 VM 인스턴스의 OS는 Ubuntu 18.04.5, 사양은 n1-standard-1 (vCPUs: 1, RAM: 3.75GB)로 통일 하겠습니다.</p>
+
+<ul>
+  <li>n1-standard-1 (vCPUs: 1, RAM: 3.75GB) * 8 예상 청구 비용</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105579362-7785d000-5dc9-11eb-9314-87e25464b1b1.png" alt="image" /></p>
+
+<p>참고로 n1-standart-1은 9개의 인스턴스를 약 26시간 사용했을 때 $14.30 가량 청구 금액이 예상됩니다. 하지만 GCP에서는 신규 가입자에게 1년 안에 사용이 가능한 $300 크레딧을 제공하고 있으니 추가로 비용을 지불할 일은 없으니 안심하고 사용해도 됩니다!</p>
+
+<p>GCP는 추가 비용이 청구될 경우 미리 등록된 결제 수단으로 청구되는 결제 시스템으로 운영되고 있습니다. 따라서 GCP를 최초 활성화 할 때 비용이 청구될 카드를 먼저 등록하는 과정이 있으니 참고하시길 바랍니다. 이 글에서는 회원가입 과정은 생략하도록 하겠습니다.</p>
+
+<p><strong>1.GCP 계정 활성화</strong></p>
+
+<ul>
+  <li>GCP를 최초 활성화 한 후 프로젝트를 생성하면 다음과 같은 대시보드를 확인하실 수 있습니다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105580040-532bf280-5dcd-11eb-874f-e4355a34a9c8.png" alt="image" /></p>
+
+<p><strong>2.VM 인스턴스 생성</strong></p>
+
+<ul>
+  <li>
+    <p>좌측 상단의 햄버거 버튼에서 <strong>컴퓨팅 - Compute Engine - 가상머신 - VM 인스턴스 - 만들기</strong>에서 새로운 인스턴스를 생성합니다.</p>
+  </li>
+  <li>
+    <p>인스턴스 세부설정은 아래와 같이 설정합니다.</p>
+    <ul>
+      <li>리전 : asia-northeast3(서울)</li>
+      <li>머신구성
+        <ul>
+          <li>시리즈 : N1</li>
+          <li>머신 유형 : n1-standard-1(vCPU 1개, 3.75GB 메모리)</li>
+        </ul>
+      </li>
+      <li>부팅 디스크 : Ubuntu 18.04 LTS</li>
+      <li>방화벽 : HTTP(S) 트래픽 허용</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105580290-d732aa00-5dce-11eb-9e85-1542daf3570a.png" alt="image" /></p>
+
+<ul>
+  <li>약 1 - 2분 후 인스턴스 생성이 완료됩니다.</li>
+</ul>
+
+<p><strong>3.방화벽 규칙 설정</strong></p>
+
+<p>VM 인스턴스는 기본적으로 GCP VPC에 의해 네트워크가 완전 격리되어 있습니다. 분산환경 구축을 위해서는 여러 인스턴스가 서로 통신할 수 있어야 하므로 필요한 네트워크 대역과 포트를 허용 해주어야 합니다.</p>
+
+<p>Splunk에서 사용하는 포트는 다음과 같습니다. 이 중에서 통신을 하는 데 사용되는 포트는 <code class="language-plaintext highlighter-rouge">8089</code>, <code class="language-plaintext highlighter-rouge">9997</code>, <code class="language-plaintext highlighter-rouge">8080</code>입니다. 또한 Web에 접근하기 위해서는 <code class="language-plaintext highlighter-rouge">8000</code> 포트도 개방되어야 합니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105580427-abfc8a80-5dcf-11eb-807f-2df82de803f5.png" alt="image" /></p>
+
+<ul>
+  <li>방화벽 규칙 설정은 <strong>햄버거 버튼 - 네트워킹 - VPC 네트워크 - 방화벽 - 방화벽 규칙 만들기</strong>에서 아래와 같이 설정합니다.
+    <ul>
+      <li>대상 : 네트워크의 모든 인스턴스</li>
+      <li>소스 IP 범위 : 0.0.0.0/0</li>
+      <li>프로토콜 및 포트 : 지정된 프로토콜 및 포트
+        <ul>
+          <li>tcp : 8089, 9997, 8080, 8000</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105580651-f92d2c00-5dd0-11eb-829d-ae46497c4971.png" alt="image" /></p>
+
+<p><strong>4.Splunk 설치</strong></p>
+
+<p>이번 포스팅에서는 Splunk 제품 중에서도 Splunk Enterprise으로 진행합니다. Splunk가 유상 솔루션이긴 하지만 60일 체험판을 제공하고 있습니다. 단, 다운로드를 위해 Splunk 홈페이지 회원가입이 요구됩니다. 이는 이후에 Splunk App을 설치할 때에도 필요하니 가입해두시는 편이 좋습니다.</p>
+
+<ul>
+  <li>VM 인스턴스에서 새로 생성한 인스턴스의 <strong>연결 - SSH</strong>를 통해 접속합니다.
+    <ul>
+      <li>원활한 설치를 위해 root 계정을 활성화 합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>passwd
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+
+<span class="nv">$ </span>su
+Password:
+root@splunk:/home/<span class="nv">$USER</span>
+</code></pre></div></div>
+
+<ul>
+  <li>아래 명령어로 Splunk Enterprise를 다운로드 합니다.
+    <ul>
+      <li>Release는 2021.01.24 기준 <code class="language-plaintext highlighter-rouge">8.1.1</code> 입니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span>
+<span class="nv">$ </span>wget <span class="nt">-O</span> /opt/splunk.tgz https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture<span class="o">=</span>x86_64&amp;platform<span class="o">=</span>linux&amp;version<span class="o">=</span>8.1.1&amp;product<span class="o">=</span>splunk&amp;filename<span class="o">=</span>splunk-8.1.1-08187535c166-Linux-x86_64.tgz&amp;wget<span class="o">=</span><span class="nb">true</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>종종 http, https 접근에 대한 방화벽 규칙을 허용 해도 VM 인스턴스에서 <code class="language-plaintext highlighter-rouge">wget</code>이나 <code class="language-plaintext highlighter-rouge">curl</code>을 명령어로 위 주소에 대한 다운로드 파일을 받아오지 못하는 문제가 있습니다. 원인을 아시는 분은 댓글 남겨주시길 바랍니다.🙏</p>
+</blockquote>
+
+<ul>
+  <li>위 방법이 안 될 경우, 로컬에서 설치 파일을 받아 <code class="language-plaintext highlighter-rouge">scp</code> 명령어로 넘겨주는 방법으로 대체합니다.
+    <ul>
+      <li>로컬에서 <a href="www.splunk.com">Splunk</a>에서 로그인 후 <strong>Products - Splunk Enterprise - Free Trial - Linux</strong>에서 .tgz 설치 파일을 다운 받습니다.</li>
+      <li>VM 인스턴스에서 다음 명령어로 ssh key pair를 생성합니다.
+        <ul>
+          <li>해당 과정은 root 계정으로 진행합니다.</li>
+        </ul>
+      </li>
+      <li>생성한 keyfile01(Private Key)는 복사하여 로컬에 저장합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># VM 인스턴스</span>
+<span class="nv">$ </span>ssh-keygen <span class="nt">-t</span> rsa <span class="nt">-f</span> ~/.ssh/keyfile01 <span class="nt">-C</span> root
+<span class="nv">$ </span><span class="nb">chmod </span>400 ~/.ssh/keyfile01
+<span class="nv">$ </span><span class="nb">cat</span> ~/.ssh/keyfile01.pub <span class="o">&gt;&gt;</span> authorized_keys
+
+<span class="c"># 로컬 (~/.ssh 에 keyfile01(Private Key) 저장 후 진행)</span>
+<span class="nv">$ </span>scp splunk-8.1.1-08187535c166-Linux-x86_64.tar root@xxx.xxx.xxx.xxx:/opt
+</code></pre></div></div>
+
+<ul>
+  <li>해당 압축 파일을 아래 명령어로 압축 해제 해줍니다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /opt
+<span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-xvzf</span> splunk-8.1.1-08187535c166-Linux-x86_64.tar
+</code></pre></div></div>
+
+<ul>
+  <li>Splunk 설치 파일은 압축이 해제된 폴더 내 splunk/bin 위치에 있습니다.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>splunk/bin
+<span class="nv">$ </span>./splunk start <span class="nt">--accept-license</span>
+This appears to be your first <span class="nb">time </span>running this version of Splunk.
+
+Splunk software must create an administrator account during startup. Otherwise, you cannot log <span class="k">in</span><span class="nb">.</span>
+Create credentials <span class="k">for </span>the administrator account.
+Characters <span class="k">do </span>not appear on the screen when you <span class="nb">type </span><span class="k">in </span>credentials.
+
+Please enter an administrator username: &lt;admin&gt;
+Password must contain at least:
+   <span class="k">*</span> 8 total printable ASCII character<span class="o">(</span>s<span class="o">)</span><span class="nb">.</span>
+Please enter a new password: &lt;Password&gt;
+Please confirm new password: &lt;Password&gt;
+
+Waiting <span class="k">for </span>web server at http://127.0.0.1:8000 to be available..... Done
+</code></pre></div></div>
+
+<p>마침내 Splunk 서버 설치를 완료했습니다. 이전에 방화벽 규칙 중에 Web Port에 해당하는 8000을 허용 해두었으므로, 이제 해당 VM 인스턴스의 <code class="language-plaintext highlighter-rouge">외부 IP:8000</code>로 Splunk 서버에 접근할 수 있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105704187-c199bd80-5f51-11eb-844d-fb85c4e0b726.png" alt="image" /></p>
+
+<p><strong>5.데이터 수집 설정</strong></p>
+
+<p>Splunk 분산 환경이 제대로 동작하는지 확인하기 위해 테스트로 각 인스턴스의 리소스 데이터를 수집 해보겠습니다. Splunk에서 Linux 혹은 Unix 계열의 OS에서 리소스 데이터를 수집하는 방법은 <strong>Splunk App for Unix and Linux</strong>와 <strong>Splunk Add-on for Unix and Linux</strong>를 이용하는 것입니다.</p>
+
+<ul>
+  <li>앱 - 추가 앱 찾기 - nix 검색</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105706356-c7dd6900-5f54-11eb-9bbd-260357f43ecb.png" alt="image" /></p>
+
+<ul>
+  <li><strong>Splunk Add-on for Unix and Linux</strong>와 <strong>Splunk App for Unix and Linux</strong>를 설치합니다.
+    <ul>
+      <li>설치 시 splunk 홈페이지의 계정이 필요합니다.</li>
+      <li>모두 설치 후 나중에 다시 시작을 합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105706631-1f7bd480-5f55-11eb-8487-8ad431c93823.png" alt="image" /></p>
+
+<ul>
+  <li>VM 인스턴스 CLI 환경에서 App의 수집 정보를 아래와 같이 설정합니다.
+    <ul>
+      <li>Splunk 내 App들은 <code class="language-plaintext highlighter-rouge">/splunk/etc/apps</code> 내에 위치합니다.</li>
+      <li>혹시 Vi 편집기가 낯선 분들은 <a href="https://inkkim.github.io/etc/Vi-사용법-완벽-가이드/">Vi 사용법 완벽 가이드</a>를 참고하세요.</li>
+      <li>App의 default 디렉토리에는 기본 설정 관련 각종 <code class="language-plaintext highlighter-rouge">.conf</code> 파일이 위치합니다.</li>
+      <li>App의 local 디렉토리는 default와 동일하게 <code class="language-plaintext highlighter-rouge">.conf</code> 파일이 위치할 수 있으며, default 보다 우선 적용 대상에 속합니다. 그래서 일반적으로 default의 <code class="language-plaintext highlighter-rouge">.conf</code>파일은 그대로 유지하고, 수정이 필요한 부분은 local에 복사하여 수정합니다.</li>
+      <li><code class="language-plaintext highlighter-rouge">.conf</code> 파일은 <code class="language-plaintext highlighter-rouge">[]</code> 스탠자를 기준으로 설정이 구분됩니다.
+        <ul>
+          <li>[default] 스탠자는 <code class="language-plaintext highlighter-rouge">.conf</code> 파일 내 공통적으로 적용할 설정값을 정의합니다.
+            <ul>
+              <li>저장할 기본 index를 <code class="language-plaintext highlighter-rouge">index = ubuntu</code>로 설정합니다.
+                <ul>
+                  <li>해당 인덱스가 없으면 수집하지 않습니다.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><code class="language-plaintext highlighter-rouge">inputs.conf</code>에서는 기본적으로 모든 수집 옵션이 비활성화 되어 있으므로, 필요한 수집 옵션만 활성화합니다.
+            <ul>
+              <li>disabled = 1 -&gt; 0</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> /opt/splunk/etc/apps/Splunk_TA_nix/local
+<span class="nv">$ </span><span class="nb">cp</span> /opt/splunk/etc/apps/Splunk_TA_nix/defualt/inputs.conf /opt/splunk/etc/apps/Splunk_TA_nix/local/
+<span class="nv">$ </span>vi /opt/splunk/etc/apps/Splunk_TA_nix/local/inputs.conf
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105713003-f449b300-5f5d-11eb-95bc-0ab5fbe5df79.png" alt="image" />
+<img src="https://user-images.githubusercontent.com/60086878/105713207-2eb35000-5f5e-11eb-84ee-c6799983e1f7.png" alt="image" /></p>
+
+<ul>
+  <li>수집할 데이터가 저장될 인덱스를 생성합니다.
+    <ul>
+      <li>설정 - 데이터 - 인덱스 - 새로 만들기인덱스에서 <strong>ubutu</strong> 인덱스 저장</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105713647-bd27d180-5f5e-11eb-9462-b6bedfb8660d.png" alt="image" /></p>
+
+<ul>
+  <li>App 및 인덱스 설정 동기화를 위해 서버를 재시작 합니다.
+    <ul>
+      <li>설정 - 시스템 - 서버 컨트롤 - Splunk 다시 시작</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105713923-08da7b00-5f5f-11eb-869b-2d697ae6d415.png" alt="image" /></p>
+
+<ul>
+  <li>Search &amp; Report App에서 아래 명령어로 데이터 수집 현황을 확인합니다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105714232-6f5f9900-5f5f-11eb-96d8-1d66d299eb1e.png" alt="image" /></p>
+
+<p>여기까지 Host의 리소스 데이터를 수집하는 Standalone Splunk Server 설정이 완료 됐습니다.</p>
+
+<p><strong>6.VM 인스턴스 복제</strong></p>
+
+<p>GCP에서는 스냅샷 기능처럼 현재 상태를 이미지로 만드는 머신 이미지 기능을 제공합니다. 이제 공통적인 설정은 마무리 됐으니 이 VM 인스턴스의 상태를 머신 이미지로 만들고, 이를 이용해 나머지 7개의 VM 인스턴스를 생성 해보겠습니다.</p>
+
+<ul>
+  <li>해당 VM 인스턴스의 메뉴 - 새 머신 이미지에서 머신 이미지를 생성합니다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105715660-388a8280-5f61-11eb-9ad6-b5477d371e33.png" alt="image" /></p>
+
+<ul>
+  <li>Compute Engine - 가상 머신 - VM 인스턴스 - 인스턴스 만들기 - 머신 이미지의 새 VM 인스턴스에서 새로 생성한 머신 이미지를 이용해 새 인스턴스를 생성합니다.
+    <ul>
+      <li>NGD(<del>노가다</del>) Method로 나머지 7개의 인스턴스를 생성합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105719003-2a3e6580-5f65-11eb-93ca-6dfe6605b6a9.png" alt="image" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/105720631-fbc18a00-5f66-11eb-8e44-9c3278f48f02.png" alt="image" /></p>
+
+<h2 id="분산환경-설정">분산환경 설정</h2>
+
+<p>Splunk 분산환경 구축을 위해 각 인스턴스에 임의로 Splunk 서버를 다음과 같이 지정하겠습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Splunk 서버</th>
+      <th>VM 인스턴스</th>
+      <th>역할</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cluster Master(CM)</td>
+      <td>splunk0</td>
+      <td>Indexer Cluster에서 Peer Indexer 관리</td>
+    </tr>
+    <tr>
+      <td>Indexer</td>
+      <td>splunk1/splunk2/splunk3</td>
+      <td>데이터를 Forwarder에서 전달받아 저장하고, Search Head로부터 SPL로 데이터 조회 요청을 처리</td>
+    </tr>
+    <tr>
+      <td>Forwarder</td>
+      <td>splunk4</td>
+      <td>데이터 수집 후 Indexer에게 전달</td>
+    </tr>
+    <tr>
+      <td>Deployer</td>
+      <td>splunk5</td>
+      <td>Search Head에 대한 설정과 App 정보를 일괄 배포 및 관리</td>
+    </tr>
+    <tr>
+      <td>Search Head</td>
+      <td>splunk6/splunk7</td>
+      <td>SPL문을 통해 Indexer에 데이터 조회 요청</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>먼저 8개 서버 모두 일괄적으로 Splunk Server가 부팅 시 자동시작 되도록 설정하겠습니다. 참고로 Mac은 Iterm2나 Windows는 MobaXterm과 같은 툴을 이용하시면 멀티 세션관리하는 데 수월합니다. 이번 글에서는 Mac의 Iterm2를 기준으로 설명하겠습니다.</p>
+
+<p>Iterm2에서 <code class="language-plaintext highlighter-rouge">Command + d</code>는 Split 세션을 생성합니다. 이때 <code class="language-plaintext highlighter-rouge">Option + Command + i</code>키를 누르면 다중 입력을 활성화합니다. 이점 참고하여 멀티 세션에서 동일한 작업을 해야할 때 요긴하게 사용하시길 바랍니다 :)</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106152770-2a3aa180-61c1-11eb-90bb-6d89581eb305.png" alt="image" /></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Local</span>
+<span class="nv">$ </span>ssh <span class="nt">-i</span> ~/.ssh/keyfile01 root@&lt;VM 인스턴스 외부IP&gt;
+
+<span class="c"># 각 VM 인스턴스</span>
+<span class="nv">$ </span>/opt/splunk/bin/./splunk stop
+<span class="nv">$ </span>/opt/splunk/bin/./splunk start <span class="nt">--accept-license</span>
+<span class="nv">$ </span>/opt/splunk/bin/./splunk <span class="nb">enable </span>boot-start 
+</code></pre></div></div>
+
+<p>또한 각 서버의 역할을 명시하기 위해 다음과 같이 Splunk 서버의 별칭을 정의합니다.</p>
+
+<ul>
+  <li>설정 - 시스템 - 서버 설정 - 일반 설정에서 Splunk 서버 이름 및 기본 호스트 이름을 각 Splunk 서버 역할에 맞게 수정</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106154637-2871dd80-61c3-11eb-9a83-6180b1a738ab.png" alt="image" /></p>
+
+<ul>
+  <li>VM 인스턴스에서 아래 명령어로 모든 Splunk Server Restart</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/opt/splunk/bin/./splunk restart
+</code></pre></div></div>
+
+<p><strong>1.Search Head -&gt; Forwarder</strong></p>
+
+<p>먼저 Search Head에서 수집중인 리소스 데이터를 Forwarder에 전달 하겠습니다. 여기서 반드시 아셔야 할 것은 원래 <strong>Search Head는 원래 오롯이 Indexer의 데이터를 조회하는 역할</strong>이지만 이번 글에서는 적은 수의 VM 인스턴스로 분산환경을 구축 하다보니 Universal Forwarder의 역할도 수행하는 것입니다.</p>
+
+<ul>
+  <li>Forwarder에서는 설정 - 데이터 - 전달 및 수신 - 데이터 수신 - 수신 설정 - 새 수신 포트에서 9997 수신포트 추가</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106160573-52c69980-61c9-11eb-822f-ae10d3ff33dd.png" alt="image" /></p>
+
+<ul>
+  <li>각 Search Head에서 설정 - 데이터 - 전달 및 수신 - 데이터 전달 - 전달 설정 - 새 전달 호스트를 통해 Forwarder를 추가
+    <ul>
+      <li>IP는 해당 VM 인스턴스(Forwarder:splunk4)의 내부 IP 사용</li>
+      <li>Port는 수신 포트 9997</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106160467-3296da80-61c9-11eb-8568-e6456c3de554.png" alt="image" /></p>
+
+<ul>
+  <li>Forwarder에서 Search &amp; Reporting 앱을 통해 리소스 데이터를 수집중인 <code class="language-plaintext highlighter-rouge">Ubuntu</code>라는 Index를 조회하여 수집 현황 확인
+    <ul>
+      <li>Forwarder, Search Head 1, 2 데이터 모두 조회 가능</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106160317-0bd8a400-61c9-11eb-8d88-492f2db097b4.png" alt="image" /></p>
+
+<p><strong>2.Forwarder -&gt; Indexer</strong></p>
+
+<p>Forwarder는 수집한 데이터를 각 Indexer에 전달하고, Indexer는 전달받은 데이터를 Bucket에 저장합니다. 이전 방법과 동일하지만 이번에는 Forwarder가 각 Indexer에 데이터를 전달하고, 각 Indexer는 수신합니다.</p>
+
+<ul>
+  <li>각 Indexer에서 설정 - 데이터 - 전달 및 수신 - 데이터 수신 - 수신 설정 - 새 수신 포트에서 9997 수신포트 추가</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106160622-5f4af200-61c9-11eb-8686-a34795c1429d.png" alt="image" /></p>
+
+<ul>
+  <li>Forwarder에서 설정 - 데이터 - 전달 및 수신 - 데이터 전달 - 전달 설정 - 새 전달 호스트를 통해 각 Indexer 추가
+    <ul>
+      <li>IP는 해당 VM 인스턴스(Indexer:splunk1~3)의 내부 IP 사용</li>
+      <li>Port는 수신 포트 9997</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106160753-83a6ce80-61c9-11eb-8efd-1abb486a0b76.png" alt="image" /></p>
+
+<p><strong>3. Cluster Master &lt;-&gt; Indexers</strong></p>
+
+<p>데이터 저장 안정성과 검색 효율성을 위한 인덱서 클러스터링을 활성화하기 위하여 Cluster Master 즉, 마스터 노드로 활성화 합니다. 각 Indexer들은 CM의 피어 노드로 활성화 합니다.</p>
+
+<ul>
+  <li>Cluster Master에서 설정 - 분산 환경 - 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 마스터 노드 선택
+    <ul>
+      <li>보안키 설정 후 마스터 노드 활성화 후 재시작</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106161600-8bb33e00-61ca-11eb-87e3-50b9bdb88b54.png" alt="image" /></p>
+
+<ul>
+  <li>각 Indexer에서 설정 - 분산 환경 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 피어 노드 선택
+    <ul>
+      <li>마스터 URI : Cluster Master의 내부 IP</li>
+      <li>피어 복제 포트 : 8080</li>
+      <li>보안키 : 마스터 노드 활성화 시 설정한 보안키</li>
+      <li>클러스터 레이블 : cm</li>
+      <li>피어노드 활성화 후 재시작</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/106161796-be5d3680-61ca-11eb-9b1e-25e0c1b93cb7.png" alt="image" /></p>
+
+<ul>
+  <li>각 Search Head에서 설정 - 분산 환경 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 검색 헤드 노드 선택
+    <ul>
+      <li>마스터 URI : Cluster Master의 내부 IP</li>
+      <li>보안키 : 마스터 노드 활성화 시 설정한 보안키</li>
+      <li>검색 헤드 노드 활성화 후 재시작</li>
+    </ul>
+  </li>
+</ul>
+
+<p>작성중입니다 . . .  🚧</p>
+
+<h1 id="참고">참고</h1>
+
+<ul>
+  <li><a href="https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Whatisdistributedsearch">About distributed search</a></li>
+  <li><a href="https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Overviewofconfiguration">Deploy a distributed search environment</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#clustering" class="page__taxonomy-item" rel="tag">Clustering</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#splunk" class="page__taxonomy-item" rel="tag">Splunk</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#splunk" class="page__taxonomy-item" rel="tag">Splunk</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2021-01-20T00:00:00+09:00">January 20, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Splunk+%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD+%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0%20%2Fsplunk%2FSplunk-%25EB%25B6%2584%25EC%2582%25B0%25ED%2599%2598%25EA%25B2%25BD-%25EA%25B5%25AC%25EC%25B6%2595%25ED%2595%2598%25EA%25B8%25B0%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fsplunk%2FSplunk-%25EB%25B6%2584%25EC%2582%25B0%25ED%2599%2598%25EA%25B2%25BD-%25EA%25B5%25AC%25EC%25B6%2595%25ED%2595%2598%25EA%25B8%25B0%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fsplunk%2FSplunk-%25EB%25B6%2584%25EC%2582%25B0%25ED%2599%2598%25EA%25B2%25BD-%25EA%25B5%25AC%25EC%25B6%2595%25ED%2595%2598%25EA%25B8%25B0%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" class="pagination--pager" title="Splunk 톺아보기
+">이전</a>
+    
+    
+      <a href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" class="pagination--pager" title="Elastic Goods Box 수령 후기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">이 글은 어때요?</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="permalink">Elastic Goods Box 수령 후기
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/02/12 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Etc</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="permalink">Splunk 톺아보기
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/01/19 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Splunk</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">다양한 로그 데이터 분석으로 IT운영, 보안, IoT에 특화된 머신 빅데이터 플랫폼 Splunk에 대해 알아봅니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/" rel="permalink">Kubernetes 기본용어 정리
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/01/05 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Kubernetes</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Twitter API로 GCP Pipeline 구축하기
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/01/02 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Data Engineering</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/inkkim" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 김인규. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/splunk/Splunk-분산환경-구축하기"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-inkkim-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

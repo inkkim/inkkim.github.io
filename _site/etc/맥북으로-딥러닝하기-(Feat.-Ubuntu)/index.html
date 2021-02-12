@@ -530,15 +530,15 @@
 
 <p>2.혹시 이전에 설치했던 Nvidia driver 파일을 삭제하고, Nvida driver 설치에 필요한 Development Package gcc, make를 설치한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt --purge autoremove nvidia*
-$ sudo apt-get update
-$ sudo apt-get install gcc
-$ sudo apt-get install make
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nt">--purge</span> autoremove nvidia<span class="k">*</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get update
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>gcc
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>make
 </code></pre></div></div>
 
 <p>3.Nvidia driver 설치 과정에서 충돌을 피하기 위해 nouveau를 blacklist 추가한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo nano /etc/modprobe.d/blacklist.conf
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>nano /etc/modprobe.d/blacklist.conf
 </code></pre></div></div>
 
 <p><img src="https://user-images.githubusercontent.com/60086878/97263549-90342780-1866-11eb-9ead-4c832d3160c3.png" alt="blacklist" /></p>
@@ -549,17 +549,17 @@ $ sudo apt-get install make
 
 <p>4.Ctrl + Alt + F3를 눌러 가상콘솔로 이동하여 Nvidia driver가 설치된 경로로 이동하여 installer를 실행한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo bash YOUR_DIR/NVIDIA-Linux-x86_64-450.80.02.run
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>bash YOUR_DIR/NVIDIA-Linux-x86_64-450.80.02.run
 </code></pre></div></div>
 
 <p>5.설치가 완료되면 재부팅한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo reboot
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>reboot
 </code></pre></div></div>
 
 <p>6.아래 명령어를 통해 Nvidia driver가 GPU 자원을 제대로 인식하는지 확인한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nvidia-smi
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nvidia-smi
 </code></pre></div></div>
 
 <p>++ 필자의 경우 로그인 화면에서 그래픽이 깨지는 현상이 있는데, 로그인하여 데스크톱 화면으로 들어가면 정상작동한다.</p>
@@ -568,13 +568,13 @@ $ sudo apt-get install make
 
 <p>1.apt-get 업그레이드 및 업데이트를 한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt update
-$ sudo apt upgrade
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update
+<span class="nv">$ </span><span class="nb">sudo </span>apt upgrade
 </code></pre></div></div>
 
 <p>2.도커 설치에 필요한 필수 패키지 다운로드를 한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install curl apt-transport-https ca-certificates software-properties-common
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>curl apt-transport-https ca-certificates software-properties-common
 </code></pre></div></div>
 
 <p>3.도커 Repository를 추가한다.</p>
@@ -583,81 +583,81 @@ $ sudo apt upgrade
   <li>GPG Key 추가</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install curl
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>curl
+<span class="nv">$ </span>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
 </code></pre></div></div>
 <ul>
   <li>Repository 추가</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>add-apt-repository <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span>
 </code></pre></div></div>
 <ul>
   <li>Repository 정보 업데이트</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt update
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update
 </code></pre></div></div>
 <ul>
   <li>Docker Community Edition으로 지정</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ apt-cache policy docker-ce
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>apt-cache policy docker-ce
 </code></pre></div></div>
 
 <p>4.최종적으로 도커를 설치한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt install docker-ce
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>docker-ce
 </code></pre></div></div>
 
 <p>5.도커의 실행상태를 확인한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl status docker
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl status docker
 </code></pre></div></div>
 <ul>
   <li>시스템 시작 시 항상 켜져있도록 유지하려면 아래 명령어 실행</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo systemctl enable docker
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>systemctl <span class="nb">enable </span>docker
 </code></pre></div></div>
 
 <p>6.도커 명령어 실행할 때마다 sudo 권한을 묻지 않도록 도커 권한을 부여한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo usermod -aG docker $USER
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
 </code></pre></div></div>
 
 <h1 id="nvidia-docker-20-설치">Nvidia-Docker 2.0 설치</h1>
 <p>1.혹시 이전에 설치되어있는 nvidia-docker 1.0이 있다면 삭제한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 
-$ docker ps -q -a -f volume={} | xargs -r docker rm -f
-$ sudo apt-get purge nvidia-docker
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker volume <span class="nb">ls</span> <span class="nt">-q</span> <span class="nt">-f</span> <span class="nv">driver</span><span class="o">=</span>nvidia-docker | xargs <span class="nt">-r</span> <span class="nt">-I</span><span class="o">{}</span> <span class="nt">-n1</span> 
+<span class="nv">$ </span>docker ps <span class="nt">-q</span> <span class="nt">-a</span> <span class="nt">-f</span> <span class="nv">volume</span><span class="o">={}</span> | xargs <span class="nt">-r</span> docker <span class="nb">rm</span> <span class="nt">-f</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get purge nvidia-docker
 </code></pre></div></div>
 
 <p>2.Repository 설정 및 업데이트를 해준다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
-  sudo apt-key add -
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/gpgkey | <span class="se">\</span>
+  <span class="nb">sudo </span>apt-key add -
 
-$ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+<span class="nv">$ distribution</span><span class="o">=</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span><span class="nb">echo</span> <span class="nv">$ID$VERSION_ID</span><span class="si">)</span>
 
-$ curl -s -L https://nvidia.github.io/nvidia-docker/
+<span class="nv">$ </span>curl <span class="nt">-s</span> <span class="nt">-L</span> https://nvidia.github.io/nvidia-docker/
 
-$ distribution/nvidia-docker.list | \
-  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+<span class="nv">$ </span>distribution/nvidia-docker.list | <span class="se">\</span>
+  <span class="nb">sudo tee</span> /etc/apt/sources.list.d/nvidia-docker.list
 
-$ sudo apt-get update
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get update
 </code></pre></div></div>
 
 <p>3.nvidia-docker 2.0를 설치한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install nvidia-docker2
-$ sudo pkill -SIGHUP dockerd
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>nvidia-docker2
+<span class="nv">$ </span><span class="nb">sudo </span>pkill <span class="nt">-SIGHUP</span> dockerd
 </code></pre></div></div>
 
 <p>4.도커 내부에서 nvidia-smi 명령어가 제대로 작동하는지 확인한다. 이 명령어를 입력하고 아래와 같은 화면이 나오면 성공이다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">--runtime</span><span class="o">=</span>nvidia <span class="nt">--rm</span> nvidia/cuda nvidia-smi
 </code></pre></div></div>
 
 <p><img src="https://user-images.githubusercontent.com/60086878/97267697-e8225c80-186d-11eb-95b0-5df5d1c899d6.png" alt="nvidia-smi in Docker" /></p>
@@ -783,6 +783,92 @@ $ sudo pkill -SIGHUP dockerd
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
+        <a href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="permalink">Elastic Goods Box 수령 후기
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/02/12 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Etc</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Splunk 분산환경 구축하기
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/01/20 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Splunk</p>
+	  
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          10 분 소요
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
         <a href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="permalink">Splunk 톺아보기
 </a>
       
@@ -804,7 +890,7 @@ $ sudo pkill -SIGHUP dockerd
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          3 분 소요
+          4 분 소요
         
       </span>
     
@@ -855,92 +941,6 @@ $ sudo pkill -SIGHUP dockerd
 
 
     <p class="archive__item-excerpt" itemprop="description">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Twitter API로 GCP Pipeline 구축하기
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2021/01/02 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Data Engineering</p>
-	  
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          6 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="permalink">파이썬 접근 제어자에 대하여
-</a>
-      
-    </h2>
-    
-    <p class="archive__item-excerpt"><i class="far fa-calendar-alt" style="color:black"></i> 2020/12/31 &nbsp; <i class="far fa-folder-open" style="color:#398DF5"></i> Python</p>
-	  
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 분 소요
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.
 </p>
   </article>
 </div>
