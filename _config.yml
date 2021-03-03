@@ -276,7 +276,7 @@ compress_html:
 
 # Defaults
 defaults:
-
+  
   # _posts/Hadoop
   - scope:
       path: ""
@@ -292,6 +292,9 @@ defaults:
         overlay_image: "/assets/images/My_Emoji_Dance_1200.png"
         overlay_color: "#333"
           # overlay_image: "/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg"
+      sidebar:
+        title: 카테고리
+        nav: 'sidebar-contents'
   
   - scope:
       path: "_posts/BI"
@@ -366,4 +369,13 @@ defaults:
     values:
       layout: single
       author_profile: true
+      sidebar:
+        title: 카테고리
+        nav: "sidebar-contents"
+      
 
+sidebar:
+- title: "Title"
+  text: "lala"
+- title: "Another Title"
+  text: "blah"

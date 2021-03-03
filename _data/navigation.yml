@@ -12,6 +12,31 @@ main:
     url: "/page-archive/"
   - title: "🔍검색"
     url: "/search/"
+  
+sidebar-contents:
+  - title: "Programming"
+    children:
+      - title: "Python"
+        url: /categories/#python
+  - title: "Infra"
+    children:
+      - title: "Data Engineering"
+        url: /categories/#data-engineering
+      - title: "Kubernetes"
+        url: /categories/#kubernetes
+  - title: "Big Data"
+    children:
+      - title: "Hadoop"
+        url: /categories/#hadoop
+      - title: "Splunk"
+        url: /categories/#splunk
+      - title: "BI"
+        url: /categories/#bi
+  - title: "Etc"
+    children:
+      - title: "Etc" 
+        url: /categories/#etc
+  
 # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
