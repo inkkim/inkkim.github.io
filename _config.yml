@@ -293,7 +293,7 @@ defaults:
         overlay_color: "#333"
           # overlay_image: "/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg"
       sidebar:
-        title: 카테고리
+        title: 🗂카테고리
         nav: 'sidebar-contents'
   
   - scope:
