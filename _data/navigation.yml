@@ -14,27 +14,27 @@ main:
     url: "/search/"
   
 sidebar-contents:
-  - title: "Programming"
+  - title: "✔️Programming"
     children:
-      - title: "Python"
+      - title: "▪️Python"
         url: /categories/#python
-  - title: "Infra"
+  - title: "✔️Infra"
     children:
-      - title: "Data Engineering"
+      - title: "▪️Data Engineering"
         url: /categories/#data-engineering
-      - title: "Kubernetes"
+      - title: "▪️Kubernetes"
         url: /categories/#kubernetes
-  - title: "Big Data"
+  - title: "✔️Big Data"
     children:
-      - title: "Hadoop"
+      - title: "▪️Hadoop"
         url: /categories/#hadoop
-      - title: "Splunk"
+      - title: "▪️Splunk"
         url: /categories/#splunk
-      - title: "BI"
+      - title: "▪️BI"
         url: /categories/#bi
-  - title: "Etc"
+  - title: "✔️Etc"
     children:
-      - title: "Etc" 
+      - title: "▪️Etc" 
         url: /categories/#etc
   
 # - title: "About"
