@@ -108,7 +108,6 @@ author:
       url: "mailto:sda1547@gmail.com"
     - label: "GitBook"
       icon: "fas fa-fw fa-book"
-      colors: "#3681fc"
       #icon: "fas fa-fw fa-link"
       url: "https://sda1547.gitbook.io/data-engineering/"
     - label: "Linkedin"
