@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T00:17:40+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T16:55:00+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
@@ -42,19 +42,27 @@
 
 &lt;p&gt;YARN은 각 워커 노드에 &lt;strong&gt;노드매니저 데몬&lt;/strong&gt;을 실행시키고, 이 데몬들이 마스터 프로세스인 &lt;strong&gt;리소스매니저&lt;/strong&gt;에 여러 정보를 보고하게 됩니다. 노드매니저는 가상 코어의 단위로 얼마나 많은 연산 자원을 사용할 수 있는지와 해당 노드에 메모리가 얼마나 남아있는지를 리소스매니저에게 알려줍니다. 가용 자원은 클러스터 내 실행되는 애플리케이션에 컨테이너 형태로 분항되어 제공되며, 노드매니저는 로컬 노드에 있는 컨테이너를 기동하여 모니터링하면서 할당 자원을 초과하는 컨테이너는 중단시킵니다.&lt;/p&gt;
 
-&lt;p&gt;추가 예정&lt;/p&gt;
-
 &lt;h3 id=&quot;spark&quot;&gt;Spark&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111484650-4dbda980-8779-11eb-9c9f-b043f17d34a7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache Spark는 통합 컴퓨팅 엔진으로 클러스터 환경에서 데이터를 병렬로 처리하는 라이브러리 집합입니다. 현재 가장 활발하게 개발되고 있는 &lt;strong&gt;병렬 처리 오픈소스 엔진&lt;/strong&gt;으로 여러 개발자와 데이터 과학자에게 표준 도구가 되어가고 있습니다. Spark는 Python, Java, Scala, R을 지원하며 SQL뿐 아니라 스트리밍, 머신러닝에 이르는 넓은 범위의 라이브러리를 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;Spark는 MapReduce처럼 Job에 필요한 데이터를 디스크에서 매번 가져오는 대신, 데이터를 메모리에 캐시로 저장하는 인-메모리 실행 모델로 성능을 비약적으로 향상시켜 MapReduce보다 10~100배까지 빠르다고 평가됩니다. 덕분에 일괄 처리 작업이나 데이터 마이닝 같은 온라인 분석처리(OLAP)에 유용합니다. Spark는 Standalone이나 Hadoop YARN 클러스터, Apache Mesos 클러스터 등 다양한 유형의 클러스터 매니저를 사용할 수 있습니다.&lt;/p&gt;
 
 &lt;h3 id=&quot;pig&quot;&gt;Pig&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111484898-82316580-8779-11eb-95be-e67022e6ca5c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Apache Pig는 Hadoop에 기반하여 &lt;strong&gt;병렬로 데이터를 처리하는 엔진&lt;/strong&gt;입니다. 이때, 데이터를 처리하기 위해 MapReduce 프로그래밍 대신 SQL과 유사한 Pig Latin이라는 자체 스크립트 언어로 처리하는 것이 특징입니다. Pig는 서버로 동작하지 않고 단순 변환기 수준의 애플리케이션으로 실행되고, 작성된 Pig Latin를 해석하여 MapReduce로 변환하여 실행시켜 복잡한 MapReduce 프로그래밍을 간단하게 처리할 수 있습니다. 또한 Hadoop의 의존성이 있으므로 Pig 사용 시 Hadoop의 버전을 잘 고려해야 합니다.&lt;/p&gt;
+
 &lt;h3 id=&quot;storm&quot;&gt;Storm&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485576-126faa80-877a-11eb-9c4b-ebb0809f29e0.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache Storm은 클로저 프로그래밍 언어로 작성된 &lt;strong&gt;분산형 스트림 프로세싱 연산 프레임워크&lt;/strong&gt;입니다. Storm은 YARN 위에서 주로 실시간 분석, Machine Learning, 운영 모니터링 용도로 사용됩니다. 사용자가 정의한 Spout과 Bolt를 사용하여 스트리밍 데이터의 일괄, 분산 처리를 가능하게 하며, 인-메모리 기반으로 실시간 처리 방식을 가지고 있습니다. 또한 어떠한 언어로든 사용자의 기호에따라 Storm을 조작할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;Storm의 스트림 처리 모델은 Topology라고 하는 프레임워크에서 DAG(Directed Acyclic Graphs)에 의해 관리됩니다. 이러한 Topology는 들어오는 데이터가 시스템에 입력 될 때마다 수행되는 다양한 변환 또는 단계를 설명합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;nosql-databases&quot;&gt;NoSQL Databases&lt;/h2&gt;
 
@@ -62,9 +70,19 @@
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485366-e7855680-8779-11eb-8cd9-e0939e2de8ad.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Apache HBase는 HDFS 위에 만들어진 &lt;strong&gt;비관계형 오픈소스 데이터베이스&lt;/strong&gt;입니다. HBase는 NoSQL로 분류되어 스키마 변경 없이 자유롭게 데이터를 저장할 수 있습니다. 또한 구조화된 대용량의 데이터에 빠른 임의접근을 제공하는 구글의 BigTable과 비슷한 데이터 모델을 가지며, HDFS에 대한 실시간 읽기/쓰기 기능을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;Hbase는 압축, 인-메모리 처리, 초기 BigTable에 제시되어 있는 Bloom 필터 기능을 제공합니다. HBase에 있는 테이블들은 Hadoop에서 동작하는 MapReduce 작업을 위한 입출력을 제공하며, Java API나 REST, AVro 또는 Thrift 게이트웨이를 통해 접근할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;분산 환경에서 Zookeeper를 이용하여 고가용성을 보장하고, Membership 정보 저장, Dead Server 탐지, Master 선출 및 복구 기능을 지원합니다. 또한 성능이슈가 발생할 경우 서버를 추가하면 성능을 유지할 수 있고, MapReduce의 Input으로 사용하기 편리합니다.&lt;/p&gt;
+
 &lt;h3 id=&quot;cassandra&quot;&gt;Cassandra&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485940-67132580-877a-11eb-9206-6492f67bc339.png&quot; alt=&quot;cassandra&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache Cassandra는 확장성이 뛰어난 &lt;strong&gt;NoSQL 오픈소스 데이터베이스&lt;/strong&gt;입니다. Cassandra는 단일 장애점 없이 고성능을 제공하며 수 많은 서버 간의 대용량 데이터를 관리하기 위해 설계되었습니다. 클러스터를 지원하며 마스터리스 비동기 복제를 통해 모든 클라이언트에 대한 낮은 레이턴시 운영을 가능하게 합니다. Cassandra는 Consistent hashing을 이용한 Ring 구조와 Gossip protocol을 구현하였으며, 때문에 각 노드 장비들의 추가, 제거 등이 자유롭고, 데이터센터까지 고려 할 수 있는 데이터 복제 정책을 사용하여 안정성 측면에서 많은 장점이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;Cassandra는 클러스터 내에서 인증된 유저들에 한해서만 연결을 허용하고, CQL(Cassandra Query Language)을 통해 질의하게 됩니다. 참고로 CQL은 SQL과 유사하지만, Join인 Transaction을 지원하지 않고, Index 검색을 위한 기능도 매우 단순하다는 단점이 있습니다. 또한 구조상 RDBMS와 같은 Paging을 구현하기 어렵고, Keyspace나 Table을 많이 생성할 경우 Memory Overflow가 발생할 수 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;data-ingestion&quot;&gt;Data Ingestion&lt;/h2&gt;
 
@@ -72,13 +90,23 @@
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485205-c45aa700-8779-11eb-8852-718b65b2bb1f.png&quot; alt=&quot;image-center&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Apache Kafka는 실시간으로 기록 스트림을 게시, 구독, 저장 및 처리할 수 있는 &lt;strong&gt;분산 데이터 스트리밍 플랫폼&lt;/strong&gt;입니다. 이는 여러 소스에서 데이터 스트림을 처리하고 여러 사용자에게 전달하도록 설계되었습니다. 즉, A지점에서 B지점까지 이동 뿐아니라 A지점에서 Z지점을 비롯한 필요한 모든 곳에 대규모 데이터를 동시에 이동할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;Kafka는 Publish-Subscribe 모델을 기반으로 동작하며 크게 Producer, Consumer, Broker로 구성됩니다. Broker는 Topic을 기준으로 메시지를 관리하며, Producer는 특정 Topic의 메시지를 생성한 뒤 해당 메시지를 Broker에 전달합니다. Broker가 전달받은 메시지를 Topic별로 분류하여 쌓아놓으면, 해당 Topic을 구독하는 Consumer들이 메시지를 가져가 처리하는 방식입니다.&lt;/p&gt;
+
 &lt;h3 id=&quot;sqoop&quot;&gt;Sqoop&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485083-a9883280-8779-11eb-85d8-950c5833c4fd.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Apache Sqoop은 구조화된 관계형 데이터베이스와 Apache Hadoop간의 &lt;strong&gt;대용량 데이터들을 효율적으로 변환해주는 CLI 애플리케이션&lt;/strong&gt;입니다. Oracle, MySQL같은 관계형 데이터 베이스에서 HDFS로 데이터들을 가져와 그 데이터들을 MapReduce로 변환하고 Hive, Pig, HBase에 저장할 수 있으며, 그 변환된 데이터들을 다시 관계형 데이터 베이스로 내보낼 수도 있습니다. Sqoop은 데이터의 가져오기와 내보내기를 MapReduce를 통해 처리하여 장애 허용 능력뿐만 아니라 병렬 처리가 가능하게 합니다.&lt;/p&gt;
+
 &lt;h3 id=&quot;flume&quot;&gt;Flume&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485150-b573f480-8779-11eb-8375-33df8e1d94a2.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache Flume은 많은 양의 &lt;strong&gt;로그 데이터를 효율적으로 수집, 취합, 이동하기 위한 분산형 소프트웨어&lt;/strong&gt;입니다. 구조가 단순하고 유연하여 스트리밍 데이터 플로우 아키텍쳐를 갖추고 있으며, 튜닝 가능한 신뢰성 매커니즘과 수많은 대체작동(Failover) 및 복구 매커니즘을 갖추고 있어 고장 방지 기능이 제공됩니다.&lt;/p&gt;
+
+&lt;p&gt;Flume은 JVM 프로세스인 Flume Agent가 실행되어 Source, Channel, Sink 컴포넌트를 호스트합니다. Source는 수집 대상으로부터 로그를 수신하고, Channel은 Source와 Sink간의 버퍼로서 의존성을 제거하고 장애를 대비합니다. 또한 Sink가 로그를 다음 목적지로 전달할 때까지 로그를 보관합니다. 마지막으로 Sink는 수집된 로그를 HDFS와 같은 다음 목적지에 전달하게됩니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;sql-on-hadoop&quot;&gt;SQL-On-Hadoop&lt;/h2&gt;
 
@@ -86,19 +114,31 @@
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485003-96756280-8779-11eb-993d-52946e1eed98.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Apache Hive는 Hadoop에서 동작하는 &lt;strong&gt;Data Warehouse&lt;/strong&gt; 인프라 구조로서 데이터 요약, 질의 및 분석 기능을 제공합니다. Hive는 HDFS나 HBase와 같은 데이터 저장 시스템에 저장되어 있는 대용량 데이터 집합들을 분석합니다. SQL과 유사한 HiveQL을 통해 질의하게되며, MapReduce의 모든 기능을 지원합니다. 또한 쿼리를 빠르게 하기 위해 비트맵 인덱스를 포함하여 인덱스 기능을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;기본적으로 Hive는 메타데이터를 내장된 아파치 더비(Derby) 데이터 베이스에 저장합니다. 추가로 MySQL과 같은 다른 서버/클라이언트 데이터 베이스를 사용할 수도 있습니다. 현재 TEXTFILE, SEQUENCEFILE, ORC, RCFILE 등 4개의 파일 포맷을 지원합니다.&lt;/p&gt;
+
 &lt;h3 id=&quot;impala&quot;&gt;Impala&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111486671-059f8680-877b-11eb-8220-7c15dfcd1ee6.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111587295-5b207580-8805-11eb-9181-9b7808fedda0.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache Impala는 Hadoop에서 실행하는 컴퓨터 클러스터에 저장된 데이터를 오픈소스 &lt;strong&gt;대규모 병렬처리(MPP) SQL 쿼리 엔진&lt;/strong&gt;입니다. Hadoop에 스케일링 가능한 병렬 데이터베이스 기술을 도입합으로써 데이터 이동이나 전송 과정 없이 사용자들이 낮은 레이턴시의 SQL 쿼리를 HDFS과 아파치 HBase에 저장된 데이터에 발행할 수 있게 합니다. 또한, Impala는 HiveQL을 통해 질의할 수 있으며, C++로 설계된 &lt;strong&gt;자체 분산 질의 엔진&lt;/strong&gt;이 모든 데이터 노드에서 설치되어 MapReduce 프로그래밍이 필요 없습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;scheduling&quot;&gt;Scheduling&lt;/h2&gt;
 
-&lt;h3 id=&quot;zookeeper&quot;&gt;Zookeeper&lt;/h3&gt;
+&lt;h3 id=&quot;zookeeper&quot;&gt;ZooKeeper&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111484386-0f27ef00-8779-11eb-8b00-582369a5af91.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache ZooKepper는 공개 분산형 구성 서비스, 동기 서비스 및 대용량 분산 파일시스템을 위한 네이밍 레지스트리를 제공하는 &lt;strong&gt;중앙 집중식 서비스(분산 코디네이터)&lt;/strong&gt;입니다. ZooKeeper의 아키텍쳐는 중복 서비스를 이용한 고가용성을 제공합니다. 클라이언트는 JooKeeper 마스터가 응답을 하지 않으면 다른 마스터에 요청합니다. JooKeeper 노드들은 파일 시스템이나 트리 데이터구조와 비슷한 구조의 네임스페이스 안에 데이터들을 저장합니다.&lt;/p&gt;
+
+&lt;p&gt;이외에도 JooKeeper는 HBase의 클러스터 마스터를 선출하는데 사용되기도 하고, Kafka에서 서버의 크래시를 감지하거나 새로운 토픽이 생성되었을 때, 토픽의 생성과 소비에 대한 저장을 위해 사용되기도 합니다.&lt;/p&gt;
 
 &lt;h3 id=&quot;oozie&quot;&gt;Oozie&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485288-d8060d80-8779-11eb-8f74-4bc324adf392.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Apache Oozie는 Hadoop의 Job을 관리하기 위한 &lt;strong&gt;서버 기반 워크플로우 스케쥴링 시스템&lt;/strong&gt;입니다. Ooize의 워크플로우는 DAG에서 제어흐름과 액션 노드의 모임으로 정의됩니다. 제어 흐름 노드는 워크플로우의 시작과 끝 그리고 워크플로우 실행 경로를 제어하기 위한 구조를 정의합니다. 액션노드들은 워크플로우가 계산/처리 작업의 실행을 명령하는 매커니즘입니다. Oozie는 Hadoop MapReduce, HDFS 조작, Pig, SSH, 이메일을 포함한 각기 다른 종류의 액션을 제공합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;machine-learning&quot;&gt;Machine Learning&lt;/h2&gt;
 
@@ -106,11 +146,14 @@
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111487225-8494bf00-877b-11eb-856e-986db069043d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;Apache Mahout은 Hadoop 내에서 분산처리가 가능하고 확장성을 가진 &lt;strong&gt;ML 라이브러리&lt;/strong&gt;입니다. MapReduce를 이용하여 적용되며, 데이터 전처리, 분류, 회귀, 군집, 협업 필터링 알고리즘을 지원합니다.&lt;/p&gt;
+
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/hadoop-ecosystem/&quot;&gt;Hadoop Ecosystem&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.analyticsvidhya.com/blog/2020/10/introduction-hadoop-ecosystem/&quot;&gt;Introduction to the Hadoop Ecosystem for Big Data and Data Engineering&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;엔터프라이즈 데이터 플랫폼 구축&lt;/li&gt;
+  &lt;li&gt;스파크 완벽 가이드&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Hadoop" /><category term="빅데이터" /><category term="분산처리" /><category term="Hadoop Ecosystem" /><summary type="html">빅데이터 플랫폼 Hadoop의 Ecosystem을 소개한다.</summary></entry><entry><title type="html">Elastic Goods Box 수령 후기</title><link href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="Elastic Goods Box 수령 후기" /><published>2021-02-12T00:00:00+09:00</published><updated>2021-02-12T00:00:00+09:00</updated><id>/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/">&lt;h1 id=&quot;elastic-cloud&quot;&gt;Elastic Cloud&lt;/h1&gt;
 
 &lt;p&gt;작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack 기능까지 포함하여 2주간 무료로 체험판을 경험해볼 수 있었습니다. ELK Stack이 모두 갖춰진 인스턴스가 뚝딱 만들어지니 다시 설치할 필요없이 너무 편리하게 체험해볼 수 있어서 좋았습니다.&lt;/p&gt;
