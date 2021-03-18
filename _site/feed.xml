@@ -1,4 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-15T00:36:29+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Elastic Goods Box 수령 후기</title><link href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="Elastic Goods Box 수령 후기" /><published>2021-02-12T00:00:00+09:00</published><updated>2021-02-12T00:00:00+09:00</updated><id>/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/">&lt;h1 id=&quot;elastic-cloud&quot;&gt;Elastic Cloud&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T00:17:40+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hadoop Ecosystem은 Hadoop 환경에서 빅데이터 문제를 효율적으로 다루기 위해 만들어진 서브 프로젝트들의 집합입니다. 이중 가장 핵심 요소는 규모의 데이터를 수용할 수 있는 분산파일 시스템인 Hadoop Distributed File System(HDFS)와 그것을 처리할 수 있게 해주는 MapReduce 입니다. 이를 중심으로 분산 코디네이터, 워크플로우 관리, 분산 리소스 관리, 데이터 마이닝, 분석, 수집, 직렬화 등 다양한 서비스들로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;distributed-file-system&quot;&gt;Distributed File System&lt;/h2&gt;
+
+&lt;h3 id=&quot;hdfs-hadoop-distributed-file-system&quot;&gt;HDFS (Hadoop Distributed File System)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111476919-f10ac080-8771-11eb-90f4-521f9f2acbd1.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hadoop의 스토리지 컴포넌트로 확장성과 장애 허용성을 가진 분산 파일시스템입니다. 대규모 데이터 분석이라는 Hadoop의 원래 용도에 맞게 HDFS는 일반적으로 상당히 긴 &lt;strong&gt;Sequential Access 방식&lt;/strong&gt;을 통해 디스크에 불변 데이터를 저장하는데 최적화 되어있습니다. HDFS는 Hadoop Stack 내 다른 컴포넌트를 지원하는 핵심 기술입니다.&lt;/p&gt;
+
+&lt;p&gt;데이터를 설정 가능한 크기의 블록으로 나눠 저장하며, 기본 값은 128MB입니다. 예를 들어, 1G의 데이터를 저장할 때에는 8개의 블록으로 나뉘어 저장하게 되는 셈입니다. 반면, 50MB의 데이터를 저장하더라도 1개의 블록에 저장하게 되므로 블록 단위보다 작은 용량의 데이터를 저장할 때에는 비효율적일 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;HDFS는 &lt;strong&gt;데이터 회복성&lt;/strong&gt;과 &lt;strong&gt;병렬 처리&lt;/strong&gt;를 위해 여러 대의 서버에 각 블록의 복제본을 저장하게 됩니다. 기본 값은 3이므로, 1G의 데이터를 저장하기 위해서는 총 3G의 용량이 필요하게 되는 셈입니다. 이 때문에 HDFS에서는 개별 디스크나 데이터 노드에 장애가 발생하더라도 데이터 안정성이 유지되므로 &lt;strong&gt;장애 허용성&lt;/strong&gt;이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;또한 HDFS는 로컬 스토리지를 포함하는 데이터 노드를 클러스터에 추가하면 파일시스템 용량이 늘어나므로 &lt;strong&gt;확장성&lt;/strong&gt;이 있습니다. 이때 부수적으로 분산 파일 시스템 전체로 볼 때 읽기와 쓰기 처리량이 함께 높아지는 부수적인 효과도 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;distributed-programming&quot;&gt;Distributed Programming&lt;/h2&gt;
+
+&lt;h3 id=&quot;mapreduce&quot;&gt;MapReduce&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111479061-fa952800-8773-11eb-85e8-33f8cd750f54.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hadoop은 빅데이터를 다루기 위해 구글에서 발표한 MapReduce 알고리즘을 이용합니다. 이는 병렬 프로그래밍으로 클러스터 내에서 쉽게 분산 처리를 할 수 있도록 도와줍니다. 분할 정복 방식으로 작동하며, 시스템에서 프로세스를 실행하여 네트워크의 트래픽을 줄입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111480804-b4d95f00-8775-11eb-8809-acc6ccc007e7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;MapReduce 알고리즘은 크게 아래 두 가지로 단계로 나뉠 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Map 단계&lt;/strong&gt;에서는 필터링, 그룹화, 정렬이 이뤄지는데요. Input 데이터가 들어오면 Split하여 Map을 만들게 됩니다. 각 Map들은 각자 다른 노드에서 Key-Value 짝을 맺어 출력하는 Task를 진행하고, 같은 Key를 가지는 데이터끼리 분류하는 Shuffling 과정을 거쳐 최종적으로 분산되어 있는 연산결과를 합치는 &lt;strong&gt;Reduce 단계&lt;/strong&gt;를 거쳐 병합되어 HDFS에 저장됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;yarn-yet-another-resource-negotiator&quot;&gt;YARN (Yet Another Resource Negotiator)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111481186-0eda2480-8776-11eb-8001-98dbb3cc6ecd.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;YARN은 Hadoop 내 작업 스케쥴링, 클러스터 리소스 관리를 위한 프레임워크입니다. 한정된 자원에서 가용 연산 자원의 용량과 필요한 워크로드를 관리하여 다양한 연산이 동시에 실행될 수 있도록 돕는 중앙 클러스터 매니저 역할을 하게 됩니다. 이를 통해 자원의 사용 효율성을 높이고 데이터 접근 비용을 낮출 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;YARN은 각 워커 노드에 &lt;strong&gt;노드매니저 데몬&lt;/strong&gt;을 실행시키고, 이 데몬들이 마스터 프로세스인 &lt;strong&gt;리소스매니저&lt;/strong&gt;에 여러 정보를 보고하게 됩니다. 노드매니저는 가상 코어의 단위로 얼마나 많은 연산 자원을 사용할 수 있는지와 해당 노드에 메모리가 얼마나 남아있는지를 리소스매니저에게 알려줍니다. 가용 자원은 클러스터 내 실행되는 애플리케이션에 컨테이너 형태로 분항되어 제공되며, 노드매니저는 로컬 노드에 있는 컨테이너를 기동하여 모니터링하면서 할당 자원을 초과하는 컨테이너는 중단시킵니다.&lt;/p&gt;
+
+&lt;p&gt;추가 예정&lt;/p&gt;
+
+&lt;h3 id=&quot;spark&quot;&gt;Spark&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111484650-4dbda980-8779-11eb-9c9f-b043f17d34a7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pig&quot;&gt;Pig&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111484898-82316580-8779-11eb-95be-e67022e6ca5c.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;storm&quot;&gt;Storm&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485576-126faa80-877a-11eb-9c4b-ebb0809f29e0.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nosql-databases&quot;&gt;NoSQL Databases&lt;/h2&gt;
+
+&lt;h3 id=&quot;hbase&quot;&gt;HBase&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485366-e7855680-8779-11eb-8cd9-e0939e2de8ad.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cassandra&quot;&gt;Cassandra&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485940-67132580-877a-11eb-9206-6492f67bc339.png&quot; alt=&quot;cassandra&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;data-ingestion&quot;&gt;Data Ingestion&lt;/h2&gt;
+
+&lt;h3 id=&quot;kafka&quot;&gt;Kafka&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485205-c45aa700-8779-11eb-8852-718b65b2bb1f.png&quot; alt=&quot;image-center&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;sqoop&quot;&gt;Sqoop&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485083-a9883280-8779-11eb-85d8-950c5833c4fd.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;flume&quot;&gt;Flume&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485150-b573f480-8779-11eb-8375-33df8e1d94a2.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-on-hadoop&quot;&gt;SQL-On-Hadoop&lt;/h2&gt;
+
+&lt;h3 id=&quot;hive&quot;&gt;Hive&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485003-96756280-8779-11eb-993d-52946e1eed98.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;impala&quot;&gt;Impala&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111486671-059f8680-877b-11eb-8220-7c15dfcd1ee6.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;scheduling&quot;&gt;Scheduling&lt;/h2&gt;
+
+&lt;h3 id=&quot;zookeeper&quot;&gt;Zookeeper&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111484386-0f27ef00-8779-11eb-8b00-582369a5af91.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;oozie&quot;&gt;Oozie&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111485288-d8060d80-8779-11eb-8f74-4bc324adf392.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;machine-learning&quot;&gt;Machine Learning&lt;/h2&gt;
+
+&lt;h3 id=&quot;mahout&quot;&gt;Mahout&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111487225-8494bf00-877b-11eb-856e-986db069043d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/hadoop-ecosystem/&quot;&gt;Hadoop Ecosystem&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.analyticsvidhya.com/blog/2020/10/introduction-hadoop-ecosystem/&quot;&gt;Introduction to the Hadoop Ecosystem for Big Data and Data Engineering&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;엔터프라이즈 데이터 플랫폼 구축&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Hadoop" /><category term="빅데이터" /><category term="분산처리" /><category term="Hadoop Ecosystem" /><summary type="html">빅데이터 플랫폼 Hadoop의 Ecosystem을 소개한다.</summary></entry><entry><title type="html">Elastic Goods Box 수령 후기</title><link href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="Elastic Goods Box 수령 후기" /><published>2021-02-12T00:00:00+09:00</published><updated>2021-02-12T00:00:00+09:00</updated><id>/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/">&lt;h1 id=&quot;elastic-cloud&quot;&gt;Elastic Cloud&lt;/h1&gt;
 
 &lt;p&gt;작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack 기능까지 포함하여 2주간 무료로 체험판을 경험해볼 수 있었습니다. ELK Stack이 모두 갖춰진 인스턴스가 뚝딱 만들어지니 다시 설치할 필요없이 너무 편리하게 체험해볼 수 있어서 좋았습니다.&lt;/p&gt;
 
@@ -1846,513 +1959,4 @@ list2 : [1, 2, 3, 4]
 &lt;p&gt;각자의 방법 모두 서로 다른 리스트 객체에 값이 할당되며, list1의 요소에 수정이 일어나도 list2 요소에 영향을 끼치지 않는 독립적인 개체임을 확인할 수 있다.&lt;/p&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.afternerd.com/blog/python-copy-list/&quot;&gt;Python: How to Copy a List? (The Idiomatic Way)&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="자료구조" /><category term="리스트" /><summary type="html">오늘은 상당히 기초적이면서도 쉽게 실수 할 수 있는 부분을 다뤄보고자 한다. 바로 나를 포함한 초보자들이 실수할 수 있는 파이썬 리스트를 다른 리스트에 복사하는 방법에 대해 소개한다.</summary></entry><entry><title type="html">AWS EKS 클러스터에 Kubeflow 설치하기</title><link href="/kubernetes/AWS-EKS-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-Kubeflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="AWS EKS 클러스터에 Kubeflow 설치하기" /><published>2020-12-25T00:00:00+09:00</published><updated>2020-12-25T00:00:00+09:00</updated><id>/kubernetes/AWS-EKS-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-Kubeflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/kubernetes/AWS-EKS-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-Kubeflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/">&lt;p&gt;이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.&lt;/p&gt;
-
-&lt;p&gt;프로젝트의 대략적인 아키텍쳐는 다음과 같다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103115141-cfcf9200-46a4-11eb-888e-ceeacfa4bd38.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;EC2 기반 AWS EKS 클러스터&lt;/li&gt;
-  &lt;li&gt;AWS Aurora (PostgreSQL)&lt;/li&gt;
-  &lt;li&gt;공공데이터 실시간 API 수집 및 웹 스크래핑 서버&lt;/li&gt;
-  &lt;li&gt;시각화 데이터 Elasticsearch에 적재&lt;/li&gt;
-  &lt;li&gt;위 모든 과정을 포함한 ML 모델링까지 Kubeflow Pipeline으로 자동화&lt;/li&gt;
-  &lt;li&gt;Kibana 실시간 대시보드&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;운 좋게도 학원 측에서 AWS 크레딧을 지원받아 AWS 환경에서 구축해 볼 수 있었다. 따라서 이번 포스팅은 AWS EKS 기준으로 Kubeflow 설치 방법을 소개한다.&lt;/p&gt;
-
-&lt;h1 id=&quot;kubeflow란-&quot;&gt;Kubeflow란 ?&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103114462-fc35df00-46a1-11eb-96da-776017192c9b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;공식 문서에서는 Kubeflow를 다음과 같이 설명하고 있다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Kubeflow 프로젝트는 새로운 서비스를 다시 만드는 것이 아닌 ML을 위한 동급 최고의 오픈소스 시스템을 다양한 인프라에 배포하는 간단한 방법을 제공합니다. ML Workfow를 Kubernetes에 간단하게 이식하여 확장성과 배포 용이성을 보장하는 데 전념합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103115552-65b7ec80-46a6-11eb-86a0-a4fb31a21255.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;구글 내부 프로젝트에서 시작되어 2018년 3월 오픈소스로 공개됨&lt;/li&gt;
-  &lt;li&gt;2020.12.25 기준 약 9,700 GitHub Star, Release v1.2.0&lt;/li&gt;
-  &lt;li&gt;KFServing, Jupyter Notebooks, MXNet, Tensorflow, PyTorch, XGBoost, Katib 등 다양한 프레임워크 지원&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;설치&quot;&gt;설치&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103115087-9d259980-46a4-11eb-8444-e2191b03bdc6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;공식 문서에 따르면 사용자의 상황에 따른 설치 가이드를 제시한다. 위에 언급했듯이 마침 클라우드 환경이 제공되어 이번 포스팅에서는 AWS EKS에 배포하는 방법으로 설명한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;eks-클러스터-구축&quot;&gt;EKS 클러스터 구축&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;AWS EKS&lt;/strong&gt;는 Kubernetes 컨트롤 플레인 또는 노드 설치를 쉽게 도와주는 서비스로 작동 및 유지 관리할 필요 없이 AWS에서 Kubernetes를 손쉽게 실행할 수 있게 해주는 관리형 서비스다. EKS는 비정상 컨트롤 플레인 인스턴스를 자동으로 감지하고 교체하며, 자동화된 업그레이드 및 패치를 제공한다.&lt;/p&gt;
-
-&lt;p&gt;EKS 클러스터 구축은 AWS eskworshop에서 제공하는 가이드대로 진행했다. 원활한 환경 구축을 위해 AWS CLI를 이용한 방법으로 설명한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
-
-&lt;p&gt;EKS 클러스터 구축을 위해 필요한 AWS CLI와 aws-iam-authenticator를 설치하고, k8s 컨트롤 플레인 제어에 필요한 kubectl과 eksctl 바이너리 파일을 설치한다.&lt;/p&gt;
-
-&lt;h4 id=&quot;bastion-server&quot;&gt;Bastion server&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;AWS 계정 권한을 가지고 CLI 환경으로 AWS Application들을 사용하기 위한 역할&lt;/li&gt;
-  &lt;li&gt;네트워크가 지원되는 어떤 컴퓨터든 상관 없고, 리소스도 최소한도만 있어도 됨. 다만, 공동 작업이 필요한 경우 다중접속이 가능해야 함&lt;/li&gt;
-  &lt;li&gt;AWS의 모든 서비스 생성 권한을 가지고 있기 때문에 보안이 매우 중요&lt;/li&gt;
-  &lt;li&gt;Amazon Linux AMI, Seoul region ap-northeast-2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;kubectl&quot;&gt;Kubectl&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CLI환경에서 Kubernetes 클러스터를 구성 및 application 배포, 검사, 리소스 관리, 로그 확인 등의 기능&lt;/li&gt;
-  &lt;li&gt;노드 간 마이너 버전 차이가 0.2이상 나면 오류 발생할 수 있음&lt;/li&gt;
-  &lt;li&gt;예를 들어, master 노드에서 v1.18를 사용하면, 다른 노드에서는 v1.17 ~ v1.19 사용 가능&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;1.&lt;a href=&quot;https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl&quot;&gt;최신 Stable 버전&lt;/a&gt;을 다운로드한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -LO https://storage.googleapis.com/kubernetes-release/ release/v1.17.0/bin/linux/amd64/
-$ kubectl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.kubectl binary 파일에 실행권한을 부여한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ chmod +x ./kubectl 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.kubectl binary 파일을 바이너리 폴더로 이동시킨다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo mv ./kubectl /usr/local/bin/$ kubectl 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4.kubectl 명령어로 버전을 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl version --client 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116121-97ca4e00-46a8-11eb-8ae1-29eeb0f8862a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;aws-cli&quot;&gt;AWS CLI&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;AWS EC2를 이용해 Bestion server를 만들어 AWS CLI 환경 구축&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;1.AWS CLI2를 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd ~
-$ curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;
-$ unzip awscliv2.zip 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.아래 명령어로 AWS CLI 설치를 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ aws --version
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116254-28089300-46a9-11eb-8f8b-eafc08a22728.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;aws-iam-authenticator&quot;&gt;aws-iam-authenticator&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;AWS EKS가 IAM을 사용하여 aws-iam-authenticator를 통해 Kubernetes 클러스터에 인증을 제공&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;1.AWS S3로부터 aws-iam-authenticator binary 파일을 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/aws -iam-authenticator
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.aws-iam-authenticator binary 파일에 실행권한을 부여한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ chmod +x ./aws-iam-authenticator 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.aws-iam-authenticator binary 파일을 $HOME/bin에 위치시킨다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir -p $HOME/bin &amp;amp;&amp;amp; cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator &amp;amp;&amp;amp; export PATH=$PATH:$HOME/bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4..bash_profile에 환경변수를 추가한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'export PATH=$PATH:$HOME/bin' &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5.aws-iam-authenticator가 실행되는지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ aws-iam-authenticator help
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;eksctl&quot;&gt;eksctl&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;EKS에 클러스터를 구축하는데 필요한 CLI tool&lt;/li&gt;
-  &lt;li&gt;CloudFormation에 사용&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;1.최신 버전을 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ curl --silent --location &quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz&quot; | tar xz -C /tmp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.eksctl binary 파일을 /usr/local/bin으로 위치시킨다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo mv /tmp/eksctl /usr/local/bin 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103116474-f8a65600-46a9-11eb-9ae6-a1d9a9280b71.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;yq&quot;&gt;yq&lt;/h4&gt;
-
-&lt;p&gt;1.아래 명령어로 yq를 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'yq() {
-  docker run --rm -i -v &quot;${PWD}&quot;:/workdir mikefarah/yq yq &quot;$@&quot;}' | tee -a ~/.bashrc &amp;amp;&amp;amp; source ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;jq&quot;&gt;jq&lt;/h4&gt;
-
-&lt;p&gt;1.아래 명령어로 jq를 설치한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo yum -y install jq gettext bash-completion moreutils
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;aws-load-balancer-controller-version-설정&quot;&gt;AWS Load Balancer Controller Version 설정&lt;/h4&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo 'export LBC_VERSION=&quot;v2.0.0&quot;' &amp;gt;&amp;gt;  ~/.bash_profile
-$ .  ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;iam-role&quot;&gt;IAM Role&lt;/h4&gt;
-
-&lt;p&gt;1.관리자 권한으로 &lt;a href=&quot;https://console.aws.amazon.com/iam/home#/roles$new?step=review&amp;amp;commonUseCase=EC2%2BEC2&amp;amp;selectedUseCase=EC2&amp;amp;policies=arn:aws:iam::aws:policy%2FAdministratorAccess&quot;&gt;Create role&lt;/a&gt;에서 IAM role 생성한다.&lt;/p&gt;
-
-&lt;p&gt;2.사용 사례 선택 - EC2 선택 후 다음:권한을 누른다.&lt;/p&gt;
-
-&lt;p&gt;3.AdministratorAccess 정책을 선택 후 다음:태그를 누른다.&lt;/p&gt;
-
-&lt;p&gt;4.태그는 생략하고 다음:검토를 누른다.&lt;/p&gt;
-
-&lt;p&gt;5.역할 이름을 입력한 후 역할 만들기를 누른다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;6.인스턴스 대시보드에서 작업-보안-IAM Role 변경에 접근하여 Bastion Server에 해당하는 인스턴스의 IAM Role을 생성한 Role로 수정한다.&lt;/p&gt;
-
-&lt;p&gt;7.Bastion Server에서 .aws/credentials 파일이 있다면 삭제한다.&lt;/p&gt;
-
-&lt;p&gt;8.아래 명령어로 AWS REGION이 알맞게 불러와지는지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
-$ export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-
-$ test -n &quot;$AWS_REGION&quot; &amp;amp;&amp;amp; echo AWS_REGION is &quot;$AWS_REGION&quot; || echo AWS_REGION is not set
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;9.AWS CLI 명령어가 원활하게 진행될 수 있도록 AWS 계정 정보를 환경변수로 설정한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo &quot;export ACCOUNT_ID=${ACCOUNT_ID}&quot; | tee -a ~/.bash_profile
-$ echo &quot;export AWS_REGION=${AWS_REGION}&quot; | tee -a ~/.bash_profile
-$ aws configure set default.region ${AWS_REGION}
-$ aws configure get default.region
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;10.아래 명령어로 IAM Role이 유효한지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aws sts get-caller-identity --query Arn | grep eksworkshop-admin-i -q &amp;amp;&amp;amp; echo &quot;IAM role valid&quot; || echo &quot;IAM role NOT valid&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;ec2-vs-fargate&quot;&gt;EC2 vs. Fargate&lt;/h3&gt;
-
-&lt;p&gt;EKS 클러스터는 노드를 관리할 필요 없는 AWS Fargate와 같은 관리형과 AWS CloudFormation을 통해 자동으로 EC2 노드가 구성되는 자체 관리형을 지원한다.&lt;/p&gt;
-
-&lt;p&gt;각 유형에 따른 특징은 다음과 같다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;EC2
-    &lt;ul&gt;
-      &lt;li&gt;자체 관리형 클러스터&lt;/li&gt;
-      &lt;li&gt;인스턴스 타입에 따라 가격이 결정&lt;/li&gt;
-      &lt;li&gt;각 인스턴스가 남아도는 리소스 없이 효율적 자원을 모두 사용 되어야 낭비를 줄일 수 있음&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Fargate
-    &lt;ul&gt;
-      &lt;li&gt;EC2 인스턴스 없이 컨테이너로 직접 실행 됨&lt;/li&gt;
-      &lt;li&gt;컨테이너를 구동하는 데 사용한 리소스만큼(CPU, Memory) 초단위로 요금이 청구됨.&lt;/li&gt;
-      &lt;li&gt;즉, 실제 리소스를 사용한 만큼만 비용이 청구되며, EC2처럼 사용하지 않은 요금에 대해 돈을 지불할 일이 줄어듬&lt;/li&gt;
-      &lt;li&gt;small workload에 적합&lt;/li&gt;
-      &lt;li&gt;컨테이너를 실행하기 위해 가상 머신 그룹을 프로비저닝, 구성 또는 조정할 필요 없음&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이 포스팅에서는 기본 구성인 EC2를 이용한 자체관리형 노드로 구성하는 방법을 소개한다.&lt;/p&gt;
-
-&lt;p&gt;1.아래 내용을 cluster.yaml로 생성한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;yaml파일로 구성된 manifest들은 indent가 중요하므로 각별히 신경써주어야 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: eksctl.io/v1alpha5 kind: ClusterConfig
-metadata:
-    name: eksworkshop-eksctl-i/ **클러스터 이름
-    region: ap-northeast-2 version: '1.17'
-
-# NodeGroup holds all configuration attributes that are specific to a nodegroup 
-# You can have several node group in your cluster.
-
-nodeGroups:
-    - name: cpu-nodegroup
-    instanceType: m5.xlarge desiredCapacity: 3
-    minSize: 0
-    maxSize: 6
-    volumeSize: 50 
-    ssh:
-        allow: true
-        publicKeyPath: '~/.ssh/id_rsa.pub'
-
-# Example of GPU node group 
-    - name: Tesla-V100
-    instanceType: p3.8xlarge
-# Make sure the availability zone here is one of cluster availability zones.
-    availabilityZones: [&quot;ap-northeast-2&quot;]
-    desiredCapacity: 0
-    minSize: 0
-    maxSize: 4
-    volumeSize: 50
-    ssh:
-        allow: true
-        publicKeyPath: '~/.ssh/id_rsa.pub'
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;2.아래 명령어로 bastion server의 ssh key를 생성한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 모두 Enter 입력하여 기본값 생성 
-$ ssh-keygen -t rsa
-# 키 내용 전체 복사 
-$ cat .ssh/id_rsa.pub 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.아래 명령어로 클러스터를 구성을 명령하면 수 분 내로 손쉽게 EKS(k8s) 클러스터가 구성된다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ eksctl create cluster -f cluster.yaml 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4.아래 명령어로 노드의 상태를 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl get nodes 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5.(Optional) 노드 갯수 축소 및 확장 하려면 &lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/eks-worker-node-actions/&quot;&gt;아래 명령어&lt;/a&gt;를 참고한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 노드 갯수 조정
-$ eksctl scale nodegroup --cluster=클러스터 이름 --nodes=노드 개수 --name=노드그룹 이름 --nodes-min=1 --nodes-max=6
-# 노드 Min, Max 값 조정 예시
-$ eksctl scale nodegroup --cluster=eksworkshop-eksctl-i --name=nodegroup --nodes-min=1 --nodes-max=6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;cluster.yaml 에서 클러스터 이름, 노드그룹 이름 확인&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: eksctl.io/v1alpha5 kind: ClusterConfig
-metadata:
-    name: eksworkshop-eksctl-i // **클러스터 이름 region: ap-northeast-2
-    version: '1.17'
-
-nodeGroups:
-    - name: **cpu-nodegroup // 노드그룹 이름**
-    instanceType: m5.xlarge desiredCapacity: 2 
-    minSize: 0
-    maxSize: 4
-    volumeSize: 50
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;6.(Optional) EKS 클러스터 및 노드를 삭제 하려면 &lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/delete-cluster.html&quot;&gt;아래 명령어&lt;/a&gt;를 참고한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;eksctl ≥ 0.31.0-rc.0 이상인지 확인&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ eksctl version 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;클러스터에서 실행중인 모든 서비스 나열&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl get svc --all-namespaces 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;EXTERNAL-IP 값과 연결된 모든 서비스를 삭제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl delete svc **서비스 이름** 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;클러스터 및 연결된 노드 삭제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ eksctl delete cluster --name **클러스터 이름
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;현재 정의된 Cluster Autoscaler Group을 확인하는 방법&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ aws autoscaling describe-auto-scaling-groups --query &quot;AutoScalingGroups[? Tags[? (Key=='eks:cluster-name') &amp;amp;&amp;amp; Value=='**클러스터 이름']].[AutoScalingGroupName, MinSize, MaxSize,DesiredCapacity]&quot; --output table
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;optionalcluster-autoscalerca-설정&quot;&gt;(Optional)Cluster Autoscaler(CA) 설정&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Service Account IAM role Annotation
-    &lt;ul&gt;
-      &lt;li&gt;서비스 계정은 해당 서비스 계정을 사용하는 모든 포드의 컨테이너에 AWS 권한을 제공 할 수 있음&lt;/li&gt;
-      &lt;li&gt;노드의 포드가 AWS API를 호출 할 수 있도록 더 이상 노드 IAM 역할에 확장 된 권한을 제공 할 필요 없음&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Service Account가 IAM role을 사용가능하도록 설정 
-$ eksctl utils associate-iam-oidc-provider \
---cluster eksworkshop-eksctl-i --approve
-
-$ mkdir ~/environment/cluster-autoscaler
-
-$ cat &amp;lt;&amp;lt;EoF &amp;gt; ~/environment/cluster-autoscaler/k8s-asg-policy.json {
-&quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [
-{
-&quot;Action&quot;: [
-&quot;autoscaling:DescribeAutoScalingGroups&quot;, &quot;autoscaling:DescribeAutoScalingInstances&quot;, &quot;autoscaling:DescribeLaunchConfigurations&quot;, &quot;autoscaling:DescribeTags&quot;, &quot;autoscaling:SetDesiredCapacity&quot;, &quot;autoscaling:TerminateInstanceInAutoScalingGroup&quot;, &quot;ec2:DescribeLaunchTemplateVersions&quot;
-],
-&quot;Resource&quot;: &quot;*&quot;, &quot;Effect&quot;: &quot;Allow&quot;
-} ]
-} EoF
-
-# iam policy 생성
-$ aws iam create-policy \
---policy-name k8s-asg-policy \
---policy-document file://~/environment/cluster-autoscaler/k8s-asg-policy.json
-
-# kube-system namespace에 CA Service Account를 위한 IAM role을 생성 
-$ eksctl create iamserviceaccount \
---name cluster-autoscaler \
---namespace kube-system \
---cluster eksworkshop-eksctl-i \
---attach-policy-arn &quot;arn:aws:iam::${ACCOUNT_ID}:policy/k8s-asg-policy&quot; \ 
---approve \
---override-existing-serviceaccounts
-
-# Service Account가 IAM role의 ARN과 함께 잘 annotated 되었는지 확인 
-$ kubectl -n kube-system describe sa cluster-autoscaler
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cluster Autoscaler Deploy
-    &lt;ul&gt;
-      &lt;li&gt;요청된 작업이 desired-capacity의 리소스 한계를 넘을 때 CA에 지정한 Max node 범위 안에서 자동으로 node를 확장할 수 있음&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Deploy the Cluster Autoscaler
-$ kubectl apply -f https://www.eksworkshop.com/beginner/080_scaling/deploy_ca.files/cluster-autoscaler-autodiscover.yaml
-
-# pod가 실행되고 있는 node가 삭제되는 것을 방지하기 위한 설정 
-$ kubectl -n kube-system \
-annotate deployment.apps/cluster-autoscaler \ 
-cluster-autoscaler.kubernetes.io/safe-to-evict=&quot;false&quot;
-
-# Autoscaler image를 업데이트
-$ export K8S_VERSION=$(kubectl version --short | grep 'Server Version:' | sed 's/[^0-9.]*\([0-9.]*\).*/\1/' | cut -d. -f1,2)
-$ export AUTOSCALER_VERSION=$(curl -s &quot;https://api.github.com/repos/kubernetes/autoscaler/releases&quot; | grep '&quot;tag_name&quot;:' | sed -s 's/.*-\([0-9][0-9\.]*\).*/\1/' | grep -m1 ${K8S_VERSION})
-$ kubectl -n kube-system \
-set image deployment.apps/cluster-autoscaler \
-cluster-autoscaler=us.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v${AUTOSC ALER_VERSION}
-
-# 로그 확인
-$ kubectl -n kube-system logs -f deployment/cluster-autoscaler
-
-# Autoscaling Group 설정
-$ aws autoscaling \
-update-auto-scaling-group \ 
---auto-scaling-group-name ${ASG_NAME} \ 
---min-size 1 \ # 최소 노드 개수
---desired-capacity 3 \ 지정 노드 개수
---max-size 6 # 최대 노드 개수
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;kubeflow-설치&quot;&gt;Kubeflow 설치&lt;/h2&gt;
-
-&lt;p&gt;현재 Amazon에서 지원하는 EKS버전과 Kubeflow v1.2의 호환 여부는 다음과 같다. 본 포스팅에서는 EKS v1.17을 사용하고 있으므로, Kubeflow v1.2 기준으로 설치 과정을 소개한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103150473-eb778d00-47b7-11eb-9c31-438418569d62.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;1.Bastion Server에서 Kubeflow GitHub에서 &lt;a href=&quot;https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz&quot;&gt;Release v1.2.0&lt;/a&gt;을 다운로드 한다.&lt;/p&gt;
-
-&lt;p&gt;2.다음 명령어로 tar 압축을 해제한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tar -xvf kfctl_v1.2.0-0-gbc038f9_linux.tar.gz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;3.아래 명령어로 kfctl Binary 파일을 이동시킨다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mv ./kfctl /usr/local/bin 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;4.배포 과정을 간략화 하기위해 아래 환경변수를 추가한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ export PATH=$PATH:&quot;/usr/local/bin&quot;
-$ export CONFIG_URI=&quot;https://raw.githubusercontent.com/kubeflow/manifests/v1.2-branch/kfdef/kfctl_aws.v1.2.0.yaml&quot;
-$ export AWS_CLUSTER_NAME=eksworkshop-eksctl-i / **클러스터 이름
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;5.아래 명령어로 클러스터 이름으로 폴더를 생성하고, kubeflow 설치를 위한 manifest를 다운로드 받는다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir ${AWS_CLUSTER_NAME} &amp;amp;&amp;amp; cd ${AWS_CLUSTER_NAME}
-$ wget -O kfctl_aws.yaml $CONFIG_URI
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;6.아래 명령어로 Kubeflow 클러스터를 생성한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kfctl apply -V -f kfctl_aws.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;7.설치가 완료되기까지 약 수 분이 소요된다. 명령어 프롬프트가 나타나면 아래 명령어로 kubeflow namespace에 pod들이 올라왔는지 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl -n kubeflow get all
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;8.Kubeflow 대시보드에 접근하기 위해 아래 명령어로 Kubeflow 서비스의 Endpoint(ADDRESS)를 확인한다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ kubectl get ingress -n istio-system
-
-NAMESPACE      NAME            HOSTS   ADDRESS                                                             PORTS   AGE
-istio-system   istio-ingress   *       a743484b-istiosystem-istio-2af2-xxxxxx.ap-northeast-2.elb.amazonaws.com   80      1h
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;9.Default 계정은 다음과 같다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ID : admin@kubeflow.org
-PW : 12341234
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103151073-0f3dd180-47be-11eb-9c8e-3fa9c64ce30a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.kubeflow.org/docs/aws/deploy/install-kubeflow/&quot;&gt;Installing Kubeflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.eksworkshop.com/020_prerequisites/&quot;&gt;Amazon EKS Workshop Start the workshop&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/what-is-eks.html&quot;&gt;Amazon EKS란 무엇입니까?&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/ko/premiumsupport/knowledge-center/eks-worker-node-actions/&quot;&gt;EKS Worker Node Action&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="AWS" /><category term="EKS" /><category term="Kubeflow" /><summary type="html">이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://www.afternerd.com/blog/python-copy-list/&quot;&gt;Python: How to Copy a List? (The Idiomatic Way)&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="자료구조" /><category term="리스트" /><summary type="html">오늘은 상당히 기초적이면서도 쉽게 실수 할 수 있는 부분을 다뤄보고자 한다. 바로 나를 포함한 초보자들이 실수할 수 있는 파이썬 리스트를 다른 리스트에 복사하는 방법에 대해 소개한다.</summary></entry></feed>

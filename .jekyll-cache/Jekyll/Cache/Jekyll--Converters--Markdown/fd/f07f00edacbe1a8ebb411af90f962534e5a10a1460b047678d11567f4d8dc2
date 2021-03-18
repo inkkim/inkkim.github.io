@@ -1,0 +1,117 @@
+I"�!<h1 id="hadoop-ecosystem-이란">Hadoop Ecosystem 이란?</h1>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png" alt="image" /></p>
+
+<p>Hadoop Ecosystem은 Hadoop 환경에서 빅데이터 문제를 효율적으로 다루기 위해 만들어진 서브 프로젝트들의 집합입니다. 이중 가장 핵심 요소는 규모의 데이터를 수용할 수 있는 분산파일 시스템인 Hadoop Distributed File System(HDFS)와 그것을 처리할 수 있게 해주는 MapReduce 입니다. 이를 중심으로 분산 코디네이터, 워크플로우 관리, 분산 리소스 관리, 데이터 마이닝, 분석, 수집, 직렬화 등 다양한 서비스들로 구성되어 있습니다.</p>
+
+<hr />
+
+<h2 id="distributed-file-system">Distributed File System</h2>
+
+<h3 id="hdfs-hadoop-distributed-file-system">HDFS (Hadoop Distributed File System)</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111476919-f10ac080-8771-11eb-90f4-521f9f2acbd1.png" alt="image" class="align-center" /></p>
+
+<p>Hadoop의 스토리지 컴포넌트로 확장성과 장애 허용성을 가진 분산 파일시스템입니다. 대규모 데이터 분석이라는 Hadoop의 원래 용도에 맞게 HDFS는 일반적으로 상당히 긴 <strong>Sequential Access 방식</strong>을 통해 디스크에 불변 데이터를 저장하는데 최적화 되어있습니다. HDFS는 Hadoop Stack 내 다른 컴포넌트를 지원하는 핵심 기술입니다.</p>
+
+<p>데이터를 설정 가능한 크기의 블록으로 나눠 저장하며, 기본 값은 128MB입니다. 예를 들어, 1G의 데이터를 저장할 때에는 8개의 블록으로 나뉘어 저장하게 되는 셈입니다. 반면, 50MB의 데이터를 저장하더라도 1개의 블록에 저장하게 되므로 블록 단위보다 작은 용량의 데이터를 저장할 때에는 비효율적일 수 있습니다.</p>
+
+<p>HDFS는 <strong>데이터 회복성</strong>과 <strong>병렬 처리</strong>를 위해 여러 대의 서버에 각 블록의 복제본을 저장하게 됩니다. 기본 값은 3이므로, 1G의 데이터를 저장하기 위해서는 총 3G의 용량이 필요하게 되는 셈입니다. 이 때문에 HDFS에서는 개별 디스크나 데이터 노드에 장애가 발생하더라도 데이터 안정성이 유지되므로 <strong>장애 허용성</strong>이 있습니다.</p>
+
+<p>또한 HDFS는 로컬 스토리지를 포함하는 데이터 노드를 클러스터에 추가하면 파일시스템 용량이 늘어나므로 <strong>확장성</strong>이 있습니다. 이때 부수적으로 분산 파일 시스템 전체로 볼 때 읽기와 쓰기 처리량이 함께 높아지는 부수적인 효과도 있습니다.</p>
+
+<h2 id="distributed-programming">Distributed Programming</h2>
+
+<h3 id="mapreduce">MapReduce</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111479061-fa952800-8773-11eb-85e8-33f8cd750f54.png" alt="image" /></p>
+
+<p>Hadoop은 빅데이터를 다루기 위해 구글에서 발표한 MapReduce 알고리즘을 이용합니다. 이는 병렬 프로그래밍으로 클러스터 내에서 쉽게 분산 처리를 할 수 있도록 도와줍니다. 분할 정복 방식으로 작동하며, 시스템에서 프로세스를 실행하여 네트워크의 트래픽을 줄입니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111480804-b4d95f00-8775-11eb-8809-acc6ccc007e7.png" alt="image" class="align-center" /></p>
+
+<p>MapReduce 알고리즘은 크게 아래 두 가지로 단계로 나뉠 수 있습니다.</p>
+
+<p><strong>Map 단계</strong>에서는 필터링, 그룹화, 정렬이 이뤄지는데요. Input 데이터가 들어오면 Split하여 Map을 만들게 됩니다. 각 Map들은 각자 다른 노드에서 Key-Value 짝을 맺어 출력하는 Task를 진행하고, 같은 Key를 가지는 데이터끼리 분류하는 Shuffling 과정을 거쳐 최종적으로 분산되어 있는 연산결과를 합치는 <strong>Reduce 단계</strong>를 거쳐 병합되어 HDFS에 저장됩니다.</p>
+
+<h3 id="yarn-yet-another-resource-negotiator">YARN (Yet Another Resource Negotiator)</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111481186-0eda2480-8776-11eb-8001-98dbb3cc6ecd.png" alt="image" class="align-center" /></p>
+
+<p>YARN은 Hadoop 내 작업 스케쥴링, 클러스터 리소스 관리를 위한 프레임워크입니다. 한정된 자원에서 가용 연산 자원의 용량과 필요한 워크로드를 관리하여 다양한 연산이 동시에 실행될 수 있도록 돕는 중앙 클러스터 매니저 역할을 하게 됩니다. 이를 통해 자원의 사용 효율성을 높이고 데이터 접근 비용을 낮출 수 있습니다.</p>
+
+<p>YARN은 각 워커 노드에 <strong>노드매니저 데몬</strong>을 실행시키고, 이 데몬들이 마스터 프로세스인 <strong>리소스매니저</strong>에 여러 정보를 보고하게 됩니다. 노드매니저는 가상 코어의 단위로 얼마나 많은 연산 자원을 사용할 수 있는지와 해당 노드에 메모리가 얼마나 남아있는지를 리소스매니저에게 알려줍니다. 가용 자원은 클러스터 내 실행되는 애플리케이션에 컨테이너 형태로 분항되어 제공되며, 노드매니저는 로컬 노드에 있는 컨테이너를 기동하여 모니터링하면서 할당 자원을 초과하는 컨테이너는 중단시킵니다.</p>
+
+<p>추가 예정</p>
+
+<h3 id="spark">Spark</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111484650-4dbda980-8779-11eb-9c9f-b043f17d34a7.png" alt="image" class="align-center" /></p>
+
+<h3 id="pig">Pig</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111484898-82316580-8779-11eb-95be-e67022e6ca5c.png" alt="image" class="align-center" /></p>
+
+<h3 id="storm">Storm</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485576-126faa80-877a-11eb-9c4b-ebb0809f29e0.png" alt="image" class="align-center" /></p>
+
+<h2 id="nosql-databases">NoSQL Databases</h2>
+
+<h3 id="hbase">HBase</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485366-e7855680-8779-11eb-8cd9-e0939e2de8ad.png" alt="image" class="align-center" /></p>
+
+<h3 id="cassandra">Cassandra</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485940-67132580-877a-11eb-9206-6492f67bc339.png" alt="cassandra" class="align-center" /></p>
+
+<h2 id="data-ingestion">Data Ingestion</h2>
+
+<h3 id="kafka">Kafka</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485205-c45aa700-8779-11eb-8852-718b65b2bb1f.png" alt="image-center" class="align-center" /></p>
+
+<h3 id="sqoop">Sqoop</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485083-a9883280-8779-11eb-85d8-950c5833c4fd.png" alt="image" class="align-center" /></p>
+
+<h3 id="flume">Flume</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485150-b573f480-8779-11eb-8375-33df8e1d94a2.png" alt="image" class="align-center" /></p>
+
+<h2 id="sql-on-hadoop">SQL-On-Hadoop</h2>
+
+<h3 id="hive">Hive</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485003-96756280-8779-11eb-993d-52946e1eed98.png" alt="image" class="align-center" /></p>
+
+<h3 id="impala">Impala</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111486671-059f8680-877b-11eb-8220-7c15dfcd1ee6.png" alt="image" class="align-center" /></p>
+
+<h2 id="scheduling">Scheduling</h2>
+
+<h3 id="zookeeper">Zookeeper</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111484386-0f27ef00-8779-11eb-8b00-582369a5af91.png" alt="image" class="align-center" /></p>
+
+<h3 id="oozie">Oozie</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111485288-d8060d80-8779-11eb-8f74-4bc324adf392.png" alt="image" class="align-center" /></p>
+
+<h2 id="machine-learning">Machine Learning</h2>
+
+<h3 id="mahout">Mahout</h3>
+
+<p><img src="https://user-images.githubusercontent.com/60086878/111487225-8494bf00-877b-11eb-856e-986db069043d.png" alt="image" class="align-center" /></p>
+
+<p><img src="/assets/images/My_Emoji_120.png" alt="test" class="align-center" /></p>
+
+<h1 id="참고">참고</h1>
+<ul>
+  <li><a href="https://www.geeksforgeeks.org/hadoop-ecosystem/">Hadoop Ecosystem</a></li>
+  <li><a href="https://www.analyticsvidhya.com/blog/2020/10/introduction-hadoop-ecosystem/">Introduction to the Hadoop Ecosystem for Big Data and Data Engineering</a></li>
+  <li>엔터프라이즈 데이터 플랫폼 구축</li>
+</ul>
+:ET

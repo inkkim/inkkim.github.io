@@ -16,7 +16,7 @@ tags:
 
 # Hadoop Ecosystem 이란?
 
-![image](https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png)
+![image](https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png){: .align-center}
 
 Hadoop Ecosystem은 Hadoop 환경에서 빅데이터 문제를 효율적으로 다루기 위해 만들어진 서브 프로젝트들의 집합입니다. 이중 가장 핵심 요소는 규모의 데이터를 수용할 수 있는 분산파일 시스템인 Hadoop Distributed File System(HDFS)와 그것을 처리할 수 있게 해주는 MapReduce 입니다. 이를 중심으로 분산 코디네이터, 워크플로우 관리, 분산 리소스 관리, 데이터 마이닝, 분석, 수집, 직렬화 등 다양한 서비스들로 구성되어 있습니다.
 
@@ -26,7 +26,7 @@ Hadoop Ecosystem은 Hadoop 환경에서 빅데이터 문제를 효율적으로 �
 
 ### HDFS (Hadoop Distributed File System)
 
-![image](https://user-images.githubusercontent.com/60086878/111476919-f10ac080-8771-11eb-90f4-521f9f2acbd1.png)
+![image](https://user-images.githubusercontent.com/60086878/111476919-f10ac080-8771-11eb-90f4-521f9f2acbd1.png){: .align-center}
 
 Hadoop의 스토리지 컴포넌트로 확장성과 장애 허용성을 가진 분산 파일시스템입니다. 대규모 데이터 분석이라는 Hadoop의 원래 용도에 맞게 HDFS는 일반적으로 상당히 긴 **Sequential Access 방식**을 통해 디스크에 불변 데이터를 저장하는데 최적화 되어있습니다. HDFS는 Hadoop Stack 내 다른 컴포넌트를 지원하는 핵심 기술입니다.
 
@@ -36,17 +36,15 @@ HDFS는 **데이터 회복성**과 **병렬 처리**를 위해 여러 대의 서
 
 또한 HDFS는 로컬 스토리지를 포함하는 데이터 노드를 클러스터에 추가하면 파일시스템 용량이 늘어나므로 **확장성**이 있습니다. 이때 부수적으로 분산 파일 시스템 전체로 볼 때 읽기와 쓰기 처리량이 함께 높아지는 부수적인 효과도 있습니다.
 
----
-
 ## Distributed Programming
 
 ### MapReduce
 
-![image](https://user-images.githubusercontent.com/60086878/111479061-fa952800-8773-11eb-85e8-33f8cd750f54.png)
+![image](https://user-images.githubusercontent.com/60086878/111479061-fa952800-8773-11eb-85e8-33f8cd750f54.png){: .align-center}
 
 Hadoop은 빅데이터를 다루기 위해 구글에서 발표한 MapReduce 알고리즘을 이용합니다. 이는 병렬 프로그래밍으로 클러스터 내에서 쉽게 분산 처리를 할 수 있도록 도와줍니다. 분할 정복 방식으로 작동하며, 시스템에서 프로세스를 실행하여 네트워크의 트래픽을 줄입니다.
 
-![image](https://user-images.githubusercontent.com/60086878/111480804-b4d95f00-8775-11eb-8809-acc6ccc007e7.png)
+![image](https://user-images.githubusercontent.com/60086878/111480804-b4d95f00-8775-11eb-8809-acc6ccc007e7.png){: .align-center}
 
 MapReduce 알고리즘은 크게 아래 두 가지로 단계로 나뉠 수 있습니다.
 
@@ -54,7 +52,7 @@ MapReduce 알고리즘은 크게 아래 두 가지로 단계로 나뉠 수 있�
 
 ### YARN (Yet Another Resource Negotiator)
 
-![image](https://user-images.githubusercontent.com/60086878/111481186-0eda2480-8776-11eb-8001-98dbb3cc6ecd.png)
+![image](https://user-images.githubusercontent.com/60086878/111481186-0eda2480-8776-11eb-8001-98dbb3cc6ecd.png){: .align-center}
 
 YARN은 Hadoop 내 작업 스케쥴링, 클러스터 리소스 관리를 위한 프레임워크입니다. 한정된 자원에서 가용 연산 자원의 용량과 필요한 워크로드를 관리하여 다양한 연산이 동시에 실행될 수 있도록 돕는 중앙 클러스터 매니저 역할을 하게 됩니다. 이를 통해 자원의 사용 효율성을 높이고 데이터 접근 비용을 낮출 수 있습니다.
 
@@ -64,74 +62,72 @@ YARN은 각 워커 노드에 **노드매니저 데몬**을 실행시키고, 이 
 
 ### Spark
 
-![image](https://user-images.githubusercontent.com/60086878/111484650-4dbda980-8779-11eb-9c9f-b043f17d34a7.png)
+![image](https://user-images.githubusercontent.com/60086878/111484650-4dbda980-8779-11eb-9c9f-b043f17d34a7.png){: .align-center}
 
 
 ### Pig
 
-![image](https://user-images.githubusercontent.com/60086878/111484898-82316580-8779-11eb-95be-e67022e6ca5c.png)
+![image](https://user-images.githubusercontent.com/60086878/111484898-82316580-8779-11eb-95be-e67022e6ca5c.png){: .align-center}
 
 ### Storm
 
-![image](https://user-images.githubusercontent.com/60086878/111485576-126faa80-877a-11eb-9c4b-ebb0809f29e0.png)
+![image](https://user-images.githubusercontent.com/60086878/111485576-126faa80-877a-11eb-9c4b-ebb0809f29e0.png){: .align-center}
 
----
+
 ## NoSQL Databases
 
 ### HBase
 
-![image](https://user-images.githubusercontent.com/60086878/111485366-e7855680-8779-11eb-8cd9-e0939e2de8ad.png)
+![image](https://user-images.githubusercontent.com/60086878/111485366-e7855680-8779-11eb-8cd9-e0939e2de8ad.png){: .align-center}
 
 ### Cassandra
 
-![cassandra](https://user-images.githubusercontent.com/60086878/111485940-67132580-877a-11eb-9206-6492f67bc339.png)
+![cassandra](https://user-images.githubusercontent.com/60086878/111485940-67132580-877a-11eb-9206-6492f67bc339.png){: .align-center}
 
 
 ## Data Ingestion
 
 ### Kafka
 
-![image](https://user-images.githubusercontent.com/60086878/111485205-c45aa700-8779-11eb-8852-718b65b2bb1f.png)
+![image-center](https://user-images.githubusercontent.com/60086878/111485205-c45aa700-8779-11eb-8852-718b65b2bb1f.png){: .align-center}
 
 ### Sqoop
 
-![image](https://user-images.githubusercontent.com/60086878/111485083-a9883280-8779-11eb-85d8-950c5833c4fd.png)
+![image](https://user-images.githubusercontent.com/60086878/111485083-a9883280-8779-11eb-85d8-950c5833c4fd.png){: .align-center}
 
 ### Flume
 
-![image](https://user-images.githubusercontent.com/60086878/111485150-b573f480-8779-11eb-8375-33df8e1d94a2.png)
+![image](https://user-images.githubusercontent.com/60086878/111485150-b573f480-8779-11eb-8375-33df8e1d94a2.png){: .align-center}
 
----
 
 ## SQL-On-Hadoop
 
 ### Hive
 
-![image](https://user-images.githubusercontent.com/60086878/111485003-96756280-8779-11eb-993d-52946e1eed98.png)
+![image](https://user-images.githubusercontent.com/60086878/111485003-96756280-8779-11eb-993d-52946e1eed98.png){: .align-center}
 
 ### Impala
 
-![image](https://user-images.githubusercontent.com/60086878/111486671-059f8680-877b-11eb-8220-7c15dfcd1ee6.png)
+![image](https://user-images.githubusercontent.com/60086878/111486671-059f8680-877b-11eb-8220-7c15dfcd1ee6.png){: .align-center}
 
---- 
 
 ## Scheduling
 
 ### Zookeeper
 
-![image](https://user-images.githubusercontent.com/60086878/111484386-0f27ef00-8779-11eb-8b00-582369a5af91.png)
+![image](https://user-images.githubusercontent.com/60086878/111484386-0f27ef00-8779-11eb-8b00-582369a5af91.png){: .align-center}
 
 ### Oozie
 
-![image](https://user-images.githubusercontent.com/60086878/111485288-d8060d80-8779-11eb-8f74-4bc324adf392.png)
+![image](https://user-images.githubusercontent.com/60086878/111485288-d8060d80-8779-11eb-8f74-4bc324adf392.png){: .align-center}
 
----
 
 ## Machine Learning
 
 ### Mahout
 
-![image](https://user-images.githubusercontent.com/60086878/111487225-8494bf00-877b-11eb-856e-986db069043d.png)
+![image](https://user-images.githubusercontent.com/60086878/111487225-8494bf00-877b-11eb-856e-986db069043d.png){: .align-center}
+
 
 # 참고
 - [Hadoop Ecosystem](https://www.geeksforgeeks.org/hadoop-ecosystem/)

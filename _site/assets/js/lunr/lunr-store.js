@@ -94,4 +94,10 @@ var store = [{
         "tags": ["Elastic"],
         "url": "/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/",
         "teaser": null
+      },{
+        "title": "Hadoop Ecosystem 이란?",
+        "excerpt":"Hadoop Ecosystem 이란? Hadoop Ecosystem은 Hadoop 환경에서 빅데이터 문제를 효율적으로 다루기 위해 만들어진 서브 프로젝트들의 집합입니다. 이중 가장 핵심 요소는 규모의 데이터를 수용할 수 있는 분산파일 시스템인 Hadoop Distributed File System(HDFS)와 그것을 처리할 수 있게 해주는 MapReduce 입니다. 이를 중심으로 분산 코디네이터, 워크플로우 관리, 분산 리소스 관리, 데이터 마이닝, 분석,...","categories": ["Hadoop"],
+        "tags": ["빅데이터","분산처리","Hadoop Ecosystem"],
+        "url": "/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/",
+        "teaser": null
       }]
