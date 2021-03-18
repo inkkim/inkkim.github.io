@@ -1,9 +1,9 @@
 var store = [{
         "title": "AWS EC2에서 Hadoop Cluster 구축하기",
-        "excerpt":"🐘하둡(Hadoop)이란 ? 대규모 검색 색인을 구축하기 위해 Java로 개발된 오픈 소스 분산 컴퓨팅 플랫폼 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.f(개발자의 네이밍 세계는 생각보다 단순하다.) 핵심 컴포넌트 하둡 분산 파일 시스템(HDFS, Hadoop Distributed File System) 앞서 언급했듯이 하둡은 확장성과...","categories": ["Hadoop"],
+        "excerpt":"🐘하둡(Hadoop)이란 ? 대규모 검색 색인을 구축하기 위해 Java로 개발된 오픈 소스 분산 컴퓨팅 플랫폼 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.(개발자의 네이밍 세계는 생각보다 단순하다.) 핵심 컴포넌트 하둡 분산 파일 시스템(HDFS, Hadoop Distributed File System) 앞서 언급했듯이 하둡은 확장성과...","categories": ["Hadoop"],
         "tags": ["빅데이터","분산처리","데이터플랫폼"],
         "url": "/hadoop/AWS-EC2%EC%97%90%EC%84%9C-Hadoop-Cluster-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg"
       },{
         "title": "맥북으로 딥러닝하기(Feat. Ubuntu 18.04 LTS) 1",
         "excerpt":"TL, DR 코랩으로 딥러닝하려면 많은 인내가 필요하다. 그렇다고 GPU달린 게이밍 노트북을 들고다니긴 자신 없다. 우분투 데스크탑으로 개인용 서버를 구축하여 원격 개발환경을 구성하자. 도커를 통해 간편하게 개발환경을 구축하자. 노트북이 힘들어해 🤬 지난 7월 엔코아 플레이데이터에서 ‘데이터 과학자 양성과정’을 수강하던 중의 일이다. 일전에 Python, R을 비롯한 프로그래밍 언어 기초를 막 떼고나서 Sckit-learn과...","categories": ["Etc"],
@@ -39,7 +39,7 @@ var store = [{
         "excerpt":"이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다. 프로젝트의 대략적인 아키텍쳐는 다음과 같다. EC2 기반 AWS EKS 클러스터 AWS Aurora (PostgreSQL) 공공데이터 실시간 API 수집 및 웹 스크래핑 서버 시각화 데이터 Elasticsearch에 적재 위 모든 과정을 포함한 ML 모델링까지...","categories": ["Kubernetes"],
         "tags": ["AWS","EKS","Kubeflow"],
         "url": "/kubernetes/AWS-EKS-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EC%97%90-Kubeflow-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/111656124-9777c400-884d-11eb-9c9d-6bedbdaf1417.png"
       },{
         "title": "파이썬 리스트 복사하기",
         "excerpt":"파이썬 리스트 복사 어떻게 할까? Photo by Zdeněk Macháček on Unsplash 오늘은 상당히 기초적이면서도 쉽게 실수 할 수 있는 부분을 다뤄보고자 한다. 바로 나를 포함한 초보자들이 실수할 수 있는 파이썬 리스트를 다른 리스트에 복사하는 방법이다. 그냥 새로운 변수에 정의해주면 되는거 아냐 🤔❓ &gt;&gt;&gt; list1 = [1, 2, 3, 4] &gt;&gt;&gt;...","categories": ["Python"],
@@ -75,29 +75,29 @@ var store = [{
         "excerpt":"🤸‍♂️들어가며 이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊 ⛴Kubernetes란 ? 개요 Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 K8s, 케이(에이)츠 라고 부르기도 합니다. 현재...","categories": ["Kubernetes"],
         "tags": ["Kubernetes","CKA","작성중"],
         "url": "/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/111655932-66978f00-884d-11eb-813a-a5302871ede9.png"
       },{
         "title": "Splunk 톺아보기",
         "excerpt":"Splunk란? Splunk란 기업 내 존재하는 다양한 유형의 머신 데이터에 대해 위치, 규모, 종류에 관계없이 수집 및 분석을 수행할 수 있는 머신 빅데이터 플랫폼입니다. 여기서 머신 데이터란 서버/Network 로그, 설비 데이터, 애플리케이션 로그, 기타 모든 텍스트 형태의 데이터 등을 말합니다. 이러한 데이터들은 Splunk를 통해 정형/비정형 데이터 모두 수용할 수 있으며 데이터...","categories": ["Splunk"],
         "tags": ["Splunk","SIEM","UEBA"],
         "url": "/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png"
       },{
         "title": "Splunk 분산환경 구축하기",
         "excerpt":"Splunk 배포방식 Splunk의 주요 컴포넌트는 검색을 담당하는 Search Head, 수집을 담당하는 Fowarder, 저장을 담당하는 Indexer가 존재합니다. 이 컴포넌트들을 어떤 형태로 배포하는지에 따라 다음과 같이 Splunk의 배포방식을 구분합니다. Standalone Splunk의 모든 기능과 컴포넌트가 단일 인스턴스에 모두 존재하는 가장 간소화 된 형태입니다. 주로 PoC를 위한 테스트나 개인적인 학습 용도로 사용합니다. Splunk를 설치하면...","categories": ["Splunk"],
         "tags": ["Splunk","Clustering"],
         "url": "/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png"
       },{
         "title": "Elastic Goods Box 수령 후기",
         "excerpt":"Elastic Cloud 작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack...","categories": ["Etc"],
         "tags": ["Elastic"],
         "url": "/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/111654993-9befad00-884c-11eb-8fdd-05838189d9a1.png"
       },{
         "title": "Hadoop Ecosystem 이란?",
         "excerpt":"Hadoop Ecosystem 이란? Hadoop Ecosystem은 Hadoop 환경에서 빅데이터 문제를 효율적으로 다루기 위해 만들어진 서브 프로젝트들의 집합입니다. 이중 가장 핵심 요소는 규모의 데이터를 수용할 수 있는 분산파일 시스템인 Hadoop Distributed File System(HDFS)와 그것을 처리할 수 있게 해주는 MapReduce 입니다. 이를 중심으로 분산 코디네이터, 워크플로우 관리, 분산 리소스 관리, 데이터 마이닝, 분석,...","categories": ["Hadoop"],
         "tags": ["빅데이터","분산처리","Hadoop Ecosystem"],
         "url": "/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/",
-        "teaser": null
+        "teaser": "https://user-images.githubusercontent.com/60086878/111653801-85952180-884b-11eb-84a4-5672b521c566.png"
       }]

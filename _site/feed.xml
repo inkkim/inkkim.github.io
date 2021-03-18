@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T16:55:00+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-19T00:54:12+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
@@ -158,65 +158,65 @@
 
 &lt;p&gt;작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack 기능까지 포함하여 2주간 무료로 체험판을 경험해볼 수 있었습니다. ELK Stack이 모두 갖춰진 인스턴스가 뚝딱 만들어지니 다시 설치할 필요없이 너무 편리하게 체험해볼 수 있어서 좋았습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107752386-0307d680-6d62-11eb-8804-c368eff694f3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107752386-0307d680-6d62-11eb-8804-c368eff694f3.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이후 설문조사에 참여하여 행운의 6인에 선정되어 Elastic Korea 측으로부터 Goods Box를 선물 받았습니다! 로고부터 너무 깔끔하고 평소 Elastic Stack에 관심을 가지고 공부하던 중에 이렇게 Goods를 선물로 주시니 너무 감사했습니다. 요즘은 이런 개발자스러운 스티커나 굿즈가 왜 이렇게도 가지고 싶던지 ㅎㅎ..&lt;/p&gt;
 
 &lt;h1 id=&quot;구성&quot;&gt;구성&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774774-cd271a00-6d82-11eb-8e2c-acc368dbe397.jpg&quot; alt=&quot;20210206_020713&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774774-cd271a00-6d82-11eb-8e2c-acc368dbe397.jpg&quot; alt=&quot;20210206_020713&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;꽤나 튼튼한 민트색같은 연두색 박스에 담아 보내주셨습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774854-e9c35200-6d82-11eb-9052-0271df5ef094.jpg&quot; alt=&quot;20210206_114834&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774854-e9c35200-6d82-11eb-9052-0271df5ef094.jpg&quot; alt=&quot;20210206_114834&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;박스 내부에는 나름 포장 뽀시래기도 넣어서 선물 분위기를 내주셨습니다 😊&lt;/p&gt;
 
 &lt;h2 id=&quot;sticker&quot;&gt;Sticker&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774910-fa73c800-6d82-11eb-9783-e7882b18af0d.jpg&quot; alt=&quot;20210206_151311&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107774910-fa73c800-6d82-11eb-9783-e7882b18af0d.jpg&quot; alt=&quot;20210206_151311&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;기본적인 Elastic Logo 모양의 스티커와 자사 솔루션 스티커들로 구성되어 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;카드명함-지갑&quot;&gt;카드명함 지갑&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775020-1f683b00-6d83-11eb-8d70-6ea383f5a829.jpg&quot; alt=&quot;20210206_153021&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775020-1f683b00-6d83-11eb-8d70-6ea383f5a829.jpg&quot; alt=&quot;20210206_153021&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;은은한 Elastic Logo가 새겨진 블랙 색상의 2-slot 카드명함 지갑입니다. 이건 무려 3개나 챙겨주셨어요!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775026-20996800-6d83-11eb-9b76-c162ae3fd13a.jpg&quot; alt=&quot;20210206_153026&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775026-20996800-6d83-11eb-9b76-c162ae3fd13a.jpg&quot; alt=&quot;20210206_153026&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;후면에는 3M 양면 강력 테이프가 부착되어 있어 스마트폰 케이스 뒤에 부착할 수 있을 것 같습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;griptok&quot;&gt;Griptok&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775125-3dce3680-6d83-11eb-9eb1-bf13f1a86d21.jpg&quot; alt=&quot;20210206_153119&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775125-3dce3680-6d83-11eb-9eb1-bf13f1a86d21.jpg&quot; alt=&quot;20210206_153119&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;요즘 스마트폰 뒤에 많이들 부착하는 그립톡도 2개 챙겨주셨습니다. 가장 실용적이고 마음에 드는 선물입니다!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775129-3eff6380-6d83-11eb-9a29-c9a8bfb63587.jpg&quot; alt=&quot;20210206_153130&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775129-3eff6380-6d83-11eb-9a29-c9a8bfb63587.jpg&quot; alt=&quot;20210206_153130&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;수첩볼펜&quot;&gt;수첩/볼펜&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775205-58a0ab00-6d83-11eb-9f56-122f48dafdf8.jpg&quot; alt=&quot;20210206_153057&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775205-58a0ab00-6d83-11eb-9f56-122f48dafdf8.jpg&quot; alt=&quot;20210206_153057&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775210-59d1d800-6d83-11eb-92d9-733d260c71dc.jpg&quot; alt=&quot;20210206_153107&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775210-59d1d800-6d83-11eb-92d9-733d260c71dc.jpg&quot; alt=&quot;20210206_153107&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;수첩은 쨍한 하늘색인게 묘하게 이쁘고, 크기도 딱 포켓에 들어갈만한 사이즈여서 얇은 겉옷에 넣어두기 좋을 것 같습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775259-67875d80-6d83-11eb-9ab2-78d6362afe89.jpg&quot; alt=&quot;20210206_153202&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775259-67875d80-6d83-11eb-9ab2-78d6362afe89.jpg&quot; alt=&quot;20210206_153202&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Elastic Logo가 그려진 볼펜과 수첩입니다. 볼펜은 호텔 탁자에서 만나볼 수 있는 사무용 볼펜과 많이 닮았습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;양말&quot;&gt;양말&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775481-acab8f80-6d83-11eb-90b7-dc69403972cd.jpg&quot; alt=&quot;20210206_153406&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775481-acab8f80-6d83-11eb-90b7-dc69403972cd.jpg&quot; alt=&quot;20210206_153406&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;알록달록한 색상에 Elastic Logo가 그려진 긴 양말입니다. 이건 날이 풀리면 반바지에 운동화로 코디 시도해봐야겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;multi-charging-cable&quot;&gt;Multi Charging Cable&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775376-8980e000-6d83-11eb-9de6-d864cac323e2.jpg&quot; alt=&quot;20210206_153427&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775376-8980e000-6d83-11eb-9de6-d864cac323e2.jpg&quot; alt=&quot;20210206_153427&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;5 in 1 Multi Charging Cable 입니다. USB 케이블은 전류를 공급받기 위한 케이블이고, 나머지는 충전을 위한  Micro 5pin, lightning cable, USB-C type 케이블로 구성되어 있습니다.&lt;/p&gt;
 
@@ -224,7 +224,7 @@
 
 &lt;h2 id=&quot;elastic-logo-t-shirts&quot;&gt;Elastic Logo T-Shirts&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775540-c6e56d80-6d83-11eb-9825-f90eb555ed39.jpg&quot; alt=&quot;20210206_150848&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775540-c6e56d80-6d83-11eb-9825-f90eb555ed39.jpg&quot; alt=&quot;20210206_150848&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;전면에 Elastic Logo가 크게 프린팅 되어 있는 검은색 티셔츠입니다. 사실 가장 기대했던 Goods인데 그래서인지 가장 아쉽기도 한 부분입니다.&lt;/p&gt;
 
@@ -232,19 +232,19 @@
 
 &lt;p&gt;그리고 프린팅 된 부분이 너무 엉성해서 세탁 몇 번이면 너덜너덜해질 것 같습니다.. 어깨 소매 부분도 짧아서 썩 예쁜 핏은 아니어서 집에서 편하게 입는 정도로 굴려 줘야겠습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775555-ca78f480-6d83-11eb-9bc5-1bc6de8f6dc5.jpg&quot; alt=&quot;20210206_153337&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775555-ca78f480-6d83-11eb-9bc5-1bc6de8f6dc5.jpg&quot; alt=&quot;20210206_153337&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;뒷면은 조그마한 Elastic Logo로 마무리 된 형태입니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;위생용품&quot;&gt;위생용품&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775637-e54b6900-6d83-11eb-83a9-e61e84918572.jpg&quot; alt=&quot;20210206_153306&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775637-e54b6900-6d83-11eb-83a9-e61e84918572.jpg&quot; alt=&quot;20210206_153306&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;휴대용 손소독제와 KF94 마스크 그리고 양치 셋트까지 혹독한 감염병 시대에 빛나는 깨알 위생용품들까지 챙겨주셨습니다!&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775693-f85e3900-6d83-11eb-84f7-eb0646f4ca07.jpg&quot; alt=&quot;20210206_150456&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775693-f85e3900-6d83-11eb-84f7-eb0646f4ca07.jpg&quot; alt=&quot;20210206_150456&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;예쁜 선물 주셔서 감사합니다~🙏 잘 쓸게요 Elastic!👍&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="Elastic" /><summary type="html">최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다.</summary></entry><entry><title type="html">Splunk 분산환경 구축하기</title><link href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 분산환경 구축하기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;splunk-배포방식&quot;&gt;Splunk 배포방식&lt;/h1&gt;
 
@@ -252,19 +252,19 @@
 
 &lt;h2 id=&quot;standalone&quot;&gt;Standalone&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105357987-eb44a300-5c38-11eb-8348-cdea6343bd51.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105357987-eb44a300-5c38-11eb-8348-cdea6343bd51.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Splunk의 모든 기능과 컴포넌트가 단일 인스턴스에 모두 존재하는 가장 간소화 된 형태입니다. 주로 PoC를 위한 테스트나 개인적인 학습 용도로 사용합니다. Splunk를 설치하면 만나게 될 가장 기본적인 설정입니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;basic&quot;&gt;Basic&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105358377-72921680-5c39-11eb-9179-ac69dd58e414.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105358377-72921680-5c39-11eb-9179-ac69dd58e414.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Standalone과 비슷한 설정이지만 Splunk Server와 Forwarder로 데이터 저장과 수집이 구분된 형태입니다. Forwarder는 데이터 소스에 위치하여 데이터를 수집하고 Splunk Server에 전송합니다. Splunk Server는 데이터를 저장하며, Forwarder의 설정을 관리합니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;multi-instance&quot;&gt;Multi-Instance&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105358787-f64c0300-5c39-11eb-8e6b-b59ef5999d9e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105358787-f64c0300-5c39-11eb-8e6b-b59ef5999d9e.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Splunk는 분산 환경 Clustering을 통해 검색과 저장 성능이 크게 향상 될 수 있습니다. Multi-Instance 배포방식은 Splunk의 주요 컴포넌트가 모두 구분된 형태로 가장 효율적인 아키텍쳐입니다. &lt;strong&gt;검색&lt;/strong&gt;을 담당하는 Search Head, &lt;strong&gt;저장&lt;/strong&gt;을 담당하는 Indexer, &lt;strong&gt;수집&lt;/strong&gt;을 담당하는 Fowarder가 각각 다른 인스턴스에 위치하여 서로 연결되어 있는 형태입니다. 이 외에도 Indexer Clustering을 관리하는 Cluster Master(CM)이 존재할 수 있습니다.&lt;/p&gt;
 
@@ -321,7 +321,7 @@
 
 &lt;h1 id=&quot;데이터-흐름도&quot;&gt;데이터 흐름도&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105367163-817dc680-5c43-11eb-9130-c69781bc801a.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105367163-817dc680-5c43-11eb-9130-c69781bc801a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 포스팅에서 다뤄볼 아키텍쳐는 Multi-Instance 분산 환경입니다. 컴퓨터 리소스가 한정된 관계로 분산환경에 이해를 돕기 위해 최소한의 인스턴스 수로 구성하였습니다.&lt;/p&gt;
 
@@ -347,7 +347,7 @@
   &lt;li&gt;n1-standard-1 (vCPUs: 1, RAM: 3.75GB) * 8 예상 청구 비용&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105579362-7785d000-5dc9-11eb-9314-87e25464b1b1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105579362-7785d000-5dc9-11eb-9314-87e25464b1b1.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;참고로 n1-standart-1은 9개의 인스턴스를 약 26시간 사용했을 때 $14.30 가량 청구 금액이 예상됩니다. 하지만 GCP에서는 신규 가입자에게 1년 안에 사용이 가능한 $300 크레딧을 제공하고 있으니 추가로 비용을 지불할 일은 없으니 안심하고 사용해도 됩니다!&lt;/p&gt;
 
@@ -359,7 +359,7 @@
   &lt;li&gt;GCP를 최초 활성화 한 후 프로젝트를 생성하면 다음과 같은 대시보드를 확인하실 수 있습니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580040-532bf280-5dcd-11eb-874f-e4355a34a9c8.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580040-532bf280-5dcd-11eb-874f-e4355a34a9c8.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2.VM 인스턴스 생성&lt;/strong&gt;&lt;/p&gt;
 
@@ -383,7 +383,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580290-d732aa00-5dce-11eb-9e85-1542daf3570a.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580290-d732aa00-5dce-11eb-9e85-1542daf3570a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;약 1 - 2분 후 인스턴스 생성이 완료됩니다.&lt;/li&gt;
@@ -395,7 +395,7 @@
 
 &lt;p&gt;Splunk에서 사용하는 포트는 다음과 같습니다. 이 중에서 통신을 하는 데 사용되는 포트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8089&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;9997&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8080&lt;/code&gt;입니다. 또한 Web에 접근하기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8000&lt;/code&gt; 포트도 개방되어야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580427-abfc8a80-5dcf-11eb-807f-2df82de803f5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580427-abfc8a80-5dcf-11eb-807f-2df82de803f5.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;방화벽 규칙 설정은 &lt;strong&gt;햄버거 버튼 - 네트워킹 - VPC 네트워크 - 방화벽 - 방화벽 규칙 만들기&lt;/strong&gt;에서 아래와 같이 설정합니다.
@@ -411,7 +411,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580651-f92d2c00-5dd0-11eb-829d-ae46497c4971.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105580651-f92d2c00-5dd0-11eb-829d-ae46497c4971.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;4.Splunk 설치&lt;/strong&gt;&lt;/p&gt;
 
@@ -505,7 +505,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;마침내 Splunk 서버 설치를 완료했습니다. 이전에 방화벽 규칙 중에 Web Port에 해당하는 8000을 허용 해두었으므로, 이제 해당 VM 인스턴스의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;외부 IP:8000&lt;/code&gt;로 Splunk 서버에 접근할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105704187-c199bd80-5f51-11eb-844d-fb85c4e0b726.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105704187-c199bd80-5f51-11eb-844d-fb85c4e0b726.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;5.데이터 수집 설정&lt;/strong&gt;&lt;/p&gt;
 
@@ -515,7 +515,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;앱 - 추가 앱 찾기 - nix 검색&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105706356-c7dd6900-5f54-11eb-9bbd-260357f43ecb.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105706356-c7dd6900-5f54-11eb-9bbd-260357f43ecb.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Splunk Add-on for Unix and Linux&lt;/strong&gt;와 &lt;strong&gt;Splunk App for Unix and Linux&lt;/strong&gt;를 설치합니다.
@@ -526,7 +526,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105706631-1f7bd480-5f55-11eb-8487-8ad431c93823.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105706631-1f7bd480-5f55-11eb-8487-8ad431c93823.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;VM 인스턴스 CLI 환경에서 App의 수집 정보를 아래와 같이 설정합니다.
@@ -562,8 +562,8 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi /opt/splunk/etc/apps/Splunk_TA_nix/local/inputs.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713003-f449b300-5f5d-11eb-95bc-0ab5fbe5df79.png&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713207-2eb35000-5f5e-11eb-84ee-c6799983e1f7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713003-f449b300-5f5d-11eb-95bc-0ab5fbe5df79.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713207-2eb35000-5f5e-11eb-84ee-c6799983e1f7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;수집할 데이터가 저장될 인덱스를 생성합니다.
@@ -573,7 +573,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713647-bd27d180-5f5e-11eb-9462-b6bedfb8660d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713647-bd27d180-5f5e-11eb-9462-b6bedfb8660d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;App 및 인덱스 설정 동기화를 위해 서버를 재시작 합니다.
@@ -583,13 +583,13 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713923-08da7b00-5f5f-11eb-869b-2d697ae6d415.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105713923-08da7b00-5f5f-11eb-869b-2d697ae6d415.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Search &amp;amp; Report App에서 아래 명령어로 데이터 수집 현황을 확인합니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105714232-6f5f9900-5f5f-11eb-96d8-1d66d299eb1e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105714232-6f5f9900-5f5f-11eb-96d8-1d66d299eb1e.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;여기까지 Host의 리소스 데이터를 수집하는 Standalone Splunk Server 설정이 완료 됐습니다.&lt;/p&gt;
 
@@ -601,7 +601,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;해당 VM 인스턴스의 메뉴 - 새 머신 이미지에서 머신 이미지를 생성합니다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105715660-388a8280-5f61-11eb-9ad6-b5477d371e33.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105715660-388a8280-5f61-11eb-9ad6-b5477d371e33.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Compute Engine - 가상 머신 - VM 인스턴스 - 인스턴스 만들기 - 머신 이미지의 새 VM 인스턴스에서 새로 생성한 머신 이미지를 이용해 새 인스턴스를 생성합니다.
@@ -611,9 +611,9 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105719003-2a3e6580-5f65-11eb-93ca-6dfe6605b6a9.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105719003-2a3e6580-5f65-11eb-93ca-6dfe6605b6a9.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105720631-fbc18a00-5f66-11eb-8e44-9c3278f48f02.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105720631-fbc18a00-5f66-11eb-8e44-9c3278f48f02.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;분산환경-설정&quot;&gt;분산환경 설정&lt;/h2&gt;
 
@@ -660,7 +660,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;Iterm2에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command + d&lt;/code&gt;는 Split 세션을 생성합니다. 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Option + Command + i&lt;/code&gt;키를 누르면 다중 입력을 활성화합니다. 이점 참고하여 멀티 세션에서 동일한 작업을 해야할 때 요긴하게 사용하시길 바랍니다 :)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106152770-2a3aa180-61c1-11eb-90bb-6d89581eb305.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106152770-2a3aa180-61c1-11eb-90bb-6d89581eb305.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Local&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ~/.ssh/keyfile01 root@&amp;lt;VM 인스턴스 외부IP&amp;gt;
@@ -677,7 +677,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;설정 - 시스템 - 서버 설정 - 일반 설정에서 Splunk 서버 이름 및 기본 호스트 이름을 각 Splunk 서버 역할에 맞게 수정&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106154637-2871dd80-61c3-11eb-9a83-6180b1a738ab.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106154637-2871dd80-61c3-11eb-9a83-6180b1a738ab.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;VM 인스턴스에서 아래 명령어로 모든 Splunk Server Restart&lt;/li&gt;
@@ -694,7 +694,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;Forwarder에서는 설정 - 데이터 - 전달 및 수신 - 데이터 수신 - 수신 설정 - 새 수신 포트에서 9997 수신포트 추가&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160573-52c69980-61c9-11eb-822f-ae10d3ff33dd.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160573-52c69980-61c9-11eb-822f-ae10d3ff33dd.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;각 Search Head에서 설정 - 데이터 - 전달 및 수신 - 데이터 전달 - 전달 설정 - 새 전달 호스트를 통해 Forwarder를 추가
@@ -705,7 +705,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160467-3296da80-61c9-11eb-8568-e6456c3de554.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160467-3296da80-61c9-11eb-8568-e6456c3de554.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Forwarder에서 Search &amp;amp; Reporting 앱을 통해 리소스 데이터를 수집중인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ubuntu&lt;/code&gt;라는 Index를 조회하여 수집 현황 확인
@@ -715,7 +715,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160317-0bd8a400-61c9-11eb-8d88-492f2db097b4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160317-0bd8a400-61c9-11eb-8d88-492f2db097b4.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2.Forwarder -&amp;gt; Indexer&lt;/strong&gt;&lt;/p&gt;
 
@@ -725,7 +725,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;각 Indexer에서 설정 - 데이터 - 전달 및 수신 - 데이터 수신 - 수신 설정 - 새 수신 포트에서 9997 수신포트 추가&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160622-5f4af200-61c9-11eb-8686-a34795c1429d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160622-5f4af200-61c9-11eb-8686-a34795c1429d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Forwarder에서 설정 - 데이터 - 전달 및 수신 - 데이터 전달 - 전달 설정 - 새 전달 호스트를 통해 각 Indexer 추가
@@ -736,7 +736,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160753-83a6ce80-61c9-11eb-8efd-1abb486a0b76.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106160753-83a6ce80-61c9-11eb-8efd-1abb486a0b76.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;3. Cluster Master &amp;lt;-&amp;gt; Indexers&lt;/strong&gt;&lt;/p&gt;
 
@@ -750,7 +750,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106161600-8bb33e00-61ca-11eb-87e3-50b9bdb88b54.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106161600-8bb33e00-61ca-11eb-87e3-50b9bdb88b54.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;각 Indexer에서 설정 - 분산 환경 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 피어 노드 선택
@@ -764,7 +764,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106161796-be5d3680-61ca-11eb-9b1e-25e0c1b93cb7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/106161796-be5d3680-61ca-11eb-9b1e-25e0c1b93cb7.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;각 Search Head에서 설정 - 분산 환경 인덱서 클러스터링 - 인덱서 클러스터링 활성화 - 검색 헤드 노드 선택
@@ -785,7 +785,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;&lt;a href=&quot;https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Overviewofconfiguration&quot;&gt;Deploy a distributed search environment&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Splunk" /><category term="Splunk" /><category term="Clustering" /><summary type="html">빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.</summary></entry><entry><title type="html">Splunk 톺아보기</title><link href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 톺아보기" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/">&lt;h1 id=&quot;splunk란&quot;&gt;Splunk란?&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104919033-f7322a00-59d8-11eb-97d8-cef888baa5fa.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104919033-f7322a00-59d8-11eb-97d8-cef888baa5fa.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Splunk란 기업 내 존재하는 다양한 유형의 머신 데이터에 대해 위치, 규모, 종류에 관계없이 수집 및 분석을 수행할 수 있는 &lt;strong&gt;머신 빅데이터 플랫폼&lt;/strong&gt;입니다. 여기서 머신 데이터란 서버/Network 로그, 설비 데이터, 애플리케이션 로그, 기타 모든 텍스트 형태의 데이터 등을 말합니다.&lt;/p&gt;
 
@@ -844,7 +844,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h2 id=&quot;주요-컴포넌트&quot;&gt;주요 컴포넌트&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104925844-ae7f6e80-59e2-11eb-8fbd-66a59870f703.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104925844-ae7f6e80-59e2-11eb-8fbd-66a59870f703.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Splunk는 크게 Search Head, Indexer, Forwarder 총 3개로 나뉩니다. &lt;strong&gt;Fowarder&lt;/strong&gt;는 데이터를 수집하여 &lt;strong&gt;Indexer&lt;/strong&gt;에 저장하고 &lt;strong&gt;Search Head&lt;/strong&gt;는 Indexer에 저장된 Index를 SPL를 통해 검색하는 구조입니다. 각 컴포넌트(서버)의 자세한 역할을 다음과 같습니다.&lt;/p&gt;
 
@@ -971,7 +971,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h2 id=&quot;app&quot;&gt;App&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105181756-8cffbd80-5b6f-11eb-91f4-c02692431799.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/105181756-8cffbd80-5b6f-11eb-91f4-c02692431799.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;App을 통해 용도,역할, 사용자에 따라 Splunk 내 다른 작업공간을 할당 할 수 있습니다.&lt;/p&gt;
 
@@ -997,7 +997,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103609779-f2459300-4f61-11eb-951e-8fa51bc3c9e0.png&quot; alt=&quot;K8s Logo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103609779-f2459300-4f61-11eb-951e-8fa51bc3c9e0.png&quot; alt=&quot;K8s Logo&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;K8s&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;케이(에이)츠&lt;/code&gt; 라고 부르기도 합니다. 현재 K8s 오픈 소스 프로젝트는 Cloud Native Computing Foundation(CNCF)가 주관하고 있습니다.&lt;/p&gt;
 
@@ -1005,11 +1005,11 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h2 id=&quot;탄생-배경&quot;&gt;탄생 배경&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103895670-1c4eaf00-5134-11eb-951c-d24dd925297d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103895670-1c4eaf00-5134-11eb-951c-d24dd925297d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;기존의-서버-운영방식&quot;&gt;기존의 서버 운영방식&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;각 서버마다 운영하는 애플리케이션이 달라 각 서버마다 용도에 맞는 네이밍을 합니다. 즉, 서버 하나에 용도가 한정되며 그에 맞게 관리가 되는 시스템이었습니다. 이러한 이유로 서버마다 특정 애플리케이션을 구동하기 위한 환경이 모두 다르고, 필요한 리소스도 상이합니다. 하지만 이 방법은 관리가 어렵고 안정적인 운영상의 이유로 리소스를 최대로 활용하지 못하는 문제가 있습니다.&lt;/p&gt;
 
@@ -1017,13 +1017,13 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h3 id=&quot;가상화-기술의-개발&quot;&gt;가상화 기술의 개발&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103897289-a4ce4f00-5136-11eb-856c-d1179fba1b36.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103897289-a4ce4f00-5136-11eb-856c-d1179fba1b36.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;가상화 기술의 등장으로 한 서버에서 여러 가상 시스템 (VM)을 실행할 수 있게 됐습니다. 이는 기존의 방법보다 리소스를 더 효율적으로 활용할 수 있으며, 쉽게 애플리케이션을 추가하고 업데이트 할 수 있게 됐습니다. 다만, 각 VM은 Host Machine의 하드웨어를 공유하여 운영체제를 병렬로 운영할 수 있어 관리 비용이 줄어든다는 장점이 있지만, 반대로 각각의 VM을 위한 커널이 필요하기 때문에 불필요한 리소스 소모를 감수해야 한다는 단점이 존재한다.&lt;/p&gt;
 
 &lt;h3 id=&quot;docker의-등장&quot;&gt;Docker의 등장&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;리눅스 컨테이너 기술을 적용한 Docker의 등장으로 환경에 상관없이 Docker가 설치되어있는 환경이면 동일하게 애플리케이션을 실행할 수 있게 됐습니다. 컨테이너는 VM과 유사하지만 Host OS 자원인 커널은 공유하고 애플리케이션 단위로 추상화하여 논리적으로 격리시키는 형태입니다. 즉, Hypervisor 없이 Docker Engine만으로 애플리케이션과 바이너리 및 라이브러리가 포함된 컨테이너만 올리면 되는 구조입니다. 이에 따라 특정 OS에 종속되지 않고, 리소스 손실률이 거의 없이 배포할 수 있게 됐습니다.&lt;/p&gt;
 
@@ -1031,7 +1031,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h3 id=&quot;k8s-클러스터-운영방식&quot;&gt;K8s 클러스터 운영방식&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103905066-7b66f080-5141-11eb-8318-d4a19389b91a.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103905066-7b66f080-5141-11eb-8318-d4a19389b91a.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;K8s는 Master Node에서 Worker Node와 클러스터 내 Pod들을 관리합니다. Worker Node는 컨테이너가 실제 배포되는 곳이며 모든 명령은 Master Node의 API Server와 통신하여 필요한 작업 등을 수행합니다.&lt;/p&gt;
 
@@ -1039,11 +1039,11 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h1 id=&quot;아키텍쳐&quot;&gt;🏗아키텍쳐&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다. 클라우드 네이티브 관점에서 시스템의 지속적인 변화를 관찰하며 대응할 수 있게 하는 것입니다. K8s에서는 이러한 Control Loop 시스템을 구현하기 위해 아래와 같은 컴포넌트들로 구성되어 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;K8s의 컴포넌트는 크게 Master Node에 위치한 Control Plane 영역과 Worker Node 영역으로 구분 됩니다.&lt;/p&gt;
 
@@ -1116,7 +1116,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;&lt;a href=&quot;https://www.redhat.com/ko/topics/containers/what-is-kubernetes&quot;&gt;쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://subicura.com/2019/05/19/kubernetes-basic-1.html&quot;&gt;쿠버네티스 시작하기 - Kubernetes란 무엇인가?&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="Kubernetes" /><category term="CKA" /><category term="작성중" /><summary type="html">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.</summary></entry><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다.&lt;/p&gt;
 
@@ -1139,7 +1139,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;기본 개인정보를 기입하고 다음과 같이 데이터를 어디에 사용할 것인지 적으라고 합니다. 200자 이상 영어로 적으라고 하는데 대충 공부하는데 쓴다는 내용으로 채우고 넘어가면 되겠습니다. 주의할 점은 Twitter Developer 계정은 기존 Twitter 계정을 기반으로 등록하는 과정입니다. 이후 Twitter 계정에 등록된 이메일 계정으로 확인 이메일이 전송되니 기존에 설정된 이메일 계정이 없다면 첫 번째 절차에서 이메일을 수정해야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474496-d5855000-4de7-11eb-88e4-2052b0863b9c.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474496-d5855000-4de7-11eb-88e4-2052b0863b9c.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;확인 이메일 회신&lt;/li&gt;
@@ -1147,25 +1147,25 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;아래 처럼 등록에 성공했다는 페이지와 함께 확인 이메일을 보냈다는 문구가 나옵니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474502-e2a23f00-4de7-11eb-8353-b916f3ca7fe2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474502-e2a23f00-4de7-11eb-8353-b916f3ca7fe2.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;등록된 이메일 계정에서 확인 메일에 Confirm 버튼을 눌러줍니5.다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474592-d23e9400-4de8-11eb-8490-910edc7f87e0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474592-d23e9400-4de8-11eb-8490-910edc7f87e0.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;API Key와 Access Token 발급&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474682-b38ccd00-4de9-11eb-8b01-449777e0167a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474682-b38ccd00-4de9-11eb-8b01-449777e0167a.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Twitter Developer에 로그인 후 Developer Portal에 접근하면 프로젝트 생성 절차가 진행되며 위와 같은 대시보드가 나옵니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474744-2dbd5180-4dea-11eb-8d8a-110d3e75c612.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474744-2dbd5180-4dea-11eb-8d8a-110d3e75c612.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;화면 중앙에 열쇠 아이콘으로 보안 페이지에 접근하면 API Key와 Access Token을 발급할 수 있는 페이지가 나옵니다. 계정 가입일 기준 약 2주 이후에는 보안상 더 이상 조회가 불가능하니 미리 저장해두어야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474833-031fc880-4deb-11eb-9473-cfcd5d6de4ff.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103474833-031fc880-4deb-11eb-9473-cfcd5d6de4ff.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;필자의 경우 편의를 위해 위와 같이 각 Value들을 .zshrc (혹은 .bashrc)에 환경변수로 저장해 두었습니다.&lt;/p&gt;
 
@@ -1175,19 +1175,19 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;1.새 프로젝트 생성&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475014-c5bc3a80-4dec-11eb-9834-718284026a2b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475014-c5bc3a80-4dec-11eb-9834-718284026a2b.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;기존에 사용하시던 프로젝트와 혼재되지 않도록 새로운 프로젝트를 생성합니다.&lt;/p&gt;
 
 &lt;p&gt;2.서비스 계정 생성&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475077-7f1b1000-4ded-11eb-86eb-ed65860adba1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475077-7f1b1000-4ded-11eb-86eb-ed65860adba1.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;햄버거 버튼 - ID 및 보안 - 서비스 계정 - 서비스 계정 만들기에 접근하여 위와 같이 BigQuery 데이터 편집자, 게시 구독 편집자 권한을 부여 해줍니다.&lt;/p&gt;
 
 &lt;p&gt;3.서비스 계정 키 생성&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475155-e8028800-4ded-11eb-9163-d64916ed271e.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475155-e8028800-4ded-11eb-9163-d64916ed271e.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;해당 서비스 계정의 옵션에서 키 만들기를 눌러 JSON 타입의 비공개 키를 생성 해줍니다.&lt;/p&gt;
 
@@ -1197,7 +1197,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;하지만 이 실습에서는 Cloud Function의 Trigger 역할로만 사용됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475184-52b3c380-4dee-11eb-89ea-9ee5ee390a8f.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103475184-52b3c380-4dee-11eb-89ea-9ee5ee390a8f.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;햄버거 버튼 - 빅데이터 - Pub/Sub - 주제 만들기에 접근하여 twitter라는 이름의 주제를 생성해줍니다.&lt;/p&gt;
 
@@ -1205,7 +1205,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;BigQuery는 AWS RedShift, Snowflake와 같은 GCP의 DW 서비스입니다. SQL 쿼리를 분산 처리 매우 빠른 속도와 성능을 자랑하며 쿼리 데이터 수에 따라 비용이 부과되는 특징이 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477125-d1186180-4dfe-11eb-9b99-e5c00bb8cf52.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477125-d1186180-4dfe-11eb-9b99-e5c00bb8cf52.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;햄버거 버튼 - 빅데이터 - BigQuery에 접근하여 데이터 세트와 테이블을 생성 해줍니다.여기서 데이터 세트는 상용 RDBMS의 데이터베이스(스키마)에 해당하고, 테이블은 동일합니다. 테이블 스키마는 위와 같이 생성해줍니다.&lt;/p&gt;
 
@@ -1215,13 +1215,13 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;1.구성&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477893-6cf99b80-4e06-11eb-873a-5888d7315589.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477893-6cf99b80-4e06-11eb-873a-5888d7315589.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pub/Sub의 twitter Topic - Cloud 함수 트리거에 접근합니다. Topic을 경유해서 Cloud Functions를 생성했기 때문에 트리거 유형과 주제 유형은 원하는대로 설정되어 있으니 그대로 저장 후 다음으로 넘어갑니다.&lt;/p&gt;
 
 &lt;p&gt;2.코드&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477873-3e7bc080-4e06-11eb-8c62-bc507051d891.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477873-3e7bc080-4e06-11eb-8c62-bc507051d891.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;런타임은 Python 3.7 진입점은 기존 코드를 활용할 것이니 그대로 유지합니다.&lt;/p&gt;
 
@@ -1336,11 +1336,11 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tweepy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;3.8.0 google-cloud-pubsub&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;1.6.0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477806-7b938300-4e05-11eb-934a-4f0dfb0862e8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103477806-7b938300-4e05-11eb-934a-4f0dfb0862e8.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;위 파이썬 파일을 실행하면 다음과 같이 실시간 Tweets 데이터들을 확인할 수 있습니다. 이 데이터들이 Pub/Sub의 twitter Topic로 스트리밍 되면서 동시에 Cloud Functions에 정의된 함수에 의해 BigQuery로 데이터가 들어가고 있는것입니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103478229-62400600-4e08-11eb-9d63-88440a706e43.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103478229-62400600-4e08-11eb-9d63-88440a706e43.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;BigQuery에서 쿼리를 조회해보면 테이블에 정의된 스키마에 맞춰 데이터가 적재되고 있음을 확인할 수 있습니다.&lt;/p&gt;
 
@@ -1410,29 +1410,29 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;4.GKE에 배포&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479422-d8e10180-4e10-11eb-8cde-a7a43ab461e8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479422-d8e10180-4e10-11eb-8cde-a7a43ab461e8.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;햄버거 버튼 - 도구 - Container Registry에 접근하면 위와 같이 Local에서 Push한 Image가 올라온 것을 확인할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479539-b13e6900-4e11-11eb-93f7-962021551a03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479539-b13e6900-4e11-11eb-93f7-962021551a03.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;해당 이미지에 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GKE에 배포&lt;/code&gt;를 통해 기존 컨테이너 이미지로 배포를 시작하면 약 5분 정도 기다리면 배포가 완료됩니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479759-30806c80-4e13-11eb-8cfc-de75a492f8ae.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103479759-30806c80-4e13-11eb-8cfc-de75a492f8ae.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;손쉽게 GKE 클러스터가 생성되고 우리가 배포한 컨테이너도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx-1-f7f74655b-xkrml&lt;/code&gt;라는 Pod로써 안정적으로 작동되고 있습니다. 이제 GKE에 의해 Twitter API로 Twitter Streaming를 요청하여 Pub/Sub과 BigQuery로 전송하는 일련의 과정들이 자동으로 수행되고 있습니다. 즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt;라는 키워드가 포함된 Tweets 데이터가 자동으로 수집되는 데이터 파이프라인이 완성된 것입니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;google-studio로-연결&quot;&gt;Google Studio로 연결&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103480193-3c216280-4e16-11eb-96c6-f4f64d867929.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103480193-3c216280-4e16-11eb-96c6-f4f64d867929.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Google Studio에서 보고서 작성을 하면 다른 Google 서비스와 연결 여부를 물어본다. 이때 이전에 생성한 BigQuery의 테이블과 연결하면 바로 데이터를 연결하여 간단한 시각화가 가능하다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103480234-72f77880-4e16-11eb-9e72-8eae3d92937a.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103480234-72f77880-4e16-11eb-9e72-8eae3d92937a.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;마치며&quot;&gt;마치며&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이 글은 2020.09.23(목)에 진행된 제81차 토크ON세미나에서 SOCAR의 김상우님이 강의해주신 내용을 토대로 리마인드 차원에서 작성한 것입니다. Hands-on 강의 동영상과 함께 실습을 진행해보고자 한다면 &lt;a href=&quot;https://tacademy.skplanet.com/frontMain.action&quot;&gt;T Academy&lt;/a&gt;에서 회원가입 후 &lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt; 강좌에 수강신청하여 진행해보실 수 있습니다.&lt;/p&gt;
 
@@ -1441,7 +1441,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;객체지향 기반 프로그래밍에서는 &lt;strong&gt;접근 제어자&lt;/strong&gt; 즉, &lt;strong&gt;private&lt;/strong&gt;, &lt;strong&gt;protected&lt;/strong&gt;, &lt;strong&gt;public&lt;/strong&gt;을 이용한 &lt;strong&gt;정보 은닉&lt;/strong&gt;을 통해 외부로부터 데이터를 보호한다. 이를 통해 객체의 속성과 메소드를 하나로 묶고, 실제 구현 내용의 일부는 외부에 감추어 은닉할 수 있는 &lt;strong&gt;캡슐화&lt;/strong&gt;가 가능한다. 각각의 접근 제어자는 다음과 같은 의미를 가진다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103396288-ad8eb600-4b75-11eb-98d3-2a55798e6fed.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103396288-ad8eb600-4b75-11eb-98d3-2a55798e6fed.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -1600,13 +1600,13 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;&lt;a href=&quot;https://www.fun-coding.org/PL&amp;amp;OOP1-5.html&quot;&gt;예제로 이해하는 객체지향 문법 (public, private, protected)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="객체지향" /><category term="Class" /><summary type="html">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.</summary></entry><entry><title type="html">파이썬 Counter 사용법</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="파이썬 Counter 사용법" /><published>2020-12-30T00:00:00+09:00</published><updated>2020-12-30T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/">&lt;h1 id=&quot;완주하지-못한-선수&quot;&gt;완주하지 못한 선수&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103338570-22081d00-4ac2-11eb-9c1e-bc934b7dd499.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103338570-22081d00-4ac2-11eb-9c1e-bc934b7dd499.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;프로그래머스 코딩테스트 연습에 완주하지 못한 선수(Lv.1)라는 문제가 있다. 여느 때와 같이 파이썬으로 문제를 풀이하는데 정확성 테스트는 모두 통과했지만 효율성 검사에서 모두 시간 초과로 실패했다. 내가 처음에 풀이했던 방식은 다음과 같다.&lt;/p&gt;
 
 &lt;h2 id=&quot;listremove&quot;&gt;list.remove()&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103338653-6d223000-4ac2-11eb-9473-82d1ed6d6e2c.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103338653-6d223000-4ac2-11eb-9473-82d1ed6d6e2c.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;리스트 요소를 제거하되 중복이 있을 시 최초 발견된 요소만 삭제하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list.remove()&lt;/code&gt; 메소드의 특징을 이용해 풀이하려 했다. 정확성 테스트는 모두 통과했지만 역시 효율성에서 모두 시간초과로 실패한다.&lt;/p&gt;
 
@@ -1614,13 +1614,13 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;h2 id=&quot;listsort&quot;&gt;list.sort()&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103339676-592bfd80-4ac5-11eb-84da-625403ecc65d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103339676-592bfd80-4ac5-11eb-84da-625403ecc65d.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list.sort()&lt;/code&gt; 메소드를 이용해 정렬하고, 같은 인덱스를 기준으로 비교하면서 다른 요소가 나올 때까지 비교해 구하는 방식으로 풀었더니 정확성과 효율성 모두 통과할 수 있었다.&lt;/p&gt;
 
 &lt;h2 id=&quot;collectionscounter&quot;&gt;collections.Counter()&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103340597-c5a7fc00-4ac7-11eb-98dd-022872c51bde.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103340597-c5a7fc00-4ac7-11eb-98dd-022872c51bde.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;collections.Counter()&lt;/code&gt; 메소드는 iterable 객체 즉, list, dict, set, str, bytes, tuple, range와 같은 반복 가능한 객체의 요소를 카운트하여 각각의 빈도 값을 {요소:빈도} 형태인 해쉬 테이블형태(카운터 객체)로 반환한다.&lt;/p&gt;
 
@@ -1726,7 +1726,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.Counter&quot;&gt;collections Container datatypes&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="Counter" /><category term="collections" /><summary type="html">파이썬 collections 패키지의 Counter() 메소드 사용법과 활용사례를 소개한다.</summary></entry><entry><title type="html">Vi 사용법 완벽 가이드</title><link href="/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="alternate" type="text/html" title="Vi 사용법 완벽 가이드" /><published>2020-12-28T00:00:00+09:00</published><updated>2020-12-28T00:00:00+09:00</updated><id>/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C</id><content type="html" xml:base="/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C/">&lt;h1 id=&quot;vi이란-&quot;&gt;Vi이란 ?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103211968-f7e11e80-494c-11eb-83fd-06d64ed07917.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103211968-f7e11e80-494c-11eb-83fd-06d64ed07917.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Photo by Luca Bravo on Unsplash&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1737,13 +1737,13 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 
 &lt;p&gt;최근 데이터 플랫폼 공부를 하면서 부쩍 vi를 사용할 일들이 많아졌다. vi의 최대 장점은 터미널에서 바로 파일에 접근하여 수정할 수 있다는 점이 아닐까 싶다. 특히 yaml이나 config 파일을 수정할 때 vi로 바로 접근해서 필요한 부분을 고칠 때 유용하다. XWindow가 마련된 환경이면 다른 IDE를 통해 수정할 수도 있겠지만 매번 파일 불러오는 것도 번거로운 작업일 뿐더러, 오롯이 CLI 환경만 제공되는 서버라고 한다면 vi는 최선의 선택이 될 수 밖에 없다. 데이터 인프라를 구축할 때에도 대부분 서버에서 작업이 이뤄지기 때문에 vi 사용에 능숙해야 한다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103214143-06cacf80-4953-11eb-90be-fb6d0a0c8748.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103214143-06cacf80-4953-11eb-90be-fb6d0a0c8748.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-adventures.com&quot;&gt;VIM Adventures&lt;/a&gt;라는 Vim 단축키를 이용한 튜토리얼 게임이 있다.&lt;/p&gt;
 
 &lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103212636-b0f42880-494e-11eb-816b-027ddbc8905d.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103212636-b0f42880-494e-11eb-816b-027ddbc8905d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;출처 Wikipedia&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1872,7 +1872,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Vi&quot;&gt;Wikipedia vi&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.maketecheasier.com/cheatsheet/vim-keyboard-shortcuts/&quot;&gt;VIM Keyboard Shortcuts Cheatsheet&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="Vim" /><category term="단축키" /><summary type="html">Linux나 Unix 유저라면 한 번쯤은 vi editor를 사용해본 경험이 있을 것이다. vi editor란 Unix-like 운영체제 용으로 만든 텍스트 편집기를 말한다. Vi와 더불어 Vi IMproved의 약자인 Vim이라는 기존 vi editor의 성능을 개선한 확장판이 있다.</summary></entry><entry><title type="html">파이썬 리스트 복사하기</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/" rel="alternate" type="text/html" title="파이썬 리스트 복사하기" /><published>2020-12-27T00:00:00+09:00</published><updated>2020-12-27T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/">&lt;h1 id=&quot;파이썬-리스트-복사-어떻게-할까&quot;&gt;파이썬 리스트 복사 어떻게 할까?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172222-58ad2000-4895-11eb-8b48-af1a20a62d1d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172222-58ad2000-4895-11eb-8b48-af1a20a62d1d.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Photo by Zdeněk Macháček on Unsplash&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1909,12 +1909,12 @@ list1 : [11, 2, 3, 4]
 &amp;gt;&amp;gt;&amp;gt; print('list2 :', list2)
 list2 : [11, 2, 3, 4]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172728-cad33400-4898-11eb-9756-85ffe931a999.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172728-cad33400-4898-11eb-9756-85ffe931a999.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;파이썬 객체의 메모리 주소를 확인하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id()&lt;/code&gt; 함수를 이용해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;의 주소값을 확인해보면 두 리스트 모두 4552076160로 같은 주소값을 가지는 것을 확인할 수 있다. 엄밀히 말해서 list2는 list1의 분신과 같은 존재이고, 일반적으로 우리가 원하는 복사는 이뤄지지 않은 것이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;그럼-어떻게-해야-하는데-&quot;&gt;그럼 어떻게 해야 하는데 😲❓&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172734-d4f53280-4898-11eb-8630-f6b9dd23b2ca.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172734-d4f53280-4898-11eb-8630-f6b9dd23b2ca.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;앞서 살펴본 문제점과 같이 우리가 원하는 복사가 이뤄지지 않았던 이유는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt; 두 변수가 같은 메모리를 참조하기 때문이다. 결국 우리가 원하는 복사가 이뤄지기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;이 서로 다른 메모리를 참조하도록 해주면 된다. 파이썬 리스트를 다른 리스트에 복사하는 방법은 4가지가 있다.&lt;/p&gt;
 

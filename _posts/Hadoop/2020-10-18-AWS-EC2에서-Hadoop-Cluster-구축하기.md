@@ -12,14 +12,16 @@ tags:
   - 빅데이터
   - 분산처리
   - 데이터플랫폼
+header:
+  teaser: https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg
 ---
 
 # 🐘하둡(Hadoop)이란 ? 
 - 대규모 검색 색인을 구축하기 위해 Java로 개발된 오픈 소스 분산 컴퓨팅 플랫폼
 
-![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg)
+![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg){: .align-center}
 
- 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.f(개발자의 네이밍 세계는 생각보다 단순하다.)
+ 하둡의 로고의 코끼리는 개발자 더그 커팅이 자신의 아이가 가지고 놀던 장난감 코끼리의 이름을 따서 하둡이라는 이름을 지었다고 한다.(개발자의 네이밍 세계는 생각보다 단순하다.)
 
 # 핵심 컴포넌트
 
@@ -36,7 +38,7 @@ tags:
 
 하둡의 클러스터 관리 시스템으로 가장 효율적인 방법으로 계산, 리소스를 할당하고 사용자 애플리케이션을 스케쥴링하는 시스템이다. 스케쥴링과 리소스 관리로 데이터 지역성을 극대화하고, 계산량이 많은 애플리케이션이 리소스를 독점하지 않게 제어 및 교체 가능한 스케쥴링 시스템을 지원한다. 사용자당 리소스 제한이나 작업 대기열당 리소스 할당량 등 공용 리소스 시스템의 스케쥴링에 필요한 기본적인 환경 설정을 스케쥴러에 입력할 수 있다.
 
-![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96365911-08bc2980-117f-11eb-95ac-d37e775255ad.png)
+![Hadoop Logo](https://user-images.githubusercontent.com/60086878/96365911-08bc2980-117f-11eb-95ac-d37e775255ad.png){: .align-center}
  
 - 구성 
     - Resource Manager라고 불리는 마스터 노드
@@ -75,12 +77,14 @@ tags:
 
     - AMI 선택
 
-    ![Amazon Machine Image](https://user-images.githubusercontent.com/60086878/96366595-74a09100-1183-11eb-808b-88dfd2f21adb.png)
+    ![Amazon Machine Image](https://user-images.githubusercontent.com/60086878/96366595-74a09100-1183-11eb-808b-88dfd2f21adb.png){: .align-center}
+
     Red Hat Enterprise Linux 8
     
     - 인스턴스 유형 선택
     
-    ![AWS On-Demand Pricing](https://user-images.githubusercontent.com/60086878/96366700-2e97fd00-1184-11eb-8e1c-7e5d011c7a98.png)
+    ![AWS On-Demand Pricing](https://user-images.githubusercontent.com/60086878/96366700-2e97fd00-1184-11eb-8e1c-7e5d011c7a98.png){: .align-center}
+
         - 요금이 t2.micro의 겨우 2배 수준인 t2.small
         - AWS의 살인적인 요금제에 프리티어 과금을 피하기 위하여 인스턴스 유형은 프리티어급보다 한 단계 상위버전인 t2.small로 진행
     
@@ -99,7 +103,7 @@ tags:
 3. 인스턴스 접속 
 
 
-![IPv4 Public IP](https://user-images.githubusercontent.com/60086878/96367212-5f2d6600-1187-11eb-8267-241a050a9571.png)
+![IPv4 Public IP](https://user-images.githubusercontent.com/60086878/96367212-5f2d6600-1187-11eb-8267-241a050a9571.png){: .align-center}
 
 
 - 해당 인스턴스의 Public IP를 복사하고, 터미널에서 ssh 명령어를 통해 접속한다.
@@ -108,7 +112,7 @@ tags:
 $ ssh -i ./YOUR_KEY.pem ec2-user@PUBLIC_IP
 ```
 
-![SSH Access](https://user-images.githubusercontent.com/60086878/96367234-7d936180-1187-11eb-8583-473b718bcc44.png)
+![SSH Access](https://user-images.githubusercontent.com/60086878/96367234-7d936180-1187-11eb-8583-473b718bcc44.png){: .align-center}
 
 ## 리눅스 환경설정
 1.SELINUX 끄기
@@ -159,7 +163,7 @@ $ sudo visudo /etc/sudoers
 ```
 hadoop  ALL=(ALL)   ALL
 ```
-![Add Permission](https://user-images.githubusercontent.com/60086878/96367971-e67cd880-118b-11eb-80ed-635a50aab6ef.png)
+![Add Permission](https://user-images.githubusercontent.com/60086878/96367971-e67cd880-118b-11eb-80ed-635a50aab6ef.png){: .align-center}
 
 4.SSH Key-based 인증 설정
 
@@ -400,14 +404,14 @@ $ sudo shutdown -h now
 
 - 인스턴스 목록에서 해당 인스턴스 선택 후 복사
 
-![Create AMI](https://user-images.githubusercontent.com/60086878/96369153-55a9fb00-1193-11eb-865d-5a4c82677af9.png)
+![Create AMI](https://user-images.githubusercontent.com/60086878/96369153-55a9fb00-1193-11eb-865d-5a4c82677af9.png){: .align-center}
 
 2.AMI 생성
 
 - AMI 목록에서 해당 이미지 생성 (나머지 구성은 동일하게 하되, 인스턴스 구성은 2개로 진행)
 - 인스턴스 목록에서 각 인스턴스를 구분하기 쉽게, 인스턴스 이름을 각각 Client, Namenode, Secondnode로 수정
 
-![Set Name](https://user-images.githubusercontent.com/60086878/96369527-7ecb8b00-1195-11eb-9a89-483cc5396bac.png)
+![Set Name](https://user-images.githubusercontent.com/60086878/96369527-7ecb8b00-1195-11eb-9a89-483cc5396bac.png){: .align-center}
 
 - 이전과 동일한 방법으로 3개의 터미널에서 각각의 인스턴스에 접속 (인스턴스는 재부팅 후 Public IP가 재할당되므로 재확인 후 접속)
 
@@ -440,7 +444,7 @@ $ sudo vi /etc/hosts
 172.31.20.195   secondnode
 172.31.20.195   datanode2
 ```
-![Private IP](https://user-images.githubusercontent.com/60086878/96369633-2943ae00-1196-11eb-951f-b45c8d91a16f.png)
+![Private IP](https://user-images.githubusercontent.com/60086878/96369633-2943ae00-1196-11eb-951f-b45c8d91a16f.png){: .align-center}
 
 - SSH 접근 확인 (hadoop 계정에서 실행)
 
@@ -492,12 +496,12 @@ secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실
 
 - 보안그룹 설정 접근
 
-![Security Group](https://user-images.githubusercontent.com/60086878/96371729-2baa0600-119e-11eb-8347-cc7c3548c1fb.png)
+![Security Group](https://user-images.githubusercontent.com/60086878/96371729-2baa0600-119e-11eb-8347-cc7c3548c1fb.png){: .align-center}
 
 
 - 인스턴스의 보안그룹 탭으로 접근하여 각 인스턴스에 해당하는 보안그룹의 인바운드 규칙 편집
 
-![Setting Security Group](https://user-images.githubusercontent.com/60086878/96371898-12ee2000-119f-11eb-8782-ff4388e21825.png)
+![Setting Security Group](https://user-images.githubusercontent.com/60086878/96371898-12ee2000-119f-11eb-8782-ff4388e21825.png){: .align-center}
 
 
 소스는 각자 본인 IP 주소/32(eg; 111.222.333.4/32)
@@ -505,7 +509,7 @@ secondnode에서 jps 명령어 시 추가로 ResourceManager, NodeManager가 실
 - namenode Public IP:50070
 - secondnode Public IP:8088
 
-![Manage Page](https://user-images.githubusercontent.com/60086878/96372012-d53dc700-119f-11eb-8dff-a1dd1c25c075.png)
+![Manage Page](https://user-images.githubusercontent.com/60086878/96372012-d53dc700-119f-11eb-8dff-a1dd1c25c075.png){: .align-center}
 
 # 참고
 - 엔터프라이즈 데이터 플랫폼 구축 (책만)

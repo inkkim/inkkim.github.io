@@ -513,7 +513,7 @@
 
 <p>프로젝트의 대략적인 아키텍쳐는 다음과 같다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103115141-cfcf9200-46a4-11eb-888e-ceeacfa4bd38.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103115141-cfcf9200-46a4-11eb-888e-ceeacfa4bd38.png" alt="" class="align-center" /></p>
 
 <ul>
   <li>EC2 기반 AWS EKS 클러스터</li>
@@ -528,7 +528,7 @@
 
 <h1 id="kubeflow란-">Kubeflow란 ?</h1>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103114462-fc35df00-46a1-11eb-96da-776017192c9b.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103114462-fc35df00-46a1-11eb-96da-776017192c9b.png" alt="" class="align-center" /></p>
 
 <p>공식 문서에서는 Kubeflow를 다음과 같이 설명하고 있다.</p>
 
@@ -536,7 +536,7 @@
   <p>Kubeflow 프로젝트는 새로운 서비스를 다시 만드는 것이 아닌 ML을 위한 동급 최고의 오픈소스 시스템을 다양한 인프라에 배포하는 간단한 방법을 제공합니다. ML Workfow를 Kubernetes에 간단하게 이식하여 확장성과 배포 용이성을 보장하는 데 전념합니다.</p>
 </blockquote>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103115552-65b7ec80-46a6-11eb-86a0-a4fb31a21255.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103115552-65b7ec80-46a6-11eb-86a0-a4fb31a21255.png" alt="" class="align-center" /></p>
 
 <ul>
   <li>구글 내부 프로젝트에서 시작되어 2018년 3월 오픈소스로 공개됨</li>
@@ -546,7 +546,7 @@
 
 <h1 id="설치">설치</h1>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103115087-9d259980-46a4-11eb-8444-e2191b03bdc6.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103115087-9d259980-46a4-11eb-8444-e2191b03bdc6.png" alt="" class="align-center" /></p>
 
 <p>공식 문서에 따르면 사용자의 상황에 따른 설치 가이드를 제시한다. 위에 언급했듯이 마침 클라우드 환경이 제공되어 이번 포스팅에서는 AWS EKS에 배포하는 방법으로 설명한다.</p>
 
@@ -598,7 +598,7 @@ $ kubectl
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ kubectl version --client 
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103116121-97ca4e00-46a8-11eb-8ae1-29eeb0f8862a.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103116121-97ca4e00-46a8-11eb-8ae1-29eeb0f8862a.png" alt="" class="align-center" /></p>
 
 <h4 id="aws-cli">AWS CLI</h4>
 
@@ -617,7 +617,7 @@ $ unzip awscliv2.zip
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws --version
 </code></pre></div></div>
-<p><img src="https://user-images.githubusercontent.com/60086878/103116254-28089300-46a9-11eb-8f8b-eafc08a22728.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103116254-28089300-46a9-11eb-8f8b-eafc08a22728.png" alt="" class="align-center" /></p>
 
 <h4 id="aws-iam-authenticator">aws-iam-authenticator</h4>
 
@@ -649,7 +649,7 @@ $ unzip awscliv2.zip
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ aws-iam-authenticator help
 </code></pre></div></div>
-<p><img src="https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png" alt="" class="align-center" /></p>
 
 <h4 id="eksctl">eksctl</h4>
 
@@ -668,7 +668,7 @@ $ unzip awscliv2.zip
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo mv /tmp/eksctl /usr/local/bin 
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103116474-f8a65600-46a9-11eb-9ae6-a1d9a9280b71.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103116474-f8a65600-46a9-11eb-9ae6-a1d9a9280b71.png" alt="" class="align-center" /></p>
 
 <h4 id="yq">yq</h4>
 
@@ -703,7 +703,7 @@ $ .  ~/.bash_profile
 
 <p>5.역할 이름을 입력한 후 역할 만들기를 누른다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png" alt="" class="align-center" /></p>
 
 <p>6.인스턴스 대시보드에서 작업-보안-IAM Role 변경에 접근하여 Bastion Server에 해당하는 인스턴스의 IAM Role을 생성한 Role로 수정한다.</p>
 
@@ -959,7 +959,7 @@ update-auto-scaling-group \
 
 <p>현재 Amazon에서 지원하는 EKS버전과 Kubeflow v1.2의 호환 여부는 다음과 같다. 본 포스팅에서는 EKS v1.17을 사용하고 있으므로, Kubeflow v1.2 기준으로 설치 과정을 소개한다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103150473-eb778d00-47b7-11eb-9c31-438418569d62.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103150473-eb778d00-47b7-11eb-9c31-438418569d62.png" alt="" class="align-center" /></p>
 
 <p>1.Bastion Server에서 Kubeflow GitHub에서 <a href="https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz">Release v1.2.0</a>을 다운로드 한다.</p>
 
@@ -1010,7 +1010,7 @@ istio-system   istio-ingress   *       a743484b-istiosystem-istio-2af2-xxxxxx.ap
 PW : 12341234
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103151073-0f3dd180-47be-11eb-9c8e-3fa9c64ce30a.png" alt="" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103151073-0f3dd180-47be-11eb-9c8e-3fa9c64ce30a.png" alt="" class="align-center" /></p>
 
 <h1 id="참고">참고</h1>
 <ul>
@@ -1123,6 +1123,10 @@ PW : 12341234
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111653801-85952180-884b-11eb-84a4-5672b521c566.png" alt="">
+      </div>
+    
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="permalink">Hadoop Ecosystem 이란?
@@ -1165,6 +1169,10 @@ PW : 12341234
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111654993-9befad00-884c-11eb-8fdd-05838189d9a1.png" alt="">
+      </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
@@ -1209,6 +1217,10 @@ PW : 12341234
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png" alt="">
+      </div>
+    
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Splunk 분산환경 구축하기
@@ -1251,6 +1263,10 @@ PW : 12341234
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png" alt="">
+      </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       

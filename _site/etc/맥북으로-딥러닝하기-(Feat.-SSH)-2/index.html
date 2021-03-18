@@ -523,19 +523,19 @@
 
 <p>1.먼저 Docker Hub에서 원하는 Tensorflow 이미지를 선택한다. Tensorflow Official Repository에서는 Tensorflow 버전별로 다양한 이미지를 제공하고 있다. 무려 천만 건 이상의 다운로드를 기록중이다. ❗😲❗</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97440883-687ab780-196b-11eb-8fea-5568c959c430.png" alt="Docker Hub" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97440883-687ab780-196b-11eb-8fea-5568c959c430.png" alt="Docker Hub" class="align-center" /></p>
 
 <ul>
   <li>이렇게 버전에 따라 태그를 나눠 배포하고 있다.</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97441942-a0cec580-196c-11eb-9ab9-ef6746dce720.png" alt="Tensorflow Tag" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97441942-a0cec580-196c-11eb-9ab9-ef6746dce720.png" alt="Tensorflow Tag" class="align-center" /></p>
 
 <ul>
   <li>CLI환경에서도 명령어로 찾을 수 있다. 특별한 케이스가 아닌 경우 STAR 개수를 많이 받은 것으로 받으면 된다.</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97451551-30797180-1977-11eb-9df3-948f7ce81933.png" alt="CLI Command" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97451551-30797180-1977-11eb-9df3-948f7ce81933.png" alt="CLI Command" class="align-center" /></p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker search &lt;이미지 이름&gt;
 </code></pre></div></div>
@@ -575,17 +575,17 @@ tensorflow/tensorflow:2.2.1-gpu-py3
 $ docker exec &lt;Container ID&gt; jupyter notebook list
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97458797-68d07e00-197e-11eb-9cae-8f68aefcd873.png" alt="token" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97458797-68d07e00-197e-11eb-9cae-8f68aefcd873.png" alt="token" class="align-center" /></p>
 
 <p>4.주소창에서 localhost:8888로 접근하고, Setup a Password에서 token값을 넣고 이용해 비밀번호를 설정한다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97459020-a46b4800-197e-11eb-9e68-30bf57c3d461.png" alt="jupyter notebook" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97459020-a46b4800-197e-11eb-9e68-30bf57c3d461.png" alt="jupyter notebook" class="align-center" /></p>
 
 <ul>
   <li>성공❗</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png" alt="main" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97459618-4d19a780-197f-11eb-99ad-5f8873398063.png" alt="main" class="align-center" /></p>
 
 <p>5.notebook 파일을 생성하여 셀에 아래 명령어로 GPU가 정상적으로 작동하는지 확인한다.</p>
 
@@ -597,15 +597,15 @@ device_lib.list_local_devices()
   <li>목록에 GPU가 출력되면 성공 🎉</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png" alt="Check GPU" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97460098-cdd8a380-197f-11eb-8b56-0749930cf1a5.png" alt="Check GPU" class="align-center" /></p>
 
 <ul>
   <li>Tensorflow CNN 예제를 돌려보면서 GPU 활성도 모니터링도 해봤는데, 정상적으로 작동하는 것을 확인했다.</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png" alt="Tensorflow ready" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97323747-76b9cc80-18b4-11eb-9e01-a896c3780395.png" alt="Tensorflow ready" class="align-center" /></p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png" alt="Tensorflow action" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97326005-e466f800-18b6-11eb-8953-54899d40676f.png" alt="Tensorflow action" class="align-center" /></p>
 
 <h1 id="iptime-ddns-설정-및-포트-포워딩">iptime DDNS 설정 및 포트 포워딩</h1>
 
@@ -614,7 +614,7 @@ device_lib.list_local_devices()
 
 <p>1.데스크탑에서 주소창에 192.168.0.1을 이용해 iptime 설정 페이지에 접속한다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97590628-27a1a200-1a42-11eb-90b8-6c043676007a.png" alt="iptime" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97590628-27a1a200-1a42-11eb-90b8-6c043676007a.png" alt="iptime" class="align-center" /></p>
 
 <p>2.관리도구-고급설정-NAT/라우터 관리-포트포워드 설정에 들어가서 아래와 같이 외부에서 접속한 포트를 내부 포트로 연결시켜준다.</p>
 
@@ -627,15 +627,15 @@ device_lib.list_local_devices()
   </li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97588148-8c0f3200-1a3f-11eb-8915-07ebae30ee04.png" alt="Port Fowarding" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97588148-8c0f3200-1a3f-11eb-8915-07ebae30ee04.png" alt="Port Fowarding" class="align-center" /></p>
 
 <p>3.고급설정-특수기능-DDNS 설정에 들어가서 호스트 이름(도메인으로 사용할 네임)을 원하는 대로 정하고 사용자 ID는 자주 사용하는 이메일로 입력하고 등록한다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97589150-8a923980-1a40-11eb-9eff-46e922d43b8b.png" alt="DDNS" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97589150-8a923980-1a40-11eb-9eff-46e922d43b8b.png" alt="DDNS" class="align-center" /></p>
 
 <p>4.추가로 고급설정-보안기능-공유기 접속/보안관리에 들어가서 원격 관리 포트 사용을 체크하고 다른 포트와 중복되지 않는 10000 이상의 값을 주고 적용한다. 필자는 65000포트를 적용했다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97589608-0f7d5300-1a41-11eb-8aeb-4a09fc8eb973.png" alt="Setting Port" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97589608-0f7d5300-1a41-11eb-8aeb-4a09fc8eb973.png" alt="Setting Port" class="align-center" /></p>
 
 <p>5.이제 &lt;Host Name&gt;.iptime.org:65000으로 들어가보면 다시 iptime 관리자 페이지에 접근할 수 있다.</p>
 
@@ -643,7 +643,7 @@ device_lib.list_local_devices()
   <li>로그인 옵션이 설정되어있지 않으면 네트워크 보안에 치명적이니 꼭 로그인 옵션을 설정하자.</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97590879-6f282e00-1a42-11eb-8fdb-e0b3993b260a.png" alt="iptime by Host" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97590879-6f282e00-1a42-11eb-8fdb-e0b3993b260a.png" alt="iptime by Host" class="align-center" /></p>
 
 <h1 id="우분투-방화벽-설정">우분투 방화벽 설정</h1>
 
@@ -662,7 +662,7 @@ $ sudo service ufw enable
 $ sudo ufw status
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97461289-fb721c80-1980-11eb-8089-8de63c0c5376.png" alt="ufw status" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97461289-fb721c80-1980-11eb-8089-8de63c0c5376.png" alt="ufw status" class="align-center" /></p>
 
 <h1 id="ssh-접속-환경-설정">ssh 접속 환경 설정</h1>
 
@@ -681,14 +681,14 @@ $ sudo ufw status
   <li>필자는 이미 있어서 있다고 나온다..</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png" alt="ssh-keygen" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97464021-bdc2c300-1983-11eb-88e7-14e49fb9fcbc.png" alt="ssh-keygen" class="align-center" /></p>
 
 <p>3.ssh key가 정상적으로 생성되었는지 확인한다.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~/.ssh
 $ ls -al
 </code></pre></div></div>
-<p><img src="https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png" alt="check ssh key" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97464338-227e1d80-1984-11eb-95c7-fc837f99d816.png" alt="check ssh key" class="align-center" /></p>
 
 <p>4.Public Key (id_rsa.pub) 를 우분투로 복사한다.</p>
 
@@ -701,7 +701,7 @@ $ ssh-copy-id ubuntu@example.ipitme.org
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat ~/.ssh/authorized_keys
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png" alt="Public Key" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97591460-fd9caf80-1a42-11eb-98a0-2636960ab725.png" alt="Public Key" class="align-center" /></p>
 
 <p>6.정상적으로 복사가 되었다면 이제 맥북에서 ssh 명령어로 우분투로 접속이 가능하다!</p>
 
@@ -709,11 +709,11 @@ $ ssh-copy-id ubuntu@example.ipitme.org
 $ ssh ubuntu@example.iptime.org
 </code></pre></div></div>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png" alt="SSH in Mac" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97596843-7fdba280-1a48-11eb-82b2-56384dd58d69.png" alt="SSH in Mac" class="align-center" /></p>
 
 <h1 id="연결-완료--">연결 완료 💻 🔗🔌🖥</h1>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/97596875-8a963780-1a48-11eb-900a-2b089c69b362.png" alt="jupyter notebook in Mac" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/97596875-8a963780-1a48-11eb-900a-2b089c69b362.png" alt="jupyter notebook in Mac" class="align-center" /></p>
 
 <p>드디어❗맥북에서 넉넉한 데스크탑의 자원을 사용할 수 있는 환경이 마련되었다. 이제 우리는 인터넷이 연결된 어디서든 맥북으로 데스크탑에서 구동되는 jupyter notebook 서버에 접근하여 원활한 데이터 분석을 할 수 있다.👏 추가로 데스크탑에 WOL(Wake On Lan)을 설정하여 스마트폰으로 원격 시동을 주문하여 원하는 때 데스크탑을 On/Off 할 수 있다. (해당 내용은 조만간 다뤄보도록 하겠다.)</p>
 
@@ -828,6 +828,10 @@ $ ssh ubuntu@example.iptime.org
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111653801-85952180-884b-11eb-84a4-5672b521c566.png" alt="">
+      </div>
+    
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="permalink">Hadoop Ecosystem 이란?
@@ -870,6 +874,10 @@ $ ssh ubuntu@example.iptime.org
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111654993-9befad00-884c-11eb-8fdd-05838189d9a1.png" alt="">
+      </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
@@ -914,6 +922,10 @@ $ ssh ubuntu@example.iptime.org
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png" alt="">
+      </div>
+    
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Splunk 분산환경 구축하기
@@ -956,6 +968,10 @@ $ ssh ubuntu@example.iptime.org
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png" alt="">
+      </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       

@@ -516,7 +516,7 @@
 
 <h2 id="개요">개요</h2>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103609779-f2459300-4f61-11eb-951e-8fa51bc3c9e0.png" alt="K8s Logo" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103609779-f2459300-4f61-11eb-951e-8fa51bc3c9e0.png" alt="K8s Logo" class="align-center" /></p>
 
 <p>Kubernetes는 Cotainerized Applications의 배포, 스케일링, 관리 등을 자동화 해주는 오픈 소스 컨테이너 오케스트레이션 엔진입니다. Kubernetes는 앞의 K와 s를 제외한 안쪽 8 글자를 줄여서 <code class="language-plaintext highlighter-rouge">K8s</code>, <code class="language-plaintext highlighter-rouge">케이(에이)츠</code> 라고 부르기도 합니다. 현재 K8s 오픈 소스 프로젝트는 Cloud Native Computing Foundation(CNCF)가 주관하고 있습니다.</p>
 
@@ -524,11 +524,11 @@
 
 <h2 id="탄생-배경">탄생 배경</h2>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103895670-1c4eaf00-5134-11eb-951c-d24dd925297d.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103895670-1c4eaf00-5134-11eb-951c-d24dd925297d.png" alt="image" class="align-center" /></p>
 
 <h3 id="기존의-서버-운영방식">기존의 서버 운영방식</h3>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103625188-fa133080-4f7d-11eb-937b-a416a042423e.png" alt="image" class="align-center" /></p>
 
 <p>각 서버마다 운영하는 애플리케이션이 달라 각 서버마다 용도에 맞는 네이밍을 합니다. 즉, 서버 하나에 용도가 한정되며 그에 맞게 관리가 되는 시스템이었습니다. 이러한 이유로 서버마다 특정 애플리케이션을 구동하기 위한 환경이 모두 다르고, 필요한 리소스도 상이합니다. 하지만 이 방법은 관리가 어렵고 안정적인 운영상의 이유로 리소스를 최대로 활용하지 못하는 문제가 있습니다.</p>
 
@@ -536,13 +536,13 @@
 
 <h3 id="가상화-기술의-개발">가상화 기술의 개발</h3>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103897289-a4ce4f00-5136-11eb-856c-d1179fba1b36.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103897289-a4ce4f00-5136-11eb-856c-d1179fba1b36.png" alt="image" class="align-center" /></p>
 
 <p>가상화 기술의 등장으로 한 서버에서 여러 가상 시스템 (VM)을 실행할 수 있게 됐습니다. 이는 기존의 방법보다 리소스를 더 효율적으로 활용할 수 있으며, 쉽게 애플리케이션을 추가하고 업데이트 할 수 있게 됐습니다. 다만, 각 VM은 Host Machine의 하드웨어를 공유하여 운영체제를 병렬로 운영할 수 있어 관리 비용이 줄어든다는 장점이 있지만, 반대로 각각의 VM을 위한 커널이 필요하기 때문에 불필요한 리소스 소모를 감수해야 한다는 단점이 존재한다.</p>
 
 <h3 id="docker의-등장">Docker의 등장</h3>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103625397-42325300-4f7e-11eb-88dd-16bc55f251a6.png" alt="image" class="align-center" /></p>
 
 <p>리눅스 컨테이너 기술을 적용한 Docker의 등장으로 환경에 상관없이 Docker가 설치되어있는 환경이면 동일하게 애플리케이션을 실행할 수 있게 됐습니다. 컨테이너는 VM과 유사하지만 Host OS 자원인 커널은 공유하고 애플리케이션 단위로 추상화하여 논리적으로 격리시키는 형태입니다. 즉, Hypervisor 없이 Docker Engine만으로 애플리케이션과 바이너리 및 라이브러리가 포함된 컨테이너만 올리면 되는 구조입니다. 이에 따라 특정 OS에 종속되지 않고, 리소스 손실률이 거의 없이 배포할 수 있게 됐습니다.</p>
 
@@ -550,7 +550,7 @@
 
 <h3 id="k8s-클러스터-운영방식">K8s 클러스터 운영방식</h3>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103905066-7b66f080-5141-11eb-8318-d4a19389b91a.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103905066-7b66f080-5141-11eb-8318-d4a19389b91a.png" alt="image" class="align-center" /></p>
 
 <p>K8s는 Master Node에서 Worker Node와 클러스터 내 Pod들을 관리합니다. Worker Node는 컨테이너가 실제 배포되는 곳이며 모든 명령은 Master Node의 API Server와 통신하여 필요한 작업 등을 수행합니다.</p>
 
@@ -558,11 +558,11 @@
 
 <h1 id="아키텍쳐">🏗아키텍쳐</h1>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103901861-0e515c00-513d-11eb-8673-851b85a54213.png" alt="image" class="align-center" /></p>
 
 <p>K8s는 기본적으로 사용자가 정의한 Disired State와 Current State를 유지하는 내용을 골자로 합니다. 클라우드 네이티브 관점에서 시스템의 지속적인 변화를 관찰하며 대응할 수 있게 하는 것입니다. K8s에서는 이러한 Control Loop 시스템을 구현하기 위해 아래와 같은 컴포넌트들로 구성되어 있습니다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png" alt="image" /></p>
+<p><img src="https://user-images.githubusercontent.com/60086878/103619579-5a51a480-4f75-11eb-8a9b-664d1d04cba4.png" alt="image" class="align-center" /></p>
 
 <p>K8s의 컴포넌트는 크게 Master Node에 위치한 Control Plane 영역과 Worker Node 영역으로 구분 됩니다.</p>
 
@@ -740,6 +740,10 @@
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111653801-85952180-884b-11eb-84a4-5672b521c566.png" alt="">
+      </div>
+    
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="permalink">Hadoop Ecosystem 이란?
@@ -782,6 +786,10 @@
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111654993-9befad00-884c-11eb-8fdd-05838189d9a1.png" alt="">
+      </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
@@ -826,6 +834,10 @@
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png" alt="">
+      </div>
+    
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
         <a href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="permalink">Splunk 분산환경 구축하기
@@ -868,6 +880,10 @@
 
 <div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="https://user-images.githubusercontent.com/60086878/111655652-2d5f1f00-884d-11eb-932a-305f20211d84.png" alt="">
+      </div>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       

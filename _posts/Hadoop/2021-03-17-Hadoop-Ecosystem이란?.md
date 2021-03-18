@@ -12,6 +12,8 @@ tags:
   - 빅데이터
   - 분산처리
   - Hadoop Ecosystem
+header:
+  teaser: https://user-images.githubusercontent.com/60086878/111653801-85952180-884b-11eb-84a4-5672b521c566.png
 ---
 
 # Hadoop Ecosystem 이란?

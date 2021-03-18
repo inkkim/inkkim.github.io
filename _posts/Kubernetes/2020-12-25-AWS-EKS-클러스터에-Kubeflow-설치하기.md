@@ -12,13 +12,15 @@ tags:
   - AWS
   - EKS
   - Kubeflow
+header:
+  teaser: https://user-images.githubusercontent.com/60086878/111656124-9777c400-884d-11eb-9c9d-6bedbdaf1417.png
 ---
 
 이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다.
 
 프로젝트의 대략적인 아키텍쳐는 다음과 같다.
 
-![](https://user-images.githubusercontent.com/60086878/103115141-cfcf9200-46a4-11eb-888e-ceeacfa4bd38.png)
+![](https://user-images.githubusercontent.com/60086878/103115141-cfcf9200-46a4-11eb-888e-ceeacfa4bd38.png){: .align-center}
 
 - EC2 기반 AWS EKS 클러스터
 - AWS Aurora (PostgreSQL)
@@ -31,13 +33,13 @@ tags:
 
 # Kubeflow란 ?
 
-![](https://user-images.githubusercontent.com/60086878/103114462-fc35df00-46a1-11eb-96da-776017192c9b.png)
+![](https://user-images.githubusercontent.com/60086878/103114462-fc35df00-46a1-11eb-96da-776017192c9b.png){: .align-center}
 
 공식 문서에서는 Kubeflow를 다음과 같이 설명하고 있다.
 
 >Kubeflow 프로젝트는 새로운 서비스를 다시 만드는 것이 아닌 ML을 위한 동급 최고의 오픈소스 시스템을 다양한 인프라에 배포하는 간단한 방법을 제공합니다. ML Workfow를 Kubernetes에 간단하게 이식하여 확장성과 배포 용이성을 보장하는 데 전념합니다.
 
-![](https://user-images.githubusercontent.com/60086878/103115552-65b7ec80-46a6-11eb-86a0-a4fb31a21255.png)
+![](https://user-images.githubusercontent.com/60086878/103115552-65b7ec80-46a6-11eb-86a0-a4fb31a21255.png){: .align-center}
 
 - 구글 내부 프로젝트에서 시작되어 2018년 3월 오픈소스로 공개됨
 - 2020.12.25 기준 약 9,700 GitHub Star, Release v1.2.0
@@ -45,7 +47,7 @@ tags:
 
 # 설치
 
-![](https://user-images.githubusercontent.com/60086878/103115087-9d259980-46a4-11eb-8444-e2191b03bdc6.png)
+![](https://user-images.githubusercontent.com/60086878/103115087-9d259980-46a4-11eb-8444-e2191b03bdc6.png){: .align-center}
 
 공식 문서에 따르면 사용자의 상황에 따른 설치 가이드를 제시한다. 위에 언급했듯이 마침 클라우드 환경이 제공되어 이번 포스팅에서는 AWS EKS에 배포하는 방법으로 설명한다.
 
@@ -97,7 +99,7 @@ $ sudo mv ./kubectl /usr/local/bin/$ kubectl
 $ kubectl version --client 
 ```
 
-![](https://user-images.githubusercontent.com/60086878/103116121-97ca4e00-46a8-11eb-8ae1-29eeb0f8862a.png)
+![](https://user-images.githubusercontent.com/60086878/103116121-97ca4e00-46a8-11eb-8ae1-29eeb0f8862a.png){: .align-center}
 
 #### AWS CLI
 
@@ -116,7 +118,7 @@ $ unzip awscliv2.zip
 ```
 $ aws --version
 ```
-![](https://user-images.githubusercontent.com/60086878/103116254-28089300-46a9-11eb-8f8b-eafc08a22728.png)
+![](https://user-images.githubusercontent.com/60086878/103116254-28089300-46a9-11eb-8f8b-eafc08a22728.png){: .align-center}
 
 #### aws-iam-authenticator
 
@@ -151,7 +153,7 @@ $ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
 $ aws-iam-authenticator help
 ```
-![](https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png)
+![](https://user-images.githubusercontent.com/60086878/103116431-d6acd380-46a9-11eb-92ca-f13f48bb1905.png){: .align-center}
 
 #### eksctl
 
@@ -170,7 +172,7 @@ $ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest
 $ sudo mv /tmp/eksctl /usr/local/bin 
 ```
 
-![](https://user-images.githubusercontent.com/60086878/103116474-f8a65600-46a9-11eb-9ae6-a1d9a9280b71.png)
+![](https://user-images.githubusercontent.com/60086878/103116474-f8a65600-46a9-11eb-9ae6-a1d9a9280b71.png){: .align-center}
 
 #### yq
 
@@ -208,7 +210,7 @@ $ .  ~/.bash_profile
 
 5.역할 이름을 입력한 후 역할 만들기를 누른다.
 
-![](https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png)
+![](https://user-images.githubusercontent.com/60086878/103150153-9b4afb80-47b4-11eb-958e-e82102a9adcf.png){: .align-center}
 
 6.인스턴스 대시보드에서 작업-보안-IAM Role 변경에 접근하여 Bastion Server에 해당하는 인스턴스의 IAM Role을 생성한 Role로 수정한다.
 
@@ -450,7 +452,7 @@ update-auto-scaling-group \
 
 현재 Amazon에서 지원하는 EKS버전과 Kubeflow v1.2의 호환 여부는 다음과 같다. 본 포스팅에서는 EKS v1.17을 사용하고 있으므로, Kubeflow v1.2 기준으로 설치 과정을 소개한다.
 
- ![](https://user-images.githubusercontent.com/60086878/103150473-eb778d00-47b7-11eb-9c31-438418569d62.png)
+ ![](https://user-images.githubusercontent.com/60086878/103150473-eb778d00-47b7-11eb-9c31-438418569d62.png){: .align-center}
 
 1.Bastion Server에서 Kubeflow GitHub에서 [Release v1.2.0](https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz)을 다운로드 한다.
  
@@ -510,7 +512,7 @@ ID : admin@kubeflow.org
 PW : 12341234
 ```
 
-![](https://user-images.githubusercontent.com/60086878/103151073-0f3dd180-47be-11eb-9c8e-3fa9c64ce30a.png)
+![](https://user-images.githubusercontent.com/60086878/103151073-0f3dd180-47be-11eb-9c8e-3fa9c64ce30a.png){: .align-center}
 
 
 
