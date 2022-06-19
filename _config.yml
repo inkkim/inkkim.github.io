@@ -19,7 +19,7 @@ locale                   : "ko"
 title                    : "Eliot's DB"
 title_separator          : "-"
 subtitle                 : "Since 2020"
-name                     : "김인규"
+name                     : "Eliot"
 description              : "새로 알게 된 내용을 꾸준히 기록합니다."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
@@ -95,9 +95,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "김인규"
+  name             : "Eliot"
   avatar           : "/assets/images/Profile_Jekyll.jpeg"
-  bio              : "새로 알게 된 내용을 꾸준히 기록합니다"
+  bio              : "새로 알게된 내용을 꾸준히 기록합니다."
   location         : "Seoul, South Korea"
   email            : 
   links:
@@ -106,27 +106,27 @@ author:
       icon: "fas fa-fw fa-paper-plane"
       #icon: "fas fa-fw fa-envelope-square"
       url: "mailto:sda1547@gmail.com"
-    - label: "GitBook"
-      icon: "fas fa-fw fa-book"
-      #icon: "fas fa-fw fa-link"
-      url: "https://sda1547.gitbook.io/data-engineering/"
+    # - label: "GitBook"
+    #   icon: "fas fa-fw fa-book"
+    #   #icon: "fas fa-fw fa-link"
+    #   url: "https://sda1547.gitbook.io/data-engineering/"
     - label: "Linkedin"
     # - label: "Twitter"
       icon: "fab fa-fw fa-linkedin"
       # icon: "fab fa-fw fa-twitter-square"
-      url: "https://www.linkedin.com/in/inkyu-kim-231564199/"
-    - label: "RocketPunch"
-      icon: "fas fa-fw fa-rocket"
-      url: "https://www.rocketpunch.com/@sda1547"
-    - label: "Facebook" # GitBook
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://sda1547.gitbook.io/data-engineering/"
+      url: "https://www.linkedin.com/in/in-kyu-kim-231564199/"
+    # - label: "RocketPunch"
+    #   icon: "fas fa-fw fa-rocket"
+    #   url: "https://www.rocketpunch.com/@sda1547"
+    # - label: "Facebook" # GitBook
+    #   icon: "fab fa-fw fa-facebook-square"
+    #   # url: "https://sda1547.gitbook.io/data-engineering/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/inkkim"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+    # - label: "Instagram"
+    #   icon: "fab fa-fw fa-instagram"
+    #   # url: "https://instagram.com/"
 
 # Site Footer
 footer:
@@ -152,12 +152,12 @@ footer:
     - label: "Linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/inkyu-kim-231564199/"
-    - label: "GitBook"
-      icon: "fas fa-fw fa-book"
-      url: "https://sda1547.gitbook.io/data-engineering/"
-    - label: "RocketPunch"
-      icon: "fas fa-fw fa-rocket"
-      url: "https://www.rocketpunch.com/@sda1547"
+    # - label: "GitBook"
+    #   icon: "fas fa-fw fa-book"
+    #   url: "https://sda1547.gitbook.io/data-engineering/"
+    # - label: "RocketPunch"
+    #   icon: "fas fa-fw fa-rocket"
+    #   url: "https://www.rocketpunch.com/@sda1547"
 
 # OpenGraph default Image
 og_image: "https://user-images.githubusercontent.com/60086878/103473084-e0d07f80-4dd7-11eb-9fff-57afe4f80383.jpeg"
@@ -307,7 +307,7 @@ defaults:
         overlay_color: "#333"
           # overlay_image: "/assets/images/jonatan-pie-xgTMSz6kegE-unsplash.jpg"
       sidebar:
-        title: 🗂카테고리
+        title: 🗂 카테고리
         nav: 'sidebar-contents'
   
   - scope:
@@ -323,6 +323,17 @@ defaults:
  
   - scope:
       path: "_posts/Data Engineering"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+
+  - scope:
+      path: "_posts/Database"
       type: posts
     values:
       layout: single
@@ -355,7 +366,29 @@ defaults:
       related: true
 
   - scope:
+      path: "_posts/Docker"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+
+  - scope:
       path: "_posts/Python"
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+  
+  - scope:
+      path: "_posts/Shell Script"
       type: posts
     values:
       layout: single

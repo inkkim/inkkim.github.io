@@ -10,8 +10,8 @@ readtime: true
 excerpt: "이번에는 지난 엔코아 데이터과학자 양성과정에서 진행한 서울특별시 공공자전거 따릉이 잔여대수 예측 프로젝트를 진행하면서 사용했던 Kubeflow라는 툴에 대해 소개하고자 한다."
 tags:
   - AWS
-  - EKS
   - Kubeflow
+  - Kubernetes
 header:
   teaser: https://user-images.githubusercontent.com/60086878/111656124-9777c400-884d-11eb-9c9d-6bedbdaf1417.png
 ---

@@ -1,40 +1,44 @@
 # main links
 main:
-  - title: "🧑🏻‍💻소개"
+  - title: "🧑🏻‍💻 소개"
     url: "/about/"
-  - title: "🗂카테고리"
+  - title: "🗂 카테고리"
     url: "/categories/"
-  - title: "📜게시글"
+  - title: "📜 게시글"
     url: "/year-archive/"
-  - title: "🏷태그"
+  - title: "🏷 태그"
     url: "/tags/"
-  - title: "📁폴더"
+  - title: "📁 폴더"
     url: "/page-archive/"
-  - title: "🔍검색"
+  - title: "🔍 검색"
     url: "/search/"
   
 sidebar-contents:
-  - title: "✔️Programming"
+  - title: "🔖 Language"
     children:
-      - title: "▪️Python"
+      - title: "◼️ Python"
         url: /categories/#python
-  - title: "✔️Infra"
+      - title: "◼️ Shell Script"
+        url: /categories/#shell-script
+  - title: "🔖 Container"
     children:
-      - title: "▪️Data Engineering"
-        url: /categories/#data-engineering
-      - title: "▪️Kubernetes"
+      - title: "◼️ Kubernetes"
         url: /categories/#kubernetes
-  - title: "✔️Big Data"
+      - title: "◼️ Docker"
+        url: /categories/#docker
+  - title: "🔖 Big Data"
     children:
-      - title: "▪️Hadoop"
+      - title: "◼️ Hadoop"
         url: /categories/#hadoop
-      - title: "▪️Splunk"
+      - title: "◼️ Splunk"
         url: /categories/#splunk
-      - title: "▪️BI"
+      - title: "◼️ BI"
         url: /categories/#bi
-  - title: "✔️Etc"
+      - title: "◼️ Data Engineering"
+        url: /categories/#data-engineering
+  - title: "🔖 Etc"
     children:
-      - title: "▪️Etc" 
+      - title: "◼️ Etc" 
         url: /categories/#etc
   
 # - title: "About"

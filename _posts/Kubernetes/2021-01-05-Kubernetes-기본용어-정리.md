@@ -10,7 +10,6 @@ excerpt: "CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어
 readtime: true
 tags:
   - Kubernetes
-  - CKA
   - 작성중
 header:
   teaser: https://user-images.githubusercontent.com/60086878/111655932-66978f00-884d-11eb-813a-a5302871ede9.png

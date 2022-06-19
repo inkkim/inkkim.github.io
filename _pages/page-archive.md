@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "📁폴더"
+title: "📁 폴더"
 permalink: /page-archive/
 author_profile: True
 ---

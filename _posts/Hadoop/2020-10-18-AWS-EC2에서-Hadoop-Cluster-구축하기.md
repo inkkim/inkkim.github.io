@@ -10,8 +10,9 @@ readtime: true
 excerpt: "AWS EC2 환경에서 Hadoop Cluster를 구축하는 방법을 소개한다."
 tags:
   - 빅데이터
-  - 분산처리
   - 데이터플랫폼
+  - Hadoop
+  - AWS
 header:
   teaser: https://user-images.githubusercontent.com/60086878/96373727-59e11300-11a9-11eb-8e90-87e63b3c40b2.jpg
 ---

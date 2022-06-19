@@ -9,10 +9,8 @@ toc_sticky: true
 excerpt: "Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다."
 readtime: true
 tags:
-  - Pub/Sub
-  - Cloud Function
-  - BigQuery
-  - GKE
+  - 데이터 파이프라인
+  - 클라우드
 ---
 
 # 들어가며

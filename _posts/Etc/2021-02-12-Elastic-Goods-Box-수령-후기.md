@@ -9,7 +9,7 @@ toc_sticky: true
 readtime: true
 excerpt: "최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다."
 tags:
-  - Elastic
+  - Elasticsearch
 header:
   teaser: https://user-images.githubusercontent.com/60086878/111654993-9befad00-884c-11eb-8fdd-05838189d9a1.png
 ---

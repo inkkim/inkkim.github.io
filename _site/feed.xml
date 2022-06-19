@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-19T00:54:12+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>김인규</name></author><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-19T15:26:42+09:00</updated><id>/feed.xml</id><title type="html">Eliot’s DB</title><subtitle>새로 알게 된 내용을 꾸준히 기록합니다.</subtitle><author><name>Eliot</name></author><entry><title type="html">Data Discovery Tool 비교</title><link href="/data%20engineering/Data-Discovery-Tool-%EB%B9%84%EA%B5%90/" rel="alternate" type="text/html" title="Data Discovery Tool 비교" /><published>2021-05-02T00:00:00+09:00</published><updated>2021-05-02T00:00:00+09:00</updated><id>/data%20engineering/Data-Discovery-Tool-%EB%B9%84%EA%B5%90</id><content type="html" xml:base="/data%20engineering/Data-Discovery-Tool-%EB%B9%84%EA%B5%90/">&lt;h1 id=&quot;data-discovery-tool&quot;&gt;Data Discovery Tool&lt;/h1&gt;
+
+&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;T Academy - 데이터 엔지니어링 기초&lt;/a&gt;&lt;/p&gt;</content><author><name>Eliot</name></author><category term="Data Engineering" /><category term="오픈소스" /><category term="데이터" /><summary type="html">Data Management Tool인 Apache Atlas와 Apache Amundsen을 비교합니다.</summary></entry><entry><title type="html">RDBMS와 NoSQL의 차이</title><link href="/database/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9C%A0%ED%98%95/" rel="alternate" type="text/html" title="RDBMS와 NoSQL의 차이" /><published>2021-03-22T00:00:00+09:00</published><updated>2021-03-22T00:00:00+09:00</updated><id>/database/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9C%A0%ED%98%95</id><content type="html" xml:base="/database/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9C%A0%ED%98%95/">&lt;h1 id=&quot;데이터베이스의-유형&quot;&gt;데이터베이스의 유형&lt;/h1&gt;
+
+&lt;h2 id=&quot;파일-시스템file-system&quot;&gt;파일 시스템(File System)&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/112007761-42e38a00-8b68-11eb-804b-ba58a414fc2e.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##&lt;/p&gt;
+
+&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;PostgreSQL로 시작하는 SQL 코딩입문&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Database" /><category term="RDBMS" /><category term="NoSQL" /><category term="Database" /><summary type="html">RDBMS와 NoSQL의 차이에 대해 알아본다.</summary></entry><entry><title type="html">Hadoop Ecosystem 이란?</title><link href="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/" rel="alternate" type="text/html" title="Hadoop Ecosystem 이란?" /><published>2021-03-17T00:00:00+09:00</published><updated>2021-03-17T00:00:00+09:00</updated><id>/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80</id><content type="html" xml:base="/hadoop/Hadoop-Ecosystem%EC%9D%B4%EB%9E%80/">&lt;h1 id=&quot;hadoop-ecosystem-이란&quot;&gt;Hadoop Ecosystem 이란?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/111483142-de938580-8777-11eb-92c6-7527eeb4fdeb.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
@@ -154,7 +168,7 @@
   &lt;li&gt;&lt;a href=&quot;https://www.analyticsvidhya.com/blog/2020/10/introduction-hadoop-ecosystem/&quot;&gt;Introduction to the Hadoop Ecosystem for Big Data and Data Engineering&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;엔터프라이즈 데이터 플랫폼 구축&lt;/li&gt;
   &lt;li&gt;스파크 완벽 가이드&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Hadoop" /><category term="빅데이터" /><category term="분산처리" /><category term="Hadoop Ecosystem" /><summary type="html">빅데이터 플랫폼 Hadoop의 Ecosystem을 소개한다.</summary></entry><entry><title type="html">Elastic Goods Box 수령 후기</title><link href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="Elastic Goods Box 수령 후기" /><published>2021-02-12T00:00:00+09:00</published><updated>2021-02-12T00:00:00+09:00</updated><id>/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/">&lt;h1 id=&quot;elastic-cloud&quot;&gt;Elastic Cloud&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Hadoop" /><category term="빅데이터" /><category term="데이터플랫폼" /><category term="Hadoop" /><summary type="html">빅데이터 플랫폼 Hadoop의 Ecosystem을 소개한다.</summary></entry><entry><title type="html">Elastic Goods Box 수령 후기</title><link href="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/" rel="alternate" type="text/html" title="Elastic Goods Box 수령 후기" /><published>2021-02-12T00:00:00+09:00</published><updated>2021-02-12T00:00:00+09:00</updated><id>/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0</id><content type="html" xml:base="/etc/Elastic-Goods-Box-%EC%88%98%EB%A0%B9-%ED%9B%84%EA%B8%B0/">&lt;h1 id=&quot;elastic-cloud&quot;&gt;Elastic Cloud&lt;/h1&gt;
 
 &lt;p&gt;작년에 프로젝트 때 Elasticsearch와 Kibana를 사용할 기회가 있었습니다. 그중에서도 Kibana를 이용해서 서울특별시 내 따릉이 잔여대수 현황을 시각화 하기 위한 목적으로 사용했습니다. 이때 지도 시각화 패널에 Zoom 기능 제한이 있어 상용 기능인 X-Pack에 대한 권한이 있어야 했습니다. 고민하던 중 찾아보니 마침 작년에 Elastic Cloud 서울 리전이 런칭됨에 따라 X-Pack 기능까지 포함하여 2주간 무료로 체험판을 경험해볼 수 있었습니다. ELK Stack이 모두 갖춰진 인스턴스가 뚝딱 만들어지니 다시 설치할 필요없이 너무 편리하게 체험해볼 수 있어서 좋았습니다.&lt;/p&gt;
 
@@ -246,7 +260,7 @@
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/107775693-f85e3900-6d83-11eb-84f7-eb0646f4ca07.jpg&quot; alt=&quot;20210206_150456&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;예쁜 선물 주셔서 감사합니다~🙏 잘 쓸게요 Elastic!👍&lt;/p&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="Elastic" /><summary type="html">최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다.</summary></entry><entry><title type="html">Splunk 분산환경 구축하기</title><link href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 분산환경 구축하기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;splunk-배포방식&quot;&gt;Splunk 배포방식&lt;/h1&gt;
+&lt;p&gt;예쁜 선물 주셔서 감사합니다~🙏 잘 쓸게요 Elastic!👍&lt;/p&gt;</content><author><name>Eliot</name></author><category term="Etc" /><category term="Elasticsearch" /><summary type="html">최근 Elasticsearch Cloud 체험판을 이용한 후 설문조사에 참여하여 Elastic Korea 측으로부터 Elastic Goods Box를 선물 받았습니다.</summary></entry><entry><title type="html">Splunk 분산환경 구축하기</title><link href="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 분산환경 구축하기" /><published>2021-01-20T00:00:00+09:00</published><updated>2021-01-20T00:00:00+09:00</updated><id>/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%EB%B6%84%EC%82%B0%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;splunk-배포방식&quot;&gt;Splunk 배포방식&lt;/h1&gt;
 
 &lt;p&gt;Splunk의 주요 컴포넌트는 &lt;strong&gt;검색&lt;/strong&gt;을 담당하는 Search Head, &lt;strong&gt;수집&lt;/strong&gt;을 담당하는 Fowarder, &lt;strong&gt;저장&lt;/strong&gt;을 담당하는 Indexer가 존재합니다. 이 컴포넌트들을 어떤 형태로 배포하는지에 따라 다음과 같이 Splunk의 배포방식을 구분합니다.&lt;/p&gt;
 
@@ -783,7 +797,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Whatisdistributedsearch&quot;&gt;About distributed search&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.splunk.com/Documentation/Splunk/8.1.1/DistSearch/Overviewofconfiguration&quot;&gt;Deploy a distributed search environment&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Splunk" /><category term="Splunk" /><category term="Clustering" /><summary type="html">빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.</summary></entry><entry><title type="html">Splunk 톺아보기</title><link href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 톺아보기" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/">&lt;h1 id=&quot;splunk란&quot;&gt;Splunk란?&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Splunk" /><category term="Splunk" /><category term="빅데이터" /><summary type="html">빅데이터 플랫폼 Splunk의 분산환경 구축으로 검색 성능과 안전성을 향상시키는 방법을 알아봅니다.</summary></entry><entry><title type="html">Splunk 톺아보기</title><link href="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/" rel="alternate" type="text/html" title="Splunk 톺아보기" /><published>2021-01-19T00:00:00+09:00</published><updated>2021-01-19T00:00:00+09:00</updated><id>/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0</id><content type="html" xml:base="/splunk/Splunk-%ED%86%BA%EC%95%84%EB%B3%B4%EA%B8%B0/">&lt;h1 id=&quot;splunk란&quot;&gt;Splunk란?&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/104919033-f7322a00-59d8-11eb-97d8-cef888baa5fa.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
@@ -990,7 +1004,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.valence.co.kr/images/rk-0068/Splunk_new.pdf&quot;&gt;Splunk 소개&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Splunk" /><category term="Splunk" /><category term="SIEM" /><category term="UEBA" /><summary type="html">다양한 로그 데이터 분석으로 IT운영, 보안, IoT에 특화된 머신 빅데이터 플랫폼 Splunk에 대해 알아봅니다.</summary></entry><entry><title type="html">Kubernetes 기본용어 정리</title><link href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="Kubernetes 기본용어 정리" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-05T00:00:00+09:00</updated><id>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">&lt;h1 id=&quot;️들어가며&quot;&gt;🤸‍♂️들어가며&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Splunk" /><category term="Splunk" /><summary type="html">다양한 로그 데이터 분석으로 IT운영, 보안, IoT에 특화된 머신 빅데이터 플랫폼 Splunk에 대해 알아봅니다.</summary></entry><entry><title type="html">Kubernetes 기본용어 정리</title><link href="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/" rel="alternate" type="text/html" title="Kubernetes 기본용어 정리" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-05T00:00:00+09:00</updated><id>/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC</id><content type="html" xml:base="/kubernetes/Kubernetes-%EA%B8%B0%EB%B3%B8%EC%9A%A9%EC%96%B4-%EC%A0%95%EB%A6%AC/">&lt;h1 id=&quot;️들어가며&quot;&gt;🤸‍♂️들어가며&lt;/h1&gt;
 &lt;p&gt;이 글은 Kubernetes에 대해 공부한 것을 기록하기 위해 작성되었습니다. 혹시 틀린 부분이 있다면 언제든지 댓글을 남겨주세요 😊&lt;/p&gt;
 
 &lt;h1 id=&quot;kubernetes란-&quot;&gt;⛴Kubernetes란 ?&lt;/h1&gt;
@@ -1115,7 +1129,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;&lt;a href=&quot;https://kubernetes.io/docs/home/&quot;&gt;Kubernetes Documentation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.redhat.com/ko/topics/containers/what-is-kubernetes&quot;&gt;쿠버네티스(Kubernetes)란? 개념, 성능, 사용방법 및 차이점&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://subicura.com/2019/05/19/kubernetes-basic-1.html&quot;&gt;쿠버네티스 시작하기 - Kubernetes란 무엇인가?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Kubernetes" /><category term="Kubernetes" /><category term="CKA" /><category term="작성중" /><summary type="html">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.</summary></entry><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Kubernetes" /><category term="Kubernetes" /><category term="작성중" /><summary type="html">CKA 시험을 준비하면서 공부하는 Kubernetes의 기본 용어를 정리해본다.</summary></entry><entry><title type="html">Twitter API로 GCP Pipeline 구축하기</title><link href="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="Twitter API로 GCP Pipeline 구축하기" /><published>2021-01-02T00:00:00+09:00</published><updated>2021-01-02T00:00:00+09:00</updated><id>/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0</id><content type="html" xml:base="/data%20engineering/Twitter-API%EB%A1%9C-GCP-Pipeline-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/">&lt;h1 id=&quot;들어가며&quot;&gt;들어가며&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103449597-aa1e3a80-4ced-11eb-8c6b-592cbe5f8a67.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 T Academy의 ‘&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt;’ 강좌에 대해 정리하는 글입니다. 실습의 대략적인 개요는 다음과 같습니다.&lt;/p&gt;
@@ -1437,7 +1451,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;p&gt;이 글은 2020.09.23(목)에 진행된 제81차 토크ON세미나에서 SOCAR의 김상우님이 강의해주신 내용을 토대로 리마인드 차원에서 작성한 것입니다. Hands-on 강의 동영상과 함께 실습을 진행해보고자 한다면 &lt;a href=&quot;https://tacademy.skplanet.com/frontMain.action&quot;&gt;T Academy&lt;/a&gt;에서 회원가입 후 &lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;데이터 엔지니어링 기초&lt;/a&gt; 강좌에 수강신청하여 진행해보실 수 있습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;T Academy - 데이터 엔지니어링 기초&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Data Engineering" /><category term="Pub/Sub" /><category term="Cloud Function" /><category term="BigQuery" /><category term="GKE" /><summary type="html">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.</summary></entry><entry><title type="html">파이썬 접근 제어자에 대하여</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="alternate" type="text/html" title="파이썬 접근 제어자에 대하여" /><published>2020-12-31T00:00:00+09:00</published><updated>2020-12-31T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/">&lt;h1 id=&quot;접근-제어자&quot;&gt;접근 제어자&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://tacademy.skplanet.com/live/player/onlineLectureDetail.action?seq=187#sec2&quot;&gt;T Academy - 데이터 엔지니어링 기초&lt;/a&gt;&lt;/p&gt;</content><author><name>Eliot</name></author><category term="Data Engineering" /><category term="데이터 파이프라인" /><category term="클라우드" /><summary type="html">Twitter Streaming Data를 이용한 GCP Pipeline을 구축해본다.</summary></entry><entry><title type="html">파이썬 접근 제어자에 대하여</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/" rel="alternate" type="text/html" title="파이썬 접근 제어자에 대하여" /><published>2020-12-31T00:00:00+09:00</published><updated>2020-12-31T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%91%EA%B7%BC-%EC%A0%9C%EC%96%B4%EC%9E%90%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC/">&lt;h1 id=&quot;접근-제어자&quot;&gt;접근 제어자&lt;/h1&gt;
 
 &lt;p&gt;객체지향 기반 프로그래밍에서는 &lt;strong&gt;접근 제어자&lt;/strong&gt; 즉, &lt;strong&gt;private&lt;/strong&gt;, &lt;strong&gt;protected&lt;/strong&gt;, &lt;strong&gt;public&lt;/strong&gt;을 이용한 &lt;strong&gt;정보 은닉&lt;/strong&gt;을 통해 외부로부터 데이터를 보호한다. 이를 통해 객체의 속성과 메소드를 하나로 묶고, 실제 구현 내용의 일부는 외부에 감추어 은닉할 수 있는 &lt;strong&gt;캡슐화&lt;/strong&gt;가 가능한다. 각각의 접근 제어자는 다음과 같은 의미를 가진다.&lt;/p&gt;
 
@@ -1528,10 +1542,10 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Name: &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_roll_branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Student2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;김인규&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;학부생&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;바이오메디컬학과&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Student2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Eliot&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;학부생&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;바이오메디컬학과&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_branch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;컴퓨터과학과&quot;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;details&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;김인규&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Eliot&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;Roll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;학부생&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;Branch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;컴퓨터과학과&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1598,7 +1612,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@YSR/access-modifiers-in-python-public-private-protected-fe5f923bd914&quot;&gt;Access Modifiers in Python — Public, Private, &amp;amp; Protected&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/access-modifiers-in-python-public-private-and-protected/&quot;&gt;Access Modifiers in Python : Public, Private and Protected&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.fun-coding.org/PL&amp;amp;OOP1-5.html&quot;&gt;예제로 이해하는 객체지향 문법 (public, private, protected)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="객체지향" /><category term="Class" /><summary type="html">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.</summary></entry><entry><title type="html">파이썬 Counter 사용법</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="파이썬 Counter 사용법" /><published>2020-12-30T00:00:00+09:00</published><updated>2020-12-30T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/">&lt;h1 id=&quot;완주하지-못한-선수&quot;&gt;완주하지 못한 선수&lt;/h1&gt;
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Python" /><category term="Python" /><summary type="html">객체지향 기반 프로그래밍에서는 접근 제어자 즉, private, protected, public을 이용한 정보 은닉을 통해 외부로부터 데이터를 보호한다.</summary></entry><entry><title type="html">파이썬 Counter 사용법</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/" rel="alternate" type="text/html" title="파이썬 Counter 사용법" /><published>2020-12-30T00:00:00+09:00</published><updated>2020-12-30T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-Counter-%EC%82%AC%EC%9A%A9%EB%B2%95/">&lt;h1 id=&quot;완주하지-못한-선수&quot;&gt;완주하지 못한 선수&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103338570-22081d00-4ac2-11eb-9c1e-bc934b7dd499.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
@@ -1725,281 +1739,4 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;web server at http://12
 &lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/collections.html#collections.Counter&quot;&gt;collections Container datatypes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="Counter" /><category term="collections" /><summary type="html">파이썬 collections 패키지의 Counter() 메소드 사용법과 활용사례를 소개한다.</summary></entry><entry><title type="html">Vi 사용법 완벽 가이드</title><link href="/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C/" rel="alternate" type="text/html" title="Vi 사용법 완벽 가이드" /><published>2020-12-28T00:00:00+09:00</published><updated>2020-12-28T00:00:00+09:00</updated><id>/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C</id><content type="html" xml:base="/etc/Vi-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%99%84%EB%B2%BD-%EA%B0%80%EC%9D%B4%EB%93%9C/">&lt;h1 id=&quot;vi이란-&quot;&gt;Vi이란 ?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103211968-f7e11e80-494c-11eb-83fd-06d64ed07917.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Photo by Luca Bravo on Unsplash&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Linux나 Unix 유저라면 한 번쯤은 vi editor를 사용해본 경험이 있을 것이다. vi editor란 Unix-like 운영체제 용으로 만든 텍스트 편집기를 말한다. Vi와 더불어 Vi IMproved의 약자인 Vim이라는 기존 vi editor의 성능을 개선한 확장판이 있다. 이 editor들은 터미널에서 바로 파일에 접근하여 내용을 수정할 수 있어 주로 서버, 인프라 엔지니어들이 자주 사용하는 편집기로 대부분의 Linux, Unix OS에 기본 editor로 설치되어 있다.&lt;/p&gt;
-
-&lt;p&gt;vi는 라인 편집기 개념에 기반하여 GUI에 익숙한 사용자들이 처음 이 편집기를 접하는 사람들은 상당히 괴랄한 사용법에 혀를 내두르곤 한다. 사용법을 모르면 입력이 되지 않아 키보드나 컴퓨터가 고장났다고 생각할 수도 있고, 해당 화면을 빠져나오지 못해 곤경에 처할 수도 있다. 이처럼 꽤 높은 진입장벽이 있는 툴임에도 불구하고 나름 전통있는 IDE로서 개발자 친화적인 다양한 단축키를 제공하고 있어서 꽤 두터운 마니아층을 보유하고 있다. 그래서 Visual Studio나 PyCharm과 같이 편집방식으로 vi 인터페이스를 제공하는 IDE들이 많다.&lt;/p&gt;
-
-&lt;p&gt;최근 데이터 플랫폼 공부를 하면서 부쩍 vi를 사용할 일들이 많아졌다. vi의 최대 장점은 터미널에서 바로 파일에 접근하여 수정할 수 있다는 점이 아닐까 싶다. 특히 yaml이나 config 파일을 수정할 때 vi로 바로 접근해서 필요한 부분을 고칠 때 유용하다. XWindow가 마련된 환경이면 다른 IDE를 통해 수정할 수도 있겠지만 매번 파일 불러오는 것도 번거로운 작업일 뿐더러, 오롯이 CLI 환경만 제공되는 서버라고 한다면 vi는 최선의 선택이 될 수 밖에 없다. 데이터 인프라를 구축할 때에도 대부분 서버에서 작업이 이뤄지기 때문에 vi 사용에 능숙해야 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103214143-06cacf80-4953-11eb-90be-fb6d0a0c8748.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;vi을 재밌게 익혀보고자 한다면 여기 &lt;a href=&quot;https://vim-adventures.com&quot;&gt;VIM Adventures&lt;/a&gt;라는 Vim 단축키를 이용한 튜토리얼 게임이 있다.&lt;/p&gt;
-
-&lt;h1 id=&quot;사용법&quot;&gt;사용법&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103212636-b0f42880-494e-11eb-816b-027ddbc8905d.png&quot; alt=&quot;image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;출처 Wikipedia&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;vi editor는 모든 기능이 영문 키보드 안에 집중되어 있다. 심지어 화살표 키 마저도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hjkl&lt;/code&gt;가 대체하고 있어 손가락의 동선을 최소화 한다. 그래서 vi 매니아 층을 겨냥한 해피해킹과 같이 아예 방향키가 없는 키맵을 가진 키보드도 있다. 이렇게 매니아 층이 두터운 이유는 vi에 숙달되면 매우 강력한 편집기로써 사용할 수 있기 때문이다. 하지만 숙달되기까지 꽤 오랜 시간이 걸린다는 점은 가장 큰 단점이다.&lt;/p&gt;
-
-&lt;p&gt;vi는 기본적으로 편집이 제한된 Command Mode로 시작한다. 여기서 내용을 수정하기 위해서는 다음 명령어를 통해 Insert Mode로 전환하여야 한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; : 커서 다음(오른쪽)에 입력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt; : 행 마지막 부분에 입력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;i&lt;/code&gt; : 커서 앞(왼쪽)에 입력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;I&lt;/code&gt; : 행 처음 부분에 입력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o&lt;/code&gt; : 커서 밑에 빈 행을 추가하여 입력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O&lt;/code&gt; : 커서 위에 빈 행을 추가하여 입력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; : 커서에 있는 글자를 지우고 입력&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Insert Mode로 전환하고 나서야 비로소 편집이 가능하며 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esc&lt;/code&gt; 키를 통해 다시 Command Mode로 돌아갈 수 있다. 또한 Command Mode에서는 다음과 같은 기본적인 명령을 지원한다.&lt;/p&gt;
-
-&lt;h2 id=&quot;이동&quot;&gt;이동&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;h&lt;/code&gt; : 왼쪽 방향키&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;j&lt;/code&gt; : 아래쪽 방향키&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k&lt;/code&gt; : 위쪽 방향키&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;l&lt;/code&gt; : 오른쪽 방향키&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;w&lt;/code&gt; : 다음 단어의 첫 글자로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt; : 이전 단어의 첫 글자로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;^&lt;/code&gt; : 행의 첫 글자로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; : 행의 마지막 글자로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gg&lt;/code&gt; : 처음 행으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G&lt;/code&gt; : 마지막 행으로 가기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(&lt;/code&gt; : 이전 문장으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;)&lt;/code&gt; : 다음 문장으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{&lt;/code&gt; : 이전 문단으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}&lt;/code&gt; : 다음 문단으로 이동&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt; : 오른쪽으로 들여쓰기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt; : 들여쓰기 해제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;삭제&quot;&gt;삭제&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; : 커서 다음 글자 잘라내기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dd&lt;/code&gt; : 커서가 위치한 행 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dw&lt;/code&gt; : 커서 포함 해당 단어 끝까지 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;db&lt;/code&gt; : 커서 미포함 해당 단어 시작까지 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d0&lt;/code&gt; : 커서 미포함 행 시작까지 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d$&lt;/code&gt; : 커서 포함 행 끝까지 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dgg&lt;/code&gt; : 커서가 위치한 행 포함 문서 첫 행까지 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dG&lt;/code&gt; : 커서가 위치한 행 포함 문서 마지막 행까지 삭제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;복사&quot;&gt;복사&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yy&lt;/code&gt; : 커서가 위치한 행 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yw&lt;/code&gt; : 커서 포함 해당 단어 끝까지 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yb&lt;/code&gt; : 커서 미포함 해당 단어 시작까지 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y0&lt;/code&gt; : 커서 미포함 행 시작까지 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y$&lt;/code&gt; : 커서 포함 행 끝까지 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ygg&lt;/code&gt; : 커서가 위치한 행 포함 문서 첫 행까지 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yG&lt;/code&gt; : 커서가 위치한 행 포함 문서 마지막 행까지 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; : 커서 다음에 붙여넣기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;P&lt;/code&gt; : 커서 이전에 붙여넣기&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;visual-mode&quot;&gt;Visual Mode&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;v&lt;/code&gt; : 문자열 단위로 선택 가능한 Visual Mode로 전환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;V&lt;/code&gt; : 문장 단위로 선택 가능한 Visual Line Mode로 전환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~&lt;/code&gt; : 선택 영역 대/소문자 전환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;d&lt;/code&gt; : 선택 영역 삭제&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;c&lt;/code&gt; : 선택 영역 삭제 후 Insert Mode로 전환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; : 선택 영역 복사&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esc&lt;/code&gt; : Visual (Line) Mode 해제&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;북마크&quot;&gt;북마크&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m{a-zA-Z}&lt;/code&gt; : 해당 커서를 북마크로 설정&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:marks&lt;/code&gt; : 북마크 리스트 확인&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;₩{a-zA-Z}&lt;/code&gt; : 기록된 북마크로 이동&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;기타&quot;&gt;기타&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r{글자}&lt;/code&gt; : 커서에 위치한 글자 대체&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;R&lt;/code&gt; : 글자 대체모드&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/문자열&lt;/code&gt; : 앞에서부터 문자열 찾기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?문자열&lt;/code&gt; : 뒤에서부터 문자열 찾기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt; : 다음 검색결과&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;N&lt;/code&gt; : 이전 검색결과&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%s/old/new&lt;/code&gt; : 각 행의 처음 나오는 old를 new로 치환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%/old/new/g&lt;/code&gt; : 문서 내 모든 old를 new로 치환&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%/old/new/gc&lt;/code&gt; : 문서 내 모든 old를 new로 치환하되 각 old마다 치환할 것인지 물음&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;u&lt;/code&gt; : 이전으로 되돌리기 (Undo)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + r&lt;/code&gt; : 되돌린 작업 재실행 (Redo)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZZ&lt;/code&gt; : 저장 후 종료 (= &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZQ&lt;/code&gt; : 강제 종료 (= &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;🍯 정보:&lt;/strong&gt; 위 명령어 앞에 숫자와 함께 사용하면 같이 입력된 숫자만큼 해당 명령어가 실행된다. 예를 들어, 3yy는 커서가 위치한 행을 포함하여 아래 3줄까지 복사가 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;또한 Command Mode에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt; 키와 함께 다음과 같은 기본적인 명령을 지원한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q&lt;/code&gt; : 종료 (아무런 수정이 일어나지 않아야 가능)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:q!&lt;/code&gt;: 강제종료&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:w&lt;/code&gt; : 저장&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt;: 저장 후 종료&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:syntax on&lt;/code&gt; : 문법 강조효과&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:set number&lt;/code&gt; : 행 번호 보이기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:set nonumber&lt;/code&gt; : 행 번호 숨기기&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:cd&lt;/code&gt; : 현재 디렉토리 출력&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:terminal&lt;/code&gt; : 분할 화면으로 터미널 창 띄우기&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;추가예정&quot;&gt;추가예정&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Vim Plugin&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Vi&quot;&gt;Wikipedia vi&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.maketecheasier.com/cheatsheet/vim-keyboard-shortcuts/&quot;&gt;VIM Keyboard Shortcuts Cheatsheet&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>김인규</name></author><category term="Etc" /><category term="Vim" /><category term="단축키" /><summary type="html">Linux나 Unix 유저라면 한 번쯤은 vi editor를 사용해본 경험이 있을 것이다. vi editor란 Unix-like 운영체제 용으로 만든 텍스트 편집기를 말한다. Vi와 더불어 Vi IMproved의 약자인 Vim이라는 기존 vi editor의 성능을 개선한 확장판이 있다.</summary></entry><entry><title type="html">파이썬 리스트 복사하기</title><link href="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/" rel="alternate" type="text/html" title="파이썬 리스트 복사하기" /><published>2020-12-27T00:00:00+09:00</published><updated>2020-12-27T00:00:00+09:00</updated><id>/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC</id><content type="html" xml:base="/python/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%B3%B5%EC%82%AC/">&lt;h1 id=&quot;파이썬-리스트-복사-어떻게-할까&quot;&gt;파이썬 리스트 복사 어떻게 할까?&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172222-58ad2000-4895-11eb-8b48-af1a20a62d1d.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Photo by Zdeněk Macháček on Unsplash&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;오늘은 상당히 기초적이면서도 쉽게 실수 할 수 있는 부분을 다뤄보고자 한다. 바로 나를 포함한 초보자들이 실수할 수 있는 파이썬 리스트를 다른 리스트에 복사하는 방법이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;그냥-새로운-변수에-정의해주면-되는거-아냐-&quot;&gt;그냥 새로운 변수에 정의해주면 되는거 아냐 🤔❓&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; list2 = list1
-
-&amp;gt;&amp;gt;&amp;gt; print(list1)
-[1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; print(list2)
-[1, 2, 3, 4]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위 예제의 결과만 보면 파이썬이 워낙 간편하다보니 별 의심없이 잘 복사됐다고 생각할 수 있다. 하지만 정확히 말하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;의 메모리 주소값을 복사한 것이다. 즉, 같은 메모리를 참조하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;이 수정되면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;도 동시에 수정된다. 하지만 이것을 간과하고 열심히 코드를 짜다보면 나중에 깊은 오류의 구렁텅이에 빠질 수 있다. 혹시나 그런 오류에 빠진 사람들이 이 글을 보고 도움이 되었으면 좋겠다 :)&lt;/p&gt;
-
-&lt;h2 id=&quot;아니-이게-왜-안돼-&quot;&gt;아니 이게 왜 안돼 🐥❓&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; list2 = list1
-
-&amp;gt;&amp;gt;&amp;gt; print('list1 :', list1, '/ id :', id(list1))
-list1 : [1, 2, 3, 4] / id : 4552076160
-&amp;gt;&amp;gt;&amp;gt; print('list2 :', list2, '/ id :', id(list2))
-list2 : [1, 2, 3, 4] / id : 4552076160
-
-&amp;gt;&amp;gt;&amp;gt; list1[0] = 11
-
-&amp;gt;&amp;gt;&amp;gt; print('list1 :', list1)
-list1 : [11, 2, 3, 4] 
-&amp;gt;&amp;gt;&amp;gt; print('list2 :', list2)
-list2 : [11, 2, 3, 4]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172728-cad33400-4898-11eb-9756-85ffe931a999.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;파이썬 객체의 메모리 주소를 확인하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id()&lt;/code&gt; 함수를 이용해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;의 주소값을 확인해보면 두 리스트 모두 4552076160로 같은 주소값을 가지는 것을 확인할 수 있다. 엄밀히 말해서 list2는 list1의 분신과 같은 존재이고, 일반적으로 우리가 원하는 복사는 이뤄지지 않은 것이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;그럼-어떻게-해야-하는데-&quot;&gt;그럼 어떻게 해야 하는데 😲❓&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/60086878/103172734-d4f53280-4898-11eb-8630-f6b9dd23b2ca.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;앞서 살펴본 문제점과 같이 우리가 원하는 복사가 이뤄지지 않았던 이유는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt; 두 변수가 같은 메모리를 참조하기 때문이다. 결국 우리가 원하는 복사가 이뤄지기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list2&lt;/code&gt;이 서로 다른 메모리를 참조하도록 해주면 된다. 파이썬 리스트를 다른 리스트에 복사하는 방법은 4가지가 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;1-슬라이싱&quot;&gt;1) 슬라이싱&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; list2 = list1[:]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;시작점과 끝점을 생략한 슬라이싱은 리스트의 모든 요소를 뜻한다. 슬라이싱을 통해 변수를 정의하면 파이썬은 새로운 객체를 만든다.&lt;/p&gt;
-
-&lt;h3 id=&quot;2-list-함수&quot;&gt;2) list() 함수&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; list2 = list(list1)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;파이썬 내장함수 중에는 iterable한 객체를 리스트 객체로 변환해주는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list()&lt;/code&gt; 함수가 있다. 이 함수를 이용해 복사하고자 하는 리스트 객체를 다시 재선언 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;3-copy-메소드&quot;&gt;3) copy() 메소드&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; list2 = list1.copy()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Python3 부터 리스트를 다른 리스트에 복사하는 기능인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;copy()&lt;/code&gt; 메소드가 추가되었다. 가독성을 위한 코드라면 이 방법을 사용하는 것을 권장한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;4-리스트-연산&quot;&gt;4) 리스트 연산&lt;/h3&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list1 = [1, 2, 3, 4]
-&amp;gt;&amp;gt;&amp;gt; list2 = [] + list1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;리스트 덧셈연산을 이용해 새로운 빈 리스트에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;의 요소들을 더한다. 새로운 리스트 객체에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list1&lt;/code&gt;의 요소들이 더해져 결과적으로 우리가 원하는 복사가 이뤄진다.&lt;/p&gt;
-
-&lt;h2 id=&quot;검증&quot;&gt;검증&lt;/h2&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; def copy_element(method):
-        list1 = [1, 2, 3, 4]
-        if method == 1:
-            list2 = list1[:]
-        elif method == 2:
-            list2 = list(list1)
-        elif method == 3:
-            list2 = list1.copy()
-        elif method == 4:
-            list2 = [] + list1
-
-        print(f'방법 {method}')
-        print('list1 :', list1, '/ id :', id(list1))
-        print('list2 :', list2, '/ id :', id(list2))
-
-        list1[0] = 11
-
-        print('list1 :', list1)
-        print('list2 :', list2)
-        print('')
-
-&amp;gt;&amp;gt;&amp;gt; [copy_element(method) for method in range(1, 5)]
-방법 1
-list1 : [1, 2, 3, 4] / id : 4552075648
-list2 : [1, 2, 3, 4] / id : 4552076096
-list1 : [11, 2, 3, 4]
-list2 : [1, 2, 3, 4]
-
-방법 2
-list1 : [1, 2, 3, 4] / id : 4552076096
-list2 : [1, 2, 3, 4] / id : 4552164288
-list1 : [11, 2, 3, 4]
-list2 : [1, 2, 3, 4]
-
-방법 3
-list1 : [1, 2, 3, 4] / id : 4552164288
-list2 : [1, 2, 3, 4] / id : 4552076096
-list1 : [11, 2, 3, 4]
-list2 : [1, 2, 3, 4]
-
-방법 4
-list1 : [1, 2, 3, 4] / id : 4552076096
-list2 : [1, 2, 3, 4] / id : 4552075648
-list1 : [11, 2, 3, 4]
-list2 : [1, 2, 3, 4]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;각자의 방법 모두 서로 다른 리스트 객체에 값이 할당되며, list1의 요소에 수정이 일어나도 list2 요소에 영향을 끼치지 않는 독립적인 개체임을 확인할 수 있다.&lt;/p&gt;
-
-&lt;h1 id=&quot;참고&quot;&gt;참고&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.afternerd.com/blog/python-copy-list/&quot;&gt;Python: How to Copy a List? (The Idiomatic Way)&lt;/a&gt;&lt;/p&gt;</content><author><name>김인규</name></author><category term="Python" /><category term="Python" /><category term="자료구조" /><category term="리스트" /><summary type="html">오늘은 상당히 기초적이면서도 쉽게 실수 할 수 있는 부분을 다뤄보고자 한다. 바로 나를 포함한 초보자들이 실수할 수 있는 파이썬 리스트를 다른 리스트에 복사하는 방법에 대해 소개한다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Eliot</name></author><category term="Python" /><category term="Python" /><summary type="html">파이썬 collections 패키지의 Counter() 메소드 사용법과 활용사례를 소개한다.</summary></entry></feed>
